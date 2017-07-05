@@ -33,6 +33,12 @@ class TodoContainer extends Component {
 			}
 	}
 
+	deleteItemCmposer(id){
+		return function(){
+			console.log('delete' , id)
+		}
+	}
+
 	render(){
 		var currentItem = this.props.items[this.props.baseItem]
 		var parentItem = this.props.items[currentItem.parent]
@@ -61,6 +67,7 @@ class TodoContainer extends Component {
 				 list={this.props.items}
 				 baseItem={this.props.baseItem}
 				 changeBaseComposer={this.changeBaseComposer}
+				 deleteItemCmposer={this.deleteItemCmposer}
 				 />
 			</div>
 
