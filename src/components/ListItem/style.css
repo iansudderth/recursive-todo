@@ -7,3 +7,30 @@
 .item:hover {
 	text-decoration: underline;
 }
+
+.icon{
+	transition: .5s;
+	cursor:pointer;
+	margin-left: 5px;
+	transform:scale(1);
+}
+
+.icon:hover{
+	transform: scale(1.4);
+}
+
+.delete{
+	color:red;
+}
+
+.delete:hover{
+
+}
+
+.complete{
+	color:green;
+}
+
+.complete:hover{
+
+}

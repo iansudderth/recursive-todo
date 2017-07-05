@@ -15,8 +15,14 @@ const ListItem = (props) => {
 				>
 				id: {props.item.id} , content: {props.item.content} ({props.item.children.length})
 				</span>
-				<FaCheckSquare />
-				<FaTimesCircle />
+				<FaCheckSquare
+				 className={`${style.icon} ${style.complete}`}
+				 onClick={props.completeItemComposer(props.item.id)}
+				 />
+				<FaTimesCircle
+				className={`${style.icon} ${style.delete}`}
+				onClick={props.deleteItemComposer(props.item.id)}
+				/>
 				{children}
 			</li>
 		)

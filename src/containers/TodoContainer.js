@@ -33,9 +33,15 @@ class TodoContainer extends Component {
 			}
 	}
 
-	deleteItemCmposer(id){
+	deleteItemComposer(id){
 		return function(){
 			console.log('delete' , id)
+		}
+	}
+
+	completeItemComposer(id){
+		return function(){
+			console.log('complete', id)
 		}
 	}
 
@@ -67,7 +73,8 @@ class TodoContainer extends Component {
 				 list={this.props.items}
 				 baseItem={this.props.baseItem}
 				 changeBaseComposer={this.changeBaseComposer}
-				 deleteItemCmposer={this.deleteItemCmposer}
+				 deleteItemComposer={this.deleteItemComposer}
+				 completeItemComposer={this.completeItemComposer}
 				 />
 			</div>
 

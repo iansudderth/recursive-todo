@@ -21,6 +21,8 @@ const List = (props) => {
 			 key={'child'+child}
 			 item={props.list[child]}
 			 changeBaseComposer={props.changeBaseComposer}
+			 deleteItemComposer={props.deleteItemComposer}
+			 completeItemComposer={props.completeItemComposer}
 			 />
 		 )
 	})
@@ -34,6 +36,8 @@ const List = (props) => {
 							item={item}
 							children={populateChildren(item.children)}
 							changeBaseComposer={props.changeBaseComposer}
+							deleteItemComposer={props.deleteItemComposer}
+							completeItemComposer={props.completeItemComposer}
 							/>
 				})
 			}
