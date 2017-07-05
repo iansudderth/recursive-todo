@@ -20,6 +20,7 @@ const List = (props) => {
 			<ListItem
 			 key={'child'+child}
 			 item={props.list[child]}
+			 changeBaseComposer={props.changeBaseComposer}
 			 />
 		 )
 	})
@@ -32,6 +33,7 @@ const List = (props) => {
 							key={'id'+item.id}
 							item={item}
 							children={populateChildren(item.children)}
+							changeBaseComposer={props.changeBaseComposer}
 							/>
 				})
 			}
