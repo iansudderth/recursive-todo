@@ -7,11 +7,12 @@ import FaTimesCircle from 'react-icons/lib/fa/times-circle'
 
 const ListItem = (props) => {
 	let children = props.children ? <ul>{props.children}</ul> : ''
+	let completed = props.item.complete ? style.completed : '';
 		return(
 			<li>
 				<span
 				onClick={props.changeBaseComposer(props.item.id)}
-				className={style.item}
+				className={`${style.item} ${completed}`}
 				>
 				id: {props.item.id} , content: {props.item.content} ({props.item.children.length})
 				</span>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import List from '../components/List'
 import {connect} from 'react-redux'
-import { newItem, changeBaseItem } from '../actions'
+import { newItem, changeBaseItem, completeItem } from '../actions'
 import {bindActionCreators} from 'redux'
 import style from '../components/ListItem/style.css'
 
@@ -14,6 +14,7 @@ class TodoContainer extends Component {
 		this.inputUpdate = this.inputUpdate.bind(this)
 		this.newItemAction = this.newItemAction.bind(this)
 		this.changeBaseComposer = this.changeBaseComposer.bind(this)
+		this.completeItemComposer = this.completeItemComposer.bind(this)
 	}
 
 	inputUpdate(event){
@@ -40,8 +41,9 @@ class TodoContainer extends Component {
 	}
 
 	completeItemComposer(id){
+		let completeItemDispatch = this.props.completeItem
 		return function(){
-			console.log('complete', id)
+			completeItemDispatch(id)
 		}
 	}
 
@@ -50,12 +52,12 @@ class TodoContainer extends Component {
 		var parentItem = this.props.items[currentItem.parent]
 		return(
 			<div>
-				<h1>{this.props.baseItem == 'root'? 'root' : currentItem.content}</h1>
+				<h1>{this.props.baseItem === 'root'? 'root' : currentItem.content}</h1>
 				<p
 				onClick={this.changeBaseComposer(currentItem.parent)}
 				className={style.item}
 				>
-				{this.props.baseItem == 'root' || currentItem.parent == 'root' ? '' : `Back to :   ${parentItem.content} (${parentItem.children.length})`}
+				{this.props.baseItem === 'root' || currentItem.parent === 'root' ? '' : `Back to :   ${parentItem.content} (${parentItem.children.length})`}
 				</p>
 				<p
 				onClick={this.changeBaseComposer('root')}
@@ -89,7 +91,7 @@ function mapStateToProps({items, baseItem}){
 
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({newItem, changeBaseItem},dispatch)
+	return bindActionCreators({newItem, changeBaseItem, completeItem},dispatch)
 }
 
 

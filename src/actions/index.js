@@ -23,6 +23,7 @@ export function newItem(content, parent='root'){
 		payload:{
 			id:randomID(),
 			content,
+			complete:false,
 			children:[],
 			parent
 		}
@@ -36,6 +37,14 @@ function randomID(){
 export function changeBaseItem(id){
 	return {
 		type:CHANGE_BASE,
+		payload:id
+	}
+}
+
+export function completeItem(id){
+	console.log('COMPLETE_ITEM : ' , id)
+	return {
+		type:COMPLETE_ITEM,
 		payload:id
 	}
 }
