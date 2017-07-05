@@ -12,7 +12,7 @@ class TodoContainer extends Component {
 		}
 		this.inputUpdate = this.inputUpdate.bind(this)
 		this.newItemAction = this.newItemAction.bind(this)
-		this.changeBase = this.changeBase.bind(this)
+		this.changeBaseComposer = this.changeBaseComposer.bind(this)
 	}
 
 	inputUpdate(event){
@@ -25,7 +25,7 @@ class TodoContainer extends Component {
 		this.setState({newItem:''})
 	}
 
-	changeBase(id){
+	changeBaseComposer(id){
 		var changeBaseItem = this.props.changeBaseItem
 		return function(){
 			changeBaseItem(id);
@@ -36,12 +36,14 @@ class TodoContainer extends Component {
 		return(
 			<div>
 				<h1>Hello World</h1>
-				<a href="#" onClick={this.changeBase('root')}>root</a> <br/>
-				<a href="#" onClick={this.changeBase(1001)}>1001</a>
 				<br/>
 				<input value={this.state.newItem}  onChange={this.inputUpdate}/>
 				<button onClick={this.newItemAction}>New Item</button>
-				<List list={this.props.items} baseItem={this.props.baseItem}/>
+				<List
+				 list={this.props.items}
+				 baseItem={this.props.baseItem}
+				 changeBaseComposer={this.changeBaseComposer}
+				 />
 			</div>
 
 			)
