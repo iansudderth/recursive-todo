@@ -3,6 +3,7 @@ import List from '../components/List'
 import {connect} from 'react-redux'
 import { newItem, changeBaseItem } from '../actions'
 import {bindActionCreators} from 'redux'
+import style from '../components/ListItem/style.css'
 
 class TodoContainer extends Component {
 	constructor(props) {
@@ -33,10 +34,27 @@ class TodoContainer extends Component {
 	}
 
 	render(){
+		var currentItem = this.props.items[this.props.baseItem]
+		var parentItem = this.props.items[currentItem.parent]
 		return(
 			<div>
-				<h1>Hello World</h1>
+				<h1>{this.props.baseItem == 'root'? 'root' : currentItem.content}</h1>
+				<p
+				onClick={this.changeBaseComposer(currentItem.parent)}
+				className={style.item}
+				>
+				{this.props.baseItem == 'root' || currentItem.parent == 'root' ? '' : `Back to :   ${parentItem.content} (${parentItem.children.length})`}
+				</p>
+				<p
+				onClick={this.changeBaseComposer('root')}
+				className={style.item}
+				>
+				Back to Root
+				</p>
+
+
 				<br/>
+
 				<input value={this.state.newItem}  onChange={this.inputUpdate}/>
 				<button onClick={this.newItemAction}>New Item</button>
 				<List
