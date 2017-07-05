@@ -6,8 +6,9 @@ import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import App from './App';
 import ReduxPromise from 'redux-promise'
+import {composeWithDevTools} from 'redux-devtools-extension'
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(ReduxPromise))(createStore);
 
 
 const Boiler = () => (
