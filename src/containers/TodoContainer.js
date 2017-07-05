@@ -61,7 +61,7 @@ class TodoContainer extends Component {
 				onClick={this.changeBaseComposer('root')}
 				className={style.item}
 				>
-				Back to Root
+				{this.props.baseItem === 'root' ? '' : 'Back to Root'}
 				</p>
 
 
