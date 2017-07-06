@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './style.css'
-import PropTypes from 'prop-types'
-import _ from 'lodash';
+// import PropTypes from 'prop-types'
+// import _ from 'lodash';
 import FaCheckSquare from 'react-icons/lib/fa/check-square'
 import FaTimesCircle from 'react-icons/lib/fa/times-circle'
 import ReactConfirmAlert, {confirmAlert} from 'react-confirm-alert'

@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import { newItem, changeBaseItem, completeItem, deleteItem } from '../actions'
 import {bindActionCreators} from 'redux'
 import style from '../components/ListItem/style.css'
-import ReactConfirmAlert, {confirmAlert} from 'react-confirm-alert'
 
 class TodoContainer extends Component {
 	constructor(props) {
