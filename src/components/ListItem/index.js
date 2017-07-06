@@ -4,10 +4,24 @@ import PropTypes from 'prop-types'
 import _ from 'lodash';
 import FaCheckSquare from 'react-icons/lib/fa/check-square'
 import FaTimesCircle from 'react-icons/lib/fa/times-circle'
+import ReactConfirmAlert, {confirmAlert} from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 const ListItem = (props) => {
 	let children = props.children ? <ul>{props.children}</ul> : ''
 	let completed = props.item.complete ? style.completed : '';
+
+	function handleDelete(){
+		confirmAlert({
+			title:"Confirm Delete",
+			message:`Are you sure you want to delete "${props.item.content}" and all its children?`,
+			confirmLabel: 'Confirm',
+			cancelLabel: 'Cancel',
+			onConfirm: props.deleteItemComposer(props.item.id),
+			onCancel: () => console.log('cancel')
+		})
+	}
+
 		return(
 			<li>
 				<span
@@ -22,7 +36,7 @@ const ListItem = (props) => {
 				 />
 				<FaTimesCircle
 				className={`${style.icon} ${style.delete}`}
-				onClick={props.deleteItemComposer(props.item.id)}
+				onClick={handleDelete}
 				/>
 				{children}
 			</li>
@@ -34,3 +48,6 @@ ListItem.propTypes = {
 }
 
 export default ListItem
+
+
+// props.deleteItemComposer(props.item.id)
