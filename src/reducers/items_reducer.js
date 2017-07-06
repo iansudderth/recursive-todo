@@ -4,22 +4,26 @@ import {NEW_ITEM,COMPLETE_ITEM} from '../actions'
 function items(state = seedData,action){
 	switch (action.type){
 		case NEW_ITEM:
-		var newItemID = action.payload.id
+		var newID = randomID()
 		var parentID = action.payload.parent
-		var newItem = {[newItemID]:action.payload}
-		var newParent = addChild(state[parentID],newItemID)
-		var newParent = {[parentID]:newParent}
-		var newState = {...state}
-		newState = Object.assign(newState,newItem,newParent)
-		console.log('NEW_ITEM : ' ,newState)
+		var newItem = { [newID] : {
+			id:newID,
+			content: action.payload.content,
+			complete:false,
+			children:[],
+			parent:parentID
+			}
+		}
+		var newParent = { [parentID] :  addChild(state[parentID],newID)  }
+		var newState = _.merge( {} , state, newItem, newParent)
 		return newState
 
 		case COMPLETE_ITEM:
 		var id = action.payload;
-		var newState = {...state}
+		var newState = _.merge({}, state)
 		var newItem =  {[id]:newState[id]}
 		newItem[id].complete = !newItem[id].complete;
-		return {...newState,newItem}
+		return _.merge(newState, newItem)
 
 		default:
 		return state;
@@ -44,7 +48,7 @@ function randomID(){
 function addChild(item,child){
 	var children = [...item.children]
 	children = children.concat(child)
-	return Object.assign(item, {children})
+	return _.merge({}, item, {children})
 }
 
 const seedData = {
