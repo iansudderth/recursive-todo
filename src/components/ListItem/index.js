@@ -48,6 +48,3 @@ ListItem.propTypes = {
 }
 
 export default ListItem
-
-
-// props.deleteItemComposer(props.item.id)
