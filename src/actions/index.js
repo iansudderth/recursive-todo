@@ -1,15 +1,15 @@
-import _ from 'lodash'
+
 
 
 export const NEW_ITEM = 'NEW_ITEM'
 export const CHANGE_BASE = 'CHANGE_BASE'
 export const COMPLETE_ITEM = 'COMPLETE_ITEM'
+export const DELETE_ITEM = 'DELETE_ITEM'
 
 // ============
 // To Implement
 // ============
 
-export const DELETE_ITEM = 'DELETE_ITEM'
 export const UPDATE_ITEM = 'UPDATE_ITEM'
 
 // ===============
@@ -37,6 +37,13 @@ export function changeBaseItem(id){
 export function completeItem(id){
 	return {
 		type:COMPLETE_ITEM,
+		payload:id
+	}
+}
+
+export function deleteItem(id){
+	return {
+		type:DELETE_ITEM,
 		payload:id
 	}
 }

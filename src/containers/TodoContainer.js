@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import List from '../components/List'
 import {connect} from 'react-redux'
-import { newItem, changeBaseItem, completeItem } from '../actions'
+import { newItem, changeBaseItem, completeItem, deleteItem } from '../actions'
 import {bindActionCreators} from 'redux'
 import style from '../components/ListItem/style.css'
 
@@ -15,6 +15,7 @@ class TodoContainer extends Component {
 		this.newItemAction = this.newItemAction.bind(this)
 		this.changeBaseComposer = this.changeBaseComposer.bind(this)
 		this.completeItemComposer = this.completeItemComposer.bind(this)
+		this.deleteItemComposer = this.deleteItemComposer.bind(this)
 	}
 
 	inputUpdate(event){
@@ -35,8 +36,9 @@ class TodoContainer extends Component {
 	}
 
 	deleteItemComposer(id){
+		let deleteItemDispatch = this.props.deleteItem
 		return function(){
-			console.log('delete' , id)
+			deleteItemDispatch(id)
 		}
 	}
 
@@ -91,7 +93,7 @@ function mapStateToProps({items, baseItem}){
 
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({newItem, changeBaseItem, completeItem},dispatch)
+	return bindActionCreators({newItem, changeBaseItem, completeItem, deleteItem},dispatch)
 }
 
 

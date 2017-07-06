@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import {NEW_ITEM,COMPLETE_ITEM} from '../actions'
+import {NEW_ITEM,COMPLETE_ITEM, DELETE_ITEM} from '../actions'
 
 function items(state = seedData,action){
 	switch (action.type){
@@ -25,6 +25,16 @@ function items(state = seedData,action){
 		newItem[id].complete = !newItem[id].complete;
 		return _.merge(newState, newItem)
 
+		case DELETE_ITEM:
+		var id = action.payload
+		var newState = _.merge({}, state)
+		var parent = state[id].parent
+		newState = _.omit(newState,generateChildList(state,id))
+		newState[parent].children = _.filter(newState[parent].children, n => n !== id)
+
+		console.log(newState)
+		return newState;
+
 		default:
 		return state;
 	}
@@ -40,6 +50,15 @@ export default items
 // 	parent:id,
 // 	children:[id,id,id...]
 // }
+
+function generateChildList(state,baseID){
+	var list = [baseID]
+	list = list.concat(state[baseID].children)
+	for(var i = 1; i < list.length; i++){
+		list = list.concat(state[list[i]].children)
+	}
+	return list;
+}
 
 function randomID(){
 	return _.random(0,65500,false)
