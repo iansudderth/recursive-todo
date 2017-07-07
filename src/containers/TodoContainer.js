@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import { newItem, changeBaseItem, completeItem, deleteItem } from '../actions'
 import {bindActionCreators} from 'redux'
 import style from '../components/ListItem/style.css'
+import NewItemForm from '../components/NewItemForm'
+
 
 class TodoContainer extends Component {
 	constructor(props) {
@@ -22,9 +24,8 @@ class TodoContainer extends Component {
 		this.setState({newItem: event.target.value})
 	}
 
-	newItemAction(){
-		var newItemContent = this.state.newItem
-		this.props.newItem(newItemContent,this.props.baseItem)
+	newItemAction(content){
+		this.props.newItem(content,this.props.baseItem)
 		this.setState({newItem:''})
 	}
 
@@ -68,11 +69,10 @@ class TodoContainer extends Component {
 				{this.props.baseItem === 'root' ? '' : 'Back to Root'}
 				</p>
 
-
 				<br/>
-
-				<input value={this.state.newItem}  onChange={this.inputUpdate}/>
-				<button onClick={this.newItemAction}>New Item</button>
+				<NewItemForm
+					newItemAction={this.newItemAction}
+				/>
 				<List
 				 list={this.props.items}
 				 baseItem={this.props.baseItem}
