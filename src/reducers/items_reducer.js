@@ -11,7 +11,8 @@ function items(state = seedData, action) {
 					id: newID,
 					content: action.payload.content,
 					complete: false,
-					children: [],
+					completeChildren: [],
+					incompleteChildren: [],
 					parent: parentID
 				}
 			};
@@ -23,7 +24,15 @@ function items(state = seedData, action) {
 			var id = action.payload;
 			var newState = _.merge({}, state);
 			var newItem = { [id]: newState[id] };
+			var parentID = newItem[id].parent
 			newItem[id].complete = !newItem[id].complete;
+			if(newItem[id].complete){
+				_.pull(newState[parentID].incompleteChildren, id)
+				newState[parentID].completeChildren.unshift(id)
+			} else {
+				_.pull(newState[parentID].completeChildren, id)
+				newState[parentID].incompleteChildren.push(id)
+			}
 			return _.merge(newState, newItem);
 
 		case DELETE_ITEM:
@@ -31,8 +40,12 @@ function items(state = seedData, action) {
 			var newState = _.merge({}, state);
 			var parent = state[id].parent;
 			newState = _.omit(newState, generateChildList(state, id));
-			newState[parent].children = _.filter(
-				newState[parent].children,
+			newState[parent].completeChildren = _.filter(
+				newState[parent].completeChildren,
+				n => n !== id
+			);
+			newState[parent].incompleteChildren = _.filter(
+				newState[parent].incompleteChildren,
 				n => n !== id
 			);
 			return newState;
@@ -65,9 +78,8 @@ function randomID() {
 }
 
 function addChild(item, child) {
-	var children = [...item.children];
-	children = children.concat(child);
-	return _.merge({}, item, { children });
+
+	return _.merge({}, item, { incompleteChildren: item.incompleteChildren.concat(child) });
 }
 
 const seedData = {
@@ -76,30 +88,35 @@ const seedData = {
 		content: "Random seed 1",
 		complete: false,
 		parent: "root",
-		children: [1004]
+		completeChildren: [],
+		incompleteChildren: [1004]
 	},
 	1002: {
 		id: 1002,
 		content: "Random seed 2",
 		complete: false,
 		parent: "root",
-		children: [1003]
+		completeChildren: [],
+		incompleteChildren: [1003]
 	},
 	1003: {
 		id: 1003,
 		content: "Random seed 3",
 		complete: false,
 		parent: 1002,
-		children: []
+		completeChildren: [],
+		incompleteChildren: []
 	},
 	1004: {
 		id: 1004,
 		content: "Random seed 4",
 		complete: false,
 		parent: 1001,
-		children: []
+		completeChildren: [],
+		incompleteChildren: []
 	},
 	root: {
-		children: [1001, 1002]
+		completeChildren: [],
+		incompleteChildren: [1001,1002]
 	}
 };

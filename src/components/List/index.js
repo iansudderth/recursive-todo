@@ -6,35 +6,47 @@ import ListItem from "../ListItem/";
 
 const List = props => {
 	function populateList() {
-		return props.list[props.baseItem].children.map(id => {
-			return props.list[id];
+		var completeList = props.list[props.baseItem].completeChildren.map(id => {
+			return props.list[id]
 		});
+		var incompleteList = props.list[props.baseItem].incompleteChildren.map(id => {
+			return props.list[id]
+		});
+		return [...incompleteList, ...completeList]
 	}
 
-	function populateChildren(childList) {
-		if (childList.length == 0) {
+	function buildListItem(id){
+		return <ListItem
+			key={"child" + id}
+			item={props.list[id]}
+			changeBaseComposer={props.changeBaseComposer}
+			deleteItemComposer={props.deleteItemComposer}
+			completeItemComposer={props.completeItemComposer}
+		/>
+	}
+
+	function populateChildren(parentItem) {
+		if (parentItem.completeChildren.length === 0 && parentItem.incompleteChildren.length === 0) {
 			return;
 		}
-		return childList.map(child => {
-			return (
-				<ListItem
-					key={"child" + child}
-					item={props.list[child]}
-					changeBaseComposer={props.changeBaseComposer}
-					deleteItemComposer={props.deleteItemComposer}
-					completeItemComposer={props.completeItemComposer}
-				/>
-			);
+		var completeList = parentItem.completeChildren.map(child => {
+			return buildListItem(child)
 		});
+		var incompleteList = parentItem.incompleteChildren.map(child => {
+			return buildListItem(child)
+		});
+
+		return [...incompleteList, ...completeList]
 	}
 	return (
 		<ul>
 			{populateList().map(item => {
+				console.log(item)
 				return (
 					<ListItem
 						key={"id" + item.id}
 						item={item}
-						children={populateChildren(item.children)}
+						children={populateChildren(item)}
 						changeBaseComposer={props.changeBaseComposer}
 						deleteItemComposer={props.deleteItemComposer}
 						completeItemComposer={props.completeItemComposer}

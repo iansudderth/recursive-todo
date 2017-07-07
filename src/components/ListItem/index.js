@@ -32,7 +32,7 @@ const ListItem = props => {
 				onClick={props.changeBaseComposer(props.item.id)}
 				className={`${style.item} ${completed}`}
 			>
-				id: {props.item.id} , content: {props.item.content} ({props.item.children.length})
+				id: {props.item.id} , content: {props.item.content} ({props.item.completeChildren.length} / {props.item.completeChildren.length + props.item.incompleteChildren.length} done)
 			</span>
 			<FaCheckSquare
 				className={`${style.icon} ${style.complete}`}
