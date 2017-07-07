@@ -1,13 +1,13 @@
-import {CHANGE_BASE} from '../actions/'
+import { CHANGE_BASE } from "../actions/";
 
-function baseItem(state = 'root',action){
-	switch(action.type){
+function baseItem(state = "root", action) {
+	switch (action.type) {
 		case CHANGE_BASE:
-		console.log('CHANGE_BASE : ', action.payload)
-		return action.payload
+			console.log("CHANGE_BASE : ", action.payload);
+			return action.payload;
 		default:
-		return state;
+			return state;
 	}
 }
 
-export default baseItem
+export default baseItem;
