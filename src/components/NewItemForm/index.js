@@ -16,7 +16,6 @@ class NewItemForm extends Component {
 
 	submitHandler(event){
 		event.preventDefault()
-		console.log(this.state.newItem)
 		this.props.newItemAction(this.state.newItem)
 		this.setState({newItem:''})
 	}
