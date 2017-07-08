@@ -26,13 +26,23 @@ const ListItem = props => {
 		});
 	}
 
+	function completeDisplay(){
+		var completed = props.item.completeChildren.length
+		var total = completed + props.item.incompleteChildren.length
+		if(total === 0){
+			return ''
+		} else {
+			return `( ${completed} / ${total} complete)`
+		}
+	}
+
 	return (
 		<li>
 			<span
 				onClick={props.changeBaseComposer(props.item.id)}
 				className={`${style.item} ${completed}`}
 			>
-				id: {props.item.id} , content: {props.item.content} ({props.item.completeChildren.length} / {props.item.completeChildren.length + props.item.incompleteChildren.length} done)
+				id: {props.item.id} , content: {props.item.content} {completeDisplay()}
 			</span>
 			<FaCheckSquare
 				className={`${style.icon} ${style.complete}`}

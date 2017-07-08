@@ -66,9 +66,9 @@ export default items;
 
 function generateChildList(state, baseID) {
 	var list = [baseID];
-	list = list.concat(state[baseID].children);
+	list = list.concat(state[baseID].completeChildren).concat(state[baseID].incompleteChildren);
 	for (var i = 1; i < list.length; i++) {
-		list = list.concat(state[list[i]].children);
+		list = list.concat(state[list[i]].completeChildren).concat(state[list[i]].incompleteChildren);
 	}
 	return list;
 }

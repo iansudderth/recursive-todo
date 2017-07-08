@@ -41,7 +41,6 @@ const List = props => {
 	return (
 		<ul>
 			{populateList().map(item => {
-				console.log(item)
 				return (
 					<ListItem
 						key={"id" + item.id}
