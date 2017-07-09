@@ -66,8 +66,7 @@ class TodoContainer extends Component {
 					{this.props.baseItem === "root" ||
 					currentItem.parent === "root"
 						? ""
-						: `Back to :   ${parentItem.content} (${parentItem
-								.children.length})`}
+						: `Back to :   ${parentItem.content}`}
 				</p>
 				<p
 					onClick={this.changeBaseComposer("root")}

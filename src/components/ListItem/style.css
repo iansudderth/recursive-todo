@@ -1,10 +1,21 @@
 @import "../../style/variables.css";
 
-.item{
-	cursor: pointer;
+
+
+.item {
+	list-style: none;
 }
 
-.item:hover {
+.handle {
+	margin-right: 5px;
+}
+
+.content{
+	cursor: pointer;
+
+}
+
+.content:hover {
 	text-decoration: underline;
 }
 

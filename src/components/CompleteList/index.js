@@ -2,21 +2,24 @@ import React, {Component} from 'react'
 import style from './style.css'
 import PropTypes from 'prop-types'
 import _ from 'lodash';
+import ListItem from '../ListItem/'
 
-class CompleteList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {}
+const CompleteList =  (props) => {
 
-	}
-
-	render(){
 		return(
 			<ul>
-
+			{props.items.map((value => {
+				return (
+					<ListItem
+					value={value}
+					changeBaseComposer={props.changeBaseComposer}
+					deleteItemComposer={props.deleteItemComposer}
+					completeItemComposer={props.completeItemComposer}
+					 />
+				 )
+			}))}
 			</ul>
 			)
-	}
 }
 
 CompleteList.propTypes = {

@@ -5,15 +5,12 @@ import style from "./style.css";
 import FaCheckSquare from "react-icons/lib/fa/check-square";
 import FaTimesCircle from "react-icons/lib/fa/times-circle";
 import ReactConfirmAlert, { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import {SortableHandle} from 'react-sortable-hoc'
 
 const ListItem = props => {
-	let children = props.children
-		? <ul>
-				{props.children}
-			</ul>
-		: "";
-	let completed = props.item.complete ? style.completed : "";
+
+	const DragHandle = SortableHandle( () => <span className={style.handle}>::</span> )
+	let completed = props.value.complete ? style.completed : ''
 
 	function handleDelete() {
 		confirmAlert({
@@ -37,22 +34,14 @@ const ListItem = props => {
 	}
 
 	return (
-		<li>
-			<span
-				onClick={props.changeBaseComposer(props.item.id)}
-				className={`${style.item} ${completed}`}
-			>
-				id: {props.item.id} , content: {props.item.content} {completeDisplay()}
-			</span>
-			<FaCheckSquare
-				className={`${style.icon} ${style.complete}`}
-				onClick={props.completeItemComposer(props.item.id)}
-			/>
-			<FaTimesCircle
-				className={`${style.icon} ${style.delete}`}
-				onClick={handleDelete}
-			/>
-			{children}
+		<li className = {`${style.item}` }>
+		<DragHandle />
+		<span
+		className = {`${style.content} ${completed}` }
+		onClick = {props.changeBaseComposer(props.value.id)}
+		>
+		{props.value.content}
+		</span>
 		</li>
 	);
 };

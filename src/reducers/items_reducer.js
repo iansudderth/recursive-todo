@@ -115,8 +115,16 @@ const seedData = {
 		completeChildren: [],
 		incompleteChildren: []
 	},
-	root: {
+	1005: {
+		id: 1004,
+		content: "Random seed 5",
+		complete: true,
+		parent: 'root',
 		completeChildren: [],
+		incompleteChildren: []
+	},
+	root: {
+		completeChildren: [1005],
 		incompleteChildren: [1001,1002]
 	}
 };
