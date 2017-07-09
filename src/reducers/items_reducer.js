@@ -24,14 +24,14 @@ function items(state = seedData, action) {
 			var id = action.payload;
 			var newState = _.merge({}, state);
 			var newItem = { [id]: newState[id] };
-			var parentID = newItem[id].parent
+			var parentID = newItem[id].parent;
 			newItem[id].complete = !newItem[id].complete;
-			if(newItem[id].complete){
-				_.pull(newState[parentID].incompleteChildren, id)
-				newState[parentID].completeChildren.unshift(id)
+			if (newItem[id].complete) {
+				_.pull(newState[parentID].incompleteChildren, id);
+				newState[parentID].completeChildren.unshift(id);
 			} else {
-				_.pull(newState[parentID].completeChildren, id)
-				newState[parentID].incompleteChildren.push(id)
+				_.pull(newState[parentID].completeChildren, id);
+				newState[parentID].incompleteChildren.push(id);
 			}
 			return _.merge(newState, newItem);
 
@@ -51,11 +51,13 @@ function items(state = seedData, action) {
 			return newState;
 
 		case REORDER_ITEM:
-			var newState = _.merge({}, state)
-			var parentID = action.payload.parentID
-			newState[parentID].incompleteChildren = reorder(newState[parentID].incompleteChildren,
+			var newState = _.merge({}, state);
+			var parentID = action.payload.parentID;
+			newState[parentID].incompleteChildren = reorder(
+				newState[parentID].incompleteChildren,
 				action.payload.oldIndex,
-				action.payload.newIndex)
+				action.payload.newIndex
+			);
 			return newState;
 
 		default:
@@ -74,9 +76,13 @@ export default items;
 
 function generateChildList(state, baseID) {
 	var list = [baseID];
-	list = list.concat(state[baseID].completeChildren).concat(state[baseID].incompleteChildren);
+	list = list
+		.concat(state[baseID].completeChildren)
+		.concat(state[baseID].incompleteChildren);
 	for (var i = 1; i < list.length; i++) {
-		list = list.concat(state[list[i]].completeChildren).concat(state[list[i]].incompleteChildren);
+		list = list
+			.concat(state[list[i]].completeChildren)
+			.concat(state[list[i]].incompleteChildren);
 	}
 	return list;
 }
@@ -86,30 +92,30 @@ function randomID() {
 }
 
 function addChild(item, child) {
-
-	return _.merge({}, item, { incompleteChildren: item.incompleteChildren.concat(child) });
+	return _.merge({}, item, {
+		incompleteChildren: item.incompleteChildren.concat(child)
+	});
 }
 
-function reorder(arr, oldIndex, newIndex){
-  var removed = []
-  if(oldIndex === 0 ){
-    removed = arr.slice(1)
-  } else {
-    var before = arr.slice(0, oldIndex)
-    var after = arr.slice(oldIndex + 1, arr.length)
-    removed = [...before, ...after]
-  }
+function reorder(arr, oldIndex, newIndex) {
+	var removed = [];
+	if (oldIndex === 0) {
+		removed = arr.slice(1);
+	} else {
+		var before = arr.slice(0, oldIndex);
+		var after = arr.slice(oldIndex + 1, arr.length);
+		removed = [...before, ...after];
+	}
 
-  if(newIndex === 0){
-    return [arr[oldIndex], ...removed]
-  } else if (newIndex === arr.length - 1) {
-    return [...removed, arr[oldIndex]]
-  } else {
-    before = removed.slice(0, newIndex)
-    after = removed.slice(newIndex, removed.length)
-    return [...before, arr[oldIndex], ...after]
-  }
-
+	if (newIndex === 0) {
+		return [arr[oldIndex], ...removed];
+	} else if (newIndex === arr.length - 1) {
+		return [...removed, arr[oldIndex]];
+	} else {
+		before = removed.slice(0, newIndex);
+		after = removed.slice(newIndex, removed.length);
+		return [...before, arr[oldIndex], ...after];
+	}
 }
 
 const seedData = {
@@ -149,12 +155,12 @@ const seedData = {
 		id: 1005,
 		content: "Random seed 5",
 		complete: true,
-		parent: 'root',
+		parent: "root",
 		completeChildren: [],
 		incompleteChildren: []
 	},
 	root: {
 		completeChildren: [1005],
-		incompleteChildren: [1001,1002]
+		incompleteChildren: [1001, 1002]
 	}
 };

@@ -45,13 +45,13 @@ export function deleteItem(id) {
 	};
 }
 
-export function reorderItem(parentID, oldIndex, newIndex){
+export function reorderItem(parentID, oldIndex, newIndex) {
 	return {
-		type:REORDER_ITEM,
+		type: REORDER_ITEM,
 		payload: {
 			parentID,
 			oldIndex,
 			newIndex
 		}
-	}
+	};
 }

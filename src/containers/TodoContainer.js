@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import List from "../components/List";
 import { connect } from "react-redux";
-import { newItem, changeBaseItem, completeItem, deleteItem, reorderItem } from "../actions";
+import {
+	newItem,
+	changeBaseItem,
+	completeItem,
+	deleteItem,
+	reorderItem
+} from "../actions";
 import { bindActionCreators } from "redux";
 import style from "../components/ListItem/style.css";
 import NewItemForm from "../components/NewItemForm";
@@ -50,11 +56,11 @@ class TodoContainer extends Component {
 		};
 	}
 
-	reorderItemComposer(id, oldIndex, newIndex){
+	reorderItemComposer(id, oldIndex, newIndex) {
 		let reorderItemDispatch = this.props.reorderItem;
-		return function(){
-			reorderItemDispatch(id, oldIndex, newIndex)
-		}
+		return function() {
+			reorderItemDispatch(id, oldIndex, newIndex);
+		};
 	}
 
 	render() {
