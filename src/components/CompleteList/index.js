@@ -11,6 +11,7 @@ const CompleteList =  (props) => {
 			{props.items.map((value => {
 				return (
 					<ListItem
+					key = {`item-${value.id}`}
 					value={value}
 					changeBaseComposer={props.changeBaseComposer}
 					deleteItemComposer={props.deleteItemComposer}

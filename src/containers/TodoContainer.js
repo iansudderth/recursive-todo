@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import List from "../components/List";
 import { connect } from "react-redux";
-import { newItem, changeBaseItem, completeItem, deleteItem } from "../actions";
+import { newItem, changeBaseItem, completeItem, deleteItem, reorderItem } from "../actions";
 import { bindActionCreators } from "redux";
 import style from "../components/ListItem/style.css";
 import NewItemForm from "../components/NewItemForm";
@@ -17,6 +17,7 @@ class TodoContainer extends Component {
 		this.changeBaseComposer = this.changeBaseComposer.bind(this);
 		this.completeItemComposer = this.completeItemComposer.bind(this);
 		this.deleteItemComposer = this.deleteItemComposer.bind(this);
+		this.reorderItemComposer = this.reorderItemComposer.bind(this);
 	}
 
 	inputUpdate(event) {
@@ -47,6 +48,13 @@ class TodoContainer extends Component {
 		return function() {
 			completeItemDispatch(id);
 		};
+	}
+
+	reorderItemComposer(id, oldIndex, newIndex){
+		let reorderItemDispatch = this.props.reorderItem;
+		return function(){
+			reorderItemDispatch(id, oldIndex, newIndex)
+		}
 	}
 
 	render() {
@@ -83,6 +91,7 @@ class TodoContainer extends Component {
 					changeBaseComposer={this.changeBaseComposer}
 					deleteItemComposer={this.deleteItemComposer}
 					completeItemComposer={this.completeItemComposer}
+					reorderItemComposer={this.reorderItemComposer}
 				/>
 			</div>
 		);
@@ -95,7 +104,7 @@ function mapStateToProps({ items, baseItem }) {
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
-		{ newItem, changeBaseItem, completeItem, deleteItem },
+		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem },
 		dispatch
 	);
 }

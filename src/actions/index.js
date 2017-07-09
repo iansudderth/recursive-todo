@@ -2,6 +2,7 @@ export const NEW_ITEM = "NEW_ITEM";
 export const CHANGE_BASE = "CHANGE_BASE";
 export const COMPLETE_ITEM = "COMPLETE_ITEM";
 export const DELETE_ITEM = "DELETE_ITEM";
+export const REORDER_ITEM = "REORDER_ITEM";
 
 // ============
 // To Implement
@@ -42,4 +43,16 @@ export function deleteItem(id) {
 		type: DELETE_ITEM,
 		payload: id
 	};
+}
+
+export function reorderItem(id, oldIndex, newIndex){
+	console.log('reorderItem action')
+	return {
+		type:REORDER_ITEM,
+		payload: {
+			id,
+			oldIndex,
+			newIndex
+		}
+	}
 }

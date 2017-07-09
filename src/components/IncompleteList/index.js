@@ -22,6 +22,7 @@ const IncompleteList = (props) => {
 		)
 })
 
+
 	const SortableList = SortableContainer(({items}) => {
 	return (
 		<div>
@@ -38,12 +39,16 @@ const IncompleteList = (props) => {
 		)
 })
 
+	function handleSort({oldIndex, newIndex, collection}, e){
+		props.reorderItemComposer(props.parentID, oldIndex, newIndex)()
+	}
 
 		return (
 		<ul>
 			<SortableList
 			items={props.items}
 			useDragHandle={true}
+			onSortEnd={handleSort}
 			/>
 		</ul>
 			)

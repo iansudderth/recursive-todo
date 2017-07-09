@@ -26,17 +26,21 @@ const List = props => {
 		<div>
 			<IncompleteList
 			items = {incompleteListItems}
+			parentID = {props.baseItem}
 			renderChildren = {true}
 			changeBaseComposer={props.changeBaseComposer}
 			deleteItemComposer={props.deleteItemComposer}
 			completeItemComposer={props.completeItemComposer}
+			reorderItemComposer={props.reorderItemComposer}
 			/>
 			<CompleteList
 			items = {completeListItems}
+			parentID = {props.baseItem}
 			renderChildren = {true}
 			changeBaseComposer={props.changeBaseComposer}
 			deleteItemComposer={props.deleteItemComposer}
 			completeItemComposer={props.completeItemComposer}
+			reorderItemComposer={props.reorderItemComposer}
 			/>
 		</div>
 		)

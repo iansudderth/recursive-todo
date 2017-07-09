@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM } from "../actions";
+import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM, REORDER_ITEM } from "../actions";
 
 function items(state = seedData, action) {
 	switch (action.type) {
@@ -49,6 +49,10 @@ function items(state = seedData, action) {
 				n => n !== id
 			);
 			return newState;
+
+		case REORDER_ITEM:
+			console.log(action.payload)
+			return state;
 
 		default:
 			return state;
