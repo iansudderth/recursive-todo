@@ -8,6 +8,19 @@
 
 .handle {
 	margin-right: 5px;
+	cursor:pointer;
+	transform: scale(1);
+	transition:.5s;
+	display: inline-block;
+}
+
+.handle:hover{
+	transform: scale(1.3)
+}
+
+.handle_complete {
+	margin-right: 5px;
+	opacity: 0;
 }
 
 .content{
@@ -22,12 +35,13 @@
 .icon{
 	transition: .5s;
 	cursor:pointer;
-	margin-left: 5px;
+	margin-right: 5px;
 	transform:scale(1);
+	display:inline-block;
 }
 
 .icon:hover{
-	transform: scale(1.4);
+	transform: scale(1.3);
 }
 
 .delete{
@@ -38,12 +52,12 @@
 
 }
 
-.complete{
-	color:green;
+.check{
+
 }
 
-.complete:hover{
-
+.check_complete{
+	color:grey;
 }
 
 .completed{
