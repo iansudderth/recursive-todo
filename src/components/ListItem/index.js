@@ -60,6 +60,9 @@ const ListItem = props => {
 		>
 		{item.content} {completeDisplay()}
 		</span>
+		<FaTimesCircle
+		onClick={props.deleteItemComposer(item.id)}
+		/>
 		</li>
 	);
 };
