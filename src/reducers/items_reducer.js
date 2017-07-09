@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM } from "../actions";
+import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM, REORDER_ITEM } from "../actions";
 
 function items(state = seedData, action) {
 	switch (action.type) {
@@ -11,7 +11,8 @@ function items(state = seedData, action) {
 					id: newID,
 					content: action.payload.content,
 					complete: false,
-					children: [],
+					completeChildren: [],
+					incompleteChildren: [],
 					parent: parentID
 				}
 			};
@@ -23,7 +24,15 @@ function items(state = seedData, action) {
 			var id = action.payload;
 			var newState = _.merge({}, state);
 			var newItem = { [id]: newState[id] };
+			var parentID = newItem[id].parent;
 			newItem[id].complete = !newItem[id].complete;
+			if (newItem[id].complete) {
+				_.pull(newState[parentID].incompleteChildren, id);
+				newState[parentID].completeChildren.unshift(id);
+			} else {
+				_.pull(newState[parentID].completeChildren, id);
+				newState[parentID].incompleteChildren.push(id);
+			}
 			return _.merge(newState, newItem);
 
 		case DELETE_ITEM:
@@ -31,9 +40,23 @@ function items(state = seedData, action) {
 			var newState = _.merge({}, state);
 			var parent = state[id].parent;
 			newState = _.omit(newState, generateChildList(state, id));
-			newState[parent].children = _.filter(
-				newState[parent].children,
+			newState[parent].completeChildren = _.filter(
+				newState[parent].completeChildren,
 				n => n !== id
+			);
+			newState[parent].incompleteChildren = _.filter(
+				newState[parent].incompleteChildren,
+				n => n !== id
+			);
+			return newState;
+
+		case REORDER_ITEM:
+			var newState = _.merge({}, state);
+			var parentID = action.payload.parentID;
+			newState[parentID].incompleteChildren = reorder(
+				newState[parentID].incompleteChildren,
+				action.payload.oldIndex,
+				action.payload.newIndex
 			);
 			return newState;
 
@@ -53,9 +76,13 @@ export default items;
 
 function generateChildList(state, baseID) {
 	var list = [baseID];
-	list = list.concat(state[baseID].children);
+	list = list
+		.concat(state[baseID].completeChildren)
+		.concat(state[baseID].incompleteChildren);
 	for (var i = 1; i < list.length; i++) {
-		list = list.concat(state[list[i]].children);
+		list = list
+			.concat(state[list[i]].completeChildren)
+			.concat(state[list[i]].incompleteChildren);
 	}
 	return list;
 }
@@ -65,9 +92,30 @@ function randomID() {
 }
 
 function addChild(item, child) {
-	var children = [...item.children];
-	children = children.concat(child);
-	return _.merge({}, item, { children });
+	return _.merge({}, item, {
+		incompleteChildren: item.incompleteChildren.concat(child)
+	});
+}
+
+function reorder(arr, oldIndex, newIndex) {
+	var removed = [];
+	if (oldIndex === 0) {
+		removed = arr.slice(1);
+	} else {
+		var before = arr.slice(0, oldIndex);
+		var after = arr.slice(oldIndex + 1, arr.length);
+		removed = [...before, ...after];
+	}
+
+	if (newIndex === 0) {
+		return [arr[oldIndex], ...removed];
+	} else if (newIndex === arr.length - 1) {
+		return [...removed, arr[oldIndex]];
+	} else {
+		before = removed.slice(0, newIndex);
+		after = removed.slice(newIndex, removed.length);
+		return [...before, arr[oldIndex], ...after];
+	}
 }
 
 const seedData = {
@@ -76,30 +124,43 @@ const seedData = {
 		content: "Random seed 1",
 		complete: false,
 		parent: "root",
-		children: [1004]
+		completeChildren: [],
+		incompleteChildren: [1004]
 	},
 	1002: {
 		id: 1002,
 		content: "Random seed 2",
 		complete: false,
 		parent: "root",
-		children: [1003]
+		completeChildren: [],
+		incompleteChildren: [1003]
 	},
 	1003: {
 		id: 1003,
 		content: "Random seed 3",
 		complete: false,
 		parent: 1002,
-		children: []
+		completeChildren: [],
+		incompleteChildren: []
 	},
 	1004: {
 		id: 1004,
 		content: "Random seed 4",
 		complete: false,
 		parent: 1001,
-		children: []
+		completeChildren: [],
+		incompleteChildren: []
+	},
+	1005: {
+		id: 1005,
+		content: "Random seed 5",
+		complete: true,
+		parent: "root",
+		completeChildren: [],
+		incompleteChildren: []
 	},
 	root: {
-		children: [1001, 1002]
+		completeChildren: [1005],
+		incompleteChildren: [1001, 1002]
 	}
 };

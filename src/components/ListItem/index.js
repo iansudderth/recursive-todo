@@ -3,46 +3,65 @@ import style from "./style.css";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
 import FaCheckSquare from "react-icons/lib/fa/check-square";
+import FaSquareO from "react-icons/lib/fa/square-o";
 import FaTimesCircle from "react-icons/lib/fa/times-circle";
 import ReactConfirmAlert, { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import { SortableHandle } from "react-sortable-hoc";
 
 const ListItem = props => {
-	let children = props.children
-		? <ul>
-				{props.children}
-			</ul>
-		: "";
-	let completed = props.item.complete ? style.completed : "";
+	const item = props.value;
+	const handleStyle = item.complete ? style.handle_complete : style.handle;
+	const checkStyle = item.complete ? style.check_complete : style.check;
+
+	const DragHandle = SortableHandle(() =>
+		<span className={handleStyle}>::</span>
+	);
+
+	let completed = item.complete ? style.completed : "";
+
+	const CheckBox = () => {
+		return (
+			<span
+				onClick={props.completeItemComposer(item.id)}
+				className={`${style.icon} ${checkStyle}`}
+			>
+				{item.complete ? <FaCheckSquare /> : <FaSquareO />}
+			</span>
+		);
+	};
 
 	function handleDelete() {
 		confirmAlert({
 			title: "Confirm Delete",
-			message: `Are you sure you want to delete "${props.item.content}" and all its children?`,
+			message: `Are you sure you want to delete "${item.content}" and all its children?`,
 			confirmLabel: "Confirm",
 			cancelLabel: "Cancel",
-			onConfirm: props.deleteItemComposer(props.item.id),
+			onConfirm: props.deleteItemComposer(item.id),
 			onCancel: () => console.log("cancel")
 		});
 	}
 
+	function completeDisplay() {
+		var completed = item.completeChildren.length;
+		var total = completed + item.incompleteChildren.length;
+		if (total === 0) {
+			return "";
+		} else {
+			return `( ${completed} / ${total} complete)`;
+		}
+	}
+
 	return (
-		<li>
+		<li className={`${style.item}`}>
+			<DragHandle />
+			<CheckBox />
 			<span
-				onClick={props.changeBaseComposer(props.item.id)}
-				className={`${style.item} ${completed}`}
+				className={`${style.content} ${completed}`}
+				onClick={props.changeBaseComposer(item.id)}
 			>
-				id: {props.item.id} , content: {props.item.content} ({props.item.children.length})
+				{item.content} {completeDisplay()}
 			</span>
-			<FaCheckSquare
-				className={`${style.icon} ${style.complete}`}
-				onClick={props.completeItemComposer(props.item.id)}
-			/>
-			<FaTimesCircle
-				className={`${style.icon} ${style.delete}`}
-				onClick={handleDelete}
-			/>
-			{children}
+			<FaTimesCircle onClick={props.deleteItemComposer(item.id)} />
 		</li>
 	);
 };

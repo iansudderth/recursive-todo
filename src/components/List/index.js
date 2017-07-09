@@ -3,45 +3,43 @@ import React from "react";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
 import ListItem from "../ListItem/";
+import IncompleteList from "../IncompleteList/";
+import CompleteList from "../CompleteList/";
 
 const List = props => {
-	function populateList() {
-		return props.list[props.baseItem].children.map(id => {
-			return props.list[id];
-		});
+	const itemsList = props.list;
+	const baseItem = props.baseItem;
+	let completeListItems = itemsList[baseItem].completeChildren;
+	let incompleteListItems = itemsList[baseItem].incompleteChildren;
+
+	completeListItems = populateList(completeListItems);
+	incompleteListItems = populateList(incompleteListItems);
+
+	function populateList(listArr) {
+		return listArr.map(listID => itemsList[listID]);
 	}
 
-	function populateChildren(childList) {
-		if (childList.length == 0) {
-			return;
-		}
-		return childList.map(child => {
-			return (
-				<ListItem
-					key={"child" + child}
-					item={props.list[child]}
-					changeBaseComposer={props.changeBaseComposer}
-					deleteItemComposer={props.deleteItemComposer}
-					completeItemComposer={props.completeItemComposer}
-				/>
-			);
-		});
-	}
 	return (
-		<ul>
-			{populateList().map(item => {
-				return (
-					<ListItem
-						key={"id" + item.id}
-						item={item}
-						children={populateChildren(item.children)}
-						changeBaseComposer={props.changeBaseComposer}
-						deleteItemComposer={props.deleteItemComposer}
-						completeItemComposer={props.completeItemComposer}
-					/>
-				);
-			})}
-		</ul>
+		<div>
+			<IncompleteList
+				items={incompleteListItems}
+				parentID={props.baseItem}
+				renderChildren={true}
+				changeBaseComposer={props.changeBaseComposer}
+				deleteItemComposer={props.deleteItemComposer}
+				completeItemComposer={props.completeItemComposer}
+				reorderItemComposer={props.reorderItemComposer}
+			/>
+			<CompleteList
+				items={completeListItems}
+				parentID={props.baseItem}
+				renderChildren={true}
+				changeBaseComposer={props.changeBaseComposer}
+				deleteItemComposer={props.deleteItemComposer}
+				completeItemComposer={props.completeItemComposer}
+				reorderItemComposer={props.reorderItemComposer}
+			/>
+		</div>
 	);
 };
 

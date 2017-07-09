@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import List from "../components/List";
 import { connect } from "react-redux";
-import { newItem, changeBaseItem, completeItem, deleteItem } from "../actions";
+import {
+	newItem,
+	changeBaseItem,
+	completeItem,
+	deleteItem,
+	reorderItem
+} from "../actions";
 import { bindActionCreators } from "redux";
 import style from "../components/ListItem/style.css";
 import NewItemForm from "../components/NewItemForm";
@@ -17,6 +23,7 @@ class TodoContainer extends Component {
 		this.changeBaseComposer = this.changeBaseComposer.bind(this);
 		this.completeItemComposer = this.completeItemComposer.bind(this);
 		this.deleteItemComposer = this.deleteItemComposer.bind(this);
+		this.reorderItemComposer = this.reorderItemComposer.bind(this);
 	}
 
 	inputUpdate(event) {
@@ -49,6 +56,13 @@ class TodoContainer extends Component {
 		};
 	}
 
+	reorderItemComposer(id, oldIndex, newIndex) {
+		let reorderItemDispatch = this.props.reorderItem;
+		return function() {
+			reorderItemDispatch(id, oldIndex, newIndex);
+		};
+	}
+
 	render() {
 		var currentItem = this.props.items[this.props.baseItem];
 		var parentItem = this.props.items[currentItem.parent];
@@ -66,8 +80,7 @@ class TodoContainer extends Component {
 					{this.props.baseItem === "root" ||
 					currentItem.parent === "root"
 						? ""
-						: `Back to :   ${parentItem.content} (${parentItem
-								.children.length})`}
+						: `Back to :   ${parentItem.content}`}
 				</p>
 				<p
 					onClick={this.changeBaseComposer("root")}
@@ -84,6 +97,7 @@ class TodoContainer extends Component {
 					changeBaseComposer={this.changeBaseComposer}
 					deleteItemComposer={this.deleteItemComposer}
 					completeItemComposer={this.completeItemComposer}
+					reorderItemComposer={this.reorderItemComposer}
 				/>
 			</div>
 		);
@@ -96,7 +110,7 @@ function mapStateToProps({ items, baseItem }) {
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
-		{ newItem, changeBaseItem, completeItem, deleteItem },
+		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem },
 		dispatch
 	);
 }
