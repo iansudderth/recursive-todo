@@ -4,17 +4,22 @@
 		{
 			"path": "."
 		},
+		{
+			"path": "/Users/iansudderth/Desktop/draggable-tests"
+		}
 	],
-	"settings" : {
-		"env":{
-      "Darwin":
-      {
-        "PATH": "$PATH:/Users/iansudderth/.nvm/versions/node/v6.11.0/bin/"
-      },
-      "Linux":
-      {
-        "PATH": "$PATH:/Users/iansudderth/.nvm/versions/node/v6.11.0/bin/"
-      }
+	"settings":
+	{
+		"env":
+		{
+			"Darwin":
+			{
+				"PATH": "$PATH:/Users/iansudderth/.nvm/versions/node/v6.11.0/bin/"
+			},
+			"Linux":
+			{
+				"PATH": "$PATH:/Users/iansudderth/.nvm/versions/node/v6.11.0/bin/"
+			}
 		}
 	}
 }
