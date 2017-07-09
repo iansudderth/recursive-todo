@@ -45,12 +45,11 @@ export function deleteItem(id) {
 	};
 }
 
-export function reorderItem(id, oldIndex, newIndex){
-	console.log('reorderItem action')
+export function reorderItem(parentID, oldIndex, newIndex){
 	return {
 		type:REORDER_ITEM,
 		payload: {
-			id,
+			parentID,
 			oldIndex,
 			newIndex
 		}

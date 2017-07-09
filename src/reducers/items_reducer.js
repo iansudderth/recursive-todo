@@ -51,8 +51,12 @@ function items(state = seedData, action) {
 			return newState;
 
 		case REORDER_ITEM:
-			console.log(action.payload)
-			return state;
+			var newState = _.merge({}, state)
+			var parentID = action.payload.parentID
+			newState[parentID].incompleteChildren = reorder(newState[parentID].incompleteChildren,
+				action.payload.oldIndex,
+				action.payload.newIndex)
+			return newState;
 
 		default:
 			return state;
@@ -84,6 +88,28 @@ function randomID() {
 function addChild(item, child) {
 
 	return _.merge({}, item, { incompleteChildren: item.incompleteChildren.concat(child) });
+}
+
+function reorder(arr, oldIndex, newIndex){
+  var removed = []
+  if(oldIndex === 0 ){
+    removed = arr.slice(1)
+  } else {
+    var before = arr.slice(0, oldIndex)
+    var after = arr.slice(oldIndex + 1, arr.length)
+    removed = [...before, ...after]
+  }
+
+  if(newIndex === 0){
+    return [arr[oldIndex], ...removed]
+  } else if (newIndex === arr.length - 1) {
+    return [...removed, arr[oldIndex]]
+  } else {
+    before = removed.slice(0, newIndex)
+    after = removed.slice(newIndex, removed.length)
+    return [...before, arr[oldIndex], ...after]
+  }
+
 }
 
 const seedData = {
