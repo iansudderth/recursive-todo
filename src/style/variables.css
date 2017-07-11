@@ -1,1 +1,59 @@
-$testColor : orange;
+/* Variables */
+$white: #FFFDF7;
+$light-grey: #D3D0CB;
+$dark-grey: #393E41;
+$yellow: #E2C044;
+$black: #1E2019;
+$cobalt: #587B7F;
+$puce: #493843;
+$orange: #E4572E;
+
+
+$body-bg-color: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+
+$border-radius : 10px;
+$internal-padding : 10px;
+
+$main-font-size: 1.5rem;
+$icon-size : 1.5rem;
+
+$item-border-size: 2px;
+$item-border-style: solid;
+
+$incomplete-bg-color: $orange;
+$incomplete-text-color: $white;
+$incomplete-border-color: $puce;
+$incomplete-check-color: white;
+$incomplete-handle-color: white;
+$incomplete-delete-color: white;
+
+$complete-bg-color: $light-grey;
+$complete-text-color: grey;
+$complete-border-color: grey;
+$complete-check-color: grey;
+$complete-handle-color: grey;
+$complete-delete-color: grey;
+
+$form-bg-color: $cobalt;
+$form-text-color: white;
+$form-border-color: black;
+$form-border-size: 2px;
+$form-border-style: solid;
+
+$form-input-bg-color: $form-bg-color;
+$form-input-border-color: white;
+$form-input-border-size: $form-border-size;
+$form-input-border-style: $form-border-style;
+$form-input-text-color: $form-text-color;
+
+$form-button-bg-color: $form-input-bg-color;
+$form-button-text-color: $form-input-text-color;
+$form-button-border-color: $form-input-border-color;
+$form-button-border-style:$form-input-border-style;
+$form-button-border-size:$form-input-border-size;
+
+$header-bg-color: $puce;
+$header-text-color: white;
+$header-gradient: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
+
+$list-bg-color: $light-grey;

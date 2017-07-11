@@ -1,14 +1,7 @@
 @import "../../style/variables.css";
 
-.example{
-	font-size: 2rem;
-}
-
-.test{
-	color:blue;
-}
-
-.postcss_test {
-	color:$testColor;
-
+ul.completeList{
+	background-color: $list-bg-color;
+	border-top:5px double $dark-grey;
+	margin-top: 4px;
 }

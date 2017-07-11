@@ -1,9 +1,12 @@
 @import "../../node_modules/normalize.css/normalize.css";
 
+@import "./variables.css";
+
 body {
 	font-family: sans-serif;
-}
+	// background-color: $body-bg-color;
+	background-image: $body-bg-color;
+	background-size: cover;
+	min-height: 100vh;
 
-h1{
-	color:red;
 }

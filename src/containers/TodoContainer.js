@@ -11,6 +11,7 @@ import {
 import { bindActionCreators } from "redux";
 import style from "../components/ListItem/style.css";
 import NewItemForm from "../components/NewItemForm";
+import ListHeader from '../components/ListHeader';
 
 class TodoContainer extends Component {
 	constructor(props) {
@@ -24,6 +25,7 @@ class TodoContainer extends Component {
 		this.completeItemComposer = this.completeItemComposer.bind(this);
 		this.deleteItemComposer = this.deleteItemComposer.bind(this);
 		this.reorderItemComposer = this.reorderItemComposer.bind(this);
+		this.generateComplete = this.generateComplete.bind(this);
 	}
 
 	inputUpdate(event) {
@@ -63,34 +65,27 @@ class TodoContainer extends Component {
 		};
 	}
 
+	generateComplete(){
+		var completeCount = this.props.items[this.props.baseItem].completeChildren.length;
+		var totalCount = this.props.items[this.props.baseItem].incompleteChildren.length + completeCount;
+		return `( ${completeCount} / ${totalCount} Complete )`
+	}
+
 	render() {
 		var currentItem = this.props.items[this.props.baseItem];
 		var parentItem = this.props.items[currentItem.parent];
 		return (
 			<div>
-				<h1>
-					{this.props.baseItem === "root"
-						? "root"
-						: currentItem.content}
-				</h1>
-				<p
-					onClick={this.changeBaseComposer(currentItem.parent)}
-					className={style.item}
-				>
-					{this.props.baseItem === "root" ||
-					currentItem.parent === "root"
-						? ""
-						: `Back to :   ${parentItem.content}`}
-				</p>
-				<p
-					onClick={this.changeBaseComposer("root")}
-					className={style.item}
-				>
-					{this.props.baseItem === "root" ? "" : "Back to Root"}
-				</p>
-
-				<br />
-				<NewItemForm newItemAction={this.newItemAction} />
+				<ListHeader
+				baseItem = {this.props.baseItem}
+				baseItemText = {currentItem.content}
+				currentParent = {currentItem.parent}
+				changeBaseComposer = {this.changeBaseComposer}
+				counterText = {this.generateComplete()}
+				/>
+				<NewItemForm
+				newItemAction={this.newItemAction}
+				/>
 				<List
 					list={this.props.items}
 					baseItem={this.props.baseItem}

@@ -6,7 +6,7 @@ import ListItem from "../ListItem/";
 
 const CompleteList = props => {
 	return (
-		<ul>
+		<ul className={style.completeList}>
 			{props.items.map(value => {
 				return (
 					<ListItem

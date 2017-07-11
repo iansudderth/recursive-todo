@@ -26,14 +26,19 @@ class NewItemForm extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className={style.container}>
 				<form onSubmit={this.submitHandler}>
 					<input
 						type="text"
 						value={this.state.newItem}
 						onChange={this.inputUpdate}
+						className = {style.new_input}
 					/>
-					<input type="submit" value="Make a new Item" />
+					<input
+					type="submit"
+					value="Make a new Item"
+					className = {style.new_button}
+					/>
 				</form>
 			</div>
 		);

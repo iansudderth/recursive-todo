@@ -1,0 +1,44 @@
+@import "../../style/variables.css";
+
+.container{
+	width:85vw;
+	margin:auto;
+	background-color: $header-bg-color;
+	color:$header-text-color;
+	padding: $internal-padding;
+	box-sizing: border-box;
+}
+
+.container h1 {
+	text-align: center;
+}
+
+.container nav {
+	display:flex;
+	justify-content: space-between;
+	font-size:$main-font-size;
+	text-align:center;
+}
+
+.navigation {
+	list-style:none;
+	cursor:pointer;
+	display:flex;
+	align-items: center;
+	width:33.3333333333%;
+	justify-content: center;
+}
+
+.icon {
+	font-size: $icon-size;
+}
+
+.navigation:hover {
+	text-decoration:underline;
+}
+
+.counter {
+	flex-grow: 1;
+	justify-content: center;
+	width:33.3333333333%;
+}

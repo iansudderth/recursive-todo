@@ -4,23 +4,26 @@
 
 .item {
 	list-style: none;
+	border-bottom-size: $item-border-size;
+	border-bottom-style: $item-border-style;
+	min-height:75px;
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: $main-font-size;
+	box-sizing: border-box;
+	padding:$internal-padding;
 }
 
-.handle {
-	margin-right: 5px;
-	cursor:pointer;
-	transform: scale(1);
-	transition:.5s;
-	display: inline-block;
+.incomplete_item{
+	background-color: $incomplete-bg-color;
+	border-color: $incomplete-border-color;
 }
 
-.handle:hover{
-	transform: scale(1.3)
-}
+.complete_item{
+	background-color: $complete-bg-color;
+	border-color: $complete-border-color;
 
-.handle_complete {
-	margin-right: 5px;
-	opacity: 0;
 }
 
 .content{
@@ -32,35 +35,64 @@
 	text-decoration: underline;
 }
 
+.incomplete_item .content{
+	color:$incomplete-text-color;
+}
+
+.complete_item .content {
+	text-decoration:line-through;
+	color:$complete-text-color;
+}
+
+.icons_left{
+	min-width: 50px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.icons_right{
+	min-width: 50px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.incomplete_item .handle {
+	color:$incomplete-handle-color;
+}
+
+
+.complete_item .handle {
+	color:$complete-handle-color;
+	opacity: 0;
+}
+
+
 .icon{
 	transition: .5s;
 	cursor:pointer;
 	margin-right: 5px;
 	transform:scale(1);
 	display:inline-block;
+	font-size: $icon-size;
 }
 
 .icon:hover{
 	transform: scale(1.3);
 }
 
-.delete{
-	color:red;
+.incomplete_item .delete{
+	color:$incomplete-delete-color;
 }
 
-.delete:hover{
-
+.complete_item .delete{
+	color:$complete-delete-color;
 }
 
-.check{
 
+.incomplete_item .check{
+	color:$incomplete-check-color;
 }
 
-.check_complete{
-	color:grey;
-}
-
-.completed{
-	text-decoration:line-through;
-	color:grey;
+.complete_item .check {
+	color:$complete-check-color;
 }
