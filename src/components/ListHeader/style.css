@@ -1,11 +1,10 @@
 @import "../../style/variables.css";
 
 .container{
-	color:black;
 	width:85vw;
 	margin:auto;
-	background-color: purple;
-	color:white;
+	background-color: $header-bg-color;
+	color:$header-text-color;
 	padding: $internal-padding;
 	box-sizing: border-box;
 }
@@ -17,7 +16,7 @@
 .container nav {
 	display:flex;
 	justify-content: space-between;
-	font-size:1.5rem;
+	font-size:$main-font-size;
 	text-align:center;
 }
 
@@ -31,7 +30,7 @@
 }
 
 .icon {
-	font-size: 1.5rem;
+	font-size: $icon-size;
 }
 
 .navigation:hover {

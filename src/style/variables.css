@@ -28,14 +28,17 @@ $form-border-color: black;
 $form-border-size: 2px;
 $form-border-style: solid;
 
-$form-input-bg-color: blue;
+$form-input-bg-color: $form-bg-color;
 $form-input-border-color: white;
-$form-input-border-size: 2px;
-$form-input-border-style: solid;
-$form-input-text-color: white;
+$form-input-border-size: $form-border-size;
+$form-input-border-style: $form-border-style;
+$form-input-text-color: $form-text-color;
 
-$form-button-bg-color: blue;
-$form-button-text-color: white;
-$form-button-border-color: white;
-$form-button-border-style:solid;
-$form-button-border-size:2px;
+$form-button-bg-color: $form-input-bg-color;
+$form-button-text-color: $form-input-text-color;
+$form-button-border-color: $form-input-border-color;
+$form-button-border-style:$form-input-border-style;
+$form-button-border-size:$form-input-border-size;
+
+$header-bg-color: purple;
+$header-text-color: white;
