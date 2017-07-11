@@ -42,7 +42,7 @@ const IncompleteList = props => {
 	}
 
 	return (
-		<ul>
+		<ul className={style.incompleteList}>
 			<SortableList
 				items={props.items}
 				useDragHandle={true}

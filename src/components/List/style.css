@@ -3,6 +3,7 @@
 .list_container {
 	width: 85vw;
 	margin:auto;
+	background-color: $list-bg-color;
 }
 
 .list_container ul {
