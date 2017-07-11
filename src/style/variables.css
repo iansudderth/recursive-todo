@@ -1,1 +1,41 @@
-$testColor : orange;
+/* Variables */
+$border-radius : 10px;
+$internal-padding : 10px;
+
+$main-font-size: 1.5rem;
+$icon-size : 1.5rem;
+
+$item-border-size: 2px;
+$item-border-style: solid;
+
+$incomplete-bg-color: red;
+$incomplete-text-color: white;
+$incomplete-border-color: black;
+$incomplete-check-color: white;
+$incomplete-handle-color: white;
+$incomplete-delete-color: white;
+
+$complete-bg-color: white;
+$complete-text-color: grey;
+$complete-border-color: grey;
+$complete-check-color: grey;
+$complete-handle-color: grey;
+$complete-delete-color: grey;
+
+$form-bg-color: blue;
+$form-text-color: white;
+$form-border-color: black;
+$form-border-size: 2px;
+$form-border-style: solid;
+
+$form-input-bg-color: blue;
+$form-input-border-color: white;
+$form-input-border-size: 2px;
+$form-input-border-style: solid;
+$form-input-text-color: white;
+
+$form-button-bg-color: blue;
+$form-button-text-color: white;
+$form-button-border-color: white;
+$form-button-border-style:solid;
+$form-button-border-size:2px;

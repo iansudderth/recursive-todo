@@ -1,14 +1,11 @@
 @import "../../style/variables.css";
 
-.example{
-	font-size: 2rem;
+.list_container {
+	width: 85vw;
+	margin:auto;
 }
 
-.test{
-	color:blue;
-}
-
-.postcss_test {
-	color:$testColor;
-
+.list_container ul {
+	margin:0;
+	padding:0;
 }

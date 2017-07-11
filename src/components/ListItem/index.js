@@ -10,20 +10,18 @@ import { SortableHandle } from "react-sortable-hoc";
 
 const ListItem = props => {
 	const item = props.value;
-	const handleStyle = item.complete ? style.handle_complete : style.handle;
-	const checkStyle = item.complete ? style.check_complete : style.check;
 
 	const DragHandle = SortableHandle(() =>
-		<span className={handleStyle}>::</span>
+		<span className={`${style.handle} ${style.icon}`}>::</span>
 	);
 
-	let completed = item.complete ? style.completed : "";
+	let completed = item.complete ? style.complete_item : style.incomplete_item;
 
 	const CheckBox = () => {
 		return (
 			<span
 				onClick={props.completeItemComposer(item.id)}
-				className={`${style.icon} ${checkStyle}`}
+				className={`${style.icon} ${style.check}`}
 			>
 				{item.complete ? <FaCheckSquare /> : <FaSquareO />}
 			</span>
@@ -52,16 +50,23 @@ const ListItem = props => {
 	}
 
 	return (
-		<li className={`${style.item}`}>
-			<DragHandle />
-			<CheckBox />
-			<span
-				className={`${style.content} ${completed}`}
+		<li className={`${style.item} ${completed}`}>
+			<div className={style.icons_left}>
+				<DragHandle />
+				<CheckBox />
+			</div>
+			<div
+				className={`${style.content}`}
 				onClick={props.changeBaseComposer(item.id)}
 			>
 				{item.content} {completeDisplay()}
-			</span>
-			<FaTimesCircle onClick={props.deleteItemComposer(item.id)} />
+			</div>
+			<div className={style.icons_right}>
+			<FaTimesCircle
+			onClick={props.deleteItemComposer(item.id)}
+			className = {`${style.delete} ${style.icon}`}
+			/>
+			</div>
 		</li>
 	);
 };

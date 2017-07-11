@@ -1,14 +1,52 @@
 @import "../../style/variables.css";
 
-.example{
-	font-size: 2rem;
+.container{
+	width: 85vw;
+	margin:auto;
+	border-color: $form-border-color;
+	border-bottom-width: $form-border-size;
+	border-bottom-style: $form-border-style;
+	box-sizing: border-box;
+	min-height:75px;
+	padding:10px;
+	background-color: $form-bg-color;
+
+	display: flex;
+	align-items: center;
 }
 
-.test{
-	color:blue;
+.container form{
+	display:flex;
+	justify-content: space-between;
+	width:100%;
 }
 
-.postcss_test {
-	color:$testColor;
+.new_input{
+	width:70%;
+	padding:$internal-padding;
+	font-size:$main-font-size;
+	background-color:$form-input-bg-color;
+	color: $form-input-text-color;
+	flex-grow: 1;
+	border-radius:$border-radius;
+	border-color: $form-input-border-color;
+	border-width: $form-input-border-size;
+	border-style: $form-input-border-style;
+}
 
+.new_input:focus {
+	outline:none;
+}
+
+.new_button {
+	background-color: $form-button-bg-color;
+	border-color: $form-button-border-color;
+	border-style: $form-button-border-style;
+	border-width: $form-button-border-size;
+	padding:$internal-padding;
+	font-size: $main-font-size;
+	border-radius: $border-radius;
+	margin-left: 10px;
+	color:white;
+	cursor: pointer;
 }
