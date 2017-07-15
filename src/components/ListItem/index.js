@@ -9,27 +9,27 @@ import ReactConfirmAlert, { confirmAlert } from "react-confirm-alert";
 import { SortableHandle } from "react-sortable-hoc";import { ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
-import {Reorder, DeleteForever} from 'material-ui-icons'
+import {Reorder, DeleteForever, FormatListBulleted} from 'material-ui-icons'
+import { grey, lightBlue } from 'material-ui/colors';
+
 
 const BaseListItem = props => {
 	const item = props.value;
 
 	const DragHandle = SortableHandle(() =>
-		<IconButton><Reorder /></IconButton>
+		<IconButton
+		disabled={item.complete}
+		>
+		<Reorder />
+		</IconButton>
 	);
+	const incompleteListStyle = {backgroundColor:lightBlue[200]}
+	const completeListStyle = {backgroundColor:grey[300]}
+	const listItemStyle = item.complete? completeListStyle : incompleteListStyle
+	const completeGrey = grey[500]
+	const completeLineStyle = item.complete? {color:completeGrey, textDecoration : 'line-through'} : {}
+	const completeStyle = item.complete? {color:completeGrey} : {}
 
-	let completed = item.complete ? style.complete_item : style.incomplete_item;
-
-	const CheckBox = () => {
-		return (
-			<span
-				onClick={props.completeItemComposer(item.id)}
-				className={`${style.icon} ${style.check}`}
-			>
-				{item.complete ? <FaCheckSquare /> : <FaSquareO />}
-			</span>
-		);
-	};
 
 	function handleDelete() {
 		confirmAlert({
@@ -48,44 +48,45 @@ const BaseListItem = props => {
 		if (total === 0) {
 			return "";
 		} else {
-			return `( ${completed} / ${total} complete)`;
+			return <span style={completeStyle}>{`( ${completed} / ${total} complete)`}</span>;
 		}
 	}
 
-	return (
-		// <li className={`${style.item} ${completed}`}>
-			// <div className={style.icons_left}>
-				// <DragHandle />
-				// <CheckBox />
-			// </div>
-			// <div
-				// className={`${style.content}`}
-				// onClick={props.changeBaseComposer(item.id)}
-			// >
-				// {item.content} {completeDisplay()}
-			// </div>
-			// <div className={style.icons_right}>
-			// <FaTimesCircle
-			// onClick={props.deleteItemComposer(item.id)}
-			// className = {`${style.delete} ${style.icon}`}
-			// />
-			// </div>
-		// </li>
+	function content(){
+		return <span style={completeLineStyle} >{item.content}</span>
+	}
 
+	return (
 		<ListItem
 		divider={true}
+		style={listItemStyle}
 		>
 			<DragHandle />
-			<Checkbox />
+			<Checkbox
+			checked={item.complete}
+			onClick={props.completeItemComposer(item.id)}
+			style={completeStyle}
+			/>
+
 			<ListItemText
-			primary={item.content}
+			primary={content()}
 			secondary={completeDisplay()}
 			/>
-			<ListItemSecondaryAction>
-				<IconButton>
-					<DeleteForever />
-				</IconButton>
-			</ListItemSecondaryAction>
+
+			<IconButton
+			onClick={props.changeBaseComposer(item.id)}
+			style={completeStyle}
+			>
+				<FormatListBulleted />
+			</IconButton>
+
+			<IconButton
+			onClick={props.deleteItemComposer(item.id)}
+			style={completeStyle}
+			>
+				<DeleteForever />
+			</IconButton>
+
 		</ListItem>
 	);
 };
