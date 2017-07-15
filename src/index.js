@@ -7,6 +7,7 @@ import reducers from "./reducers";
 import App from "./App";
 import ReduxPromise from "redux-promise";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { MuiThemeProvider } from 'material-ui/styles';
 
 const createStoreWithMiddleware = composeWithDevTools(
 	applyMiddleware(ReduxPromise)
@@ -14,7 +15,9 @@ const createStoreWithMiddleware = composeWithDevTools(
 
 const Boiler = () =>
 	<Provider store={createStoreWithMiddleware(reducers)}>
+	<MuiThemeProvider>
 		<App />
+	</MuiThemeProvider>
 	</Provider>;
 
 ReactDOM.render(<Boiler />, document.getElementById("root"));

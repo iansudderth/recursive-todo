@@ -8,6 +8,7 @@
     "babel-preset-env": "^1.5.2",
     "lodash": "^4.17.4",
     "lodash-webpack-plugin": "^0.11.4",
+    "material-ui": "next",
     "normalize.css": "^7.0.0",
     "postcss-cssnext": "^2.11.0",
     "postcss-import": "^10.0.0",
@@ -21,7 +22,8 @@
     "react-sortable-hoc": "^0.6.5",
     "redux": "^3.7.0",
     "redux-devtools-extension": "^2.13.2",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "typeface-roboto": "^0.0.31"
   },
   "devDependencies": {
     "autoprefixer": "7.1.0",
