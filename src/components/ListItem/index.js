@@ -6,13 +6,16 @@ import FaCheckSquare from "react-icons/lib/fa/check-square";
 import FaSquareO from "react-icons/lib/fa/square-o";
 import FaTimesCircle from "react-icons/lib/fa/times-circle";
 import ReactConfirmAlert, { confirmAlert } from "react-confirm-alert";
-import { SortableHandle } from "react-sortable-hoc";
+import { SortableHandle } from "react-sortable-hoc";import { ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
+import Checkbox from 'material-ui/Checkbox';
+import IconButton from 'material-ui/IconButton';
+import {Reorder, DeleteForever} from 'material-ui-icons'
 
-const ListItem = props => {
+const BaseListItem = props => {
 	const item = props.value;
 
 	const DragHandle = SortableHandle(() =>
-		<span className={`${style.handle} ${style.icon}`}>::</span>
+		<IconButton><Reorder /></IconButton>
 	);
 
 	let completed = item.complete ? style.complete_item : style.incomplete_item;
@@ -50,27 +53,43 @@ const ListItem = props => {
 	}
 
 	return (
-		<li className={`${style.item} ${completed}`}>
-			<div className={style.icons_left}>
-				<DragHandle />
-				<CheckBox />
-			</div>
-			<div
-				className={`${style.content}`}
-				onClick={props.changeBaseComposer(item.id)}
-			>
-				{item.content} {completeDisplay()}
-			</div>
-			<div className={style.icons_right}>
-			<FaTimesCircle
-			onClick={props.deleteItemComposer(item.id)}
-			className = {`${style.delete} ${style.icon}`}
+		// <li className={`${style.item} ${completed}`}>
+			// <div className={style.icons_left}>
+				// <DragHandle />
+				// <CheckBox />
+			// </div>
+			// <div
+				// className={`${style.content}`}
+				// onClick={props.changeBaseComposer(item.id)}
+			// >
+				// {item.content} {completeDisplay()}
+			// </div>
+			// <div className={style.icons_right}>
+			// <FaTimesCircle
+			// onClick={props.deleteItemComposer(item.id)}
+			// className = {`${style.delete} ${style.icon}`}
+			// />
+			// </div>
+		// </li>
+
+		<ListItem
+		divider={true}
+		>
+			<DragHandle />
+			<Checkbox />
+			<ListItemText
+			primary={item.content}
+			secondary={completeDisplay()}
 			/>
-			</div>
-		</li>
+			<ListItemSecondaryAction>
+				<IconButton>
+					<DeleteForever />
+				</IconButton>
+			</ListItemSecondaryAction>
+		</ListItem>
 	);
 };
 
-ListItem.propTypes = {};
+BaseListItem.propTypes = {};
 
-export default ListItem;
+export default BaseListItem;

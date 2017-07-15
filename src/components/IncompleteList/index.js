@@ -8,6 +8,7 @@ import {
 	arrayMove
 } from "react-sortable-hoc";
 import ListItem from "../ListItem/";
+import List from 'material-ui/List';
 
 const IncompleteList = props => {
 	const SortableListItem = SortableElement(({ value }) => {
@@ -23,7 +24,7 @@ const IncompleteList = props => {
 
 	const SortableList = SortableContainer(({ items }) => {
 		return (
-			<div>
+			<List>
 				{items.map((value, index) => {
 					return (
 						<SortableListItem
@@ -33,7 +34,7 @@ const IncompleteList = props => {
 						/>
 					);
 				})}
-			</div>
+			</List>
 		);
 	});
 

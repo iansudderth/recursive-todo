@@ -3,10 +3,11 @@ import style from "./style.css";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import ListItem from "../ListItem/";
+import List from 'material-ui/List';
 
 const CompleteList = props => {
 	return (
-		<ul className={style.completeList}>
+		<List>
 			{props.items.map(value => {
 				return (
 					<ListItem
@@ -18,7 +19,7 @@ const CompleteList = props => {
 					/>
 				);
 			})}
-		</ul>
+		</List>
 	);
 };
 
