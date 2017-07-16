@@ -1,17 +1,16 @@
 import React from "react";
-import style from './style.css'
+import style from "./style.css";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
 import ListItem from "../ListItem/";
 import IncompleteList from "../IncompleteList/";
 import CompleteList from "../CompleteList/";
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { withStyles, createStyleSheet } from "material-ui/styles";
 
-const styleSheet = createStyleSheet('List', theme => ({
-	container:{
-		width:'85vw',
-		margin:'auto',
-
+const styleSheet = createStyleSheet("List", theme => ({
+	container: {
+		width: "85vw",
+		margin: "auto"
 	}
 }));
 
@@ -28,12 +27,10 @@ const List = props => {
 		return listArr.map(listID => itemsList[listID]);
 	}
 
-	const classes = props.classes
+	const classes = props.classes;
 
 	return (
-		<div
-		className = {classes.container}
-		>
+		<div className={classes.container}>
 			<IncompleteList
 				items={incompleteListItems}
 				parentID={props.baseItem}

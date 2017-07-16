@@ -2,31 +2,27 @@ import React, { Component } from "react";
 import style from "./style.css";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button'
-import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import TextField from "material-ui/TextField";
+import Button from "material-ui/Button";
+import Grid from "material-ui/Grid";
+import Paper from "material-ui/Paper";
+import { withStyles, createStyleSheet } from "material-ui/styles";
 
-const styleSheet = createStyleSheet('NewItemForm', theme => ({
+const styleSheet = createStyleSheet("NewItemForm", theme => ({
 	container: {
-		width: '85vw',
-		margin: 'auto',
-		paddingBottom:'16px',
-		paddingTop:'16px',
-		padding:16,
-		boxSizing: 'border-box'
+		width: "85vw",
+		margin: "auto",
+		paddingBottom: "16px",
+		paddingTop: "16px",
+		padding: 16,
+		boxSizing: "border-box"
 	},
-	typeItem:{
-		flexGrow:1,
+	typeItem: {
+		flexGrow: 1
 	}
 }));
 
-
-
 class NewItemForm extends Component {
-
-
 	constructor(props) {
 		super(props);
 
@@ -48,33 +44,30 @@ class NewItemForm extends Component {
 	}
 
 	render() {
-		const classes = this.props.classes
+		const classes = this.props.classes;
 
 		return (
-		<div className={classes.container}>
-			<form onSubmit={this.submitHandler}>
-				<Grid container gutter={24} align={'center'}>
+			<div className={classes.container}>
+				<form onSubmit={this.submitHandler}>
+					<Grid container gutter={24} align={"center"}>
 						<Grid item className={classes.typeItem}>
 							<TextField
-							id="newItem"
-							label="New Item"
-							type="text"
-							fullWidth={true}
-							value={this.state.newItem}
-							onChange={this.inputUpdate}
+								id="newItem"
+								label="New Item"
+								type="text"
+								fullWidth={true}
+								value={this.state.newItem}
+								onChange={this.inputUpdate}
 							/>
 						</Grid>
-						<Grid item >
-							<Button
-							type="submit"
-							raised
-							>
-							Make a New Item
+						<Grid item>
+							<Button type="submit" raised>
+								Make a New Item
 							</Button>
 						</Grid>
-				</Grid>
-			</form>
-		</div>
+					</Grid>
+				</form>
+			</div>
 		);
 	}
 }

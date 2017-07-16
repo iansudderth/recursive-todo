@@ -8,23 +8,22 @@ import {
 	arrayMove
 } from "react-sortable-hoc";
 import ListItem from "../ListItem/";
-import List from 'material-ui/List';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+import List from "material-ui/List";
+import { withStyles, createStyleSheet } from "material-ui/styles";
 
-const styleSheet = createStyleSheet('IncompleteList', theme => ({
-	container:{
-		listStyle:'none',
-		padding:0,
-		margin:0
+const styleSheet = createStyleSheet("IncompleteList", theme => ({
+	container: {
+		listStyle: "none",
+		padding: 0,
+		margin: 0
 	},
-	root:{
-		padding:0
+	root: {
+		padding: 0
 	}
 }));
 
 const IncompleteList = props => {
-
-	const classes = props.classes
+	const classes = props.classes;
 
 	const SortableListItem = SortableElement(({ value }) => {
 		return (
