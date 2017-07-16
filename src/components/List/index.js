@@ -5,6 +5,15 @@ import style from './style.css'
 import ListItem from "../ListItem/";
 import IncompleteList from "../IncompleteList/";
 import CompleteList from "../CompleteList/";
+import { withStyles, createStyleSheet } from 'material-ui/styles';
+
+const styleSheet = createStyleSheet('List', theme => ({
+	container:{
+		width:'85vw',
+		margin:'auto',
+
+	}
+}));
 
 const List = props => {
 	const itemsList = props.list;
@@ -19,9 +28,11 @@ const List = props => {
 		return listArr.map(listID => itemsList[listID]);
 	}
 
+	const classes = props.classes
+
 	return (
 		<div
-		className = {style.list_container}
+		className = {classes.container}
 		>
 			<IncompleteList
 				items={incompleteListItems}
@@ -47,4 +58,4 @@ const List = props => {
 
 List.propTypes = {};
 
-export default List;
+export default withStyles(styleSheet)(List);

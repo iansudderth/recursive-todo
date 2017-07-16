@@ -9,8 +9,23 @@ import {
 } from "react-sortable-hoc";
 import ListItem from "../ListItem/";
 import List from 'material-ui/List';
+import { withStyles, createStyleSheet } from 'material-ui/styles';
+
+const styleSheet = createStyleSheet('IncompleteList', theme => ({
+	container:{
+		listStyle:'none',
+		padding:0,
+		margin:0
+	},
+	root:{
+		padding:0
+	}
+}));
 
 const IncompleteList = props => {
+
+	const classes = props.classes
+
 	const SortableListItem = SortableElement(({ value }) => {
 		return (
 			<ListItem
@@ -24,7 +39,7 @@ const IncompleteList = props => {
 
 	const SortableList = SortableContainer(({ items }) => {
 		return (
-			<List>
+			<List className={classes.root}>
 				{items.map((value, index) => {
 					return (
 						<SortableListItem
@@ -43,7 +58,7 @@ const IncompleteList = props => {
 	}
 
 	return (
-		<ul className={style.incompleteList}>
+		<ul className={classes.container}>
 			<SortableList
 				items={props.items}
 				useDragHandle={true}
@@ -55,4 +70,4 @@ const IncompleteList = props => {
 
 IncompleteList.propTypes = {};
 
-export default IncompleteList;
+export default withStyles(styleSheet)(IncompleteList);

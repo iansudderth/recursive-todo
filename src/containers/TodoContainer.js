@@ -12,6 +12,7 @@ import { bindActionCreators } from "redux";
 import style from "../components/ListItem/style.css";
 import NewItemForm from "../components/NewItemForm";
 import ListHeader from '../components/ListHeader';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 
 class TodoContainer extends Component {
 	constructor(props) {
@@ -75,15 +76,16 @@ class TodoContainer extends Component {
 		var currentItem = this.props.items[this.props.baseItem];
 		var parentItem = this.props.items[currentItem.parent];
 		return (
-			<div>
+			<Card
+			style={{width:'85vw', margin:'auto'}}
+			>
 				<ListHeader
 				baseItem = {this.props.baseItem}
 				baseItemText = {currentItem.content}
 				currentParent = {currentItem.parent}
 				changeBaseComposer = {this.changeBaseComposer}
 				counterText = {this.generateComplete()}
-				/>
-				<NewItemForm
+				items={this.props.items}
 				newItemAction={this.newItemAction}
 				/>
 				<List
@@ -94,7 +96,7 @@ class TodoContainer extends Component {
 					completeItemComposer={this.completeItemComposer}
 					reorderItemComposer={this.reorderItemComposer}
 				/>
-			</div>
+			</Card>
 		);
 	}
 }

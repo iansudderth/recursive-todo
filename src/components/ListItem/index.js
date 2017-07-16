@@ -2,15 +2,12 @@ import React from "react";
 import style from "./style.css";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
-import FaCheckSquare from "react-icons/lib/fa/check-square";
-import FaSquareO from "react-icons/lib/fa/square-o";
-import FaTimesCircle from "react-icons/lib/fa/times-circle";
 import ReactConfirmAlert, { confirmAlert } from "react-confirm-alert";
-import { SortableHandle } from "react-sortable-hoc";import { ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
+import { SortableHandle } from "react-sortable-hoc";import { ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 import {Reorder, DeleteForever, FormatListBulleted} from 'material-ui-icons'
-import { grey, lightBlue } from 'material-ui/colors';
+import { black, grey, lightBlue, white } from 'material-ui/colors';
 
 
 const BaseListItem = props => {
@@ -92,5 +89,6 @@ const BaseListItem = props => {
 };
 
 BaseListItem.propTypes = {};
+
 
 export default BaseListItem;
