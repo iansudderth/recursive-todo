@@ -28,8 +28,6 @@ var _Card2 = _interopRequireDefault(_Card);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/containers/TodoContainer.js";
-
 var _createClass = function () {
 	function defineProperties(target, props) {
 		for (var i = 0; i < props.length; i++) {
@@ -136,36 +134,21 @@ var TodoContainer = function (_Component) {
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
 			var parentItem = this.props.items[currentItem.parent];
-			return _react2.default.createElement(_Card2.default, { style: { width: "85vw", margin: "auto", marginTop: "16px" }, __source: {
-					fileName: _jsxFileName,
-					lineNumber: 81
-				},
-				__self: this
-			}, _react2.default.createElement(_ListHeader2.default, {
+			return _react2.default.createElement(_Card2.default, { style: { width: "85vw", margin: "auto", marginTop: "16px" } }, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
 				baseItemText: currentItem.content,
 				currentParent: currentItem.parent,
 				changeBaseComposer: this.changeBaseComposer,
 				counterText: this.generateComplete(),
 				items: this.props.items,
-				newItemAction: this.newItemAction,
-				__source: {
-					fileName: _jsxFileName,
-					lineNumber: 82
-				},
-				__self: this
+				newItemAction: this.newItemAction
 			}), _react2.default.createElement(_List2.default, {
 				list: this.props.items,
 				baseItem: this.props.baseItem,
 				changeBaseComposer: this.changeBaseComposer,
 				deleteItemComposer: this.deleteItemComposer,
 				completeItemComposer: this.completeItemComposer,
-				reorderItemComposer: this.reorderItemComposer,
-				__source: {
-					fileName: _jsxFileName,
-					lineNumber: 91
-				},
-				__self: this
+				reorderItemComposer: this.reorderItemComposer
 			}));
 		}
 	}]);

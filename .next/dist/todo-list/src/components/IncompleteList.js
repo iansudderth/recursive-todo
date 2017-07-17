@@ -22,13 +22,9 @@ var _styles = require("material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/IncompleteList.js",
-    _this = undefined;
 // import style from "./style.css";
 // import PropTypes from "prop-types";
 // import _ from "lodash";
-
-
 var styleSheet = (0, _styles.createStyleSheet)("IncompleteList", function (theme) {
 	return {
 		container: {
@@ -52,33 +48,18 @@ var IncompleteList = function IncompleteList(props) {
 			value: value,
 			changeBaseComposer: props.changeBaseComposer,
 			deleteItemComposer: props.deleteItemComposer,
-			completeItemComposer: props.completeItemComposer,
-			__source: {
-				fileName: _jsxFileName,
-				lineNumber: 30
-			},
-			__self: _this
+			completeItemComposer: props.completeItemComposer
 		});
 	});
 
 	var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref2) {
 		var items = _ref2.items;
 
-		return _react2.default.createElement(_List2.default, { className: classes.root, __source: {
-				fileName: _jsxFileName,
-				lineNumber: 41
-			},
-			__self: _this
-		}, items.map(function (value, index) {
+		return _react2.default.createElement(_List2.default, { className: classes.root }, items.map(function (value, index) {
 			return _react2.default.createElement(SortableListItem, {
 				key: "item-" + value.id,
 				index: index,
-				value: value,
-				__source: {
-					fileName: _jsxFileName,
-					lineNumber: 44
-				},
-				__self: _this
+				value: value
 			});
 		}));
 	});
@@ -91,20 +72,10 @@ var IncompleteList = function IncompleteList(props) {
 		props.reorderItemComposer(props.parentID, oldIndex, newIndex)();
 	}
 
-	return _react2.default.createElement("ul", { className: classes.container, __source: {
-			fileName: _jsxFileName,
-			lineNumber: 60
-		},
-		__self: _this
-	}, _react2.default.createElement(SortableList, {
+	return _react2.default.createElement("ul", { className: classes.container }, _react2.default.createElement(SortableList, {
 		items: props.items,
 		useDragHandle: true,
-		onSortEnd: handleSort,
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 61
-		},
-		__self: _this
+		onSortEnd: handleSort
 	}));
 };
 

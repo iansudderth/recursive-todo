@@ -26,7 +26,7 @@ app.prepare()
   })
 
   server.get('/', (req,res) => {
-    return app.render(req, res, '/todo', req.query)
+    return app.render(req, res, '/index', req.query)
   })
 
   server.get('/api', (req,res) => {
