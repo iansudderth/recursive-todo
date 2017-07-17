@@ -7,7 +7,9 @@ import { SortableHandle } from "react-sortable-hoc";
 import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
 import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
-import { Reorder, DeleteForever, FormatListBulleted } from "material-ui-icons";
+import Reorder from "material-ui-icons/Reorder";
+import DeleteForever from "material-ui-icons/DeleteForever";
+import FormatListBulleted  from "material-ui-icons/FormatListBulleted";
 import { black, grey, lightBlue, white } from "material-ui/colors";
 
 const BaseListItem = props => {

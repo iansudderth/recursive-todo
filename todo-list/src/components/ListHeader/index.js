@@ -1,13 +1,11 @@
 import React from "react";
 // import style from "./style.css";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import _ from "lodash";
-import FaAngleLeft from "react-icons/lib/fa/angle-left";
 import { withStyles, createStyleSheet } from "material-ui/styles";
 import Typography from "material-ui/Typography";
-import Card, { CardActions, CardContent } from "material-ui/Card";
 import Divider from "material-ui/Divider";
-import { ChevronRight } from "material-ui-icons";
+import ChevronRight from "material-ui-icons/ChevronRight";
 import NewItemForm from "../NewItemForm";
 
 const styleSheet = createStyleSheet("Header", theme => ({
@@ -29,34 +27,6 @@ const styleSheet = createStyleSheet("Header", theme => ({
 
 const ListHeader = props => {
 	const classes = props.classes;
-
-	const RootLink = () => {
-		if (props.baseItem === "root") {
-			return <li className={style.navigation} />;
-		}
-		return (
-			<li
-				className={style.navigation}
-				onClick={props.changeBaseComposer("root")}
-			>
-				<FaAngleLeft className={style.icon} /> Back to root
-			</li>
-		);
-	};
-
-	const ParentLink = () => {
-		if (props.baseItem === "root" || props.currentParent === "root") {
-			return <li className={style.navigation} />;
-		}
-		return (
-			<li
-				className={style.navigation}
-				onClick={props.changeBaseComposer(props.currentParent)}
-			>
-				<FaAngleLeft className={style.icon} /> Back to parent
-			</li>
-		);
-	};
 
 	const BreadCrumb = () => {
 		let trail = [];

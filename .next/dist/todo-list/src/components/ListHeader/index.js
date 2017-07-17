@@ -8,17 +8,9 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require("prop-types");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 var _lodash = require("lodash");
 
 var _lodash2 = _interopRequireDefault(_lodash);
-
-var _angleLeft = require("react-icons/lib/fa/angle-left");
-
-var _angleLeft2 = _interopRequireDefault(_angleLeft);
 
 var _styles = require("material-ui/styles");
 
@@ -26,15 +18,13 @@ var _Typography = require("material-ui/Typography");
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _Card = require("material-ui/Card");
-
-var _Card2 = _interopRequireDefault(_Card);
-
 var _Divider = require("material-ui/Divider");
 
 var _Divider2 = _interopRequireDefault(_Divider);
 
-var _materialUiIcons = require("material-ui-icons");
+var _ChevronRight = require("material-ui-icons/ChevronRight");
+
+var _ChevronRight2 = _interopRequireDefault(_ChevronRight);
 
 var _NewItemForm = require("../NewItemForm");
 
@@ -52,6 +42,7 @@ function _toConsumableArray(arr) {
 	}
 }
 // import style from "./style.css";
+// import PropTypes from "prop-types";
 
 
 var styleSheet = (0, _styles.createStyleSheet)("Header", function (theme) {
@@ -76,26 +67,6 @@ var styleSheet = (0, _styles.createStyleSheet)("Header", function (theme) {
 var ListHeader = function ListHeader(props) {
 	var classes = props.classes;
 
-	var RootLink = function RootLink() {
-		if (props.baseItem === "root") {
-			return _react2.default.createElement("li", { className: style.navigation });
-		}
-		return _react2.default.createElement("li", {
-			className: style.navigation,
-			onClick: props.changeBaseComposer("root")
-		}, _react2.default.createElement(_angleLeft2.default, { className: style.icon }), " Back to root");
-	};
-
-	var ParentLink = function ParentLink() {
-		if (props.baseItem === "root" || props.currentParent === "root") {
-			return _react2.default.createElement("li", { className: style.navigation });
-		}
-		return _react2.default.createElement("li", {
-			className: style.navigation,
-			onClick: props.changeBaseComposer(props.currentParent)
-		}, _react2.default.createElement(_angleLeft2.default, { className: style.icon }), " Back to parent");
-	};
-
 	var BreadCrumb = function BreadCrumb() {
 		var trail = [];
 		var current = props.baseItem;
@@ -115,7 +86,7 @@ var ListHeader = function ListHeader(props) {
 				key: "breadcrumb-" + index,
 				className: props.classes.crumb,
 				onClick: props.changeBaseComposer(item)
-			}, item == "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_materialUiIcons.ChevronRight, null) : "", " ");
+			}, item == "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, null) : "", " ");
 		}));
 	};
 

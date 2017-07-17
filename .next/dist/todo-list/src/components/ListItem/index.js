@@ -24,7 +24,17 @@ var _IconButton = require("material-ui/IconButton");
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _materialUiIcons = require("material-ui-icons");
+var _Reorder = require("material-ui-icons/Reorder");
+
+var _Reorder2 = _interopRequireDefault(_Reorder);
+
+var _DeleteForever = require("material-ui-icons/DeleteForever");
+
+var _DeleteForever2 = _interopRequireDefault(_DeleteForever);
+
+var _FormatListBulleted = require("material-ui-icons/FormatListBulleted");
+
+var _FormatListBulleted2 = _interopRequireDefault(_FormatListBulleted);
 
 var _colors = require("material-ui/colors");
 
@@ -34,7 +44,7 @@ var BaseListItem = function BaseListItem(props) {
 	var item = props.value;
 
 	var DragHandle = (0, _reactSortableHoc.SortableHandle)(function () {
-		return _react2.default.createElement(_IconButton2.default, { disabled: item.complete }, _react2.default.createElement(_materialUiIcons.Reorder, null));
+		return _react2.default.createElement(_IconButton2.default, { disabled: item.complete }, _react2.default.createElement(_Reorder2.default, null));
 	});
 	var incompleteListStyle = { backgroundColor: _colors.lightBlue[200] };
 	var completeListStyle = { backgroundColor: _colors.grey[300] };
@@ -79,10 +89,10 @@ var BaseListItem = function BaseListItem(props) {
 	}), _react2.default.createElement(_List.ListItemText, { primary: content(), secondary: completeDisplay() }), _react2.default.createElement(_IconButton2.default, {
 		onClick: props.changeBaseComposer(item.id),
 		style: completeStyle
-	}, _react2.default.createElement(_materialUiIcons.FormatListBulleted, null)), _react2.default.createElement(_IconButton2.default, {
+	}, _react2.default.createElement(_FormatListBulleted2.default, null)), _react2.default.createElement(_IconButton2.default, {
 		onClick: props.deleteItemComposer(item.id),
 		style: completeStyle
-	}, _react2.default.createElement(_materialUiIcons.DeleteForever, null)));
+	}, _react2.default.createElement(_DeleteForever2.default, null)));
 };
 // import style from "./style.css";
 // import PropTypes from 'prop-types'

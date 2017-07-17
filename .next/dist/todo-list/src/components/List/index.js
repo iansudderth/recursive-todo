@@ -8,10 +8,6 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ListItem = require("../ListItem/");
-
-var _ListItem2 = _interopRequireDefault(_ListItem);
-
 var _IncompleteList = require("../IncompleteList/");
 
 var _IncompleteList2 = _interopRequireDefault(_IncompleteList);
@@ -24,9 +20,6 @@ var _styles = require("material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import style from "./style.css";
-// import PropTypes from 'prop-types'
-// import _ from 'lodash';
 var styleSheet = (0, _styles.createStyleSheet)("List", function (theme) {
 	return {
 		container: {
@@ -35,6 +28,10 @@ var styleSheet = (0, _styles.createStyleSheet)("List", function (theme) {
 		}
 	};
 });
+// import style from "./style.css";
+// import PropTypes from 'prop-types'
+// import _ from 'lodash';
+
 
 var List = function List(props) {
 	var itemsList = props.list;
