@@ -36,15 +36,28 @@ var _colors = require("material-ui/colors");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListItem.js";
 // import style from "./style.css";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
+
+
+var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (props) {
+	return _react2.default.createElement("span", { style: props.completeStyle, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 15
+		}
+	}, _react2.default.createElement(_Reorder2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 16
+		}
+	}));
+});
+
 var BaseListItem = function BaseListItem(props) {
 	var item = props.value;
 
-	var DragHandle = (0, _reactSortableHoc.SortableHandle)(function () {
-		return _react2.default.createElement(_IconButton2.default, { disabled: item.complete }, _react2.default.createElement(_Reorder2.default, null));
-	});
 	var incompleteListStyle = { backgroundColor: _colors.lightBlue[200] };
 	var completeListStyle = { backgroundColor: _colors.grey[300] };
 	var listItemStyle = item.complete ? completeListStyle : incompleteListStyle;
@@ -59,26 +72,70 @@ var BaseListItem = function BaseListItem(props) {
 			return "";
 		} else {
 			return _react2.default.createElement("span", {
-				style: completeStyle
+				style: completeStyle,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 43
+				}
 			}, "( " + completed + " / " + total + " complete)");
 		}
 	}
 
 	function content() {
-		return _react2.default.createElement("span", { style: completeLineStyle }, item.content);
+		return _react2.default.createElement("span", { style: completeLineStyle, __source: {
+				fileName: _jsxFileName,
+				lineNumber: 52
+			}
+		}, item.content);
 	}
 
-	return _react2.default.createElement(_List.ListItem, { divider: true, style: listItemStyle }, _react2.default.createElement(DragHandle, null), _react2.default.createElement(_Checkbox2.default, {
+	return _react2.default.createElement(_List.ListItem, { divider: true, style: listItemStyle, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 59
+		}
+	}, _react2.default.createElement(DragHandle, {
+		completeStyle: completeStyle,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 60
+		}
+	}), _react2.default.createElement(_Checkbox2.default, {
 		checked: item.complete,
 		onClick: props.completeItemComposer(item.id),
-		style: completeStyle
-	}), _react2.default.createElement(_List.ListItemText, { primary: content(), secondary: completeDisplay() }), _react2.default.createElement(_IconButton2.default, {
+		style: completeStyle,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 63
+		}
+	}), _react2.default.createElement(_List.ListItemText, { primary: content(), secondary: completeDisplay(), __source: {
+			fileName: _jsxFileName,
+			lineNumber: 69
+		}
+	}), _react2.default.createElement(_IconButton2.default, {
 		onClick: props.changeBaseComposer(item.id),
-		style: completeStyle
-	}, _react2.default.createElement(_FormatListBulleted2.default, null)), _react2.default.createElement(_IconButton2.default, {
+		style: completeStyle,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 71
+		}
+	}, _react2.default.createElement(_FormatListBulleted2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 75
+		}
+	})), _react2.default.createElement(_IconButton2.default, {
 		onClick: props.deleteItemComposer(item.id),
-		style: completeStyle
-	}, _react2.default.createElement(_DeleteForever2.default, null)));
+		style: completeStyle,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 78
+		}
+	}, _react2.default.createElement(_DeleteForever2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 82
+		}
+	})));
 };
 
 BaseListItem.propTypes = {};

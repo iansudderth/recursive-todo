@@ -22,9 +22,12 @@ var _styles = require("material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/IncompleteList.js";
 // import style from "./style.css";
 // import PropTypes from "prop-types";
 // import _ from "lodash";
+
+
 var styleSheet = (0, _styles.createStyleSheet)("IncompleteList", function (theme) {
 	return {
 		container: {
@@ -38,44 +41,67 @@ var styleSheet = (0, _styles.createStyleSheet)("IncompleteList", function (theme
 	};
 });
 
-var IncompleteList = function IncompleteList(props) {
-	var classes = props.classes;
-
-	var SortableListItem = (0, _reactSortableHoc.SortableElement)(function (_ref) {
-		var value = _ref.value;
-
-		return _react2.default.createElement(_ListItem2.default, {
+var SortableList = (0, _reactSortableHoc.SortableContainer)(function (props) {
+	return _react2.default.createElement(_List2.default, { className: props.classForList, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 27
+		}
+	}, props.items.map(function (value, index) {
+		return _react2.default.createElement(SortableListItem, {
+			key: "item-" + value.id,
+			index: index,
 			value: value,
 			changeBaseComposer: props.changeBaseComposer,
 			deleteItemComposer: props.deleteItemComposer,
-			completeItemComposer: props.completeItemComposer
+			completeItemComposer: props.completeItemComposer,
+			__source: {
+				fileName: _jsxFileName,
+				lineNumber: 30
+			}
 		});
+	}));
+});
+
+var SortableListItem = (0, _reactSortableHoc.SortableElement)(function (props) {
+	return _react2.default.createElement(_ListItem2.default, {
+		value: props.value,
+		changeBaseComposer: props.changeBaseComposer,
+		deleteItemComposer: props.deleteItemComposer,
+		completeItemComposer: props.completeItemComposer,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 46
+		}
 	});
+});
 
-	var SortableList = (0, _reactSortableHoc.SortableContainer)(function (_ref2) {
-		var items = _ref2.items;
+var IncompleteList = function IncompleteList(props) {
+	var classes = props.classes;
 
-		return _react2.default.createElement(_List2.default, { className: classes.root }, items.map(function (value, index) {
-			return _react2.default.createElement(SortableListItem, {
-				key: "item-" + value.id,
-				index: index,
-				value: value
-			});
-		}));
-	});
-
-	function handleSort(_ref3, e) {
-		var oldIndex = _ref3.oldIndex,
-		    newIndex = _ref3.newIndex,
-		    collection = _ref3.collection;
+	function handleSort(_ref) {
+		var oldIndex = _ref.oldIndex,
+		    newIndex = _ref.newIndex;
 
 		props.reorderItemComposer(props.parentID, oldIndex, newIndex)();
 	}
 
-	return _react2.default.createElement("ul", { className: classes.container }, _react2.default.createElement(SortableList, {
+	return _react2.default.createElement("div", {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 64
+		}
+	}, _react2.default.createElement(SortableList, {
 		items: props.items,
 		useDragHandle: true,
-		onSortEnd: handleSort
+		onSortEnd: handleSort,
+		changeBaseComposer: props.changeBaseComposer,
+		deleteItemComposer: props.deleteItemComposer,
+		completeItemComposer: props.completeItemComposer,
+		classForList: classes.root,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 65
+		}
 	}));
 };
 

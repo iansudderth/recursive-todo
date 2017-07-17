@@ -1,7 +1,7 @@
 import React from "react";
 // import style from "./style.css";
 // import PropTypes from "prop-types";
-import _ from "lodash";
+// import _ from "lodash";
 import { withStyles, createStyleSheet } from "material-ui/styles";
 import Typography from "material-ui/Typography";
 import Divider from "material-ui/Divider";
@@ -51,7 +51,7 @@ const ListHeader = props => {
 							className={props.classes.crumb}
 							onClick={props.changeBaseComposer(item)}
 						>
-							{item == "root"
+							{item === "root"
 								? "root"
 								: props.items[item].content}
 							{index < trail.length - 1

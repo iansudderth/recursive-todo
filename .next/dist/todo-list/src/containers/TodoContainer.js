@@ -4,6 +4,26 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require("babel-runtime/helpers/inherits");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -28,43 +48,17 @@ var _Card2 = _interopRequireDefault(_Card);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _createClass = function () {
-	function defineProperties(target, props) {
-		for (var i = 0; i < props.length; i++) {
-			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-		}
-	}return function (Constructor, protoProps, staticProps) {
-		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	};
-}();
-
-function _classCallCheck(instance, Constructor) {
-	if (!(instance instanceof Constructor)) {
-		throw new TypeError("Cannot call a class as a function");
-	}
-}
-
-function _possibleConstructorReturn(self, call) {
-	if (!self) {
-		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	}return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}
-
-function _inherits(subClass, superClass) {
-	if (typeof superClass !== "function" && superClass !== null) {
-		throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/containers/TodoContainer.js";
 // import style from "../components/ListItem/style.css";
 
 
 var TodoContainer = function (_Component) {
-	_inherits(TodoContainer, _Component);
+	(0, _inherits3.default)(TodoContainer, _Component);
 
 	function TodoContainer(props) {
-		_classCallCheck(this, TodoContainer);
+		(0, _classCallCheck3.default)(this, TodoContainer);
 
-		var _this = _possibleConstructorReturn(this, (TodoContainer.__proto__ || Object.getPrototypeOf(TodoContainer)).call(this, props));
+		var _this = (0, _possibleConstructorReturn3.default)(this, (TodoContainer.__proto__ || (0, _getPrototypeOf2.default)(TodoContainer)).call(this, props));
 
 		_this.state = {
 			newItem: ""
@@ -79,7 +73,7 @@ var TodoContainer = function (_Component) {
 		return _this;
 	}
 
-	_createClass(TodoContainer, [{
+	(0, _createClass3.default)(TodoContainer, [{
 		key: "inputUpdate",
 		value: function inputUpdate(event) {
 			this.setState({ newItem: event.target.value });
@@ -134,21 +128,33 @@ var TodoContainer = function (_Component) {
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
 			var parentItem = this.props.items[currentItem.parent];
-			return _react2.default.createElement(_Card2.default, { style: { width: "85vw", margin: "auto", marginTop: "16px" } }, _react2.default.createElement(_ListHeader2.default, {
+			return _react2.default.createElement(_Card2.default, { style: { width: "85vw", margin: "auto", marginTop: "16px" }, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 81
+				}
+			}, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
 				baseItemText: currentItem.content,
 				currentParent: currentItem.parent,
 				changeBaseComposer: this.changeBaseComposer,
 				counterText: this.generateComplete(),
 				items: this.props.items,
-				newItemAction: this.newItemAction
+				newItemAction: this.newItemAction,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 82
+				}
 			}), _react2.default.createElement(_List2.default, {
 				list: this.props.items,
 				baseItem: this.props.baseItem,
 				changeBaseComposer: this.changeBaseComposer,
 				deleteItemComposer: this.deleteItemComposer,
 				completeItemComposer: this.completeItemComposer,
-				reorderItemComposer: this.reorderItemComposer
+				reorderItemComposer: this.reorderItemComposer,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 91
+				}
 			}));
 		}
 	}]);

@@ -1,6 +1,278 @@
 
           window.__NEXT_REGISTER_PAGE('/_document', function() {
-            var comp = module.exports=webpackJsonp([2],{231:function(e,t,n){e.exports={default:n(462),__esModule:!0}},455:function(e,t,n){e.exports=n(456)},456:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function u(e){return function(){var t=e.apply(this,arguments);return new Promise(function(e,n){function r(u,a){try{var l=t[u](a),o=l.value}catch(e){return void n(e)}if(!l.done)return Promise.resolve(o).then(function(e){r("next",e)},function(e){r("throw",e)});e(o)}return r("next")})}}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function l(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function o(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=n(86),s=r(i),c=n(0),f=r(c),d=n(457),_=r(d),p=n(232),h=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),y=function(e){function t(){return a(this,t),l(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return o(t,e),h(t,[{key:"render",value:function(){var e=(0,p.getDefaultContext)();return f.default.createElement("html",{lang:"en"},f.default.createElement(d.Head,null,f.default.createElement("title",null,"My page"),f.default.createElement("meta",{charSet:"utf-8"}),f.default.createElement("meta",{name:"viewport",content:"user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"}),f.default.createElement("meta",{name:"theme-color",content:e.theme.palette.primary[500]}),f.default.createElement("link",{rel:"stylesheet",href:"https://fonts.googleapis.com/css?family=Roboto:300,400,500"})),f.default.createElement("body",null,f.default.createElement(d.Main,null),f.default.createElement(d.NextScript,null)))}}],[{key:"getInitialProps",value:function(){function e(e){return t.apply(this,arguments)}var t=u(s.default.mark(function e(t){var n,r;return s.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return(0,p.setDefaultContext)(),n=t.renderPage(),r=(0,p.getDefaultContext)(),e.abrupt("return",Object.assign({},n,{styles:f.default.createElement("style",{id:"jss-server-side",dangerouslySetInnerHTML:{__html:r.styleManager.sheetsToString()}})}));case 4:case"end":return e.stop()}},e,this)}));return e}()}]),t}(_.default);t.default=y},457:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function u(e,t){return t?"/"===e?"/index.js":e+"/index.js":e}Object.defineProperty(t,"__esModule",{value:!0}),t.NextScript=t.Main=t.Head=void 0;var a=n(2),l=r(a),o=n(13),i=r(o),s=n(8),c=r(s),f=n(9),d=r(f),_=n(14),p=r(_),h=n(15),y=r(h),m=n(0),v=r(m),x=n(1),E=r(x),k=n(458),g=r(k),P=n(459),T=r(P),b=function(e){function t(){return(0,c.default)(this,t),(0,p.default)(this,(t.__proto__||(0,i.default)(t)).apply(this,arguments))}return(0,y.default)(t,e),(0,d.default)(t,[{key:"getChildContext",value:function(){return{_documentProps:this.props}}},{key:"render",value:function(){return v.default.createElement("html",null,v.default.createElement(j,null),v.default.createElement("body",null,v.default.createElement(C,null),v.default.createElement(M,null)))}}],[{key:"getInitialProps",value:function(e){var t=e.renderPage,n=t();return{html:n.html,head:n.head,errorHtml:n.errorHtml,chunks:n.chunks,styles:(0,T.default)()}}}]),t}(m.Component);b.childContextTypes={_documentProps:E.default.any},t.default=b;var j=t.Head=function(e){function t(){return(0,c.default)(this,t),(0,p.default)(this,(t.__proto__||(0,i.default)(t)).apply(this,arguments))}return(0,y.default)(t,e),(0,d.default)(t,[{key:"getChunkPreloadLink",value:function(e){var t=this.context._documentProps.__NEXT_DATA__,n=t.buildStats,r=t.assetPrefix,u=t.buildId,a=n?n[e].hash:u;return v.default.createElement("link",{key:e,rel:"preload",href:r+"/_next/"+a+"/"+e,as:"script"})}},{key:"getPreloadMainLinks",value:function(){return this.context._documentProps.dev?[this.getChunkPreloadLink("manifest.js"),this.getChunkPreloadLink("commons.js"),this.getChunkPreloadLink("main.js")]:[this.getChunkPreloadLink("app.js")]}},{key:"getPreloadDynamicChunks",value:function(){var e=this.context._documentProps,t=e.chunks,n=e.__NEXT_DATA__,r=n.assetPrefix;return t.map(function(e){return v.default.createElement("link",{key:e,rel:"preload",href:r+"/_next/webpack/chunks/"+e,as:"script"})})}},{key:"render",value:function(){var e=this.context._documentProps,t=e.head,n=e.styles,r=e.__NEXT_DATA__,a=r.pathname,l=r.buildId,o=r.assetPrefix,i=r.nextExport,s=u(a,i);return v.default.createElement("head",this.props,v.default.createElement("link",{rel:"preload",href:o+"/_next/"+l+"/page"+s,as:"script"}),v.default.createElement("link",{rel:"preload",href:o+"/_next/"+l+"/page/_error/index.js",as:"script"}),this.getPreloadDynamicChunks(),this.getPreloadMainLinks(),(t||[]).map(function(e,t){return v.default.cloneElement(e,{key:t})}),n||null,this.props.children)}}]),t}(m.Component);j.contextTypes={_documentProps:E.default.any};var C=t.Main=function(e){function t(){return(0,c.default)(this,t),(0,p.default)(this,(t.__proto__||(0,i.default)(t)).apply(this,arguments))}return(0,y.default)(t,e),(0,d.default)(t,[{key:"render",value:function(){var e=this.context._documentProps,t=e.html,n=e.errorHtml;return v.default.createElement("div",null,v.default.createElement("div",{id:"__next",dangerouslySetInnerHTML:{__html:t}}),v.default.createElement("div",{id:"__next-error",dangerouslySetInnerHTML:{__html:n}}))}}]),t}(m.Component);C.contextTypes={_documentProps:E.default.any};var M=t.NextScript=function(e){function t(){return(0,c.default)(this,t),(0,p.default)(this,(t.__proto__||(0,i.default)(t)).apply(this,arguments))}return(0,y.default)(t,e),(0,d.default)(t,[{key:"getChunkScript",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},n=this.context._documentProps.__NEXT_DATA__,r=n.buildStats,u=n.assetPrefix,a=n.buildId,o=r?r[e].hash:a;return v.default.createElement("script",(0,l.default)({key:e,type:"text/javascript",src:u+"/_next/"+o+"/"+e},t))}},{key:"getScripts",value:function(){return this.context._documentProps.dev?[this.getChunkScript("manifest.js"),this.getChunkScript("commons.js"),this.getChunkScript("main.js")]:[this.getChunkScript("app.js",{async:!0})]}},{key:"getDynamicChunks",value:function(){var e=this.context._documentProps,t=e.chunks,n=e.__NEXT_DATA__,r=n.assetPrefix;return v.default.createElement("div",null,t.map(function(e){return v.default.createElement("script",{async:!0,key:e,type:"text/javascript",src:r+"/_next/webpack/chunks/"+e})}))}},{key:"render",value:function(){var e=this.context._documentProps,t=e.staticMarkup,n=e.__NEXT_DATA__,r=e.chunks,a=n.pathname,l=n.nextExport,o=n.buildId,i=n.assetPrefix,s=u(a,l);return n.chunks=r,v.default.createElement("div",null,t?null:v.default.createElement("script",{dangerouslySetInnerHTML:{__html:"\n          __NEXT_DATA__ = "+(0,g.default)(n)+"\n          module={}\n          __NEXT_LOADED_PAGES__ = []\n          __NEXT_LOADED_CHUNKS__ = []\n\n          __NEXT_REGISTER_PAGE = function (route, fn) {\n            __NEXT_LOADED_PAGES__.push({ route: route, fn: fn })\n          }\n\n          __NEXT_REGISTER_CHUNK = function (chunkName, fn) {\n            __NEXT_LOADED_CHUNKS__.push({ chunkName: chunkName, fn: fn })\n          }\n        "}}),v.default.createElement("script",{async:!0,id:"__NEXT_PAGE__"+a,type:"text/javascript",src:i+"/_next/"+o+"/page"+s}),v.default.createElement("script",{async:!0,id:"__NEXT_PAGE__/_error",type:"text/javascript",src:i+"/_next/"+o+"/page/_error/index.js"}),t?null:this.getDynamicChunks(),t?null:this.getScripts())}}]),t}(m.Component);M.contextTypes={_documentProps:E.default.any}},458:function(e,t,n){"use strict";function r(e){return a[e]}function u(e){return o[e]}var a={"&":"\\u0026",">":"\\u003e","<":"\\u003c","\u2028":"\\u2028","\u2029":"\\u2029"},l=/[&><\u2028\u2029]/g;e.exports=function(e){return JSON.stringify(e).replace(l,r)};var o={"\u2028":"\\u2028","\u2029":"\\u2029"},i=/[\u2028\u2029]/g;e.exports.sanitize=function(e){return e.replace(i,u)}},459:function(e,t,n){e.exports=n(460)},460:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function u(){var e=(0,d.flush)(),t=[],n=!0,r=!1,u=void 0;try{for(var a,l=(0,s.default)(e);!(n=(a=l.next()).done);n=!0){var i=(0,o.default)(a.value,2),c=i[0],_=i[1];t.push(f.default.createElement("style",{id:"__jsx-style-"+c,key:"__jsx-style-"+c,dangerouslySetInnerHTML:{__html:_}}))}}catch(e){r=!0,u=e}finally{try{!n&&l.return&&l.return()}finally{if(r)throw u}}return t}function a(){var e=(0,d.flush)(),t="",n=!0,r=!1,u=void 0;try{for(var a,l=(0,s.default)(e);!(n=(a=l.next()).done);n=!0){var i=(0,o.default)(a.value,2);t+='<style id="__jsx-style-'+i[0]+'">'+i[1]+"</style>"}}catch(e){r=!0,u=e}finally{try{!n&&l.return&&l.return()}finally{if(r)throw u}}return t}Object.defineProperty(t,"__esModule",{value:!0});var l=n(103),o=r(l),i=n(66),s=r(i);t.default=u,t.flushToHTML=a;var c=n(0),f=r(c),d=n(461)},461:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function u(e){var t=new d.default,n=!0,r=!1,u=void 0;try{for(var a,l=(0,c.default)(j);!(n=(a=l.next()).done);n=!0){var o=a.value;e&&o===e.instance?t.set(e.styleId,e.css):t.set(o.props.styleId,o.props.css)}}catch(e){r=!0,u=e}finally{try{!n&&l.return&&l.return()}finally{if(r)throw u}}return t}function a(){var e=u();return j=[],e}function l(e){j.push(e),i()}function o(e){var t=j.indexOf(e);t<0||(j.splice(t,1),i())}function i(e){(0,b.default)(u(e))}Object.defineProperty(t,"__esModule",{value:!0});var s=n(66),c=r(s),f=n(231),d=r(f),_=n(13),p=r(_),h=n(8),y=r(h),m=n(9),v=r(m),x=n(14),E=r(x),k=n(15),g=r(k);t.flush=a;var P=n(0),T=n(465),b=r(T),j=[],C=function(e){function t(){return(0,y.default)(this,t),(0,E.default)(this,(t.__proto__||(0,p.default)(t)).apply(this,arguments))}return(0,g.default)(t,e),(0,v.default)(t,[{key:"componentWillMount",value:function(){l(this)}},{key:"componentWillUpdate",value:function(e){i({instance:this,styleId:e.styleId,css:e.css})}},{key:"componentWillUnmount",value:function(){o(this)}},{key:"render",value:function(){return null}}]),t}(P.Component);t.default=C},462:function(e,t,n){n(93),n(44),n(50),n(463),n(464),e.exports=n(18).Map},463:function(e,t,n){"use strict";var r=n(223);e.exports=n(224)("Map",function(e){return function(){return e(this,arguments.length>0?arguments[0]:void 0)}},{get:function(e){var t=r.getEntry(this,e);return t&&t.v},set:function(e,t){return r.def(this,0===e?0:e,t)}},r,!0)},464:function(e,t,n){var r=n(23);r(r.P+r.R,"Map",{toJSON:n(225)("Map")})},465:function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function u(){}function a(e){o(l(v,e)),v=e}function l(e,t){return[(0,p.default)(t.entries()).filter(function(t){var n=(0,d.default)(t,1),r=n[0];return!e.has(r)}),(0,p.default)(e.entries()).filter(function(e){var n=(0,d.default)(e,1),r=n[0];return!t.has(r)})]}function o(e){var t=(0,d.default)(e,2),n=t[0],r=t[1],u=!0,a=!1,l=void 0;try{for(var o,s=(0,c.default)(n);!(u=(o=s.next()).done);u=!0){var f=(0,d.default)(o.value,2),_=f[0],p=f[1];x.has(_)||x.set(_,document.getElementById("__jsx-style-"+_));var h=x.get(_)||i(p);m.set(_,h)}}catch(e){a=!0,l=e}finally{try{!u&&s.return&&s.return()}finally{if(a)throw l}}var y=!0,v=!1,E=void 0;try{for(var k,g=(0,c.default)(r);!(y=(k=g.next()).done);y=!0){var P=(0,d.default)(k.value,1),_=P[0],T=m.get(_);m.delete(_),T.parentNode.removeChild(T),x.delete(_)}}catch(e){v=!0,E=e}finally{try{!y&&g.return&&g.return()}finally{if(v)throw E}}}function i(e){var t=document.createElement("style");return t.appendChild(document.createTextNode(e)),(document.head||document.getElementsByTagName("head")[0]).appendChild(t),t}Object.defineProperty(t,"__esModule",{value:!0});var s=n(66),c=r(s),f=n(103),d=r(f),_=n(230),p=r(_),h=n(231),y=r(h),m=new y.default,v=new y.default;t.default="undefined"==typeof window?u:a;var x=new y.default}},[455]);
+            var comp = module.exports =
+webpackJsonp([1],{
+
+/***/ 550:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(551);
+
+
+/***/ }),
+
+/***/ 551:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(__resourceQuery) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _regenerator = __webpack_require__(58);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _extends2 = __webpack_require__(57);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _asyncToGenerator2 = __webpack_require__(59);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _getPrototypeOf = __webpack_require__(28);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(10);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(11);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(29);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(30);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _document = __webpack_require__(552);
+
+var _document2 = _interopRequireDefault(_document);
+
+var _createDefaultContext = __webpack_require__(561);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _jsxFileName = '/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/pages/_document.js?entry';
+
+
+var MyDocument = function (_Document) {
+  (0, _inherits3.default)(MyDocument, _Document);
+
+  function MyDocument() {
+    (0, _classCallCheck3.default)(this, MyDocument);
+
+    return (0, _possibleConstructorReturn3.default)(this, (MyDocument.__proto__ || (0, _getPrototypeOf2.default)(MyDocument)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(MyDocument, [{
+    key: 'render',
+    value: function render() {
+      var styleContext = (0, _createDefaultContext.getDefaultContext)();
+      return _react2.default.createElement('html', { lang: 'en', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      }, _react2.default.createElement(_document.Head, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      }, _react2.default.createElement('title', {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      }, 'My page'), _react2.default.createElement('meta', { charSet: 'utf-8', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        }
+      }), _react2.default.createElement('meta', {
+        name: 'viewport',
+        content: 'user-scalable=0, initial-scale=1, maximum-scale=1, ' + 'minimum-scale=1, width=device-width, height=device-height',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
+        }
+      }), _react2.default.createElement('meta', { name: 'theme-color', content: styleContext.theme.palette.primary[500], __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        }
+      }), _react2.default.createElement('link', {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        }
+      })), _react2.default.createElement('body', {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, _react2.default.createElement(_document.Main, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        }
+      }), _react2.default.createElement(_document.NextScript, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
+      })));
+    }
+  }], [{
+    key: 'getInitialProps',
+    value: function () {
+      var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(ctx) {
+        var page, styleContext;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                (0, _createDefaultContext.setDefaultContext)();
+                page = ctx.renderPage();
+                styleContext = (0, _createDefaultContext.getDefaultContext)();
+                return _context.abrupt('return', (0, _extends3.default)({}, page, {
+                  styles: _react2.default.createElement('style', { id: 'jss-server-side', dangerouslySetInnerHTML: { __html: styleContext.styleManager.sheetsToString() }, __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 12
+                    }
+                  })
+                }));
+
+              case 4:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getInitialProps(_x) {
+        return _ref.apply(this, arguments);
+      }
+
+      return getInitialProps;
+    }()
+  }]);
+
+  return MyDocument;
+}(_document2.default);
+
+exports.default = MyDocument;
+
+ ;(function register() { /* react-hot-loader/webpack */ if (true) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/pages/_document.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/pages/_document.js"); } } })();
+    (function (Component, route) {
+      if (false) return
+      if (false) return
+
+      var qs = __webpack_require__(75)
+      var params = qs.parse(__resourceQuery.slice(1))
+      if (params.entry == null) return
+
+      module.hot.accept()
+      Component.__route = route
+
+      if (module.hot.status() === 'idle') return
+
+      var components = next.router.components
+      for (var r in components) {
+        if (!components.hasOwnProperty(r)) continue
+
+        if (components[r].Component.__route === route) {
+          next.router.update(r, Component)
+        }
+      }
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/_document")
+  
+/* WEBPACK VAR INJECTION */}.call(exports, "?entry"))
+
+/***/ }),
+
+/***/ 561:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setDefaultContext = setDefaultContext;
+exports.getDefaultContext = getDefaultContext;
+
+var _MuiThemeProvider = __webpack_require__(562);
+
+var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
+var _palette = __webpack_require__(239);
+
+var _palette2 = _interopRequireDefault(_palette);
+
+var _theme = __webpack_require__(238);
+
+var _theme2 = _interopRequireDefault(_theme);
+
+var _colors = __webpack_require__(605);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var createDefaultContext = function createDefaultContext() {
+  return _MuiThemeProvider2.default.createDefaultContext({
+    theme: (0, _theme2.default)({
+      palette: (0, _palette2.default)({
+        primary: _colors.purple,
+        accent: _colors.green
+      })
+    })
+  });
+};
+
+// Singleton hack as there is no way to pass variables from _document.js to pages yet.
+var context = null;
+
+function setDefaultContext() {
+  context = createDefaultContext();
+}
+
+function getDefaultContext() {
+  // Make sure to create a new store for every server-side request so that data
+  // isn't shared between connections (which would be bad)
+  if (!process.browser) {
+    return context;
+  }
+
+  // Reuse store on the client-side
+  if (!context) {
+    context = createDefaultContext();
+  }
+
+  return context;
+}
+
+exports.default = createDefaultContext;
+
+ ;(function register() { /* react-hot-loader/webpack */ if (true) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/style/createDefaultContext.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/style/createDefaultContext.js"); } } })();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(48)))
+
+/***/ })
+
+},[550]);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYnVuZGxlcy9wYWdlcy9fZG9jdW1lbnQuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWdlcy9fZG9jdW1lbnQuanM/NTYzOWViNyIsIndlYnBhY2s6Ly8vLi90b2RvLWxpc3Qvc3JjL3N0eWxlL2NyZWF0ZURlZmF1bHRDb250ZXh0LmpzPzU2MzllYjciXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IERvY3VtZW50LCB7IEhlYWQsIE1haW4sIE5leHRTY3JpcHQgfSBmcm9tICduZXh0L2RvY3VtZW50J1xuaW1wb3J0IHsgZ2V0RGVmYXVsdENvbnRleHQsIHNldERlZmF1bHRDb250ZXh0IH0gZnJvbSAnLi4vdG9kby1saXN0L3NyYy9zdHlsZS9jcmVhdGVEZWZhdWx0Q29udGV4dCdcblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgTXlEb2N1bWVudCBleHRlbmRzIERvY3VtZW50IHtcbiAgc3RhdGljIGFzeW5jIGdldEluaXRpYWxQcm9wcyAoY3R4KSB7XG4gICAgc2V0RGVmYXVsdENvbnRleHQoKVxuICAgIGNvbnN0IHBhZ2UgPSBjdHgucmVuZGVyUGFnZSgpXG4gICAgY29uc3Qgc3R5bGVDb250ZXh0ID0gZ2V0RGVmYXVsdENvbnRleHQoKVxuICAgIHJldHVybiB7XG4gICAgICAuLi5wYWdlLFxuICAgICAgc3R5bGVzOiA8c3R5bGUgaWQ9J2pzcy1zZXJ2ZXItc2lkZScgZGFuZ2Vyb3VzbHlTZXRJbm5lckhUTUw9e3sgX19odG1sOiBzdHlsZUNvbnRleHQuc3R5bGVNYW5hZ2VyLnNoZWV0c1RvU3RyaW5nKCkgfX0gLz5cbiAgICB9XG4gIH1cblxuICByZW5kZXIgKCkge1xuICAgIGNvbnN0IHN0eWxlQ29udGV4dCA9IGdldERlZmF1bHRDb250ZXh0KClcbiAgICByZXR1cm4gKFxuICAgICAgPGh0bWwgbGFuZz0nZW4nPlxuICAgICAgICA8SGVhZD5cbiAgICAgICAgICA8dGl0bGU+TXkgcGFnZTwvdGl0bGU+XG4gICAgICAgICAgPG1ldGEgY2hhclNldD0ndXRmLTgnIC8+XG4gICAgICAgICAgey8qIFVzZSBtaW5pbXVtLXNjYWxlPTEgdG8gZW5hYmxlIEdQVSByYXN0ZXJpemF0aW9uICovfVxuICAgICAgICAgIDxtZXRhXG4gICAgICAgICAgICBuYW1lPSd2aWV3cG9ydCdcbiAgICAgICAgICAgIGNvbnRlbnQ9e1xuICAgICAgICAgICAgICAndXNlci1zY2FsYWJsZT0wLCBpbml0aWFsLXNjYWxlPTEsIG1heGltdW0tc2NhbGU9MSwgJyArXG4gICAgICAgICAgICAgICAgJ21pbmltdW0tc2NhbGU9MSwgd2lkdGg9ZGV2aWNlLXdpZHRoLCBoZWlnaHQ9ZGV2aWNlLWhlaWdodCdcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAvPlxuICAgICAgICAgIHsvKiBQV0EgcHJpbWFyeSBjb2xvciAqL31cbiAgICAgICAgICA8bWV0YSBuYW1lPSd0aGVtZS1jb2xvcicgY29udGVudD17c3R5bGVDb250ZXh0LnRoZW1lLnBhbGV0dGUucHJpbWFyeVs1MDBdfSAvPlxuICAgICAgICAgIDxsaW5rXG4gICAgICAgICAgICByZWw9J3N0eWxlc2hlZXQnXG4gICAgICAgICAgICBocmVmPSdodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9Um9ib3RvOjMwMCw0MDAsNTAwJ1xuICAgICAgICAgIC8+XG4gICAgICAgIDwvSGVhZD5cbiAgICAgICAgPGJvZHk+XG4gICAgICAgICAgPE1haW4gLz5cbiAgICAgICAgICA8TmV4dFNjcmlwdCAvPlxuICAgICAgICA8L2JvZHk+XG4gICAgICA8L2h0bWw+XG4gICAgKVxuICB9XG59XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi9wYWdlcy9fZG9jdW1lbnQuanM/ZW50cnkiLCJpbXBvcnQgTXVpVGhlbWVQcm92aWRlciBmcm9tICdtYXRlcmlhbC11aS9zdHlsZXMvTXVpVGhlbWVQcm92aWRlcidcbmltcG9ydCBjcmVhdGVQYWxldHRlIGZyb20gJ21hdGVyaWFsLXVpL3N0eWxlcy9wYWxldHRlJ1xuaW1wb3J0IGNyZWF0ZU11aVRoZW1lIGZyb20gJ21hdGVyaWFsLXVpL3N0eWxlcy90aGVtZSdcbmltcG9ydCB7IHB1cnBsZSwgZ3JlZW4gfSBmcm9tICdtYXRlcmlhbC11aS9jb2xvcnMnXG5cbmNvbnN0IGNyZWF0ZURlZmF1bHRDb250ZXh0ID0gKCkgPT5cbiAgTXVpVGhlbWVQcm92aWRlci5jcmVhdGVEZWZhdWx0Q29udGV4dCh7XG4gICAgdGhlbWU6IGNyZWF0ZU11aVRoZW1lKHtcbiAgICAgIHBhbGV0dGU6IGNyZWF0ZVBhbGV0dGUoe1xuICAgICAgICBwcmltYXJ5OiBwdXJwbGUsXG4gICAgICAgIGFjY2VudDogZ3JlZW5cbiAgICAgIH0pXG4gICAgfSlcbiAgfSlcblxuLy8gU2luZ2xldG9uIGhhY2sgYXMgdGhlcmUgaXMgbm8gd2F5IHRvIHBhc3MgdmFyaWFibGVzIGZyb20gX2RvY3VtZW50LmpzIHRvIHBhZ2VzIHlldC5cbmxldCBjb250ZXh0ID0gbnVsbFxuXG5leHBvcnQgZnVuY3Rpb24gc2V0RGVmYXVsdENvbnRleHQgKCkge1xuICBjb250ZXh0ID0gY3JlYXRlRGVmYXVsdENvbnRleHQoKVxufVxuXG5leHBvcnQgZnVuY3Rpb24gZ2V0RGVmYXVsdENvbnRleHQgKCkge1xuICAvLyBNYWtlIHN1cmUgdG8gY3JlYXRlIGEgbmV3IHN0b3JlIGZvciBldmVyeSBzZXJ2ZXItc2lkZSByZXF1ZXN0IHNvIHRoYXQgZGF0YVxuICAvLyBpc24ndCBzaGFyZWQgYmV0d2VlbiBjb25uZWN0aW9ucyAod2hpY2ggd291bGQgYmUgYmFkKVxuICBpZiAoIXByb2Nlc3MuYnJvd3Nlcikge1xuICAgIHJldHVybiBjb250ZXh0XG4gIH1cblxuICAvLyBSZXVzZSBzdG9yZSBvbiB0aGUgY2xpZW50LXNpZGVcbiAgaWYgKCFjb250ZXh0KSB7XG4gICAgY29udGV4dCA9IGNyZWF0ZURlZmF1bHRDb250ZXh0KClcbiAgfVxuXG4gIHJldHVybiBjb250ZXh0XG59XG5cbmV4cG9ydCBkZWZhdWx0IGNyZWF0ZURlZmF1bHRDb250ZXh0XG5cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi90b2RvLWxpc3Qvc3JjL3N0eWxlL2NyZWF0ZURlZmF1bHRDb250ZXh0LmpzIl0sIm1hcHBpbmdzIjoiO0E7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUNBOzs7QUFBQTtBQUNBOzs7QUFBQTtBQUNBOzs7Ozs7QUFDQTs7Ozs7Ozs7Ozs7QUFZQTtBQUFBO0FBRUE7QUFBQTtBQUNBO0FBREE7QUFBQTs7QUFDQTtBQUNBO0FBREE7QUFBQTs7QUFDQTtBQUFBO0FBQUE7QUFBQTtBQUNBO0FBRUE7QUFGQTs7QUFJQTtBQUNBOztBQUhBO0FBUUE7QUFSQTtBQUNBO0FBT0E7QUFDQTtBQURBOztBQUdBO0FBQUE7O0FBRkE7QUFLQTtBQUxBO0FBQ0E7O0FBSUE7QUFDQTtBQURBO0FBQUE7O0FBQ0E7QUFDQTtBQURBO0FBQUE7O0FBQ0E7QUFJQTtBQUpBO0FBQUE7Ozs7O0FBbENBOzs7OztBQUNBO0FBQ0E7QUFBQTtBQUNBO0FBRUE7QUFDQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFDQTs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBUkE7QUFDQTtBQURBO0FBQ0E7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FDYUE7QUFJQTtBQUNBO0FBdkJBO0FBQ0E7OztBQUFBO0FBQ0E7OztBQUFBO0FBQ0E7OztBQUFBO0FBQ0E7OztBQUNBO0FBQ0E7OztBQUlBO0FBQUE7QUFEQTtBQURBO0FBREE7QUFGQTtBQUNBO0FBU0E7QUFDQTtBQUNBO0FBQ0E7QUFFQTtBQUVBO0FBQ0E7QUFEQTtBQUVBO0FBQ0E7QUFBQTtBQUVBO0FBRUE7QUFDQTtBQUFBO0FBQUE7QUFFQTtBQUVBO0FBQ0E7QUFBQTtBQUVBO0FBQ0E7QUFEQTtBQUNBOzs7Ozs7QSIsInNvdXJjZVJvb3QiOiIifQ==
             return { page: comp.default }
           })
         

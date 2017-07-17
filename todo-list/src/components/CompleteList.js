@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 // import style from "./style.css";
-import PropTypes from "prop-types";
-import _ from "lodash";
+// import PropTypes from "prop-types";
+// import _ from "lodash";
 import ListItem from "./ListItem.js";
 import List from "material-ui/List";
 import { withStyles, createStyleSheet } from "material-ui/styles";

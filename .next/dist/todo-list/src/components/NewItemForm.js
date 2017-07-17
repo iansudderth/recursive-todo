@@ -4,6 +4,26 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require("babel-runtime/helpers/inherits");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -24,33 +44,7 @@ var _styles = require("material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _createClass = function () {
-	function defineProperties(target, props) {
-		for (var i = 0; i < props.length; i++) {
-			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-		}
-	}return function (Constructor, protoProps, staticProps) {
-		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	};
-}();
-
-function _classCallCheck(instance, Constructor) {
-	if (!(instance instanceof Constructor)) {
-		throw new TypeError("Cannot call a class as a function");
-	}
-}
-
-function _possibleConstructorReturn(self, call) {
-	if (!self) {
-		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	}return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}
-
-function _inherits(subClass, superClass) {
-	if (typeof superClass !== "function" && superClass !== null) {
-		throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/NewItemForm.js";
 // import style from "./style.css";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
@@ -73,12 +67,12 @@ var styleSheet = (0, _styles.createStyleSheet)("NewItemForm", function (theme) {
 });
 
 var NewItemForm = function (_Component) {
-	_inherits(NewItemForm, _Component);
+	(0, _inherits3.default)(NewItemForm, _Component);
 
 	function NewItemForm(props) {
-		_classCallCheck(this, NewItemForm);
+		(0, _classCallCheck3.default)(this, NewItemForm);
 
-		var _this = _possibleConstructorReturn(this, (NewItemForm.__proto__ || Object.getPrototypeOf(NewItemForm)).call(this, props));
+		var _this = (0, _possibleConstructorReturn3.default)(this, (NewItemForm.__proto__ || (0, _getPrototypeOf2.default)(NewItemForm)).call(this, props));
 
 		_this.state = {
 			newItem: ""
@@ -88,7 +82,7 @@ var NewItemForm = function (_Component) {
 		return _this;
 	}
 
-	_createClass(NewItemForm, [{
+	(0, _createClass3.default)(NewItemForm, [{
 		key: "submitHandler",
 		value: function submitHandler(event) {
 			event.preventDefault();
@@ -105,14 +99,42 @@ var NewItemForm = function (_Component) {
 		value: function render() {
 			var classes = this.props.classes;
 
-			return _react2.default.createElement("div", { className: classes.container }, _react2.default.createElement("form", { onSubmit: this.submitHandler }, _react2.default.createElement(_Grid2.default, { container: true, gutter: 24, align: "center" }, _react2.default.createElement(_Grid2.default, { item: true, className: classes.typeItem }, _react2.default.createElement(_TextField2.default, {
+			return _react2.default.createElement("div", { className: classes.container, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 49
+				}
+			}, _react2.default.createElement("form", { onSubmit: this.submitHandler, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 50
+				}
+			}, _react2.default.createElement(_Grid2.default, { container: true, gutter: 24, align: "center", __source: {
+					fileName: _jsxFileName,
+					lineNumber: 51
+				}
+			}, _react2.default.createElement(_Grid2.default, { item: true, className: classes.typeItem, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 52
+				}
+			}, _react2.default.createElement(_TextField2.default, {
 				id: "newItem",
 				label: "New Item",
 				type: "text",
 				fullWidth: true,
 				value: this.state.newItem,
-				onChange: this.inputUpdate
-			})), _react2.default.createElement(_Grid2.default, { item: true }, _react2.default.createElement(_Button2.default, { type: "submit", raised: true }, "Make a New Item")))));
+				onChange: this.inputUpdate,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 53
+				}
+			})), _react2.default.createElement(_Grid2.default, { item: true, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 62
+				}
+			}, _react2.default.createElement(_Button2.default, { type: "submit", raised: true, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 63
+				}
+			}, "Make a New Item")))));
 		}
 	}]);
 

@@ -20,6 +20,12 @@ var _styles = require("material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/List.js";
+// import style from "./style.css";
+// import PropTypes from 'prop-types'
+// import _ from 'lodash';
+
+
 var styleSheet = (0, _styles.createStyleSheet)("List", function (theme) {
 	return {
 		container: {
@@ -28,10 +34,6 @@ var styleSheet = (0, _styles.createStyleSheet)("List", function (theme) {
 		}
 	};
 });
-// import style from "./style.css";
-// import PropTypes from 'prop-types'
-// import _ from 'lodash';
-
 
 var List = function List(props) {
 	var itemsList = props.list;
@@ -50,14 +52,22 @@ var List = function List(props) {
 
 	var classes = props.classes;
 
-	return _react2.default.createElement("div", { className: classes.container }, _react2.default.createElement(_IncompleteList2.default, {
+	return _react2.default.createElement("div", { className: classes.container, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 33
+		}
+	}, _react2.default.createElement(_IncompleteList2.default, {
 		items: incompleteListItems,
 		parentID: props.baseItem,
 		renderChildren: true,
 		changeBaseComposer: props.changeBaseComposer,
 		deleteItemComposer: props.deleteItemComposer,
 		completeItemComposer: props.completeItemComposer,
-		reorderItemComposer: props.reorderItemComposer
+		reorderItemComposer: props.reorderItemComposer,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 34
+		}
 	}), _react2.default.createElement(_CompleteList2.default, {
 		items: completeListItems,
 		parentID: props.baseItem,
@@ -65,7 +75,11 @@ var List = function List(props) {
 		changeBaseComposer: props.changeBaseComposer,
 		deleteItemComposer: props.deleteItemComposer,
 		completeItemComposer: props.completeItemComposer,
-		reorderItemComposer: props.reorderItemComposer
+		reorderItemComposer: props.reorderItemComposer,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 43
+		}
 	}));
 };
 

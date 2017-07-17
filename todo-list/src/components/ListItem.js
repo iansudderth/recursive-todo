@@ -11,14 +11,16 @@ import DeleteForever from "material-ui-icons/DeleteForever";
 import FormatListBulleted  from "material-ui-icons/FormatListBulleted";
 import { black, grey, lightBlue, white } from "material-ui/colors";
 
+const DragHandle = SortableHandle((props) =>
+		<span style={props.completeStyle}>
+		<Reorder />
+		</span>
+);
+
+
 const BaseListItem = props => {
 	const item = props.value;
 
-	const DragHandle = SortableHandle(() =>
-		<IconButton disabled={item.complete}>
-			<Reorder />
-		</IconButton>
-	);
 	const incompleteListStyle = { backgroundColor: lightBlue[200] };
 	const completeListStyle = { backgroundColor: grey[300] };
 	const listItemStyle = item.complete
@@ -55,7 +57,9 @@ const BaseListItem = props => {
 
 	return (
 		<ListItem divider={true} style={listItemStyle}>
-			<DragHandle />
+			<DragHandle
+				completeStyle={completeStyle}
+			/>
 			<Checkbox
 				checked={item.complete}
 				onClick={props.completeItemComposer(item.id)}

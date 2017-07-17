@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
-
-var _lodash = require("lodash");
-
-var _lodash2 = _interopRequireDefault(_lodash);
 
 var _styles = require("material-ui/styles");
 
@@ -32,17 +32,10 @@ var _NewItemForm2 = _interopRequireDefault(_NewItemForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) {
-	if (Array.isArray(arr)) {
-		for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-			arr2[i] = arr[i];
-		}return arr2;
-	} else {
-		return Array.from(arr);
-	}
-}
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListHeader.js";
 // import style from "./style.css";
 // import PropTypes from "prop-types";
+// import _ from "lodash";
 
 
 var styleSheet = (0, _styles.createStyleSheet)("Header", function (theme) {
@@ -75,22 +68,71 @@ var ListHeader = function ListHeader(props) {
 			trail = ["root"];
 		} else {
 			while (props.items[current].parent !== "root" && counter < 10) {
-				trail = [current].concat(_toConsumableArray(trail));
+				trail = [current].concat((0, _toConsumableArray3.default)(trail));
 				current = props.items[current].parent;
 				counter++;
 			}
-			trail = ["root", current].concat(_toConsumableArray(trail));
+			trail = ["root", current].concat((0, _toConsumableArray3.default)(trail));
 		}
-		return _react2.default.createElement(_Typography2.default, { type: "body1", className: props.classes.crumbContainer }, trail.map(function (item, index) {
+		return _react2.default.createElement(_Typography2.default, { type: "body1", className: props.classes.crumbContainer, __source: {
+				fileName: _jsxFileName,
+				lineNumber: 46
+			}
+		}, trail.map(function (item, index) {
 			return _react2.default.createElement("span", {
 				key: "breadcrumb-" + index,
 				className: props.classes.crumb,
-				onClick: props.changeBaseComposer(item)
-			}, item == "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, null) : "", " ");
+				onClick: props.changeBaseComposer(item),
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 49
+				}
+			}, item === "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, {
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 58
+				}
+			}) : "", " ");
 		}));
 	};
 
-	return _react2.default.createElement("div", null, _react2.default.createElement("div", { className: classes.titleContainer }, _react2.default.createElement(_Typography2.default, { type: "headline", align: "center" }, props.baseItem === "root" ? "root" : props.baseItemText), _react2.default.createElement(_Typography2.default, { type: "subheading", align: "center" }, props.counterText)), _react2.default.createElement(_Divider2.default, null), _react2.default.createElement(BreadCrumb, null), _react2.default.createElement(_Divider2.default, null), _react2.default.createElement(_NewItemForm2.default, { newItemAction: props.newItemAction }));
+	return _react2.default.createElement("div", {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 68
+		}
+	}, _react2.default.createElement("div", { className: classes.titleContainer, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 69
+		}
+	}, _react2.default.createElement(_Typography2.default, { type: "headline", align: "center", __source: {
+			fileName: _jsxFileName,
+			lineNumber: 70
+		}
+	}, props.baseItem === "root" ? "root" : props.baseItemText), _react2.default.createElement(_Typography2.default, { type: "subheading", align: "center", __source: {
+			fileName: _jsxFileName,
+			lineNumber: 73
+		}
+	}, props.counterText)), _react2.default.createElement(_Divider2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 77
+		}
+	}), _react2.default.createElement(BreadCrumb, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 78
+		}
+	}), _react2.default.createElement(_Divider2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 79
+		}
+	}), _react2.default.createElement(_NewItemForm2.default, { newItemAction: props.newItemAction, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 80
+		}
+	}));
 };
 
 ListHeader.propTypes = {};

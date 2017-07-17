@@ -34,12 +34,24 @@ var _TodoContainer2 = _interopRequireDefault(_TodoContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/index.js";
 // import ReactDOM from "react-dom";
 // import registerServiceWorker from "./registerServiceWorker";
+
+
 var createStoreWithMiddleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxPromise2.default))(_redux.createStore);
 
 var Boiler = function Boiler() {
-	return _react2.default.createElement(_reactRedux.Provider, { store: createStoreWithMiddleware(_reducers2.default) }, _react2.default.createElement(_TodoContainer2.default, null));
+	return _react2.default.createElement(_reactRedux.Provider, { store: createStoreWithMiddleware(_reducers2.default), __source: {
+			fileName: _jsxFileName,
+			lineNumber: 19
+		}
+	}, _react2.default.createElement(_TodoContainer2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 20
+		}
+	}));
 };
 
 // ReactDOM.render(<Boiler />, document.getElementById("root"));

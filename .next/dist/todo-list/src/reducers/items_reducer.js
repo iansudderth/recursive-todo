@@ -4,6 +4,14 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+var _defineProperty2 = require("babel-runtime/helpers/defineProperty");
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _lodash = require("lodash");
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -11,24 +19,6 @@ var _lodash2 = _interopRequireDefault(_lodash);
 var _actions = require("../actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) {
-	if (Array.isArray(arr)) {
-		for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-			arr2[i] = arr[i];
-		}return arr2;
-	} else {
-		return Array.from(arr);
-	}
-}
-
-function _defineProperty(obj, key, value) {
-	if (key in obj) {
-		Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-	} else {
-		obj[key] = value;
-	}return obj;
-}
 
 function items() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : seedData;
@@ -38,7 +28,7 @@ function items() {
 		case _actions.NEW_ITEM:
 			var newID = randomID();
 			var parentID = action.payload.parent;
-			var newItem = _defineProperty({}, newID, {
+			var newItem = (0, _defineProperty3.default)({}, newID, {
 				id: newID,
 				content: action.payload.content,
 				complete: false,
@@ -46,14 +36,14 @@ function items() {
 				incompleteChildren: [],
 				parent: parentID
 			});
-			var newParent = _defineProperty({}, parentID, addChild(state[parentID], newID));
+			var newParent = (0, _defineProperty3.default)({}, parentID, addChild(state[parentID], newID));
 			var newState = _lodash2.default.merge({}, state, newItem, newParent);
 			return newState;
 
 		case _actions.COMPLETE_ITEM:
 			var id = action.payload;
 			var newState = _lodash2.default.merge({}, state);
-			var newItem = _defineProperty({}, id, newState[id]);
+			var newItem = (0, _defineProperty3.default)({}, id, newState[id]);
 			var parentID = newItem[id].parent;
 			newItem[id].complete = !newItem[id].complete;
 			if (newItem[id].complete) {
@@ -124,17 +114,17 @@ function reorder(arr, oldIndex, newIndex) {
 	} else {
 		var before = arr.slice(0, oldIndex);
 		var after = arr.slice(oldIndex + 1, arr.length);
-		removed = [].concat(_toConsumableArray(before), _toConsumableArray(after));
+		removed = [].concat((0, _toConsumableArray3.default)(before), (0, _toConsumableArray3.default)(after));
 	}
 
 	if (newIndex === 0) {
-		return [arr[oldIndex]].concat(_toConsumableArray(removed));
+		return [arr[oldIndex]].concat((0, _toConsumableArray3.default)(removed));
 	} else if (newIndex === arr.length - 1) {
-		return [].concat(_toConsumableArray(removed), [arr[oldIndex]]);
+		return [].concat((0, _toConsumableArray3.default)(removed), [arr[oldIndex]]);
 	} else {
 		before = removed.slice(0, newIndex);
 		after = removed.slice(newIndex, removed.length);
-		return [].concat(_toConsumableArray(before), [arr[oldIndex]], _toConsumableArray(after));
+		return [].concat((0, _toConsumableArray3.default)(before), [arr[oldIndex]], (0, _toConsumableArray3.default)(after));
 	}
 }
 

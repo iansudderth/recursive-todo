@@ -1,100 +1,126 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require("babel-runtime/regenerator");
+var _regenerator = require('babel-runtime/regenerator');
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _react = require("react");
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _document = require("next/dist/server/document.js");
+var _document = require('next/dist/server/document.js');
 
 var _document2 = _interopRequireDefault(_document);
 
-var _createDefaultContext = require("../todo-list/src/style/createDefaultContext");
+var _createDefaultContext = require('../todo-list/src/style/createDefaultContext');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-  };
-}();
+var _jsxFileName = '/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/pages/_document.js?entry';
 
-function _asyncToGenerator(fn) {
-  return function () {
-    var gen = fn.apply(this, arguments);return new Promise(function (resolve, reject) {
-      function step(key, arg) {
-        try {
-          var info = gen[key](arg);var value = info.value;
-        } catch (error) {
-          reject(error);return;
-        }if (info.done) {
-          resolve(value);
-        } else {
-          return Promise.resolve(value).then(function (value) {
-            step("next", value);
-          }, function (err) {
-            step("throw", err);
-          });
-        }
-      }return step("next");
-    });
-  };
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-}
 
 var MyDocument = function (_Document) {
-  _inherits(MyDocument, _Document);
+  (0, _inherits3.default)(MyDocument, _Document);
 
   function MyDocument() {
-    _classCallCheck(this, MyDocument);
+    (0, _classCallCheck3.default)(this, MyDocument);
 
-    return _possibleConstructorReturn(this, (MyDocument.__proto__ || Object.getPrototypeOf(MyDocument)).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (MyDocument.__proto__ || (0, _getPrototypeOf2.default)(MyDocument)).apply(this, arguments));
   }
 
-  _createClass(MyDocument, [{
+  (0, _createClass3.default)(MyDocument, [{
     key: 'render',
     value: function render() {
       var styleContext = (0, _createDefaultContext.getDefaultContext)();
-      return _react2.default.createElement('html', { lang: 'en' }, _react2.default.createElement(_document.Head, null, _react2.default.createElement('title', null, 'My page'), _react2.default.createElement('meta', { charSet: 'utf-8' }), _react2.default.createElement('meta', {
+      return _react2.default.createElement('html', { lang: 'en', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19
+        }
+      }, _react2.default.createElement(_document.Head, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        }
+      }, _react2.default.createElement('title', {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        }
+      }, 'My page'), _react2.default.createElement('meta', { charSet: 'utf-8', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        }
+      }), _react2.default.createElement('meta', {
         name: 'viewport',
-        content: 'user-scalable=0, initial-scale=1, maximum-scale=1, ' + 'minimum-scale=1, width=device-width, height=device-height'
-      }), _react2.default.createElement('meta', { name: 'theme-color', content: styleContext.theme.palette.primary[500] }), _react2.default.createElement('link', {
+        content: 'user-scalable=0, initial-scale=1, maximum-scale=1, ' + 'minimum-scale=1, width=device-width, height=device-height',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
+        }
+      }), _react2.default.createElement('meta', { name: 'theme-color', content: styleContext.theme.palette.primary[500], __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32
+        }
+      }), _react2.default.createElement('link', {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
-      })), _react2.default.createElement('body', null, _react2.default.createElement(_document.Main, null), _react2.default.createElement(_document.NextScript, null)));
+        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 33
+        }
+      })), _react2.default.createElement('body', {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, _react2.default.createElement(_document.Main, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        }
+      }), _react2.default.createElement(_document.NextScript, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        }
+      })));
     }
   }], [{
     key: 'getInitialProps',
     value: function () {
-      var _ref = _asyncToGenerator(_regenerator2.default.mark(function _callee(ctx) {
+      var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(ctx) {
         var page, styleContext;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
@@ -103,8 +129,12 @@ var MyDocument = function (_Document) {
                 (0, _createDefaultContext.setDefaultContext)();
                 page = ctx.renderPage();
                 styleContext = (0, _createDefaultContext.getDefaultContext)();
-                return _context.abrupt('return', Object.assign({}, page, {
-                  styles: _react2.default.createElement('style', { id: 'jss-server-side', dangerouslySetInnerHTML: { __html: styleContext.styleManager.sheetsToString() } })
+                return _context.abrupt('return', (0, _extends3.default)({}, page, {
+                  styles: _react2.default.createElement('style', { id: 'jss-server-side', dangerouslySetInnerHTML: { __html: styleContext.styleManager.sheetsToString() }, __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 12
+                    }
+                  })
                 }));
 
               case 4:

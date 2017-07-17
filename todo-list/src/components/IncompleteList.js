@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 // import style from "./style.css";
 // import PropTypes from "prop-types";
 // import _ from "lodash";
 import {
 	SortableContainer,
-	SortableElement,
-	arrayMove
+	SortableElement
 } from "react-sortable-hoc";
 import ListItem from "./ListItem.js";
 import List from "material-ui/List";
@@ -22,48 +21,57 @@ const styleSheet = createStyleSheet("IncompleteList", theme => ({
 	}
 }));
 
+
+const SortableList = SortableContainer((props) => {
+	return (
+		<List className={props.classForList}>
+			{props.items.map((value, index) => {
+				return (
+					<SortableListItem
+						key={`item-${value.id}`}
+						index={index}
+						value={value}
+						changeBaseComposer={props.changeBaseComposer}
+						deleteItemComposer={props.deleteItemComposer}
+						completeItemComposer={props.completeItemComposer}
+					/>
+				);
+			})}
+		</List>
+	);
+});
+
+const SortableListItem = SortableElement((props) => {
+	return (
+		<ListItem
+			value={props.value}
+			changeBaseComposer={props.changeBaseComposer}
+			deleteItemComposer={props.deleteItemComposer}
+			completeItemComposer={props.completeItemComposer}
+		/>
+	);
+});
+
 const IncompleteList = props => {
 	const classes = props.classes;
 
-	const SortableListItem = SortableElement(({ value }) => {
-		return (
-			<ListItem
-				value={value}
-				changeBaseComposer={props.changeBaseComposer}
-				deleteItemComposer={props.deleteItemComposer}
-				completeItemComposer={props.completeItemComposer}
-			/>
-		);
-	});
 
-	const SortableList = SortableContainer(({ items }) => {
-		return (
-			<List className={classes.root}>
-				{items.map((value, index) => {
-					return (
-						<SortableListItem
-							key={`item-${value.id}`}
-							index={index}
-							value={value}
-						/>
-					);
-				})}
-			</List>
-		);
-	});
-
-	function handleSort({ oldIndex, newIndex, collection }, e) {
+	function handleSort({ oldIndex, newIndex,}) {
 		props.reorderItemComposer(props.parentID, oldIndex, newIndex)();
 	}
 
 	return (
-		<ul className={classes.container}>
+		<div>
 			<SortableList
 				items={props.items}
 				useDragHandle={true}
 				onSortEnd={handleSort}
+				changeBaseComposer={props.changeBaseComposer}
+				deleteItemComposer={props.deleteItemComposer}
+				completeItemComposer={props.completeItemComposer}
+				classForList={classes.root}
 			/>
-		</ul>
+		</div>
 	);
 };
 
