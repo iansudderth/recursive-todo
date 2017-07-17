@@ -28,15 +28,18 @@ var _reduxDevtoolsExtension = require("redux-devtools-extension");
 
 var _styles = require("material-ui/styles");
 
+var _TodoContainer = require("./containers/TodoContainer.js");
+
+var _TodoContainer2 = _interopRequireDefault(_TodoContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var createStoreWithMiddleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxPromise2.default))(_redux.createStore);
 // import ReactDOM from "react-dom";
 // import registerServiceWorker from "./registerServiceWorker";
-
+var createStoreWithMiddleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxPromise2.default))(_redux.createStore);
 
 var Boiler = function Boiler() {
-	return _react2.default.createElement(_reactRedux.Provider, { store: createStoreWithMiddleware(_reducers2.default) }, _react2.default.createElement(_styles.MuiThemeProvider, null, _react2.default.createElement(_App2.default, null)));
+	return _react2.default.createElement(_reactRedux.Provider, { store: createStoreWithMiddleware(_reducers2.default) }, _react2.default.createElement(_TodoContainer2.default, null));
 };
 
 // ReactDOM.render(<Boiler />, document.getElementById("root"));
