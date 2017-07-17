@@ -1,7 +1,0 @@
-@import "../../style/variables.css";
-
-ul.completeList{
-	background-color: $list-bg-color;
-	border-top:5px double $dark-grey;
-	margin-top: 4px;
-}

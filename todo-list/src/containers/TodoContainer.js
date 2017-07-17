@@ -10,9 +10,8 @@ import {
 } from "../actions";
 import { bindActionCreators } from "redux";
 // import style from "../components/ListItem/style.css";
-import NewItemForm from "../components/NewItemForm";
-import ListHeader from "../components/ListHeader";
-import Card, { CardActions, CardContent } from "material-ui/Card";
+import ListHeader from "../components/ListHeader.js";
+import Card from "material-ui/Card";
 
 class TodoContainer extends Component {
 	constructor(props) {

@@ -2,9 +2,8 @@ import React from "react";
 // import style from "./style.css";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
-import ReactConfirmAlert, { confirmAlert } from "react-confirm-alert";
 import { SortableHandle } from "react-sortable-hoc";
-import { ListItem, ListItemIcon, ListItemText } from "material-ui/List";
+import { ListItem, ListItemText } from "material-ui/List";
 import Checkbox from "material-ui/Checkbox";
 import IconButton from "material-ui/IconButton";
 import Reorder from "material-ui-icons/Reorder";
@@ -31,16 +30,6 @@ const BaseListItem = props => {
 		: {};
 	const completeStyle = item.complete ? { color: completeGrey } : {};
 
-	function handleDelete() {
-		confirmAlert({
-			title: "Confirm Delete",
-			message: `Are you sure you want to delete "${item.content}" and all its children?`,
-			confirmLabel: "Confirm",
-			cancelLabel: "Cancel",
-			onConfirm: props.deleteItemComposer(item.id),
-			onCancel: () => console.log("cancel")
-		});
-	}
 
 	function completeDisplay() {
 		var completed = item.completeChildren.length;

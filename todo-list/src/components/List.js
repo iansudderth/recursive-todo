@@ -2,8 +2,8 @@ import React from "react";
 // import style from "./style.css";
 // import PropTypes from 'prop-types'
 // import _ from 'lodash';
-import IncompleteList from "../IncompleteList/";
-import CompleteList from "../CompleteList/";
+import IncompleteList from "./IncompleteList.js";
+import CompleteList from "./CompleteList.js";
 import { withStyles, createStyleSheet } from "material-ui/styles";
 
 const styleSheet = createStyleSheet("List", theme => ({

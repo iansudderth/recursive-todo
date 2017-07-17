@@ -9,6 +9,7 @@ import ReduxPromise from "redux-promise";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { MuiThemeProvider } from 'material-ui/styles';
 
+
 const createStoreWithMiddleware = composeWithDevTools(
 	applyMiddleware(ReduxPromise)
 )(createStore);

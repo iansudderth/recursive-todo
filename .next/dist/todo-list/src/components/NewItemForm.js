@@ -20,13 +20,11 @@ var _Grid = require("material-ui/Grid");
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
-var _Paper = require("material-ui/Paper");
-
-var _Paper2 = _interopRequireDefault(_Paper);
-
 var _styles = require("material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/NewItemForm.js";
 
 var _createClass = function () {
 	function defineProperties(target, props) {
@@ -109,14 +107,49 @@ var NewItemForm = function (_Component) {
 		value: function render() {
 			var classes = this.props.classes;
 
-			return _react2.default.createElement("div", { className: classes.container }, _react2.default.createElement("form", { onSubmit: this.submitHandler }, _react2.default.createElement(_Grid2.default, { container: true, gutter: 24, align: "center" }, _react2.default.createElement(_Grid2.default, { item: true, className: classes.typeItem }, _react2.default.createElement(_TextField2.default, {
+			return _react2.default.createElement("div", { className: classes.container, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 49
+				},
+				__self: this
+			}, _react2.default.createElement("form", { onSubmit: this.submitHandler, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 50
+				},
+				__self: this
+			}, _react2.default.createElement(_Grid2.default, { container: true, gutter: 24, align: "center", __source: {
+					fileName: _jsxFileName,
+					lineNumber: 51
+				},
+				__self: this
+			}, _react2.default.createElement(_Grid2.default, { item: true, className: classes.typeItem, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 52
+				},
+				__self: this
+			}, _react2.default.createElement(_TextField2.default, {
 				id: "newItem",
 				label: "New Item",
 				type: "text",
 				fullWidth: true,
 				value: this.state.newItem,
-				onChange: this.inputUpdate
-			})), _react2.default.createElement(_Grid2.default, { item: true }, _react2.default.createElement(_Button2.default, { type: "submit", raised: true }, "Make a New Item")))));
+				onChange: this.inputUpdate,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 53
+				},
+				__self: this
+			})), _react2.default.createElement(_Grid2.default, { item: true, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 62
+				},
+				__self: this
+			}, _react2.default.createElement(_Button2.default, { type: "submit", raised: true, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 63
+				},
+				__self: this
+			}, "Make a New Item")))));
 		}
 	}]);
 

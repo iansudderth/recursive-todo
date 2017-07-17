@@ -6,7 +6,7 @@ import { withStyles, createStyleSheet } from "material-ui/styles";
 import Typography from "material-ui/Typography";
 import Divider from "material-ui/Divider";
 import ChevronRight from "material-ui-icons/ChevronRight";
-import NewItemForm from "../NewItemForm";
+import NewItemForm from "./NewItemForm.js";
 
 const styleSheet = createStyleSheet("Header", theme => ({
 	titleContainer: {

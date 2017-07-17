@@ -8,10 +8,6 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactConfirmAlert = require("react-confirm-alert");
-
-var _reactConfirmAlert2 = _interopRequireDefault(_reactConfirmAlert);
-
 var _reactSortableHoc = require("react-sortable-hoc");
 
 var _List = require("material-ui/List");
@@ -40,11 +36,29 @@ var _colors = require("material-ui/colors");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListItem.js",
+    _this = undefined;
+// import style from "./style.css";
+// import PropTypes from 'prop-types'
+// import _ from 'lodash';
+
+
 var BaseListItem = function BaseListItem(props) {
 	var item = props.value;
 
 	var DragHandle = (0, _reactSortableHoc.SortableHandle)(function () {
-		return _react2.default.createElement(_IconButton2.default, { disabled: item.complete }, _react2.default.createElement(_Reorder2.default, null));
+		return _react2.default.createElement(_IconButton2.default, { disabled: item.complete, __source: {
+				fileName: _jsxFileName,
+				lineNumber: 18
+			},
+			__self: _this
+		}, _react2.default.createElement(_Reorder2.default, {
+			__source: {
+				fileName: _jsxFileName,
+				lineNumber: 19
+			},
+			__self: _this
+		}));
 	});
 	var incompleteListStyle = { backgroundColor: _colors.lightBlue[200] };
 	var completeListStyle = { backgroundColor: _colors.grey[300] };
@@ -53,19 +67,6 @@ var BaseListItem = function BaseListItem(props) {
 	var completeLineStyle = item.complete ? { color: completeGrey, textDecoration: "line-through" } : {};
 	var completeStyle = item.complete ? { color: completeGrey } : {};
 
-	function handleDelete() {
-		(0, _reactConfirmAlert.confirmAlert)({
-			title: "Confirm Delete",
-			message: "Are you sure you want to delete \"" + item.content + "\" and all its children?",
-			confirmLabel: "Confirm",
-			cancelLabel: "Cancel",
-			onConfirm: props.deleteItemComposer(item.id),
-			onCancel: function onCancel() {
-				return console.log("cancel");
-			}
-		});
-	}
-
 	function completeDisplay() {
 		var completed = item.completeChildren.length;
 		var total = completed + item.incompleteChildren.length;
@@ -73,31 +74,80 @@ var BaseListItem = function BaseListItem(props) {
 			return "";
 		} else {
 			return _react2.default.createElement("span", {
-				style: completeStyle
+				style: completeStyle,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 41
+				},
+				__self: this
 			}, "( " + completed + " / " + total + " complete)");
 		}
 	}
 
 	function content() {
-		return _react2.default.createElement("span", { style: completeLineStyle }, item.content);
+		return _react2.default.createElement("span", { style: completeLineStyle, __source: {
+				fileName: _jsxFileName,
+				lineNumber: 50
+			},
+			__self: this
+		}, item.content);
 	}
 
-	return _react2.default.createElement(_List.ListItem, { divider: true, style: listItemStyle }, _react2.default.createElement(DragHandle, null), _react2.default.createElement(_Checkbox2.default, {
+	return _react2.default.createElement(_List.ListItem, { divider: true, style: listItemStyle, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 57
+		},
+		__self: _this
+	}, _react2.default.createElement(DragHandle, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 58
+		},
+		__self: _this
+	}), _react2.default.createElement(_Checkbox2.default, {
 		checked: item.complete,
 		onClick: props.completeItemComposer(item.id),
-		style: completeStyle
-	}), _react2.default.createElement(_List.ListItemText, { primary: content(), secondary: completeDisplay() }), _react2.default.createElement(_IconButton2.default, {
+		style: completeStyle,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 59
+		},
+		__self: _this
+	}), _react2.default.createElement(_List.ListItemText, { primary: content(), secondary: completeDisplay(), __source: {
+			fileName: _jsxFileName,
+			lineNumber: 65
+		},
+		__self: _this
+	}), _react2.default.createElement(_IconButton2.default, {
 		onClick: props.changeBaseComposer(item.id),
-		style: completeStyle
-	}, _react2.default.createElement(_FormatListBulleted2.default, null)), _react2.default.createElement(_IconButton2.default, {
+		style: completeStyle,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 67
+		},
+		__self: _this
+	}, _react2.default.createElement(_FormatListBulleted2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 71
+		},
+		__self: _this
+	})), _react2.default.createElement(_IconButton2.default, {
 		onClick: props.deleteItemComposer(item.id),
-		style: completeStyle
-	}, _react2.default.createElement(_DeleteForever2.default, null)));
+		style: completeStyle,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 74
+		},
+		__self: _this
+	}, _react2.default.createElement(_DeleteForever2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 78
+		},
+		__self: _this
+	})));
 };
-// import style from "./style.css";
-// import PropTypes from 'prop-types'
-// import _ from 'lodash';
-
 
 BaseListItem.propTypes = {};
 

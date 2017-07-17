@@ -16,7 +16,7 @@ var _lodash = require("lodash");
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _ListItem = require("../ListItem/");
+var _ListItem = require("./ListItem.js");
 
 var _ListItem2 = _interopRequireDefault(_ListItem);
 
@@ -28,6 +28,11 @@ var _styles = require("material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/CompleteList.js",
+    _this = undefined;
+// import style from "./style.css";
+
+
 var styleSheet = (0, _styles.createStyleSheet)("CompleteList", function (theme) {
 	return {
 		container: {
@@ -36,19 +41,27 @@ var styleSheet = (0, _styles.createStyleSheet)("CompleteList", function (theme) 
 		}
 	};
 });
-// import style from "./style.css";
-
 
 var CompleteList = function CompleteList(props) {
 	var classes = props.classes;
 
-	return _react2.default.createElement(_List2.default, { className: classes.container }, props.items.map(function (value) {
+	return _react2.default.createElement(_List2.default, { className: classes.container, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 20
+		},
+		__self: _this
+	}, props.items.map(function (value) {
 		return _react2.default.createElement(_ListItem2.default, {
 			key: "item-" + value.id,
 			value: value,
 			changeBaseComposer: props.changeBaseComposer,
 			deleteItemComposer: props.deleteItemComposer,
-			completeItemComposer: props.completeItemComposer
+			completeItemComposer: props.completeItemComposer,
+			__source: {
+				fileName: _jsxFileName,
+				lineNumber: 23
+			},
+			__self: _this
 		});
 	}));
 };

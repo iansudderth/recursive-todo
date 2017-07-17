@@ -14,6 +14,8 @@ var _TodoContainer2 = _interopRequireDefault(_TodoContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = '/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/App.js';
+
 var _createClass = function () {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -54,7 +56,19 @@ var App = function (_Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', null, _react2.default.createElement(_TodoContainer2.default, null));
+      return _react2.default.createElement('div', {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7
+        },
+        __self: this
+      }, _react2.default.createElement(_TodoContainer2.default, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8
+        },
+        __self: this
+      }));
     }
   }]);
 
