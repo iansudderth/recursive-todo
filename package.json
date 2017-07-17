@@ -82,11 +82,6 @@
   "engines": {
     "node": "6.9.x"
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
   "eslintConfig": {
     "extends": "react-app"
   }
