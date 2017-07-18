@@ -4,6 +4,26 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require("babel-runtime/helpers/createClass");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require("babel-runtime/helpers/possibleConstructorReturn");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require("babel-runtime/helpers/inherits");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -24,15 +44,41 @@ var _Reorder = require("material-ui-icons/Reorder");
 
 var _Reorder2 = _interopRequireDefault(_Reorder);
 
+var _Brightness = require("material-ui-icons/Brightness1");
+
+var _Brightness2 = _interopRequireDefault(_Brightness);
+
 var _DeleteForever = require("material-ui-icons/DeleteForever");
 
 var _DeleteForever2 = _interopRequireDefault(_DeleteForever);
+
+var _Settings = require("material-ui-icons/Settings");
+
+var _Settings2 = _interopRequireDefault(_Settings);
 
 var _FormatListBulleted = require("material-ui-icons/FormatListBulleted");
 
 var _FormatListBulleted2 = _interopRequireDefault(_FormatListBulleted);
 
 var _colors = require("material-ui/colors");
+
+var _Button = require("material-ui/Button");
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _Menu = require("material-ui/Menu");
+
+var _Menu2 = _interopRequireDefault(_Menu);
+
+var _Typography = require("material-ui/Typography");
+
+var _Typography2 = _interopRequireDefault(_Typography);
+
+var _Divider = require("material-ui/Divider");
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _colorParser = require("../helpers/colorParser.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45,99 +91,204 @@ var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/to
 var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (props) {
 	return _react2.default.createElement("span", { style: props.completeStyle, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 15
+			lineNumber: 22
 		}
 	}, _react2.default.createElement(_Reorder2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 16
+			lineNumber: 23
 		}
 	}));
 });
 
-var BaseListItem = function BaseListItem(props) {
-	var item = props.value;
+var ColorMenu = function ColorMenu(props) {
+	var colors = ['red', 'purple', 'lightBlue', 'teal', 'lightGreen', 'yellow', 'orange', 'pink'];
+	return _react2.default.createElement("div", {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 30
+		}
+	}, colors.map(function (color, index) {
 
-	var incompleteListStyle = { backgroundColor: _colors.lightBlue[200] };
-	var completeListStyle = { backgroundColor: _colors.grey[300] };
-	var listItemStyle = item.complete ? completeListStyle : incompleteListStyle;
-	var completeGrey = _colors.grey[500];
-	var completeLineStyle = item.complete ? { color: completeGrey, textDecoration: "line-through" } : {};
-	var completeStyle = item.complete ? { color: completeGrey } : {};
+		var breakLine = index % 4 === 3 ? _react2.default.createElement("br", {
+			__source: {
+				fileName: _jsxFileName,
+				lineNumber: 33
+			}
+		}) : "";
 
-	function completeDisplay() {
-		var completed = item.completeChildren.length;
-		var total = completed + item.incompleteChildren.length;
-		if (total === 0) {
-			return "";
-		} else {
-			return _react2.default.createElement("span", {
-				style: completeStyle,
+		return _react2.default.createElement("span", { key: color + "-" + index, __source: {
+				fileName: _jsxFileName,
+				lineNumber: 36
+			}
+		}, _react2.default.createElement(_IconButton2.default, {
+			style: { color: (0, _colorParser.primaryColorParser)(color) },
+			__source: {
+				fileName: _jsxFileName,
+				lineNumber: 37
+			}
+		}, _react2.default.createElement(_Brightness2.default, {
+			__source: {
+				fileName: _jsxFileName,
+				lineNumber: 40
+			}
+		})), breakLine);
+	}));
+};
+
+var BaseListItem = function (_Component) {
+	(0, _inherits3.default)(BaseListItem, _Component);
+
+	function BaseListItem(props) {
+		(0, _classCallCheck3.default)(this, BaseListItem);
+
+		var _this = (0, _possibleConstructorReturn3.default)(this, (BaseListItem.__proto__ || (0, _getPrototypeOf2.default)(BaseListItem)).call(this, props));
+
+		_this.item = _this.props.value;
+		_this.incompleteListStyle = { backgroundColor: _colors.lightBlue[200] };
+		_this.completeListStyle = { backgroundColor: _colors.grey[300] };
+		_this.listItemStyle = _this.item.complete ? _this.completeListStyle : _this.incompleteListStyle;
+		_this.completeGrey = _colors.grey[500];
+		_this.completeLineStyle = _this.item.complete ? { color: _this.completeGrey, textDecoration: "line-through" } : {};
+		_this.completeStyle = _this.item.complete ? { color: _this.completeGrey } : {};
+
+		_this.state = {
+			open: false,
+			anchorEl: undefined
+		};
+
+		_this.completeDisplay = _this.completeDisplay.bind(_this);
+		_this.content = _this.content.bind(_this);
+		_this.openMenu = _this.openMenu.bind(_this);
+		_this.closeMenu = _this.closeMenu.bind(_this);
+		return _this;
+	}
+
+	(0, _createClass3.default)(BaseListItem, [{
+		key: "completeDisplay",
+		value: function completeDisplay() {
+			var completed = this.item.completeChildren.length;
+			var total = completed + this.item.incompleteChildren.length;
+			if (total === 0) {
+				return "";
+			} else {
+				return _react2.default.createElement("span", {
+					style: this.completeStyle,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 87
+					}
+				}, "( " + completed + " / " + total + " complete)");
+			}
+		}
+	}, {
+		key: "content",
+		value: function content() {
+			return _react2.default.createElement("span", { style: this.completeLineStyle, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 96
+				}
+			}, this.item.content);
+		}
+	}, {
+		key: "openMenu",
+		value: function openMenu(event) {
+			this.setState({ open: true, anchorEl: event.currentTarget });
+		}
+	}, {
+		key: "closeMenu",
+		value: function closeMenu() {
+			this.setState({ open: false });
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			return _react2.default.createElement(_List.ListItem, { divider: true, style: this.listItemStyle, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 112
+				}
+			}, _react2.default.createElement(DragHandle, {
+				completeStyle: this.completeStyle,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 43
+					lineNumber: 113
 				}
-			}, "( " + completed + " / " + total + " complete)");
+			}), _react2.default.createElement(_Checkbox2.default, {
+				checked: this.item.complete,
+				onClick: this.props.completeItemComposer(this.item.id),
+				style: this.completeStyle,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 116
+				}
+			}), _react2.default.createElement(_List.ListItemText, { primary: this.content(), secondary: this.completeDisplay(), __source: {
+					fileName: _jsxFileName,
+					lineNumber: 122
+				}
+			}), _react2.default.createElement(_IconButton2.default, {
+				onClick: this.props.changeBaseComposer(this.item.id),
+				style: this.completeStyle,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 124
+				}
+			}, _react2.default.createElement(_FormatListBulleted2.default, {
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 128
+				}
+			})), _react2.default.createElement(_IconButton2.default, { onClick: this.openMenu, __source: {
+					fileName: _jsxFileName,
+					lineNumber: 130
+				}
+			}, _react2.default.createElement(_Settings2.default, {
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 131
+				}
+			})), _react2.default.createElement(_Menu2.default, {
+				id: this.item.id + "-menu",
+				open: this.state.open,
+				onRequestClose: this.closeMenu,
+				anchorEl: this.state.anchorEl,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 133
+				}
+			}, _react2.default.createElement(_Typography2.default, {
+				type: "subheading",
+				align: 'center',
+				style: { outline: 'none', paddingLeft: 16 },
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 139
+				}
+			}, "Change Color"), _react2.default.createElement(_Divider2.default, {
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 144
+				}
+			}), _react2.default.createElement(ColorMenu, {
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 145
+				}
+			})));
 		}
-	}
+	}]);
 
-	function content() {
-		return _react2.default.createElement("span", { style: completeLineStyle, __source: {
-				fileName: _jsxFileName,
-				lineNumber: 52
-			}
-		}, item.content);
-	}
+	return BaseListItem;
+}(_react.Component);
 
-	return _react2.default.createElement(_List.ListItem, { divider: true, style: listItemStyle, __source: {
-			fileName: _jsxFileName,
-			lineNumber: 59
-		}
-	}, _react2.default.createElement(DragHandle, {
-		completeStyle: completeStyle,
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 60
-		}
-	}), _react2.default.createElement(_Checkbox2.default, {
-		checked: item.complete,
-		onClick: props.completeItemComposer(item.id),
-		style: completeStyle,
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 63
-		}
-	}), _react2.default.createElement(_List.ListItemText, { primary: content(), secondary: completeDisplay(), __source: {
-			fileName: _jsxFileName,
-			lineNumber: 69
-		}
-	}), _react2.default.createElement(_IconButton2.default, {
-		onClick: props.changeBaseComposer(item.id),
-		style: completeStyle,
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 71
-		}
-	}, _react2.default.createElement(_FormatListBulleted2.default, {
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 75
-		}
-	})), _react2.default.createElement(_IconButton2.default, {
-		onClick: props.deleteItemComposer(item.id),
-		style: completeStyle,
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 78
-		}
-	}, _react2.default.createElement(_DeleteForever2.default, {
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 82
-		}
-	})));
-};
+;
 
 BaseListItem.propTypes = {};
 
 exports.default = BaseListItem;
+
+// <IconButton
+// 	onClick={props.deleteItemComposer(item.id)}
+// 	style={completeStyle}
+// >
+// 	<DeleteForever />
+// </IconButton>
