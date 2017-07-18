@@ -4,8 +4,15 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.fadedColorParser = exports.accentColorParser = exports.primaryColorParser = undefined;
+exports.textColorParser = textColorParser;
 
 var _colors = require('material-ui/colors');
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // function colorParserComposer(modifier
 // }
@@ -25,8 +32,26 @@ function colorParserComposer(modifier) {
 	};
 }
 
+function textColorParser(colorText, complete) {
+	var whiteList = ['red', 'pink', 'purple', 'deepPurple', 'indigo', 'blue', 'teal', 'deepOrange', 'brown', 'blueGrey'];
+	var blackList = ['lightBlue', 'cyan', 'green', 'lightGreen', 'lime', 'yellow', 'amber', 'orange', 'grey'];
+	if (complete) {
+		if (_lodash2.default.includes(whiteList, colorText)) {
+			return '#000000';
+		} else {
+			return '#ffffff';
+		}
+	} else {
+		if (_lodash2.default.includes(whiteList, colorText)) {
+			return '#ffffff';
+		} else {
+			return '#000000';
+		}
+	}
+}
+
 var primaryColorParser = exports.primaryColorParser = colorParserComposer(500);
 
 var accentColorParser = exports.accentColorParser = colorParserComposer('A400');
 
-var fadedColorParser = exports.fadedColorParser = colorParserComposer(200);
+var fadedColorParser = exports.fadedColorParser = colorParserComposer(100);

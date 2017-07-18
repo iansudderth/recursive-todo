@@ -33,10 +33,10 @@ const ColorMenu = (props)  => {
 				var breakLine = index % 4 === 3 ? <br /> : ""
 
 				return(
-				<span key={`${color}-${index}`}>
+				<span key={`${color}-${index}`}
+				onClick={props.clickHandler(color)}>
 				<IconButton
 				style={{color:primaryColorParser(color)}}
-				onClick={props.clickHandler(color)}
 				>
 					<Dot />
 				</IconButton>
@@ -50,10 +50,8 @@ const ColorMenu = (props)  => {
 
 
 class BaseListItem extends Component {
-
 	constructor(props){
-		super(props)
-
+		super(props);
 		this.state = {
 			open:false,
 			anchorEl: undefined
@@ -65,6 +63,7 @@ class BaseListItem extends Component {
 		this.closeMenu = this.closeMenu.bind(this);
 		this.colorItemClickHandler = this.colorItemClickHandler.bind(this);
 	}
+
 	 item = this.props.value;
 
 	incompleteListStyle = { backgroundColor: primaryColorParser(this.item.color) };
@@ -72,31 +71,35 @@ class BaseListItem extends Component {
 	// listItemStyle = this.item.complete
 	// 	? this.completeListStyle
 	// 	: this.incompleteListStyle;
-	listItemStyle = {backgroundColor:this.props.bgColor}
+	// listItemStyle = {backgroundColor:this.state.bgColor}
 	completeGrey = grey[500];
 	completeLineStyle = this.item.complete
 		? { color: this.completeGrey, textDecoration: "line-through" }
 		: {};
-	completeStyle = this.item.complete ? { color: this.completeGrey } : {};
+	completeStyle = this.item.complete
+	? { color: this.completeGrey }
+	: { color: this.textColor};
 
 
 	completeDisplay() {
 		var completed = this.item.completeChildren.length;
 		var total = completed + this.item.incompleteChildren.length;
+		var textColor = this.props.value.complete? this.completeGrey : this.props.textColor
 		if (total === 0) {
 			return "";
 		} else {
 			return (
 				<span
-					style={this.completeStyle}
+					style={{color:textColor}}
 				>{`( ${completed} / ${total} complete)`}</span>
 			);
 		}
 	}
 
 	content() {
+		var textColor = this.props.value.complete? this.completeGrey : this.props.textColor
 		return (
-			<span style={this.completeLineStyle}>
+			<span style={{color:textColor}}>
 				{this.item.content}
 			</span>
 		);
@@ -113,33 +116,41 @@ class BaseListItem extends Component {
 	colorItemClickHandler(colorName){
 		var close = this.closeMenu
 		let changeColor = this.props.changeColorComposer(this.item.id, colorName)
+		let propsColor = this.props.bgColor
 		return function(){
-		console.log(colorName)
 		changeColor()
+		close()
 		}
 	}
 
 	render(){
+		var textColor = this.props.value.complete? this.completeGrey : this.props.textColor
 	return (
-		<ListItem divider={true} style={this.listItemStyle}>
+		<ListItem divider={true} style={{backgroundColor: this.props.itemColor}}>
 			<DragHandle
-				completeStyle={this.completeStyle}
+				completeStyle={{color:textColor}}
 			/>
 			<Checkbox
 				checked={this.item.complete}
 				onClick={this.props.completeItemComposer(this.item.id)}
-				style={this.completeStyle}
+				style={{color:textColor}}
 			/>
 
-			<ListItemText primary={this.content()} secondary={this.completeDisplay()} />
+			<ListItemText primary={this.content()}
+			secondary={this.completeDisplay()}
+			style={{color:textColor}}
+			/>
 
 			<IconButton
 				onClick={this.props.changeBaseComposer(this.item.id)}
-				style={this.completeStyle}
+				style={{color:textColor}}
 			>
 				<FormatListBulleted />
 			</IconButton>
-			<IconButton onClick={this.openMenu}>
+			<IconButton
+			onClick={this.openMenu}
+			style={{color:textColor}}
+			>
 				<Settings />
 			</IconButton>
 			<Menu
@@ -166,11 +177,3 @@ class BaseListItem extends Component {
 BaseListItem.propTypes = {};
 
 export default BaseListItem;
-
-
-			// <IconButton
-			// 	onClick={props.deleteItemComposer(item.id)}
-			// 	style={completeStyle}
-			// >
-			// 	<DeleteForever />
-			// </IconButton>
