@@ -109,7 +109,8 @@ var ListHeader = function ListHeader(props) {
 	return _react2.default.createElement("div", {
 		style: {
 			backgroundColor: bgColor,
-			color: textColor
+			color: textColor,
+			transition: '.5s'
 
 		},
 		__source: {
@@ -118,7 +119,7 @@ var ListHeader = function ListHeader(props) {
 		}
 	}, _react2.default.createElement("div", { className: classes.titleContainer, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 84
+			lineNumber: 85
 		}
 	}, _react2.default.createElement(_Typography2.default, {
 		type: "headline",
@@ -126,7 +127,7 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 85
+			lineNumber: 86
 		}
 	}, props.baseItem === "root" ? "root" : props.baseItemText), _react2.default.createElement(_Typography2.default, {
 		type: "subheading",
@@ -134,22 +135,22 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 92
+			lineNumber: 93
 		}
 	}, props.counterText)), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 100
+			lineNumber: 101
 		}
 	}), _react2.default.createElement(BreadCrumb, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 101
+			lineNumber: 102
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 102
+			lineNumber: 103
 		}
 	}), _react2.default.createElement(_NewItemForm2.default, {
 		newItemAction: props.newItemAction,
@@ -158,12 +159,12 @@ var ListHeader = function ListHeader(props) {
 		accentTextColor: accentTextColor,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 103
+			lineNumber: 104
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 109
+			lineNumber: 110
 		}
 	}));
 };

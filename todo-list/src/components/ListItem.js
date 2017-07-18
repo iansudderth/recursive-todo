@@ -18,10 +18,15 @@ import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import {primaryColorParser, fadedColorParser} from '../helpers/colorParser.js'
 
-const DragHandle = SortableHandle((props) =>
-		<span style={props.completeStyle}>
+const DragHandle = SortableHandle((props) =>{
+
+	var activeStyle = props.complete ? {} : {cursor:'pointer'}
+
+	return(
+		<span style={{...props.completeStyle, ...activeStyle}}>
 		<Reorder />
 		</span>
+		)}
 );
 
 const ColorMenu = (props)  => {
@@ -135,6 +140,7 @@ class BaseListItem extends Component {
 		<ListItem divider={true} style={{backgroundColor: this.props.itemColor}}>
 			<DragHandle
 				completeStyle={{color:textColor}}
+				complete={this.item.complete}
 			/>
 			<Checkbox
 				checked={this.item.complete}
@@ -174,6 +180,17 @@ class BaseListItem extends Component {
 				<ColorMenu
 				clickHandler={this.colorItemClickHandler}
 				/>
+				<Divider />
+				<div
+				style={{textAlign:'center'}}
+				>
+				<Button
+				style={{color:'white', backgroundColor:red[500], marginTop:8}}
+				onClick={this.props.deleteItemComposer(this.item.id)}
+				>
+					<DeleteForever /> {'Delete Item'}
+				</Button>
+				</div>
 			</Menu>
 		</ListItem>
 	);

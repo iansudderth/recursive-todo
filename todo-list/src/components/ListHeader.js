@@ -77,7 +77,8 @@ const ListHeader = props => {
 		<div
 		style={{
 			backgroundColor:bgColor,
-			color:textColor
+			color:textColor,
+			transition:'.5s'
 
 		}}
 		>
