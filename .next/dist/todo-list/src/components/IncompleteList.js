@@ -20,6 +20,8 @@ var _List2 = _interopRequireDefault(_List);
 
 var _styles = require("material-ui/styles");
 
+var _colorParser = require("../helpers/colorParser.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/IncompleteList.js";
@@ -44,7 +46,7 @@ var styleSheet = (0, _styles.createStyleSheet)("IncompleteList", function (theme
 var SortableList = (0, _reactSortableHoc.SortableContainer)(function (props) {
 	return _react2.default.createElement(_List2.default, { className: props.classForList, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 27
+			lineNumber: 29
 		}
 	}, props.items.map(function (value, index) {
 		return _react2.default.createElement(SortableListItem, {
@@ -54,9 +56,12 @@ var SortableList = (0, _reactSortableHoc.SortableContainer)(function (props) {
 			changeBaseComposer: props.changeBaseComposer,
 			deleteItemComposer: props.deleteItemComposer,
 			completeItemComposer: props.completeItemComposer,
+			changeColorComposer: props.changeColorComposer,
+			bgColorComposer: props.bgColorComposer,
+			textColorComposer: props.textColorComposer,
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 30
+				lineNumber: 32
 			}
 		});
 	}));
@@ -68,9 +73,12 @@ var SortableListItem = (0, _reactSortableHoc.SortableElement)(function (props) {
 		changeBaseComposer: props.changeBaseComposer,
 		deleteItemComposer: props.deleteItemComposer,
 		completeItemComposer: props.completeItemComposer,
+		changeColorComposer: props.changeColorComposer,
+		itemColor: props.bgColorComposer(props.value.color),
+		textColor: props.textColorComposer(props.value.color, props.value.complete),
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 46
+			lineNumber: 51
 		}
 	});
 });
@@ -88,7 +96,7 @@ var IncompleteList = function IncompleteList(props) {
 	return _react2.default.createElement("div", {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 64
+			lineNumber: 72
 		}
 	}, _react2.default.createElement(SortableList, {
 		items: props.items,
@@ -98,9 +106,12 @@ var IncompleteList = function IncompleteList(props) {
 		deleteItemComposer: props.deleteItemComposer,
 		completeItemComposer: props.completeItemComposer,
 		classForList: classes.root,
+		changeColorComposer: props.changeColorComposer,
+		bgColorComposer: _colorParser.primaryColorParser,
+		textColorComposer: _colorParser.textColorParser,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 65
+			lineNumber: 73
 		}
 	}));
 };

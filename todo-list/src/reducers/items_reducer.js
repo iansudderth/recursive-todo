@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM, REORDER_ITEM } from "../actions";
+import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM, REORDER_ITEM, CHANGE_COLOR } from "../actions";
 
 function items(state = seedData, action) {
 	switch (action.type) {
@@ -11,6 +11,7 @@ function items(state = seedData, action) {
 					id: newID,
 					content: action.payload.content,
 					complete: false,
+					color:'lightBlue',
 					completeChildren: [],
 					incompleteChildren: [],
 					parent: parentID
@@ -58,6 +59,11 @@ function items(state = seedData, action) {
 				action.payload.oldIndex,
 				action.payload.newIndex
 			);
+			return newState;
+
+		case CHANGE_COLOR:
+			var newState = _.merge({}, state)
+			newState[action.payload.id].color = action.payload.color
 			return newState;
 
 		default:
@@ -123,6 +129,7 @@ const seedData = {
 		id: 1001,
 		content: "Random seed 1",
 		complete: false,
+		color:'red',
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: [1004]
@@ -131,6 +138,7 @@ const seedData = {
 		id: 1002,
 		content: "Random seed 2",
 		complete: false,
+		color:'red',
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: [1003]
@@ -139,6 +147,7 @@ const seedData = {
 		id: 1003,
 		content: "Random seed 3",
 		complete: false,
+		color:'red',
 		parent: 1002,
 		completeChildren: [],
 		incompleteChildren: []
@@ -147,6 +156,7 @@ const seedData = {
 		id: 1004,
 		content: "Random seed 4",
 		complete: false,
+		color:'red',
 		parent: 1001,
 		completeChildren: [],
 		incompleteChildren: []
@@ -155,11 +165,13 @@ const seedData = {
 		id: 1005,
 		content: "Random seed 5",
 		complete: true,
+		color:'red',
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: []
 	},
 	root: {
+		color:'red',
 		completeChildren: [1005],
 		incompleteChildren: [1001, 1002]
 	}

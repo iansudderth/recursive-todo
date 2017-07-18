@@ -18,6 +18,12 @@ const styleSheet = createStyleSheet("NewItemForm", theme => ({
 	},
 	typeItem: {
 		flexGrow: 1
+	},
+	white:{
+		color:'#ffffff'
+	},
+	black:{
+		color:'#000000'
 	}
 }));
 
@@ -44,9 +50,12 @@ class NewItemForm extends Component {
 
 	render() {
 		const classes = this.props.classes;
+		const textColorClass = this.props.textColor === '#ffffff' ? classes.white : classes.black
 
 		return (
-			<div className={classes.container}>
+			<div
+			className={classes.container}
+			>
 				<form onSubmit={this.submitHandler}>
 					<Grid container gutter={24} align={"center"}>
 						<Grid item className={classes.typeItem}>
@@ -57,10 +66,23 @@ class NewItemForm extends Component {
 								fullWidth={true}
 								value={this.state.newItem}
 								onChange={this.inputUpdate}
+								InputProps={{
+									style:{
+										color:this.props.textColor
+									}
+								}}
+								InputLabelProps={{
+									style:{
+										color:this.props.textColor
+									}
+								}}
 							/>
 						</Grid>
 						<Grid item>
-							<Button type="submit" raised>
+							<Button
+							type="submit"
+							raised
+							style={{color:this.props.accentTextColor, backgroundColor:this.props.accentColor}}>
 								Make a New Item
 							</Button>
 						</Grid>

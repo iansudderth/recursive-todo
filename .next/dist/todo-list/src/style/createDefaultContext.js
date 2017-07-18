@@ -26,8 +26,7 @@ var createDefaultContext = function createDefaultContext() {
   return _MuiThemeProvider2.default.createDefaultContext({
     theme: (0, _theme2.default)({
       palette: (0, _palette2.default)({
-        primary: _colors.purple,
-        accent: _colors.green
+        primary: _colors.grey
       })
     })
   });

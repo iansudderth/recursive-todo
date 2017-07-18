@@ -70,6 +70,7 @@ var TodoContainer = function (_Component) {
 		_this.deleteItemComposer = _this.deleteItemComposer.bind(_this);
 		_this.reorderItemComposer = _this.reorderItemComposer.bind(_this);
 		_this.generateComplete = _this.generateComplete.bind(_this);
+		_this.changeColorComposer = _this.changeColorComposer.bind(_this);
 		return _this;
 	}
 
@@ -124,13 +125,21 @@ var TodoContainer = function (_Component) {
 			return "( " + completeCount + " / " + totalCount + " Complete )";
 		}
 	}, {
+		key: "changeColorComposer",
+		value: function changeColorComposer(id, color) {
+			var changeColorDispatch = this.props.changeColor;
+			return function () {
+				changeColorDispatch(id, color);
+			};
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
 			var parentItem = this.props.items[currentItem.parent];
 			return _react2.default.createElement(_Card2.default, { style: { width: "85vw", margin: "auto", marginTop: "16px" }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 81
+					lineNumber: 90
 				}
 			}, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
@@ -142,7 +151,7 @@ var TodoContainer = function (_Component) {
 				newItemAction: this.newItemAction,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 82
+					lineNumber: 91
 				}
 			}), _react2.default.createElement(_List2.default, {
 				list: this.props.items,
@@ -151,9 +160,10 @@ var TodoContainer = function (_Component) {
 				deleteItemComposer: this.deleteItemComposer,
 				completeItemComposer: this.completeItemComposer,
 				reorderItemComposer: this.reorderItemComposer,
+				changeColorComposer: this.changeColorComposer,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 91
+					lineNumber: 100
 				}
 			}));
 		}
@@ -170,7 +180,7 @@ function mapStateToProps(_ref) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem }, dispatch);
+	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor }, dispatch);
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TodoContainer);

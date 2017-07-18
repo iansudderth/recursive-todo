@@ -18,6 +18,8 @@ var _List2 = _interopRequireDefault(_List);
 
 var _styles = require("material-ui/styles");
 
+var _colorParser = require("../helpers/colorParser.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/CompleteList.js";
@@ -40,7 +42,7 @@ var CompleteList = function CompleteList(props) {
 
 	return _react2.default.createElement(_List2.default, { className: classes.container, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 20
+			lineNumber: 21
 		}
 	}, props.items.map(function (value) {
 		return _react2.default.createElement(_ListItem2.default, {
@@ -49,9 +51,12 @@ var CompleteList = function CompleteList(props) {
 			changeBaseComposer: props.changeBaseComposer,
 			deleteItemComposer: props.deleteItemComposer,
 			completeItemComposer: props.completeItemComposer,
+			changeColorComposer: props.changeColorComposer,
+			itemColor: (0, _colorParser.fadedColorParser)(value.color),
+			textColor: (0, _colorParser.textColorParser)(value.color),
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 23
+				lineNumber: 24
 			}
 		});
 	}));

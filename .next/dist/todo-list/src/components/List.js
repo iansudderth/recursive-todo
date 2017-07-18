@@ -64,6 +64,7 @@ var List = function List(props) {
 		deleteItemComposer: props.deleteItemComposer,
 		completeItemComposer: props.completeItemComposer,
 		reorderItemComposer: props.reorderItemComposer,
+		changeColorComposer: props.changeColorComposer,
 		__source: {
 			fileName: _jsxFileName,
 			lineNumber: 34
@@ -76,9 +77,10 @@ var List = function List(props) {
 		deleteItemComposer: props.deleteItemComposer,
 		completeItemComposer: props.completeItemComposer,
 		reorderItemComposer: props.reorderItemComposer,
+		changeColorComposer: props.changeColorComposer,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 43
+			lineNumber: 44
 		}
 	}));
 };

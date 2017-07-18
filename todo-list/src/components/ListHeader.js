@@ -7,6 +7,7 @@ import Typography from "material-ui/Typography";
 import Divider from "material-ui/Divider";
 import ChevronRight from "material-ui-icons/ChevronRight";
 import NewItemForm from "./NewItemForm.js";
+import {primaryColorParser, fadedColorParser, textColorParser, accentColorParser, accentTextColorParser} from '../helpers/colorParser.js'
 
 const styleSheet = createStyleSheet("Header", theme => ({
 	titleContainer: {
@@ -27,6 +28,10 @@ const styleSheet = createStyleSheet("Header", theme => ({
 
 const ListHeader = props => {
 	const classes = props.classes;
+	const bgColor = primaryColorParser(props.items[props.baseItem].color)
+	const textColor = textColorParser(props.items[props.baseItem].color)
+	const accentColor = accentColorParser(props.items[props.baseItem].color)
+	const accentTextColor = accentTextColorParser(props.items[props.baseItem].color)
 
 	const BreadCrumb = () => {
 		let trail = [];
@@ -43,7 +48,11 @@ const ListHeader = props => {
 			trail = ["root", current, ...trail];
 		}
 		return (
-			<Typography type={"body1"} className={props.classes.crumbContainer}>
+			<Typography
+			type={"body1"}
+			className={props.classes.crumbContainer}
+			style={{color:textColor}}
+			>
 				{trail.map((item, index) => {
 					return (
 						<span
@@ -65,19 +74,40 @@ const ListHeader = props => {
 	};
 
 	return (
-		<div>
+		<div
+		style={{
+			backgroundColor:bgColor,
+			color:textColor,
+			transition:'.5s'
+
+		}}
+		>
 			<div className={classes.titleContainer}>
-				<Typography type={"headline"} align={"center"}>
+				<Typography
+				type={"headline"}
+				align={"center"}
+				style={{color:textColor}}
+				>
 					{props.baseItem === "root" ? "root" : props.baseItemText}
 				</Typography>
-				<Typography type={"subheading"} align={"center"}>
+				<Typography
+				type={"subheading"}
+				align={"center"}
+				style={{color:textColor}}
+				>
 					{props.counterText}
 				</Typography>
 			</div>
 			<Divider />
 			<BreadCrumb />
 			<Divider />
-			<NewItemForm newItemAction={props.newItemAction} />
+			<NewItemForm
+			newItemAction={props.newItemAction}
+			textColor={textColor}
+			accentColor={accentColor}
+			accentTextColor={accentTextColor}
+			/>
+			<Divider />
 		</div>
 	);
 };
