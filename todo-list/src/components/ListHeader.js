@@ -7,7 +7,7 @@ import Typography from "material-ui/Typography";
 import Divider from "material-ui/Divider";
 import ChevronRight from "material-ui-icons/ChevronRight";
 import NewItemForm from "./NewItemForm.js";
-import {primaryColorParser, fadedColorParser, textColorParser, accentColorParser} from '../helpers/colorParser.js'
+import {primaryColorParser, fadedColorParser, textColorParser, accentColorParser, accentTextColorParser} from '../helpers/colorParser.js'
 
 const styleSheet = createStyleSheet("Header", theme => ({
 	titleContainer: {
@@ -31,6 +31,7 @@ const ListHeader = props => {
 	const bgColor = primaryColorParser(props.items[props.baseItem].color)
 	const textColor = textColorParser(props.items[props.baseItem].color)
 	const accentColor = accentColorParser(props.items[props.baseItem].color)
+	const accentTextColor = accentTextColorParser(props.items[props.baseItem].color)
 
 	const BreadCrumb = () => {
 		let trail = [];
@@ -103,7 +104,9 @@ const ListHeader = props => {
 			newItemAction={props.newItemAction}
 			textColor={textColor}
 			accentColor={accentColor}
+			accentTextColor={accentTextColor}
 			/>
+			<Divider />
 		</div>
 	);
 };

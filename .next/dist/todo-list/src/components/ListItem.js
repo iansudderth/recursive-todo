@@ -176,14 +176,15 @@ var BaseListItem = function (_Component) {
 			var completed = this.item.completeChildren.length;
 			var total = completed + this.item.incompleteChildren.length;
 			var textColor = this.props.value.complete ? this.completeGrey : this.props.textColor;
+			var displayTextStyle = this.props.value.complete ? { color: this.completeGrey } : { color: this.props.textColor };
 			if (total === 0) {
 				return "";
 			} else {
 				return _react2.default.createElement("span", {
-					style: { color: textColor },
+					style: displayTextStyle,
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 92
+						lineNumber: 95
 					}
 				}, "( " + completed + " / " + total + " complete)");
 			}
@@ -192,9 +193,10 @@ var BaseListItem = function (_Component) {
 		key: "content",
 		value: function content() {
 			var textColor = this.props.value.complete ? this.completeGrey : this.props.textColor;
-			return _react2.default.createElement("span", { style: { color: textColor }, __source: {
+			var contentTextStyle = this.props.value.complete ? { color: this.completeGrey, textDecoration: "line-through" } : { color: this.props.textColor };
+			return _react2.default.createElement("span", { style: contentTextStyle, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 102
+					lineNumber: 108
 				}
 			}, this.item.content);
 		}
@@ -225,13 +227,13 @@ var BaseListItem = function (_Component) {
 			var textColor = this.props.value.complete ? this.completeGrey : this.props.textColor;
 			return _react2.default.createElement(_List.ListItem, { divider: true, style: { backgroundColor: this.props.itemColor }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 129
+					lineNumber: 135
 				}
 			}, _react2.default.createElement(DragHandle, {
 				completeStyle: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 130
+					lineNumber: 136
 				}
 			}), _react2.default.createElement(_Checkbox2.default, {
 				checked: this.item.complete,
@@ -239,38 +241,38 @@ var BaseListItem = function (_Component) {
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 133
+					lineNumber: 139
 				}
 			}), _react2.default.createElement(_List.ListItemText, { primary: this.content(),
 				secondary: this.completeDisplay(),
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 139
+					lineNumber: 145
 				}
 			}), _react2.default.createElement(_IconButton2.default, {
 				onClick: this.props.changeBaseComposer(this.item.id),
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 144
+					lineNumber: 150
 				}
 			}, _react2.default.createElement(_FormatListBulleted2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 148
+					lineNumber: 154
 				}
 			})), _react2.default.createElement(_IconButton2.default, {
 				onClick: this.openMenu,
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 150
+					lineNumber: 156
 				}
 			}, _react2.default.createElement(_Settings2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 154
+					lineNumber: 160
 				}
 			})), _react2.default.createElement(_Menu2.default, {
 				id: this.item.id + "-menu",
@@ -279,7 +281,7 @@ var BaseListItem = function (_Component) {
 				anchorEl: this.state.anchorEl,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 156
+					lineNumber: 162
 				}
 			}, _react2.default.createElement(_Typography2.default, {
 				type: "subheading",
@@ -287,18 +289,18 @@ var BaseListItem = function (_Component) {
 				style: { outline: 'none', paddingLeft: 16 },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 162
+					lineNumber: 168
 				}
 			}, "Change Color"), _react2.default.createElement(_Divider2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 167
+					lineNumber: 173
 				}
 			}), _react2.default.createElement(ColorMenu, {
 				clickHandler: this.colorItemClickHandler,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 168
+					lineNumber: 174
 				}
 			})));
 		}

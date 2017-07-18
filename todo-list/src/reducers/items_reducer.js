@@ -11,7 +11,7 @@ function items(state = seedData, action) {
 					id: newID,
 					content: action.payload.content,
 					complete: false,
-					color:'blue',
+					color:'lightBlue',
 					completeChildren: [],
 					incompleteChildren: [],
 					parent: parentID

@@ -51,6 +51,7 @@ class NewItemForm extends Component {
 	render() {
 		const classes = this.props.classes;
 		const textColorClass = this.props.textColor === '#ffffff' ? classes.white : classes.black
+
 		return (
 			<div
 			className={classes.container}
@@ -65,15 +66,23 @@ class NewItemForm extends Component {
 								fullWidth={true}
 								value={this.state.newItem}
 								onChange={this.inputUpdate}
-								style={{color:this.props.textColor}}
-								className={textColorClass}
+								InputProps={{
+									style:{
+										color:this.props.textColor
+									}
+								}}
+								InputLabelProps={{
+									style:{
+										color:this.props.textColor
+									}
+								}}
 							/>
 						</Grid>
 						<Grid item>
 							<Button
 							type="submit"
 							raised
-							style={{color:this.props.textColor, backgroundColor:this.props.accentColor}}>
+							style={{color:this.props.accentTextColor, backgroundColor:this.props.accentColor}}>
 								Make a New Item
 							</Button>
 						</Grid>

@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fadedColorParser = exports.accentColorParser = exports.primaryColorParser = undefined;
 exports.textColorParser = textColorParser;
+exports.accentTextColorParser = accentTextColorParser;
 
 var _colors = require('material-ui/colors');
 
@@ -47,6 +48,17 @@ function textColorParser(colorText, complete) {
 		} else {
 			return '#000000';
 		}
+	}
+}
+
+function accentTextColorParser(colorText) {
+	var whiteList = ['red', 'pink', 'purple', 'deepPurple', 'indigo', 'blue'];
+	var blackList = ['lightBlue', 'cyan', 'teal', 'gren', 'lightGreen', 'lime', 'yellow', 'amber', 'orange', 'deepOrange'];
+
+	if (_lodash2.default.includes(whiteList, colorText)) {
+		return '#ffffff';
+	} else {
+		return '#000000';
 	}
 }
 

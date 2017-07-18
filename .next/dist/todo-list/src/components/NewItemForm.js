@@ -105,23 +105,24 @@ var NewItemForm = function (_Component) {
 		value: function render() {
 			var classes = this.props.classes;
 			var textColorClass = this.props.textColor === '#ffffff' ? classes.white : classes.black;
+
 			return _react2.default.createElement("div", {
 				className: classes.container,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 55
+					lineNumber: 56
 				}
 			}, _react2.default.createElement("form", { onSubmit: this.submitHandler, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 58
+					lineNumber: 59
 				}
 			}, _react2.default.createElement(_Grid2.default, { container: true, gutter: 24, align: "center", __source: {
 					fileName: _jsxFileName,
-					lineNumber: 59
+					lineNumber: 60
 				}
 			}, _react2.default.createElement(_Grid2.default, { item: true, className: classes.typeItem, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 60
+					lineNumber: 61
 				}
 			}, _react2.default.createElement(_TextField2.default, {
 				id: "newItem",
@@ -130,22 +131,30 @@ var NewItemForm = function (_Component) {
 				fullWidth: true,
 				value: this.state.newItem,
 				onChange: this.inputUpdate,
-				style: { color: this.props.textColor },
-				className: textColorClass,
+				InputProps: {
+					style: {
+						color: this.props.textColor
+					}
+				},
+				InputLabelProps: {
+					style: {
+						color: this.props.textColor
+					}
+				},
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 61
+					lineNumber: 62
 				}
 			})), _react2.default.createElement(_Grid2.default, { item: true, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 72
+					lineNumber: 81
 				}
 			}, _react2.default.createElement(_Button2.default, {
 				type: "submit",
 				raised: true,
-				style: { color: this.props.textColor, backgroundColor: this.props.accentColor }, __source: {
+				style: { color: this.props.accentTextColor, backgroundColor: this.props.accentColor }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 73
+					lineNumber: 82
 				}
 			}, "Make a New Item")))));
 		}

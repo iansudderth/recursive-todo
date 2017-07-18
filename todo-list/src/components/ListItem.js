@@ -85,12 +85,15 @@ class BaseListItem extends Component {
 		var completed = this.item.completeChildren.length;
 		var total = completed + this.item.incompleteChildren.length;
 		var textColor = this.props.value.complete? this.completeGrey : this.props.textColor
+		var displayTextStyle = this.props.value.complete
+		? { color: this.completeGrey}
+		: { color: this.props.textColor};
 		if (total === 0) {
 			return "";
 		} else {
 			return (
 				<span
-					style={{color:textColor}}
+					style={displayTextStyle}
 				>{`( ${completed} / ${total} complete)`}</span>
 			);
 		}
@@ -98,8 +101,11 @@ class BaseListItem extends Component {
 
 	content() {
 		var textColor = this.props.value.complete? this.completeGrey : this.props.textColor
+		var contentTextStyle = this.props.value.complete
+		? { color: this.completeGrey, textDecoration: "line-through" }
+		: { color: this.props.textColor};
 		return (
-			<span style={{color:textColor}}>
+			<span style={contentTextStyle}>
 				{this.item.content}
 			</span>
 		);

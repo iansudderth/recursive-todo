@@ -64,6 +64,7 @@ var ListHeader = function ListHeader(props) {
 	var bgColor = (0, _colorParser.primaryColorParser)(props.items[props.baseItem].color);
 	var textColor = (0, _colorParser.textColorParser)(props.items[props.baseItem].color);
 	var accentColor = (0, _colorParser.accentColorParser)(props.items[props.baseItem].color);
+	var accentTextColor = (0, _colorParser.accentTextColorParser)(props.items[props.baseItem].color);
 
 	var BreadCrumb = function BreadCrumb() {
 		var trail = [];
@@ -85,7 +86,7 @@ var ListHeader = function ListHeader(props) {
 			style: { color: textColor },
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 50
+				lineNumber: 51
 			}
 		}, trail.map(function (item, index) {
 			return _react2.default.createElement("span", {
@@ -94,12 +95,12 @@ var ListHeader = function ListHeader(props) {
 				onClick: props.changeBaseComposer(item),
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 57
+					lineNumber: 58
 				}
 			}, item === "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 66
+					lineNumber: 67
 				}
 			}) : "", " ");
 		}));
@@ -113,11 +114,11 @@ var ListHeader = function ListHeader(props) {
 		},
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 76
+			lineNumber: 77
 		}
 	}, _react2.default.createElement("div", { className: classes.titleContainer, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 83
+			lineNumber: 84
 		}
 	}, _react2.default.createElement(_Typography2.default, {
 		type: "headline",
@@ -125,7 +126,7 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 84
+			lineNumber: 85
 		}
 	}, props.baseItem === "root" ? "root" : props.baseItemText), _react2.default.createElement(_Typography2.default, {
 		type: "subheading",
@@ -133,30 +134,36 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 91
+			lineNumber: 92
 		}
 	}, props.counterText)), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 99
+			lineNumber: 100
 		}
 	}), _react2.default.createElement(BreadCrumb, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 100
+			lineNumber: 101
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 101
+			lineNumber: 102
 		}
 	}), _react2.default.createElement(_NewItemForm2.default, {
 		newItemAction: props.newItemAction,
 		textColor: textColor,
 		accentColor: accentColor,
+		accentTextColor: accentTextColor,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 102
+			lineNumber: 103
+		}
+	}), _react2.default.createElement(_Divider2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 109
 		}
 	}));
 };
