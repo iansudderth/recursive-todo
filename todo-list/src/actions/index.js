@@ -3,6 +3,7 @@ export const CHANGE_BASE = "CHANGE_BASE";
 export const COMPLETE_ITEM = "COMPLETE_ITEM";
 export const DELETE_ITEM = "DELETE_ITEM";
 export const REORDER_ITEM = "REORDER_ITEM";
+export const CHANGE_COLOR = "CHANGE_COLOR"
 
 // ============
 // To Implement
@@ -54,4 +55,14 @@ export function reorderItem(parentID, oldIndex, newIndex) {
 			newIndex
 		}
 	};
+}
+
+export function changeColor(id,color){
+	return{
+		type: CHANGE_COLOR,
+		payload: {
+			id,
+			color
+		}
+	}
 }

@@ -8,11 +8,13 @@ exports.changeBaseItem = changeBaseItem;
 exports.completeItem = completeItem;
 exports.deleteItem = deleteItem;
 exports.reorderItem = reorderItem;
+exports.changeColor = changeColor;
 var NEW_ITEM = exports.NEW_ITEM = "NEW_ITEM";
 var CHANGE_BASE = exports.CHANGE_BASE = "CHANGE_BASE";
 var COMPLETE_ITEM = exports.COMPLETE_ITEM = "COMPLETE_ITEM";
 var DELETE_ITEM = exports.DELETE_ITEM = "DELETE_ITEM";
 var REORDER_ITEM = exports.REORDER_ITEM = "REORDER_ITEM";
+var CHANGE_COLOR = exports.CHANGE_COLOR = "CHANGE_COLOR";
 
 // ============
 // To Implement
@@ -65,6 +67,16 @@ function reorderItem(parentID, oldIndex, newIndex) {
 			parentID: parentID,
 			oldIndex: oldIndex,
 			newIndex: newIndex
+		}
+	};
+}
+
+function changeColor(id, color) {
+	return {
+		type: CHANGE_COLOR,
+		payload: {
+			id: id,
+			color: color
 		}
 	};
 }

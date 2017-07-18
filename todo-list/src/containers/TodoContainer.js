@@ -6,7 +6,8 @@ import {
 	changeBaseItem,
 	completeItem,
 	deleteItem,
-	reorderItem
+	reorderItem,
+	changeColor
 } from "../actions";
 import { bindActionCreators } from "redux";
 // import style from "../components/ListItem/style.css";
@@ -26,6 +27,7 @@ class TodoContainer extends Component {
 		this.deleteItemComposer = this.deleteItemComposer.bind(this);
 		this.reorderItemComposer = this.reorderItemComposer.bind(this);
 		this.generateComplete = this.generateComplete.bind(this);
+		this.changeColorComposer = this.changeColorComposer.bind(this);
 	}
 
 	inputUpdate(event) {
@@ -74,6 +76,13 @@ class TodoContainer extends Component {
 		return `( ${completeCount} / ${totalCount} Complete )`;
 	}
 
+	changeColorComposer(id, color) {
+		let changeColorDispatch = this.props.changeColor
+		return function (){
+			changeColorDispatch(id, color)
+		}
+	}
+
 	render() {
 		var currentItem = this.props.items[this.props.baseItem];
 		var parentItem = this.props.items[currentItem.parent];
@@ -95,6 +104,7 @@ class TodoContainer extends Component {
 					deleteItemComposer={this.deleteItemComposer}
 					completeItemComposer={this.completeItemComposer}
 					reorderItemComposer={this.reorderItemComposer}
+					changeColorComposer ={this.changeColorComposer}
 				/>
 			</Card>
 		);
@@ -107,7 +117,7 @@ function mapStateToProps({ items, baseItem }) {
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
-		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem },
+		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem, changeColor },
 		dispatch
 	);
 }

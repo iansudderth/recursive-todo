@@ -9,6 +9,8 @@ import {
 import ListItem from "./ListItem.js";
 import List from "material-ui/List";
 import { withStyles, createStyleSheet } from "material-ui/styles";
+import {primaryColorParser, fadedColorParser} from '../helpers/colorParser.js'
+
 
 const styleSheet = createStyleSheet("IncompleteList", theme => ({
 	container: {
@@ -34,6 +36,8 @@ const SortableList = SortableContainer((props) => {
 						changeBaseComposer={props.changeBaseComposer}
 						deleteItemComposer={props.deleteItemComposer}
 						completeItemComposer={props.completeItemComposer}
+						changeColorComposer ={props.changeColorComposer}
+						bgColorComposer={props.bgColorComposer}
 					/>
 				);
 			})}
@@ -48,6 +52,8 @@ const SortableListItem = SortableElement((props) => {
 			changeBaseComposer={props.changeBaseComposer}
 			deleteItemComposer={props.deleteItemComposer}
 			completeItemComposer={props.completeItemComposer}
+			changeColorComposer ={props.changeColorComposer}
+			bgColor={props.bgColorComposer(props.value.color)}
 		/>
 	);
 });
@@ -70,6 +76,8 @@ const IncompleteList = props => {
 				deleteItemComposer={props.deleteItemComposer}
 				completeItemComposer={props.completeItemComposer}
 				classForList={classes.root}
+				changeColorComposer ={props.changeColorComposer}
+				bgColorComposer={primaryColorParser}
 			/>
 		</div>
 	);

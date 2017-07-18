@@ -39,6 +39,7 @@ const List = props => {
 				deleteItemComposer={props.deleteItemComposer}
 				completeItemComposer={props.completeItemComposer}
 				reorderItemComposer={props.reorderItemComposer}
+				changeColorComposer ={props.changeColorComposer}
 			/>
 			<CompleteList
 				items={completeListItems}
@@ -48,6 +49,7 @@ const List = props => {
 				deleteItemComposer={props.deleteItemComposer}
 				completeItemComposer={props.completeItemComposer}
 				reorderItemComposer={props.reorderItemComposer}
+				changeColorComposer ={props.changeColorComposer}
 			/>
 		</div>
 	);

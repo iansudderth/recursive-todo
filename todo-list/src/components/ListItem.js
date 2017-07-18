@@ -16,7 +16,7 @@ import Button from 'material-ui/Button';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
-import {primaryColorParser} from '../helpers/colorParser.js'
+import {primaryColorParser, fadedColorParser} from '../helpers/colorParser.js'
 
 const DragHandle = SortableHandle((props) =>
 		<span style={props.completeStyle}>
@@ -36,6 +36,7 @@ const ColorMenu = (props)  => {
 				<span key={`${color}-${index}`}>
 				<IconButton
 				style={{color:primaryColorParser(color)}}
+				onClick={props.clickHandler(color)}
 				>
 					<Dot />
 				</IconButton>
@@ -62,14 +63,16 @@ class BaseListItem extends Component {
 		this.content = this.content.bind(this);
 		this.openMenu = this.openMenu.bind(this);
 		this.closeMenu = this.closeMenu.bind(this);
+		this.colorItemClickHandler = this.colorItemClickHandler.bind(this);
 	}
 	 item = this.props.value;
 
-	incompleteListStyle = { backgroundColor: lightBlue[200] };
-	completeListStyle = { backgroundColor: grey[300] };
-	listItemStyle = this.item.complete
-		? this.completeListStyle
-		: this.incompleteListStyle;
+	incompleteListStyle = { backgroundColor: primaryColorParser(this.item.color) };
+	completeListStyle = { backgroundColor: fadedColorParser(this.item.color) };
+	// listItemStyle = this.item.complete
+	// 	? this.completeListStyle
+	// 	: this.incompleteListStyle;
+	listItemStyle = {backgroundColor:this.props.bgColor}
 	completeGrey = grey[500];
 	completeLineStyle = this.item.complete
 		? { color: this.completeGrey, textDecoration: "line-through" }
@@ -107,6 +110,15 @@ class BaseListItem extends Component {
 		this.setState({open:false})
 	}
 
+	colorItemClickHandler(colorName){
+		var close = this.closeMenu
+		let changeColor = this.props.changeColorComposer(this.item.id, colorName)
+		return function(){
+		console.log(colorName)
+		changeColor()
+		}
+	}
+
 	render(){
 	return (
 		<ListItem divider={true} style={this.listItemStyle}>
@@ -142,7 +154,9 @@ class BaseListItem extends Component {
 				style={{outline:'none', paddingLeft:16}}
 				>Change Color</Typography>
 				<Divider />
-				<ColorMenu />
+				<ColorMenu
+				clickHandler={this.colorItemClickHandler}
+				/>
 			</Menu>
 		</ListItem>
 	);
