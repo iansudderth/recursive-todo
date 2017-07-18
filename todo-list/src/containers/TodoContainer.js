@@ -87,7 +87,7 @@ class TodoContainer extends Component {
 		var currentItem = this.props.items[this.props.baseItem];
 		var parentItem = this.props.items[currentItem.parent];
 		return (
-			<Card style={{ width: "85vw", margin: "auto", marginTop: "16px" }}>
+			<Card style={{ margin: "auto", margin: "16px" }}>
 				<ListHeader
 					baseItem={this.props.baseItem}
 					baseItemText={currentItem.content}

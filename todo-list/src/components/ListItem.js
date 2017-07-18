@@ -21,9 +21,10 @@ import {primaryColorParser, fadedColorParser} from '../helpers/colorParser.js'
 const DragHandle = SortableHandle((props) =>{
 
 	var activeStyle = props.complete ? {} : {cursor:'pointer'}
+	var centerStyle = {display:'flex', alignItems:'center', margin:12}
 
 	return(
-		<span style={{...props.completeStyle, ...activeStyle}}>
+		<span style={{...props.completeStyle, ...activeStyle, ...centerStyle}}>
 		<Reorder />
 		</span>
 		)}
@@ -110,7 +111,7 @@ class BaseListItem extends Component {
 		? { color: this.completeGrey, textDecoration: "line-through" }
 		: { color: this.props.textColor};
 		return (
-			<span style={contentTextStyle}>
+			<span style={{...contentTextStyle, wordWrap:'break-word', wordBreak:'break-all'}}>
 				{this.item.content}
 			</span>
 		);
@@ -137,7 +138,7 @@ class BaseListItem extends Component {
 	render(){
 		var textColor = this.props.value.complete? this.completeGrey : this.props.textColor
 	return (
-		<ListItem divider={true} style={{backgroundColor: this.props.itemColor}}>
+		<ListItem divider={true} style={{backgroundColor: this.props.itemColor, padding:12}}>
 			<DragHandle
 				completeStyle={{color:textColor}}
 				complete={this.item.complete}
@@ -150,7 +151,7 @@ class BaseListItem extends Component {
 
 			<ListItemText primary={this.content()}
 			secondary={this.completeDisplay()}
-			style={{color:textColor}}
+			style={{color:textColor,padding:'0px', wordWrap : 'break-word'}}
 			/>
 
 			<IconButton

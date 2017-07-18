@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _defineProperty2 = require("babel-runtime/helpers/defineProperty");
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
 var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -137,7 +141,7 @@ var TodoContainer = function (_Component) {
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
 			var parentItem = this.props.items[currentItem.parent];
-			return _react2.default.createElement(_Card2.default, { style: { width: "85vw", margin: "auto", marginTop: "16px" }, __source: {
+			return _react2.default.createElement(_Card2.default, { style: (0, _defineProperty3.default)({ margin: "auto" }, "margin", "16px"), __source: {
 					fileName: _jsxFileName,
 					lineNumber: 90
 				}
@@ -172,9 +176,9 @@ var TodoContainer = function (_Component) {
 	return TodoContainer;
 }(_react.Component);
 
-function mapStateToProps(_ref) {
-	var items = _ref.items,
-	    baseItem = _ref.baseItem;
+function mapStateToProps(_ref2) {
+	var items = _ref2.items,
+	    baseItem = _ref2.baseItem;
 
 	return { items: items, baseItem: baseItem };
 }

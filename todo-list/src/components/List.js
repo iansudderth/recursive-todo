@@ -9,8 +9,6 @@ import { withStyles, createStyleSheet } from "material-ui/styles";
 
 const styleSheet = createStyleSheet("List", theme => ({
 	container: {
-		width: "85vw",
-		margin: "auto"
 	}
 }));
 

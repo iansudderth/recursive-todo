@@ -28,10 +28,7 @@ var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/to
 
 var styleSheet = (0, _styles.createStyleSheet)("List", function (theme) {
 	return {
-		container: {
-			width: "85vw",
-			margin: "auto"
-		}
+		container: {}
 	};
 });
 
@@ -54,7 +51,7 @@ var List = function List(props) {
 
 	return _react2.default.createElement("div", { className: classes.container, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 33
+			lineNumber: 31
 		}
 	}, _react2.default.createElement(_IncompleteList2.default, {
 		items: incompleteListItems,
@@ -67,7 +64,7 @@ var List = function List(props) {
 		changeColorComposer: props.changeColorComposer,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 34
+			lineNumber: 32
 		}
 	}), _react2.default.createElement(_CompleteList2.default, {
 		items: completeListItems,
@@ -80,7 +77,7 @@ var List = function List(props) {
 		changeColorComposer: props.changeColorComposer,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 44
+			lineNumber: 42
 		}
 	}));
 };
