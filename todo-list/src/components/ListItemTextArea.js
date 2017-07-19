@@ -9,7 +9,7 @@ class ListItemTextArea extends Component {
 
 		this.state={
 			editMode:false,
-			editText:''
+			editText:props.rawText
 		}
 
 		this.TextContainer = this.TextContainer.bind(this)
@@ -53,6 +53,7 @@ class ListItemTextArea extends Component {
 
 	handleBlur(event){
 		console.log(this.state.editText)
+		this.props.updateItem(this.props.id, this.state.editText)
 		console.log('blurred')
 		this.setState({editMode:false})
 	}
@@ -81,7 +82,7 @@ class ListItemTextArea extends Component {
 	doubleClickHandler(){
 		console.log("double click!!!")
 		var text = this.props.rawText
-		this.setState({editText:text, editMode:true})
+		this.setState({editMode:true})
 	}
 
 	render(){
@@ -90,7 +91,7 @@ class ListItemTextArea extends Component {
 			<TextContainer
 			doubleClickHandler={this.doubleClickHandler}
 			editMode={this.state.editMode}
-			primary={this.props.primary}
+			primary={this.state.editText}
 			secondary={this.props.secondary}
 			textColor={this.props.textColor}
 			/>

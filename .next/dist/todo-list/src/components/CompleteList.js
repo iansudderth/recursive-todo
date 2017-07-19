@@ -54,6 +54,7 @@ var CompleteList = function CompleteList(props) {
 			changeColorComposer: props.changeColorComposer,
 			itemColor: (0, _colorParser.fadedColorParser)(value.color),
 			textColor: (0, _colorParser.textColorParser)(value.color),
+			updateItem: props.updateItem,
 			__source: {
 				fileName: _jsxFileName,
 				lineNumber: 24

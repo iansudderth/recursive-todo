@@ -66,3 +66,13 @@ export function changeColor(id,color){
 		}
 	}
 }
+
+export function updateItem(id,newText){
+	return {
+		type:UPDATE_ITEM,
+		payload:{
+			id,
+			newText
+		}
+	}
+}

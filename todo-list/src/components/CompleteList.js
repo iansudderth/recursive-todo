@@ -30,6 +30,7 @@ const CompleteList = props => {
 						changeColorComposer ={props.changeColorComposer}
 						itemColor={fadedColorParser(value.color)}
 						textColor={textColorParser(value.color)}
+						updateItem={props.updateItem}
 					/>
 				);
 			})}

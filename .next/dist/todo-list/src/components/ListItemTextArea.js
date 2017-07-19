@@ -49,7 +49,7 @@ var ListItemTextArea = function (_Component) {
 
 		_this.state = {
 			editMode: false,
-			editText: ''
+			editText: props.rawText
 		};
 
 		_this.TextContainer = _this.TextContainer.bind(_this);
@@ -105,6 +105,7 @@ var ListItemTextArea = function (_Component) {
 		key: "handleBlur",
 		value: function handleBlur(event) {
 			console.log(this.state.editText);
+			this.props.updateItem(this.props.id, this.state.editText);
 			console.log('blurred');
 			this.setState({ editMode: false });
 		}
@@ -117,7 +118,7 @@ var ListItemTextArea = function (_Component) {
 				return _react2.default.createElement(EditItem, {
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 65
+						lineNumber: 66
 					}
 				});
 			} else {
@@ -128,7 +129,7 @@ var ListItemTextArea = function (_Component) {
 					style: { color: props.textColor, padding: '0px', wordWrap: 'break-word' },
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 71
+						lineNumber: 72
 					}
 				});
 			}
@@ -138,7 +139,7 @@ var ListItemTextArea = function (_Component) {
 		value: function doubleClickHandler() {
 			console.log("double click!!!");
 			var text = this.props.rawText;
-			this.setState({ editText: text, editMode: true });
+			this.setState({ editMode: true });
 		}
 	}, {
 		key: "render",
@@ -147,12 +148,12 @@ var ListItemTextArea = function (_Component) {
 			return _react2.default.createElement(TextContainer, {
 				doubleClickHandler: this.doubleClickHandler,
 				editMode: this.state.editMode,
-				primary: this.props.primary,
+				primary: this.state.editText,
 				secondary: this.props.secondary,
 				textColor: this.props.textColor,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 90
+					lineNumber: 91
 				}
 			});
 		}

@@ -155,6 +155,8 @@ class BaseListItem extends Component {
 			secondary={this.completeDisplay()}
 			textColor={textColor}
 			rawText={this.item.content}
+			updateItem={this.props.updateItem}
+			id={this.item.id}
 			/>
 
 			<IconButton

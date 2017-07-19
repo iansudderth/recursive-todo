@@ -9,6 +9,7 @@ exports.completeItem = completeItem;
 exports.deleteItem = deleteItem;
 exports.reorderItem = reorderItem;
 exports.changeColor = changeColor;
+exports.updateItem = updateItem;
 var NEW_ITEM = exports.NEW_ITEM = "NEW_ITEM";
 var CHANGE_BASE = exports.CHANGE_BASE = "CHANGE_BASE";
 var COMPLETE_ITEM = exports.COMPLETE_ITEM = "COMPLETE_ITEM";
@@ -77,6 +78,16 @@ function changeColor(id, color) {
 		payload: {
 			id: id,
 			color: color
+		}
+	};
+}
+
+function updateItem(id, newText) {
+	return {
+		type: UPDATE_ITEM,
+		payload: {
+			id: id,
+			newText: newText
 		}
 	};
 }

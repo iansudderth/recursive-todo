@@ -261,6 +261,8 @@ var BaseListItem = function (_Component) {
 				secondary: this.completeDisplay(),
 				textColor: textColor,
 				rawText: this.item.content,
+				updateItem: this.props.updateItem,
+				id: this.item.id,
 				__source: {
 					fileName: _jsxFileName,
 					lineNumber: 153
@@ -270,24 +272,24 @@ var BaseListItem = function (_Component) {
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 160
+					lineNumber: 162
 				}
 			}, _react2.default.createElement(_FormatListBulleted2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 164
+					lineNumber: 166
 				}
 			})), _react2.default.createElement(_IconButton2.default, {
 				onClick: this.openMenu,
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 166
+					lineNumber: 168
 				}
 			}, _react2.default.createElement(_Settings2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 170
+					lineNumber: 172
 				}
 			})), _react2.default.createElement(_Menu2.default, {
 				id: this.item.id + "-menu",
@@ -296,7 +298,7 @@ var BaseListItem = function (_Component) {
 				anchorEl: this.state.anchorEl,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 172
+					lineNumber: 174
 				}
 			}, _react2.default.createElement(_Typography2.default, {
 				type: "subheading",
@@ -304,41 +306,41 @@ var BaseListItem = function (_Component) {
 				style: { outline: 'none', paddingLeft: 16 },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 178
+					lineNumber: 180
 				}
 			}, "Change Color"), _react2.default.createElement(_Divider2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 183
+					lineNumber: 185
 				}
 			}), _react2.default.createElement(ColorMenu, {
 				clickHandler: this.colorItemClickHandler,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 184
+					lineNumber: 186
 				}
 			}), _react2.default.createElement(_Divider2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 187
+					lineNumber: 189
 				}
 			}), _react2.default.createElement("div", {
 				style: { textAlign: 'center' },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 188
+					lineNumber: 190
 				}
 			}, _react2.default.createElement(_Button2.default, {
 				style: { color: 'white', backgroundColor: _colors.red[500], marginTop: 8 },
 				onClick: this.props.deleteItemComposer(this.item.id),
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 191
+					lineNumber: 193
 				}
 			}, _react2.default.createElement(_DeleteForever2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 195
+					lineNumber: 197
 				}
 			}), " ", 'Delete Item'))));
 		}

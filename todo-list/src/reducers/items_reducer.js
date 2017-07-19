@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM, REORDER_ITEM, CHANGE_COLOR } from "../actions";
+import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM, REORDER_ITEM, CHANGE_COLOR, UPDATE_ITEM } from "../actions";
 
 function items(state = seedData, action) {
 	switch (action.type) {
@@ -65,6 +65,11 @@ function items(state = seedData, action) {
 			var newState = _.merge({}, state)
 			newState[action.payload.id].color = action.payload.color
 			return newState;
+
+		case UPDATE_ITEM:
+			var newState = _.merge({}, state)
+			newState[action.payload.id].content = action.payload.newText
+			return newState
 
 		default:
 			return state;
