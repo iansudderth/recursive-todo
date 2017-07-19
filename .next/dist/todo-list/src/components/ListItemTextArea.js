@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends2 = require("babel-runtime/helpers/extends");
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -57,20 +61,28 @@ var ListItemTextArea = function (_Component) {
 		_this.EditItem = _this.EditItem.bind(_this);
 		_this.handleChange = _this.handleChange.bind(_this);
 		_this.handleBlur = _this.handleBlur.bind(_this);
+		_this.nonEditItem = _this.nonEditItem.bind(_this);
 		return _this;
 	}
 
 	(0, _createClass3.default)(ListItemTextArea, [{
 		key: "nonEditItem",
 		value: function nonEditItem(props) {
+			var lineStyle = this.props.complete ? { textDecoration: 'line-through' } : {};
 			return _react2.default.createElement(_List.ListItemText, {
-				primary: props.primary,
+				primary: _react2.default.createElement("span", {
+					style: (0, _extends3.default)({ color: this.props.textColor }, lineStyle, { wordBreak: 'break-all' }),
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 28
+					}
+				}, props.primary),
 				secondary: props.secondary,
 				style: { color: props.textColor, padding: '0px', wordWrap: 'break-word' },
 				onDoubleClick: props.doubleClickHandler,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 24
+					lineNumber: 26
 				}
 			});
 		}
@@ -82,7 +94,7 @@ var ListItemTextArea = function (_Component) {
 				style: { width: '100%' },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 35
+					lineNumber: 41
 				}
 			}, _react2.default.createElement(_TextField2.default, {
 				value: this.state.editText,
@@ -90,9 +102,13 @@ var ListItemTextArea = function (_Component) {
 				onBlur: this.handleBlur,
 				fullWidth: true,
 				autoFocus: true,
+				InputProps: { style: {
+						color: this.props.textColor
+					}
+				},
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 39
+					lineNumber: 45
 				}
 			}));
 		}
@@ -118,7 +134,7 @@ var ListItemTextArea = function (_Component) {
 				return _react2.default.createElement(EditItem, {
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 66
+						lineNumber: 77
 					}
 				});
 			} else {
@@ -129,7 +145,7 @@ var ListItemTextArea = function (_Component) {
 					style: { color: props.textColor, padding: '0px', wordWrap: 'break-word' },
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 72
+						lineNumber: 83
 					}
 				});
 			}
@@ -153,7 +169,7 @@ var ListItemTextArea = function (_Component) {
 				textColor: this.props.textColor,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 91
+					lineNumber: 102
 				}
 			});
 		}

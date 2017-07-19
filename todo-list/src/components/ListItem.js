@@ -157,6 +157,7 @@ class BaseListItem extends Component {
 			rawText={this.item.content}
 			updateItem={this.props.updateItem}
 			id={this.item.id}
+			complete={this.item.complete}
 			/>
 
 			<IconButton

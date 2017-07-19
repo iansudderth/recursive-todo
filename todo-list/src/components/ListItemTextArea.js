@@ -17,12 +17,18 @@ class ListItemTextArea extends Component {
 		this.EditItem = this.EditItem.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 		this.handleBlur = this.handleBlur.bind(this)
+		this.nonEditItem = this.nonEditItem.bind(this)
 	}
 
 	nonEditItem(props){
+		var lineStyle = this.props.complete ? {textDecoration:'line-through'} : {}
 				return(
 			<ListItemText
-			primary={props.primary}
+			primary={(
+				<span
+				style={{color:this.props.textColor, ...lineStyle, wordBreak:'break-all'}}
+				>{props.primary}</span>
+				)}
 			secondary={props.secondary}
 			style={{color:props.textColor,padding:'0px', wordWrap : 'break-word'}}
 			onDoubleClick={props.doubleClickHandler}
@@ -42,6 +48,11 @@ class ListItemTextArea extends Component {
 			onBlur={this.handleBlur}
 			fullWidth={true}
 			autoFocus={true}
+			InputProps={{style:{
+					color:this.props.textColor
+				}
+			}
+			}
 			/>
 			</form>
 			)
