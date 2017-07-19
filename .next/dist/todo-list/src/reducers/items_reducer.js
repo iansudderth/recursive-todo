@@ -80,6 +80,11 @@ function items() {
 			newState[action.payload.id].color = action.payload.color;
 			return newState;
 
+		case _actions.UPDATE_ITEM:
+			var newState = _lodash2.default.merge({}, state);
+			newState[action.payload.id].content = action.payload.newText;
+			return newState;
+
 		default:
 			return state;
 	}

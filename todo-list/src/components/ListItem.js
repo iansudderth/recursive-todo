@@ -17,6 +17,7 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import {primaryColorParser, fadedColorParser} from '../helpers/colorParser.js'
+import ListItemTextArea from './ListItemTextArea.js'
 
 const DragHandle = SortableHandle((props) =>{
 
@@ -149,9 +150,14 @@ class BaseListItem extends Component {
 				style={{color:textColor}}
 			/>
 
-			<ListItemText primary={this.content()}
+			<ListItemTextArea
+			primary={this.content()}
 			secondary={this.completeDisplay()}
-			style={{color:textColor,padding:'0px', wordWrap : 'break-word'}}
+			textColor={textColor}
+			rawText={this.item.content}
+			updateItem={this.props.updateItem}
+			id={this.item.id}
+			complete={this.item.complete}
 			/>
 
 			<IconButton

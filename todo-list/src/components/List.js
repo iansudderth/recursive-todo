@@ -38,6 +38,7 @@ const List = props => {
 				completeItemComposer={props.completeItemComposer}
 				reorderItemComposer={props.reorderItemComposer}
 				changeColorComposer ={props.changeColorComposer}
+				updateItem={props.updateItem}
 			/>
 			<CompleteList
 				items={completeListItems}
@@ -48,6 +49,7 @@ const List = props => {
 				completeItemComposer={props.completeItemComposer}
 				reorderItemComposer={props.reorderItemComposer}
 				changeColorComposer ={props.changeColorComposer}
+				updateItem={props.updateItem}
 			/>
 		</div>
 	);

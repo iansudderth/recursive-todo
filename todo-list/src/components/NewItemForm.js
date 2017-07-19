@@ -7,13 +7,15 @@ import Button from "material-ui/Button";
 import Grid from "material-ui/Grid";
 import { withStyles, createStyleSheet } from "material-ui/styles";
 
+
+
+
 const styleSheet = createStyleSheet("NewItemForm", theme => ({
 	container: {
-		width: "85vw",
 		margin: "auto",
 		paddingBottom: "16px",
 		paddingTop: "16px",
-		padding: 16,
+		padding: 24,
 		boxSizing: "border-box"
 	},
 	typeItem: {
@@ -51,13 +53,12 @@ class NewItemForm extends Component {
 	render() {
 		const classes = this.props.classes;
 		const textColorClass = this.props.textColor === '#ffffff' ? classes.white : classes.black
-
 		return (
 			<div
 			className={classes.container}
 			>
 				<form onSubmit={this.submitHandler}>
-					<Grid container gutter={24} align={"center"}>
+					<Grid container gutter={8} align={"center"}>
 						<Grid item className={classes.typeItem}>
 							<TextField
 								id="newItem"

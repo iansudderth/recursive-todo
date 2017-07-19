@@ -39,6 +39,7 @@ const SortableList = SortableContainer((props) => {
 						changeColorComposer ={props.changeColorComposer}
 						bgColorComposer={props.bgColorComposer}
 						textColorComposer={props.textColorComposer}
+						updateItem={props.updateItem}
 					/>
 				);
 			})}
@@ -56,6 +57,7 @@ const SortableListItem = SortableElement((props) => {
 			changeColorComposer ={props.changeColorComposer}
 			itemColor={props.bgColorComposer(props.value.color)}
 			textColor={props.textColorComposer(props.value.color, props.value.complete)}
+			updateItem={props.updateItem}
 		/>
 	);
 });
@@ -81,6 +83,7 @@ const IncompleteList = props => {
 				changeColorComposer ={props.changeColorComposer}
 				bgColorComposer={primaryColorParser}
 				textColorComposer={textColorParser}
+				updateItem={props.updateItem}
 			/>
 		</div>
 	);

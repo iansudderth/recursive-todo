@@ -53,11 +53,10 @@ var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/to
 var styleSheet = (0, _styles.createStyleSheet)("NewItemForm", function (theme) {
 	return {
 		container: {
-			width: "85vw",
 			margin: "auto",
 			paddingBottom: "16px",
 			paddingTop: "16px",
-			padding: 16,
+			padding: 24,
 			boxSizing: "border-box"
 		},
 		typeItem: {
@@ -105,24 +104,23 @@ var NewItemForm = function (_Component) {
 		value: function render() {
 			var classes = this.props.classes;
 			var textColorClass = this.props.textColor === '#ffffff' ? classes.white : classes.black;
-
 			return _react2.default.createElement("div", {
 				className: classes.container,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 56
+					lineNumber: 57
 				}
 			}, _react2.default.createElement("form", { onSubmit: this.submitHandler, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 59
-				}
-			}, _react2.default.createElement(_Grid2.default, { container: true, gutter: 24, align: "center", __source: {
-					fileName: _jsxFileName,
 					lineNumber: 60
+				}
+			}, _react2.default.createElement(_Grid2.default, { container: true, gutter: 8, align: "center", __source: {
+					fileName: _jsxFileName,
+					lineNumber: 61
 				}
 			}, _react2.default.createElement(_Grid2.default, { item: true, className: classes.typeItem, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 61
+					lineNumber: 62
 				}
 			}, _react2.default.createElement(_TextField2.default, {
 				id: "newItem",
@@ -143,18 +141,18 @@ var NewItemForm = function (_Component) {
 				},
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 62
+					lineNumber: 63
 				}
 			})), _react2.default.createElement(_Grid2.default, { item: true, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 81
+					lineNumber: 82
 				}
 			}, _react2.default.createElement(_Button2.default, {
 				type: "submit",
 				raised: true,
 				style: { color: this.props.accentTextColor, backgroundColor: this.props.accentColor }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 82
+					lineNumber: 83
 				}
 			}, "Make a New Item")))));
 		}

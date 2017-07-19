@@ -59,6 +59,7 @@ var SortableList = (0, _reactSortableHoc.SortableContainer)(function (props) {
 			changeColorComposer: props.changeColorComposer,
 			bgColorComposer: props.bgColorComposer,
 			textColorComposer: props.textColorComposer,
+			updateItem: props.updateItem,
 			__source: {
 				fileName: _jsxFileName,
 				lineNumber: 32
@@ -76,9 +77,10 @@ var SortableListItem = (0, _reactSortableHoc.SortableElement)(function (props) {
 		changeColorComposer: props.changeColorComposer,
 		itemColor: props.bgColorComposer(props.value.color),
 		textColor: props.textColorComposer(props.value.color, props.value.complete),
+		updateItem: props.updateItem,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 51
+			lineNumber: 52
 		}
 	});
 });
@@ -96,7 +98,7 @@ var IncompleteList = function IncompleteList(props) {
 	return _react2.default.createElement("div", {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 72
+			lineNumber: 74
 		}
 	}, _react2.default.createElement(SortableList, {
 		items: props.items,
@@ -109,9 +111,10 @@ var IncompleteList = function IncompleteList(props) {
 		changeColorComposer: props.changeColorComposer,
 		bgColorComposer: _colorParser.primaryColorParser,
 		textColorComposer: _colorParser.textColorParser,
+		updateItem: props.updateItem,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 73
+			lineNumber: 75
 		}
 	}));
 };

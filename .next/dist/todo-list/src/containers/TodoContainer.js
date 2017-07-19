@@ -75,6 +75,7 @@ var TodoContainer = function (_Component) {
 		_this.reorderItemComposer = _this.reorderItemComposer.bind(_this);
 		_this.generateComplete = _this.generateComplete.bind(_this);
 		_this.changeColorComposer = _this.changeColorComposer.bind(_this);
+		_this.updateItemDispatch = _this.updateItemDispatch.bind(_this);
 		return _this;
 	}
 
@@ -137,13 +138,18 @@ var TodoContainer = function (_Component) {
 			};
 		}
 	}, {
+		key: "updateItemDispatch",
+		value: function updateItemDispatch(id, newText) {
+			this.props.updateItem(id, newText);
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
 			var parentItem = this.props.items[currentItem.parent];
 			return _react2.default.createElement(_Card2.default, { style: (0, _defineProperty3.default)({ margin: "auto" }, "margin", "16px"), __source: {
 					fileName: _jsxFileName,
-					lineNumber: 90
+					lineNumber: 96
 				}
 			}, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
@@ -155,7 +161,7 @@ var TodoContainer = function (_Component) {
 				newItemAction: this.newItemAction,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 91
+					lineNumber: 97
 				}
 			}), _react2.default.createElement(_List2.default, {
 				list: this.props.items,
@@ -165,9 +171,10 @@ var TodoContainer = function (_Component) {
 				completeItemComposer: this.completeItemComposer,
 				reorderItemComposer: this.reorderItemComposer,
 				changeColorComposer: this.changeColorComposer,
+				updateItem: this.updateItemDispatch,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 100
+					lineNumber: 106
 				}
 			}));
 		}
@@ -184,7 +191,7 @@ function mapStateToProps(_ref2) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor }, dispatch);
+	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor, updateItem: _actions.updateItem }, dispatch);
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TodoContainer);
