@@ -16,8 +16,8 @@ const createStoreWithMiddleware = composeWithDevTools(
 	applyMiddleware(ReduxPromise)
 )(createStore);
 
-const Boiler = () =>
-	<Provider store={createStoreWithMiddleware(reducers)}>
+const Boiler = (props) =>
+	<Provider store={createStoreWithMiddleware(reducers, props.seedState)}>
 		<TodoContainer />
 	</Provider>;
 

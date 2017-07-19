@@ -41,8 +41,8 @@ var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/to
 
 var createStoreWithMiddleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxPromise2.default))(_redux.createStore);
 
-var Boiler = function Boiler() {
-	return _react2.default.createElement(_reactRedux.Provider, { store: createStoreWithMiddleware(_reducers2.default), __source: {
+var Boiler = function Boiler(props) {
+	return _react2.default.createElement(_reactRedux.Provider, { store: createStoreWithMiddleware(_reducers2.default, props.seedState), __source: {
 			fileName: _jsxFileName,
 			lineNumber: 20
 		}
