@@ -150,9 +150,11 @@ class BaseListItem extends Component {
 				style={{color:textColor}}
 			/>
 
-			<ListItemText primary={this.content()}
+			<ListItemTextArea
+			primary={this.content()}
 			secondary={this.completeDisplay()}
-			style={{color:textColor,padding:'0px', wordWrap : 'break-word'}}
+			textColor={textColor}
+			rawText={this.item.content}
 			/>
 
 			<IconButton
