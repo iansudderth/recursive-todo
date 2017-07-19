@@ -32,7 +32,8 @@ const DragHandle = SortableHandle((props) =>{
 );
 
 const ColorMenu = (props)  => {
-	var colors = ['red', 'purple', 'lightBlue', 'teal', 'lightGreen', 'yellow', 'orange', 'pink']
+	// var colors = ['red', 'purple', 'lightBlue', 'teal', 'lightGreen', 'yellow', 'orange', 'pink']
+	var colors = ['red','pink','deepPurple', 'indigo', 'lightBlue','cyan', 'teal', 'green','lightGreen','yellow','orange','deepOrange']
 	return (
 		<div>
 			{colors.map((color, index)=>{

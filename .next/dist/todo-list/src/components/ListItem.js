@@ -114,36 +114,37 @@ var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (props) {
 });
 
 var ColorMenu = function ColorMenu(props) {
-	var colors = ['red', 'purple', 'lightBlue', 'teal', 'lightGreen', 'yellow', 'orange', 'pink'];
+	// var colors = ['red', 'purple', 'lightBlue', 'teal', 'lightGreen', 'yellow', 'orange', 'pink']
+	var colors = ['red', 'pink', 'deepPurple', 'indigo', 'lightBlue', 'cyan', 'teal', 'green', 'lightGreen', 'yellow', 'orange', 'deepOrange'];
 	return _react2.default.createElement("div", {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 37
+			lineNumber: 38
 		}
 	}, colors.map(function (color, index) {
 
 		var breakLine = index % 4 === 3 ? _react2.default.createElement("br", {
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 40
+				lineNumber: 41
 			}
 		}) : "";
 
 		return _react2.default.createElement("span", { key: color + "-" + index,
 			onClick: props.clickHandler(color), __source: {
 				fileName: _jsxFileName,
-				lineNumber: 43
+				lineNumber: 44
 			}
 		}, _react2.default.createElement(_IconButton2.default, {
 			style: { color: (0, _colorParser.primaryColorParser)(color) },
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 45
+				lineNumber: 46
 			}
 		}, _react2.default.createElement(_Brightness2.default, {
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 48
+				lineNumber: 49
 			}
 		})), breakLine);
 	}));
@@ -196,7 +197,7 @@ var BaseListItem = function (_Component) {
 					style: displayTextStyle,
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 102
+						lineNumber: 103
 					}
 				}, "( " + completed + " / " + total + " complete)");
 			}
@@ -208,7 +209,7 @@ var BaseListItem = function (_Component) {
 			var contentTextStyle = this.props.value.complete ? { color: this.completeGrey, textDecoration: "line-through" } : { color: this.props.textColor };
 			return _react2.default.createElement("span", { style: (0, _extends3.default)({}, contentTextStyle, { wordWrap: 'break-word', wordBreak: 'break-all' }), __source: {
 					fileName: _jsxFileName,
-					lineNumber: 115
+					lineNumber: 116
 				}
 			}, this.item.content);
 		}
@@ -239,14 +240,14 @@ var BaseListItem = function (_Component) {
 			var textColor = this.props.value.complete ? this.completeGrey : this.props.textColor;
 			return _react2.default.createElement(_List.ListItem, { divider: true, style: { backgroundColor: this.props.itemColor, padding: 12 }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 142
+					lineNumber: 143
 				}
 			}, _react2.default.createElement(DragHandle, {
 				completeStyle: { color: textColor },
 				complete: this.item.complete,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 143
+					lineNumber: 144
 				}
 			}), _react2.default.createElement(_Checkbox2.default, {
 				checked: this.item.complete,
@@ -254,7 +255,7 @@ var BaseListItem = function (_Component) {
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 147
+					lineNumber: 148
 				}
 			}), _react2.default.createElement(_ListItemTextArea2.default, {
 				primary: this.content(),
@@ -266,31 +267,31 @@ var BaseListItem = function (_Component) {
 				complete: this.item.complete,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 153
+					lineNumber: 154
 				}
 			}), _react2.default.createElement(_IconButton2.default, {
 				onClick: this.props.changeBaseComposer(this.item.id),
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 163
+					lineNumber: 164
 				}
 			}, _react2.default.createElement(_FormatListBulleted2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 167
+					lineNumber: 168
 				}
 			})), _react2.default.createElement(_IconButton2.default, {
 				onClick: this.openMenu,
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 169
+					lineNumber: 170
 				}
 			}, _react2.default.createElement(_Settings2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 173
+					lineNumber: 174
 				}
 			})), _react2.default.createElement(_Menu2.default, {
 				id: this.item.id + "-menu",
@@ -299,7 +300,7 @@ var BaseListItem = function (_Component) {
 				anchorEl: this.state.anchorEl,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 175
+					lineNumber: 176
 				}
 			}, _react2.default.createElement(_Typography2.default, {
 				type: "subheading",
@@ -307,41 +308,41 @@ var BaseListItem = function (_Component) {
 				style: { outline: 'none', paddingLeft: 16 },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 181
+					lineNumber: 182
 				}
 			}, "Change Color"), _react2.default.createElement(_Divider2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 186
+					lineNumber: 187
 				}
 			}), _react2.default.createElement(ColorMenu, {
 				clickHandler: this.colorItemClickHandler,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 187
+					lineNumber: 188
 				}
 			}), _react2.default.createElement(_Divider2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 190
+					lineNumber: 191
 				}
 			}), _react2.default.createElement("div", {
 				style: { textAlign: 'center' },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 191
+					lineNumber: 192
 				}
 			}, _react2.default.createElement(_Button2.default, {
 				style: { color: 'white', backgroundColor: _colors.red[500], marginTop: 8 },
 				onClick: this.props.deleteItemComposer(this.item.id),
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 194
+					lineNumber: 195
 				}
 			}, _react2.default.createElement(_DeleteForever2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 198
+					lineNumber: 199
 				}
 			}), " ", 'Delete Item'))));
 		}
