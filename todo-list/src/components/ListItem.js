@@ -17,6 +17,7 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import {primaryColorParser, fadedColorParser} from '../helpers/colorParser.js'
+import ListItemTextArea from './ListItemTextArea.js'
 
 const DragHandle = SortableHandle((props) =>{
 
