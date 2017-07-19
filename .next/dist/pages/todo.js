@@ -28,18 +28,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Button = require('material-ui/Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
-var _Dialog = require('material-ui/Dialog');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _Typography = require('material-ui/Typography');
-
-var _Typography2 = _interopRequireDefault(_Typography);
-
 var _App = require('../todo-list/src/App.js');
 
 var _App2 = _interopRequireDefault(_App);
@@ -53,58 +41,38 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _jsxFileName = '/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/pages/todo.js?entry';
 
 
-var styles = {
-  container: {
-    textAlign: 'center',
-    paddingTop: 200
-  }
-};
+var Todo = function (_Component) {
+  (0, _inherits3.default)(Todo, _Component);
 
-var Index = function (_Component) {
-  (0, _inherits3.default)(Index, _Component);
+  function Todo() {
+    (0, _classCallCheck3.default)(this, Todo);
 
-  function Index() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, Index);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Index.__proto__ || (0, _getPrototypeOf2.default)(Index)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      open: false
-    }, _this.handleRequestClose = function () {
-      _this.setState({
-        open: false
-      });
-    }, _this.handleClick = function () {
-      _this.setState({
-        open: true
-      });
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    return (0, _possibleConstructorReturn3.default)(this, (Todo.__proto__ || (0, _getPrototypeOf2.default)(Todo)).apply(this, arguments));
   }
 
-  (0, _createClass3.default)(Index, [{
+  (0, _createClass3.default)(Todo, [{
     key: 'render',
     value: function render() {
       return _react2.default.createElement(_App2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 14
         }
       }, _react2.default.createElement(_index2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 15
         }
       }));
     }
+  }], [{
+    key: 'getInitialProps',
+    value: function getInitialProps(initialProps) {
+      return initialProps;
+    }
   }]);
 
-  return Index;
+  return Todo;
 }(_react.Component);
 
-exports.default = Index;
+exports.default = Todo;
