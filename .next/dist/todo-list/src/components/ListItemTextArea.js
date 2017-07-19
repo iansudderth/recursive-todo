@@ -38,6 +38,8 @@ var _TextField = require("material-ui/TextField");
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
+var _reactTouch = require("react-touch");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListItemTextArea.js";
@@ -69,12 +71,20 @@ var ListItemTextArea = function (_Component) {
 		key: "nonEditItem",
 		value: function nonEditItem(props) {
 			var lineStyle = this.props.complete ? { textDecoration: 'line-through' } : {};
-			return _react2.default.createElement(_List.ListItemText, {
+			var hold = (0, _reactTouch.defineHold)({ updateEvery: 50, holdFor: 500 });
+			return _react2.default.createElement(_reactTouch.Holdable, {
+				config: hold,
+				onHoldComplete: props.doubleClickHandler,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 28
+				}
+			}, _react2.default.createElement(_List.ListItemText, {
 				primary: _react2.default.createElement("span", {
 					style: (0, _extends3.default)({ color: this.props.textColor }, lineStyle, { wordBreak: 'break-all' }),
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 28
+						lineNumber: 34
 					}
 				}, props.primary),
 				secondary: props.secondary,
@@ -82,9 +92,9 @@ var ListItemTextArea = function (_Component) {
 				onDoubleClick: props.doubleClickHandler,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 26
+					lineNumber: 32
 				}
-			});
+			}));
 		}
 	}, {
 		key: "EditItem",
@@ -94,7 +104,7 @@ var ListItemTextArea = function (_Component) {
 				style: { width: '100%' },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 41
+					lineNumber: 48
 				}
 			}, _react2.default.createElement(_TextField2.default, {
 				value: this.state.editText,
@@ -108,7 +118,7 @@ var ListItemTextArea = function (_Component) {
 				},
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 45
+					lineNumber: 52
 				}
 			}));
 		}
@@ -120,9 +130,7 @@ var ListItemTextArea = function (_Component) {
 	}, {
 		key: "handleBlur",
 		value: function handleBlur(event) {
-			console.log(this.state.editText);
 			this.props.updateItem(this.props.id, this.state.editText);
-			console.log('blurred');
 			this.setState({ editMode: false });
 		}
 	}, {
@@ -134,7 +142,7 @@ var ListItemTextArea = function (_Component) {
 				return _react2.default.createElement(EditItem, {
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 77
+						lineNumber: 82
 					}
 				});
 			} else {
@@ -145,7 +153,7 @@ var ListItemTextArea = function (_Component) {
 					style: { color: props.textColor, padding: '0px', wordWrap: 'break-word' },
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 83
+						lineNumber: 88
 					}
 				});
 			}
@@ -153,8 +161,6 @@ var ListItemTextArea = function (_Component) {
 	}, {
 		key: "doubleClickHandler",
 		value: function doubleClickHandler() {
-			console.log("double click!!!");
-			var text = this.props.rawText;
 			this.setState({ editMode: true });
 		}
 	}, {
@@ -169,7 +175,7 @@ var ListItemTextArea = function (_Component) {
 				textColor: this.props.textColor,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 102
+					lineNumber: 105
 				}
 			});
 		}

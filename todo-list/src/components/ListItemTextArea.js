@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { ListItem, ListItemText } from "material-ui/List";
 import TextField from "material-ui/TextField";
+import { Holdable, defineHold } from 'react-touch';
 
 
 class ListItemTextArea extends Component {
@@ -22,7 +23,12 @@ class ListItemTextArea extends Component {
 
 	nonEditItem(props){
 		var lineStyle = this.props.complete ? {textDecoration:'line-through'} : {}
+		const hold = defineHold({updateEvery: 50, holdFor: 500});
 				return(
+			<Holdable
+			config={hold}
+			onHoldComplete={props.doubleClickHandler}
+			>
 			<ListItemText
 			primary={(
 				<span
@@ -33,6 +39,7 @@ class ListItemTextArea extends Component {
 			style={{color:props.textColor,padding:'0px', wordWrap : 'break-word'}}
 			onDoubleClick={props.doubleClickHandler}
 			/>
+			</Holdable>
 			)
 	}
 
@@ -63,9 +70,7 @@ class ListItemTextArea extends Component {
 	}
 
 	handleBlur(event){
-		console.log(this.state.editText)
 		this.props.updateItem(this.props.id, this.state.editText)
-		console.log('blurred')
 		this.setState({editMode:false})
 	}
 
@@ -91,8 +96,6 @@ class ListItemTextArea extends Component {
 	}
 
 	doubleClickHandler(){
-		console.log("double click!!!")
-		var text = this.props.rawText
 		this.setState({editMode:true})
 	}
 

@@ -93,12 +93,12 @@ var Index = function (_Component) {
       return _react2.default.createElement(_App2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 40
         }
       }, _react2.default.createElement(_index2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 41
         }
       }));
     }

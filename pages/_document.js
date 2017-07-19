@@ -2,6 +2,7 @@ import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { getDefaultContext, setDefaultContext } from '../todo-list/src/style/createDefaultContext'
 
+
 export default class MyDocument extends Document {
   static async getInitialProps (ctx) {
     setDefaultContext()

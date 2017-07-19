@@ -11,6 +11,7 @@ import { MuiThemeProvider } from 'material-ui/styles';
 import TodoContainer from './containers/TodoContainer.js'
 
 
+
 const createStoreWithMiddleware = composeWithDevTools(
 	applyMiddleware(ReduxPromise)
 )(createStore);
