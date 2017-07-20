@@ -55,22 +55,28 @@ class TodoContainer extends Component {
 
 	deleteItemComposer(id) {
 		let deleteItemDispatch = this.props.deleteItem;
+		let updateDataDispatch = this.updateDataDispatch
 		return function() {
 			deleteItemDispatch(id);
+			updateDataDispatch()
 		};
 	}
 
 	completeItemComposer(id) {
 		let completeItemDispatch = this.props.completeItem;
+		let updateDataDispatch = this.updateDataDispatch
 		return function() {
 			completeItemDispatch(id);
+			updateDataDispatch()
 		};
 	}
 
 	reorderItemComposer(id, oldIndex, newIndex) {
 		let reorderItemDispatch = this.props.reorderItem;
+		let updateDataDispatch = this.updateDataDispatch;
 		return function() {
 			reorderItemDispatch(id, oldIndex, newIndex);
+			updateDataDispatch()
 		};
 	}
 
@@ -85,18 +91,20 @@ class TodoContainer extends Component {
 
 	changeColorComposer(id, color) {
 		let changeColorDispatch = this.props.changeColor
+		let updateDataDispatch = this.updateDataDispatch;
 		return function (){
 			changeColorDispatch(id, color)
+			updateDataDispatch()
 		}
 	}
 
 	updateItemDispatch(id, newText){
 		this.props.updateItem(id, newText)
+		this.updateDataDispatch()
 	}
 
 	updateDataDispatch(){
 		const id = this.props.listID
-		console.log(id)
 		const newState = {
 			items:this.props.items,
 			baseItem:this.props.baseItem

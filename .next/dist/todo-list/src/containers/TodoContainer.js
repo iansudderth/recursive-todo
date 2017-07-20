@@ -106,24 +106,30 @@ var TodoContainer = function (_Component) {
 		key: "deleteItemComposer",
 		value: function deleteItemComposer(id) {
 			var deleteItemDispatch = this.props.deleteItem;
+			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				deleteItemDispatch(id);
+				updateDataDispatch();
 			};
 		}
 	}, {
 		key: "completeItemComposer",
 		value: function completeItemComposer(id) {
 			var completeItemDispatch = this.props.completeItem;
+			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				completeItemDispatch(id);
+				updateDataDispatch();
 			};
 		}
 	}, {
 		key: "reorderItemComposer",
 		value: function reorderItemComposer(id, oldIndex, newIndex) {
 			var reorderItemDispatch = this.props.reorderItem;
+			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				reorderItemDispatch(id, oldIndex, newIndex);
+				updateDataDispatch();
 			};
 		}
 	}, {
@@ -137,20 +143,22 @@ var TodoContainer = function (_Component) {
 		key: "changeColorComposer",
 		value: function changeColorComposer(id, color) {
 			var changeColorDispatch = this.props.changeColor;
+			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				changeColorDispatch(id, color);
+				updateDataDispatch();
 			};
 		}
 	}, {
 		key: "updateItemDispatch",
 		value: function updateItemDispatch(id, newText) {
 			this.props.updateItem(id, newText);
+			this.updateDataDispatch();
 		}
 	}, {
 		key: "updateDataDispatch",
 		value: function updateDataDispatch() {
 			var id = this.props.listID;
-			console.log(id);
 			var newState = {
 				items: this.props.items,
 				baseItem: this.props.baseItem
@@ -164,7 +172,7 @@ var TodoContainer = function (_Component) {
 			var parentItem = this.props.items[currentItem.parent];
 			return _react2.default.createElement(_Card2.default, { style: (0, _defineProperty3.default)({ margin: "auto" }, "margin", "16px"), __source: {
 					fileName: _jsxFileName,
-					lineNumber: 111
+					lineNumber: 119
 				}
 			}, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
@@ -176,7 +184,7 @@ var TodoContainer = function (_Component) {
 				newItemAction: this.newItemAction,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 112
+					lineNumber: 120
 				}
 			}), _react2.default.createElement(_List2.default, {
 				list: this.props.items,
@@ -189,7 +197,7 @@ var TodoContainer = function (_Component) {
 				updateItem: this.updateItemDispatch,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 121
+					lineNumber: 129
 				}
 			}));
 		}

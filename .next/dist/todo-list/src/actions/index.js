@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -13,9 +13,13 @@ exports.changeColor = changeColor;
 exports.updateItem = updateItem;
 exports.updateData = updateData;
 
-var _axios = require("axios");
+var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -103,8 +107,7 @@ function updateItem(id, newText) {
 }
 
 function updateData(id, newState) {
-	console.log("UPDATE_DATA fired");
-	var request = _axios2.default.put("/todo/" + id, newState);
+	var request = _axios2.default.put('/todo/' + id, newState);
 	return {
 		type: UPDATE_DATA,
 		payload: request

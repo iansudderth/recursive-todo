@@ -1,4 +1,5 @@
 import axios from 'axios'
+import _ from 'lodash'
 
 export const NEW_ITEM = "NEW_ITEM";
 export const CHANGE_BASE = "CHANGE_BASE";
@@ -82,7 +83,6 @@ export function updateItem(id,newText){
 }
 
 export function updateData(id, newState){
-	console.log("UPDATE_DATA fired")
 	var request = axios.put(`/todo/${id}`, newState)
 	return{
 		type:UPDATE_DATA,
