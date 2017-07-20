@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
     "compression": "^1.7.0",
     "express": "^4.15.3",
     "jss-preset-default": "^3.0.0",
@@ -31,8 +32,8 @@
   },
   "scripts": {
     "dev": "NODE_ENV=development node server.js",
-    "dev-seed" : "NODE_ENV=development node server.js --seed",
-    "server": "mongod --dbpath=./db/",
+    "dev-seed": "NODE_ENV=development node server.js --seed",
+    "db": "mongod --dbpath=./db/",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "heroku-postbuild": "next build",

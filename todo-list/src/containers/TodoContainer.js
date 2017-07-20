@@ -31,6 +31,7 @@ class TodoContainer extends Component {
 		this.generateComplete = this.generateComplete.bind(this);
 		this.changeColorComposer = this.changeColorComposer.bind(this);
 		this.updateItemDispatch = this.updateItemDispatch.bind(this);
+		this.updateDataDispatch = this.updateDataDispatch.bind(this);
 	}
 
 	inputUpdate(event) {
@@ -39,7 +40,10 @@ class TodoContainer extends Component {
 
 	newItemAction(content) {
 		this.props.newItem(content, this.props.baseItem);
-		this.setState({ newItem: "" });
+		var updateDataDispatch = this.updateDataDispatch
+		this.setState({ newItem: "" }, () => {
+			updateDataDispatch()
+		});
 	}
 
 	changeBaseComposer(id) {
@@ -90,6 +94,16 @@ class TodoContainer extends Component {
 		this.props.updateItem(id, newText)
 	}
 
+	updateDataDispatch(){
+		const id = this.props.listID
+		console.log(id)
+		const newState = {
+			items:this.props.items,
+			baseItem:this.props.baseItem
+		}
+		this.props.updateData(id, {id,newState})
+	}
+
 	render() {
 		var currentItem = this.props.items[this.props.baseItem];
 		var parentItem = this.props.items[currentItem.parent];
@@ -125,7 +139,7 @@ function mapStateToProps({ items, baseItem }) {
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
-		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem, changeColor, updateItem },
+		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem, changeColor, updateItem, updateData },
 		dispatch
 	);
 }

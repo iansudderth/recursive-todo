@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const NEW_ITEM = "NEW_ITEM";
 export const CHANGE_BASE = "CHANGE_BASE";
 export const COMPLETE_ITEM = "COMPLETE_ITEM";
@@ -79,9 +81,11 @@ export function updateItem(id,newText){
 	}
 }
 
-export function updateData(){
+export function updateData(id, newState){
 	console.log("UPDATE_DATA fired")
+	var request = axios.put(`/todo/${id}`, newState)
 	return{
-		type:UPDATE_DATA
+		type:UPDATE_DATA,
+		payload:request
 	}
 }

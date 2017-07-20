@@ -76,6 +76,7 @@ var TodoContainer = function (_Component) {
 		_this.generateComplete = _this.generateComplete.bind(_this);
 		_this.changeColorComposer = _this.changeColorComposer.bind(_this);
 		_this.updateItemDispatch = _this.updateItemDispatch.bind(_this);
+		_this.updateDataDispatch = _this.updateDataDispatch.bind(_this);
 		return _this;
 	}
 
@@ -88,7 +89,10 @@ var TodoContainer = function (_Component) {
 		key: "newItemAction",
 		value: function newItemAction(content) {
 			this.props.newItem(content, this.props.baseItem);
-			this.setState({ newItem: "" });
+			var updateDataDispatch = this.updateDataDispatch;
+			this.setState({ newItem: "" }, function () {
+				updateDataDispatch();
+			});
 		}
 	}, {
 		key: "changeBaseComposer",
@@ -143,13 +147,24 @@ var TodoContainer = function (_Component) {
 			this.props.updateItem(id, newText);
 		}
 	}, {
+		key: "updateDataDispatch",
+		value: function updateDataDispatch() {
+			var id = this.props.listID;
+			console.log(id);
+			var newState = {
+				items: this.props.items,
+				baseItem: this.props.baseItem
+			};
+			this.props.updateData(id, { id: id, newState: newState });
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
 			var parentItem = this.props.items[currentItem.parent];
 			return _react2.default.createElement(_Card2.default, { style: (0, _defineProperty3.default)({ margin: "auto" }, "margin", "16px"), __source: {
 					fileName: _jsxFileName,
-					lineNumber: 96
+					lineNumber: 111
 				}
 			}, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
@@ -161,7 +176,7 @@ var TodoContainer = function (_Component) {
 				newItemAction: this.newItemAction,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 97
+					lineNumber: 112
 				}
 			}), _react2.default.createElement(_List2.default, {
 				list: this.props.items,
@@ -174,7 +189,7 @@ var TodoContainer = function (_Component) {
 				updateItem: this.updateItemDispatch,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 106
+					lineNumber: 121
 				}
 			}));
 		}
@@ -191,7 +206,7 @@ function mapStateToProps(_ref2) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor, updateItem: _actions.updateItem }, dispatch);
+	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor, updateItem: _actions.updateItem, updateData: _actions.updateData }, dispatch);
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TodoContainer);

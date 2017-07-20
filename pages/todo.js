@@ -11,12 +11,14 @@ class Todo extends Component {
 }
 
   seedState = this.props.query.initialState
+  listID = this.props.query.initialState._id
 
   render () {
     return (
       <App>
         <TodoList
         seedState={this.seedState}
+        listID={this.listID}
         />
       </App>
     )

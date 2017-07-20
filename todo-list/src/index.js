@@ -18,7 +18,9 @@ const createStoreWithMiddleware = composeWithDevTools(
 
 const Boiler = (props) =>
 	<Provider store={createStoreWithMiddleware(reducers, props.seedState)}>
-		<TodoContainer />
+		<TodoContainer
+		listID={props.listID}
+		/>
 	</Provider>;
 
 // ReactDOM.render(<Boiler />, document.getElementById("root"));

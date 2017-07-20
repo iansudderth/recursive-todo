@@ -11,6 +11,7 @@ const TodoState = require('./schema/todoListSchema.js')
 const _ = require('lodash')
 const seedDB = require('./schema/seed.js')
 const generateNewTodoList = require('./schema/generateNewTodoList.js')
+const bodyParser = require('body-parser')
 
 
 
@@ -22,9 +23,12 @@ if(_.includes(process.argv,"--seed")){seedDB();}
 
 
 
+
+
 app.prepare()
 .then(() => {
   const server = express()
+  server.use(bodyParser.json())
   server.use(compression());
 
   // server.get('/a', (req, res) => {
@@ -57,6 +61,24 @@ app.prepare()
         console.log('todo list found')
         const mergedQuery = Object.assign({}, req.query, {initialState})
         return  app.render(req, res, '/todo', mergedQuery)
+      }
+    })
+  })
+
+  server.put('/todo/:id', (req, res) => {
+    console.log(req.params)
+    var id = req.params.id
+    var newState = req.body.newState
+    console.log("id", id)
+    // console.log("new state", newState)
+
+    TodoState.findByIdAndUpdate(id, newState, (error, updatedState)=>{
+      if(error){
+        console.log(error)
+        res.send("we got it but something went wrong")
+      } else {
+        res.send("we got it and it was updated!!!")
+        // console.log("updatedState",updatedState)
       }
     })
   })
