@@ -8,7 +8,8 @@ import {
 	deleteItem,
 	reorderItem,
 	changeColor,
-	updateItem
+	updateItem,
+	updateData
 } from "../actions";
 import { bindActionCreators } from "redux";
 // import style from "../components/ListItem/style.css";

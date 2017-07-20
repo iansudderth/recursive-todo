@@ -32,7 +32,7 @@ class ListItemTextArea extends Component {
 			<ListItemText
 			primary={(
 				<span
-				style={{color:this.props.textColor, ...lineStyle, wordBreak:'break-all'}}
+				style={{color:this.props.textColor, ...lineStyle,wordWrap:'normal', wordBreak:'normal'}}
 				>{props.primary}</span>
 				)}
 			secondary={props.secondary}

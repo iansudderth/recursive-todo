@@ -3,13 +3,15 @@ export const CHANGE_BASE = "CHANGE_BASE";
 export const COMPLETE_ITEM = "COMPLETE_ITEM";
 export const DELETE_ITEM = "DELETE_ITEM";
 export const REORDER_ITEM = "REORDER_ITEM";
-export const CHANGE_COLOR = "CHANGE_COLOR"
+export const CHANGE_COLOR = "CHANGE_COLOR";
+export const UPDATE_ITEM = "UPDATE_ITEM";
+
 
 // ============
 // To Implement
 // ============
 
-export const UPDATE_ITEM = "UPDATE_ITEM";
+export const UPDATE_DATA = "UPDATE_DATA";
 
 // ===============
 // Action Creators
@@ -74,5 +76,12 @@ export function updateItem(id,newText){
 			id,
 			newText
 		}
+	}
+}
+
+export function updateData(){
+	console.log("UPDATE_DATA fired")
+	return{
+		type:UPDATE_DATA
 	}
 }

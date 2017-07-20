@@ -10,8 +10,7 @@ class Todo extends Component {
     return { query }
 }
 
-  pageID = this.props.query.params.id || 'null'
-  seedState = this.props.query.seedState || undefined
+  seedState = this.props.query.initialState
 
   render () {
     return (
