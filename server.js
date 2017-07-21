@@ -39,11 +39,6 @@ app.prepare()
   //   return app.render(req, res, '/a', req.query)
   // })
 
-
-  server.get('/todo', (req, res) => {
-    return  app.render(req, res, '/todo', req.query)
-  })
-
   server.get('/todo/:id', (req,res) => {
     TodoState.findOne({_id:req.params.id}, (error, initialState) => {
       if(error){
@@ -84,7 +79,7 @@ app.prepare()
   })
 
   server.get('/', (req,res) => {
-    return app.render(req, res, '/todo', req.query)
+    res.redirect('/todo/new')
   })
 
   server.get('/api', (req,res) => {

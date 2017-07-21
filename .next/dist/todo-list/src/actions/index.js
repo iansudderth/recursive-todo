@@ -120,10 +120,8 @@ function updateData(id, newState) {
 		dispatch(updateProgress());
 
 		return _axios2.default.put('/todo/' + id, newState).then(function (response) {
-			console.log("axios promise", response);
 			dispatch(updateComplete());
 		}, function (error) {
-			console.log(error);
 			dispatch(updateError());
 		});
 	};

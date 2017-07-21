@@ -94,12 +94,10 @@ export function updateData(id, newState){
 			.then(
 
 				response => {
-					console.log("axios promise",response)
 					dispatch(updateComplete())
 				},
 
 				error => {
-					console.log(error)
 					dispatch(updateError())
 				}
 				)
