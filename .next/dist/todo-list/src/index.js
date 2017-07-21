@@ -32,6 +32,10 @@ var _TodoContainer = require("./containers/TodoContainer.js");
 
 var _TodoContainer2 = _interopRequireDefault(_TodoContainer);
 
+var _reduxThunk = require("redux-thunk");
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/index.js";
@@ -39,18 +43,18 @@ var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/to
 // import registerServiceWorker from "./registerServiceWorker";
 
 
-var createStoreWithMiddleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxPromise2.default))(_redux.createStore);
+var createStoreWithMiddleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk2.default))(_redux.createStore);
 
 var Boiler = function Boiler(props) {
 	return _react2.default.createElement(_reactRedux.Provider, { store: createStoreWithMiddleware(_reducers2.default, props.seedState), __source: {
 			fileName: _jsxFileName,
-			lineNumber: 20
+			lineNumber: 22
 		}
 	}, _react2.default.createElement(_TodoContainer2.default, {
 		listID: props.listID,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 21
+			lineNumber: 23
 		}
 	}));
 };

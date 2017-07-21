@@ -9,12 +9,15 @@ import {
 	reorderItem,
 	changeColor,
 	updateItem,
-	updateData
+	updateData,
+	updateDataThrottled
 } from "../actions";
 import { bindActionCreators } from "redux";
 // import style from "../components/ListItem/style.css";
 import ListHeader from "../components/ListHeader.js";
 import Card from "material-ui/Card";
+import _ from 'lodash'
+
 
 class TodoContainer extends Component {
 	constructor(props) {
@@ -42,7 +45,7 @@ class TodoContainer extends Component {
 		this.props.newItem(content, this.props.baseItem);
 		var updateDataDispatch = this.updateDataDispatch
 		this.setState({ newItem: "" }, () => {
-			updateDataDispatch()
+
 		});
 	}
 
@@ -58,7 +61,7 @@ class TodoContainer extends Component {
 		let updateDataDispatch = this.updateDataDispatch
 		return function() {
 			deleteItemDispatch(id);
-			updateDataDispatch()
+
 		};
 	}
 
@@ -67,7 +70,7 @@ class TodoContainer extends Component {
 		let updateDataDispatch = this.updateDataDispatch
 		return function() {
 			completeItemDispatch(id);
-			updateDataDispatch()
+
 		};
 	}
 
@@ -76,7 +79,7 @@ class TodoContainer extends Component {
 		let updateDataDispatch = this.updateDataDispatch;
 		return function() {
 			reorderItemDispatch(id, oldIndex, newIndex);
-			updateDataDispatch()
+
 		};
 	}
 
@@ -94,13 +97,13 @@ class TodoContainer extends Component {
 		let updateDataDispatch = this.updateDataDispatch;
 		return function (){
 			changeColorDispatch(id, color)
-			updateDataDispatch()
+
 		}
 	}
 
 	updateItemDispatch(id, newText){
 		this.props.updateItem(id, newText)
-		this.updateDataDispatch()
+
 	}
 
 	updateDataDispatch(){
@@ -108,9 +111,15 @@ class TodoContainer extends Component {
 		const newState = {
 			items:this.props.items,
 			baseItem:this.props.baseItem
-		}
-		this.props.updateData(id, {id,newState})
+			}
+		this.props.updateData(id, {id, newState})
 	}
+
+	componentDidUpdate(prevProps, prevState) {
+		this.updateDataDispatch()
+	}
+
+
 
 	render() {
 		var currentItem = this.props.items[this.props.baseItem];
@@ -125,6 +134,7 @@ class TodoContainer extends Component {
 					counterText={this.generateComplete()}
 					items={this.props.items}
 					newItemAction={this.newItemAction}
+					updateData={this.updateDataDispatch}
 				/>
 				<List
 					list={this.props.items}
@@ -142,12 +152,12 @@ class TodoContainer extends Component {
 }
 
 function mapStateToProps({ items, baseItem }) {
-	return { items, baseItem };
+	return { items, baseItem};
 }
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
-		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem, changeColor, updateItem, updateData },
+		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem, changeColor, updateItem, updateData:updateDataThrottled},
 		dispatch
 	);
 }

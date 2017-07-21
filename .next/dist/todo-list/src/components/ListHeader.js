@@ -32,6 +32,10 @@ var _NewItemForm2 = _interopRequireDefault(_NewItemForm);
 
 var _colorParser = require("../helpers/colorParser.js");
 
+var _Progress = require("./Progress.js");
+
+var _Progress2 = _interopRequireDefault(_Progress);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListHeader.js";
@@ -43,7 +47,11 @@ var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/to
 var styleSheet = (0, _styles.createStyleSheet)("Header", function (theme) {
 	return {
 		titleContainer: {
-			padding: 16
+			padding: 16,
+			display: 'flex'
+		},
+		titleText: {
+			flexGrow: 1
 		},
 		crumb: {
 			alignItems: "center",
@@ -86,7 +94,7 @@ var ListHeader = function ListHeader(props) {
 			style: { color: textColor },
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 51
+				lineNumber: 56
 			}
 		}, trail.map(function (item, index) {
 			return _react2.default.createElement("span", {
@@ -95,12 +103,12 @@ var ListHeader = function ListHeader(props) {
 				onClick: props.changeBaseComposer(item),
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 58
+					lineNumber: 63
 				}
 			}, item === "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 67
+					lineNumber: 72
 				}
 			}) : "", " ");
 		}));
@@ -115,11 +123,22 @@ var ListHeader = function ListHeader(props) {
 		},
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 77
+			lineNumber: 82
 		}
 	}, _react2.default.createElement("div", { className: classes.titleContainer, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 85
+			lineNumber: 90
+		}
+	}, _react2.default.createElement(_Progress2.default, {
+		textColor: textColor,
+		updateData: props.updateData,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 91
+		}
+	}), _react2.default.createElement("div", { className: classes.titleText, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 95
 		}
 	}, _react2.default.createElement(_Typography2.default, {
 		type: "headline",
@@ -127,7 +146,7 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 86
+			lineNumber: 96
 		}
 	}, props.baseItem === "root" ? "root" : props.baseItemText), _react2.default.createElement(_Typography2.default, {
 		type: "subheading",
@@ -135,22 +154,22 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 93
+			lineNumber: 103
 		}
-	}, props.counterText)), _react2.default.createElement(_Divider2.default, {
+	}, props.counterText))), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 101
+			lineNumber: 112
 		}
 	}), _react2.default.createElement(BreadCrumb, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 102
+			lineNumber: 113
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 103
+			lineNumber: 114
 		}
 	}), _react2.default.createElement(_NewItemForm2.default, {
 		newItemAction: props.newItemAction,
@@ -159,12 +178,12 @@ var ListHeader = function ListHeader(props) {
 		accentTextColor: accentTextColor,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 104
+			lineNumber: 115
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 110
+			lineNumber: 121
 		}
 	}));
 };
