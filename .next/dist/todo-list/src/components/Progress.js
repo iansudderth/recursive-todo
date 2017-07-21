@@ -14,6 +14,10 @@ var _Button = require('material-ui/Button');
 
 var _Button2 = _interopRequireDefault(_Button);
 
+var _IconButton = require('material-ui/IconButton');
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
 var _Check = require('material-ui-icons/Check');
 
 var _Check2 = _interopRequireDefault(_Check);
@@ -45,7 +49,7 @@ var NetworkProgress = function NetworkProgress(props) {
 		case 'progress':
 			icon = _react2.default.createElement(_reactMdSpinner2.default, { singleColor: props.textColor, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 17
+					lineNumber: 18
 				}
 			});
 			break;
@@ -53,7 +57,7 @@ var NetworkProgress = function NetworkProgress(props) {
 			icon = _react2.default.createElement(_Check2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 20
+					lineNumber: 21
 				}
 			});
 			break;
@@ -61,7 +65,7 @@ var NetworkProgress = function NetworkProgress(props) {
 			icon = _react2.default.createElement(_Report2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 23
+					lineNumber: 24
 				}
 			});
 			break;
@@ -69,14 +73,14 @@ var NetworkProgress = function NetworkProgress(props) {
 	return _react2.default.createElement('span', {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 27
+			lineNumber: 28
 		}
-	}, _react2.default.createElement(_Button2.default, {
+	}, _react2.default.createElement(_IconButton2.default, {
 		style: { color: props.textColor },
 		onClick: props.updateData,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 28
+			lineNumber: 29
 		}
 	}, icon));
 };

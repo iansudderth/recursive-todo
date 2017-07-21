@@ -131,6 +131,7 @@ class TodoContainer extends Component {
 					baseItemText={currentItem.content}
 					currentParent={currentItem.parent}
 					changeBaseComposer={this.changeBaseComposer}
+					changeColorComposer ={this.changeColorComposer}
 					counterText={this.generateComplete()}
 					items={this.props.items}
 					newItemAction={this.newItemAction}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
 import CheckIcon from 'material-ui-icons/Check';
 import SaveIcon from 'material-ui-icons/Save';
 import ReportIcon from 'material-ui-icons/Report'
@@ -25,12 +26,12 @@ const NetworkProgress = (props) => {
 	}
 		return (
 			<span>
-			<Button
+			<IconButton
 			style={{color:props.textColor}}
 			onClick={props.updateData}
 			>
 				{icon}
-			</Button>
+			</IconButton>
 			</span>
 			)
 	}

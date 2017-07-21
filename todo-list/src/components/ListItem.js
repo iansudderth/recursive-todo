@@ -18,6 +18,7 @@ import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import {primaryColorParser, fadedColorParser} from '../helpers/colorParser.js'
 import ListItemTextArea from './ListItemTextArea.js'
+import ColorMenu from './ColorMenu.js'
 
 const DragHandle = SortableHandle((props) =>{
 
@@ -31,30 +32,6 @@ const DragHandle = SortableHandle((props) =>{
 		)}
 );
 
-const ColorMenu = (props)  => {
-	// var colors = ['red', 'purple', 'lightBlue', 'teal', 'lightGreen', 'yellow', 'orange', 'pink']
-	var colors = ['red','pink','deepPurple', 'indigo', 'lightBlue','cyan', 'teal', 'green','lightGreen','yellow','orange','deepOrange']
-	return (
-		<div>
-			{colors.map((color, index)=>{
-
-				var breakLine = index % 4 === 3 ? <br /> : ""
-
-				return(
-				<span key={`${color}-${index}`}
-				onClick={props.clickHandler(color)}>
-				<IconButton
-				style={{color:primaryColorParser(color)}}
-				>
-					<Dot />
-				</IconButton>
-				{breakLine}
-				</span>
-				)
-			})}
-		</div>
-		)
-}
 
 
 class BaseListItem extends Component {

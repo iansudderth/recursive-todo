@@ -9,6 +9,7 @@ import ChevronRight from "material-ui-icons/ChevronRight";
 import NewItemForm from "./NewItemForm.js";
 import {primaryColorParser, fadedColorParser, textColorParser, accentColorParser, accentTextColorParser} from '../helpers/colorParser.js'
 import NetworkProgress from './Progress.js'
+import HeaderMenu from './HeaderMenu.js'
 
 const styleSheet = createStyleSheet("Header", theme => ({
 	titleContainer: {
@@ -108,6 +109,11 @@ const ListHeader = props => {
 						{props.counterText}
 					</Typography>
 				</div>
+				<HeaderMenu
+				textColor={textColor}
+				baseItem={props.baseItem}
+				changeColorComposer={props.changeColorComposer}
+				/>
 			</div>
 			<Divider />
 			<BreadCrumb />
