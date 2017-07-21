@@ -81,7 +81,7 @@ var ListItemTextArea = function (_Component) {
 				}
 			}, _react2.default.createElement(_List.ListItemText, {
 				primary: _react2.default.createElement("span", {
-					style: (0, _extends3.default)({ color: this.props.textColor }, lineStyle, { wordBreak: 'break-all' }),
+					style: (0, _extends3.default)({ color: this.props.textColor }, lineStyle, { wordWrap: 'normal', wordBreak: 'normal' }),
 					__source: {
 						fileName: _jsxFileName,
 						lineNumber: 34

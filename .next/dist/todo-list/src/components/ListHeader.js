@@ -32,6 +32,14 @@ var _NewItemForm2 = _interopRequireDefault(_NewItemForm);
 
 var _colorParser = require("../helpers/colorParser.js");
 
+var _Progress = require("./Progress.js");
+
+var _Progress2 = _interopRequireDefault(_Progress);
+
+var _HeaderMenu = require("./HeaderMenu.js");
+
+var _HeaderMenu2 = _interopRequireDefault(_HeaderMenu);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListHeader.js";
@@ -43,7 +51,11 @@ var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/to
 var styleSheet = (0, _styles.createStyleSheet)("Header", function (theme) {
 	return {
 		titleContainer: {
-			padding: 16
+			padding: 16,
+			display: 'flex'
+		},
+		titleText: {
+			flexGrow: 1
 		},
 		crumb: {
 			alignItems: "center",
@@ -86,7 +98,7 @@ var ListHeader = function ListHeader(props) {
 			style: { color: textColor },
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 51
+				lineNumber: 57
 			}
 		}, trail.map(function (item, index) {
 			return _react2.default.createElement("span", {
@@ -95,12 +107,12 @@ var ListHeader = function ListHeader(props) {
 				onClick: props.changeBaseComposer(item),
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 58
+					lineNumber: 64
 				}
 			}, item === "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 67
+					lineNumber: 73
 				}
 			}) : "", " ");
 		}));
@@ -115,11 +127,22 @@ var ListHeader = function ListHeader(props) {
 		},
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 77
+			lineNumber: 83
 		}
 	}, _react2.default.createElement("div", { className: classes.titleContainer, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 85
+			lineNumber: 91
+		}
+	}, _react2.default.createElement(_Progress2.default, {
+		textColor: textColor,
+		updateData: props.updateData,
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 92
+		}
+	}), _react2.default.createElement("div", { className: classes.titleText, __source: {
+			fileName: _jsxFileName,
+			lineNumber: 96
 		}
 	}, _react2.default.createElement(_Typography2.default, {
 		type: "headline",
@@ -127,7 +150,7 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 86
+			lineNumber: 97
 		}
 	}, props.baseItem === "root" ? "root" : props.baseItemText), _react2.default.createElement(_Typography2.default, {
 		type: "subheading",
@@ -135,22 +158,30 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 93
+			lineNumber: 104
 		}
-	}, props.counterText)), _react2.default.createElement(_Divider2.default, {
+	}, props.counterText)), _react2.default.createElement(_HeaderMenu2.default, {
+		textColor: textColor,
+		baseItem: props.baseItem,
+		changeColorComposer: props.changeColorComposer,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 101
+			lineNumber: 112
+		}
+	})), _react2.default.createElement(_Divider2.default, {
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 118
 		}
 	}), _react2.default.createElement(BreadCrumb, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 102
+			lineNumber: 119
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 103
+			lineNumber: 120
 		}
 	}), _react2.default.createElement(_NewItemForm2.default, {
 		newItemAction: props.newItemAction,
@@ -159,12 +190,12 @@ var ListHeader = function ListHeader(props) {
 		accentTextColor: accentTextColor,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 104
+			lineNumber: 121
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 110
+			lineNumber: 127
 		}
 	}));
 };

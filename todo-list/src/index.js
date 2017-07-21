@@ -9,16 +9,20 @@ import ReduxPromise from "redux-promise";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { MuiThemeProvider } from 'material-ui/styles';
 import TodoContainer from './containers/TodoContainer.js'
+import thunk from 'redux-thunk'
+
 
 
 
 const createStoreWithMiddleware = composeWithDevTools(
-	applyMiddleware(ReduxPromise)
+	applyMiddleware(thunk)
 )(createStore);
 
-const Boiler = () =>
-	<Provider store={createStoreWithMiddleware(reducers)}>
-		<TodoContainer />
+const Boiler = (props) =>
+	<Provider store={createStoreWithMiddleware(reducers, props.seedState)}>
+		<TodoContainer
+		listID={props.listID}
+		/>
 	</Provider>;
 
 // ReactDOM.render(<Boiler />, document.getElementById("root"));

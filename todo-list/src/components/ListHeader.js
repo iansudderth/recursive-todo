@@ -8,10 +8,16 @@ import Divider from "material-ui/Divider";
 import ChevronRight from "material-ui-icons/ChevronRight";
 import NewItemForm from "./NewItemForm.js";
 import {primaryColorParser, fadedColorParser, textColorParser, accentColorParser, accentTextColorParser} from '../helpers/colorParser.js'
+import NetworkProgress from './Progress.js'
+import HeaderMenu from './HeaderMenu.js'
 
 const styleSheet = createStyleSheet("Header", theme => ({
 	titleContainer: {
-		padding: 16
+		padding: 16,
+		display:'flex'
+	},
+	titleText:{
+		flexGrow:1
 	},
 	crumb: {
 		alignItems: "center",
@@ -83,20 +89,31 @@ const ListHeader = props => {
 		}}
 		>
 			<div className={classes.titleContainer}>
-				<Typography
-				type={"headline"}
-				align={"center"}
-				style={{color:textColor}}
-				>
-					{props.baseItem === "root" ? "root" : props.baseItemText}
-				</Typography>
-				<Typography
-				type={"subheading"}
-				align={"center"}
-				style={{color:textColor}}
-				>
-					{props.counterText}
-				</Typography>
+				<NetworkProgress
+				textColor={textColor}
+				updateData={props.updateData}
+				/>
+				<div className={classes.titleText}>
+					<Typography
+					type={"headline"}
+					align={"center"}
+					style={{color:textColor}}
+					>
+						{props.baseItem === "root" ? "root" : props.baseItemText}
+					</Typography>
+					<Typography
+					type={"subheading"}
+					align={"center"}
+					style={{color:textColor}}
+					>
+						{props.counterText}
+					</Typography>
+				</div>
+				<HeaderMenu
+				textColor={textColor}
+				baseItem={props.baseItem}
+				changeColorComposer={props.changeColorComposer}
+				/>
 			</div>
 			<Divider />
 			<BreadCrumb />

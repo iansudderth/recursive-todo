@@ -1,20 +1,13 @@
-export const NEW_ITEM = "NEW_ITEM";
-export const CHANGE_BASE = "CHANGE_BASE";
-export const COMPLETE_ITEM = "COMPLETE_ITEM";
-export const DELETE_ITEM = "DELETE_ITEM";
-export const REORDER_ITEM = "REORDER_ITEM";
-export const CHANGE_COLOR = "CHANGE_COLOR"
+import axios from 'axios'
+import _ from 'lodash'
+import throttleAction from 'throttle-action';
 
-// ============
-// To Implement
-// ============
-
-export const UPDATE_ITEM = "UPDATE_ITEM";
 
 // ===============
 // Action Creators
 // ===============
 
+export const NEW_ITEM = "NEW_ITEM";
 export function newItem(content = "", parent = "root") {
 	return {
 		type: NEW_ITEM,
@@ -24,7 +17,7 @@ export function newItem(content = "", parent = "root") {
 		}
 	};
 }
-
+export const CHANGE_BASE = "CHANGE_BASE";
 export function changeBaseItem(id) {
 	return {
 		type: CHANGE_BASE,
@@ -32,6 +25,7 @@ export function changeBaseItem(id) {
 	};
 }
 
+export const COMPLETE_ITEM = "COMPLETE_ITEM";
 export function completeItem(id) {
 	return {
 		type: COMPLETE_ITEM,
@@ -39,6 +33,7 @@ export function completeItem(id) {
 	};
 }
 
+export const DELETE_ITEM = "DELETE_ITEM";
 export function deleteItem(id) {
 	return {
 		type: DELETE_ITEM,
@@ -46,6 +41,7 @@ export function deleteItem(id) {
 	};
 }
 
+export const REORDER_ITEM = "REORDER_ITEM";
 export function reorderItem(parentID, oldIndex, newIndex) {
 	return {
 		type: REORDER_ITEM,
@@ -57,6 +53,7 @@ export function reorderItem(parentID, oldIndex, newIndex) {
 	};
 }
 
+export const CHANGE_COLOR = "CHANGE_COLOR";
 export function changeColor(id,color){
 	return{
 		type: CHANGE_COLOR,
@@ -67,6 +64,8 @@ export function changeColor(id,color){
 	}
 }
 
+
+export const UPDATE_ITEM = "UPDATE_ITEM";
 export function updateItem(id,newText){
 	return {
 		type:UPDATE_ITEM,
@@ -74,5 +73,60 @@ export function updateItem(id,newText){
 			id,
 			newText
 		}
+	}
+}
+
+// export const UPDATE_DATA = "UPDATE_DATA";
+// export function updateData(id, newState){
+// 	var request = axios.put(`/todo/${id}`, newState)
+// 	return{
+// 		type:UPDATE_DATA,
+// 		payload:request
+// 	}
+// }
+
+export const UPDATE_DATA = "UPDATE_DATA"
+export function updateData(id, newState){
+	return function (dispatch) {
+		dispatch(updateProgress())
+
+		return axios.put(`/todo/${id}`, newState)
+			.then(
+
+				response => {
+					console.log("axios promise",response)
+					dispatch(updateComplete())
+				},
+
+				error => {
+					console.log(error)
+					dispatch(updateError())
+				}
+				)
+	}
+}
+
+export const updateDataThrottled = throttleAction(updateData, 5000);
+
+
+export const UPDATE_PROGRESS = "UPDATE_PROGRESS"
+export function updateProgress(){
+	return{
+		type:UPDATE_PROGRESS
+	}
+}
+
+
+export const UPDATE_SUCCESS = "UPDATE_SUCCESS"
+export function updateComplete(){
+	return{
+		type:UPDATE_SUCCESS
+	}
+}
+
+export const UPDATE_ERROR = "UPDATE_ERROR"
+export function updateError(){
+	return{
+		type:UPDATE_ERROR
 	}
 }

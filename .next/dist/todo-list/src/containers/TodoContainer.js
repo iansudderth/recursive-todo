@@ -50,6 +50,10 @@ var _Card = require("material-ui/Card");
 
 var _Card2 = _interopRequireDefault(_Card);
 
+var _lodash = require("lodash");
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/containers/TodoContainer.js";
@@ -76,6 +80,7 @@ var TodoContainer = function (_Component) {
 		_this.generateComplete = _this.generateComplete.bind(_this);
 		_this.changeColorComposer = _this.changeColorComposer.bind(_this);
 		_this.updateItemDispatch = _this.updateItemDispatch.bind(_this);
+		_this.updateDataDispatch = _this.updateDataDispatch.bind(_this);
 		return _this;
 	}
 
@@ -88,7 +93,8 @@ var TodoContainer = function (_Component) {
 		key: "newItemAction",
 		value: function newItemAction(content) {
 			this.props.newItem(content, this.props.baseItem);
-			this.setState({ newItem: "" });
+			var updateDataDispatch = this.updateDataDispatch;
+			this.setState({ newItem: "" }, function () {});
 		}
 	}, {
 		key: "changeBaseComposer",
@@ -102,6 +108,7 @@ var TodoContainer = function (_Component) {
 		key: "deleteItemComposer",
 		value: function deleteItemComposer(id) {
 			var deleteItemDispatch = this.props.deleteItem;
+			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				deleteItemDispatch(id);
 			};
@@ -110,6 +117,7 @@ var TodoContainer = function (_Component) {
 		key: "completeItemComposer",
 		value: function completeItemComposer(id) {
 			var completeItemDispatch = this.props.completeItem;
+			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				completeItemDispatch(id);
 			};
@@ -118,6 +126,7 @@ var TodoContainer = function (_Component) {
 		key: "reorderItemComposer",
 		value: function reorderItemComposer(id, oldIndex, newIndex) {
 			var reorderItemDispatch = this.props.reorderItem;
+			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				reorderItemDispatch(id, oldIndex, newIndex);
 			};
@@ -133,6 +142,7 @@ var TodoContainer = function (_Component) {
 		key: "changeColorComposer",
 		value: function changeColorComposer(id, color) {
 			var changeColorDispatch = this.props.changeColor;
+			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				changeColorDispatch(id, color);
 			};
@@ -143,25 +153,42 @@ var TodoContainer = function (_Component) {
 			this.props.updateItem(id, newText);
 		}
 	}, {
+		key: "updateDataDispatch",
+		value: function updateDataDispatch() {
+			var id = this.props.listID;
+			var newState = {
+				items: this.props.items,
+				baseItem: this.props.baseItem
+			};
+			this.props.updateData(id, { id: id, newState: newState });
+		}
+	}, {
+		key: "componentDidUpdate",
+		value: function componentDidUpdate(prevProps, prevState) {
+			this.updateDataDispatch();
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
 			var parentItem = this.props.items[currentItem.parent];
 			return _react2.default.createElement(_Card2.default, { style: (0, _defineProperty3.default)({ margin: "auto" }, "margin", "16px"), __source: {
 					fileName: _jsxFileName,
-					lineNumber: 96
+					lineNumber: 128
 				}
 			}, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
 				baseItemText: currentItem.content,
 				currentParent: currentItem.parent,
 				changeBaseComposer: this.changeBaseComposer,
+				changeColorComposer: this.changeColorComposer,
 				counterText: this.generateComplete(),
 				items: this.props.items,
 				newItemAction: this.newItemAction,
+				updateData: this.updateDataDispatch,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 97
+					lineNumber: 129
 				}
 			}), _react2.default.createElement(_List2.default, {
 				list: this.props.items,
@@ -174,7 +201,7 @@ var TodoContainer = function (_Component) {
 				updateItem: this.updateItemDispatch,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 106
+					lineNumber: 140
 				}
 			}));
 		}
@@ -191,7 +218,7 @@ function mapStateToProps(_ref2) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor, updateItem: _actions.updateItem }, dispatch);
+	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor, updateItem: _actions.updateItem, updateData: _actions.updateDataThrottled }, dispatch);
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TodoContainer);

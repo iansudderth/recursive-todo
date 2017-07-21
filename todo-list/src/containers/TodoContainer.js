@@ -8,12 +8,16 @@ import {
 	deleteItem,
 	reorderItem,
 	changeColor,
-	updateItem
+	updateItem,
+	updateData,
+	updateDataThrottled
 } from "../actions";
 import { bindActionCreators } from "redux";
 // import style from "../components/ListItem/style.css";
 import ListHeader from "../components/ListHeader.js";
 import Card from "material-ui/Card";
+import _ from 'lodash'
+
 
 class TodoContainer extends Component {
 	constructor(props) {
@@ -30,6 +34,7 @@ class TodoContainer extends Component {
 		this.generateComplete = this.generateComplete.bind(this);
 		this.changeColorComposer = this.changeColorComposer.bind(this);
 		this.updateItemDispatch = this.updateItemDispatch.bind(this);
+		this.updateDataDispatch = this.updateDataDispatch.bind(this);
 	}
 
 	inputUpdate(event) {
@@ -38,7 +43,10 @@ class TodoContainer extends Component {
 
 	newItemAction(content) {
 		this.props.newItem(content, this.props.baseItem);
-		this.setState({ newItem: "" });
+		var updateDataDispatch = this.updateDataDispatch
+		this.setState({ newItem: "" }, () => {
+
+		});
 	}
 
 	changeBaseComposer(id) {
@@ -50,22 +58,28 @@ class TodoContainer extends Component {
 
 	deleteItemComposer(id) {
 		let deleteItemDispatch = this.props.deleteItem;
+		let updateDataDispatch = this.updateDataDispatch
 		return function() {
 			deleteItemDispatch(id);
+
 		};
 	}
 
 	completeItemComposer(id) {
 		let completeItemDispatch = this.props.completeItem;
+		let updateDataDispatch = this.updateDataDispatch
 		return function() {
 			completeItemDispatch(id);
+
 		};
 	}
 
 	reorderItemComposer(id, oldIndex, newIndex) {
 		let reorderItemDispatch = this.props.reorderItem;
+		let updateDataDispatch = this.updateDataDispatch;
 		return function() {
 			reorderItemDispatch(id, oldIndex, newIndex);
+
 		};
 	}
 
@@ -80,14 +94,32 @@ class TodoContainer extends Component {
 
 	changeColorComposer(id, color) {
 		let changeColorDispatch = this.props.changeColor
+		let updateDataDispatch = this.updateDataDispatch;
 		return function (){
 			changeColorDispatch(id, color)
+
 		}
 	}
 
 	updateItemDispatch(id, newText){
 		this.props.updateItem(id, newText)
+
 	}
+
+	updateDataDispatch(){
+		const id = this.props.listID
+		const newState = {
+			items:this.props.items,
+			baseItem:this.props.baseItem
+			}
+		this.props.updateData(id, {id, newState})
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		this.updateDataDispatch()
+	}
+
+
 
 	render() {
 		var currentItem = this.props.items[this.props.baseItem];
@@ -99,9 +131,11 @@ class TodoContainer extends Component {
 					baseItemText={currentItem.content}
 					currentParent={currentItem.parent}
 					changeBaseComposer={this.changeBaseComposer}
+					changeColorComposer ={this.changeColorComposer}
 					counterText={this.generateComplete()}
 					items={this.props.items}
 					newItemAction={this.newItemAction}
+					updateData={this.updateDataDispatch}
 				/>
 				<List
 					list={this.props.items}
@@ -119,12 +153,12 @@ class TodoContainer extends Component {
 }
 
 function mapStateToProps({ items, baseItem }) {
-	return { items, baseItem };
+	return { items, baseItem};
 }
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
-		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem, changeColor, updateItem },
+		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem, changeColor, updateItem, updateData:updateDataThrottled},
 		dispatch
 	);
 }

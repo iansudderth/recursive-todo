@@ -85,6 +85,10 @@ function items() {
 			newState[action.payload.id].content = action.payload.newText;
 			return newState;
 
+		case _actions.UPDATE_DATA:
+			console.log(action.payload);
+			return state;
+
 		default:
 			return state;
 	}
