@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.black = exports.white = exports.fadedColorParser = exports.accentColorParser = exports.primaryColorParser = exports.rawColorParser = undefined;
+exports.black = exports.white = exports.fadedAccentColorParser = exports.fadedColorParser = exports.accentColorParser = exports.primaryColorParser = exports.rawColorParser = undefined;
 exports.textColorParser = textColorParser;
 exports.accentTextColorParser = accentTextColorParser;
 
@@ -52,8 +52,8 @@ function textColorParser(colorText, complete) {
 }
 
 function accentTextColorParser(colorText) {
-	var whiteList = ['red', 'pink', 'purple', 'deepPurple', 'indigo', 'blue'];
-	var blackList = ['lightBlue', 'cyan', 'teal', 'gren', 'lightGreen', 'lime', 'yellow', 'amber', 'orange', 'deepOrange'];
+	var whiteList = ['red', 'pink', 'purple', 'deepPurple', 'indigo', 'blue', 'deepOrange'];
+	var blackList = ['lightBlue', 'cyan', 'teal', 'gren', 'lightGreen', 'lime', 'yellow', 'amber', 'orange'];
 
 	if (_lodash2.default.includes(whiteList, colorText)) {
 		return '#ffffff';
@@ -76,6 +76,8 @@ var primaryColorParser = exports.primaryColorParser = colorParserComposer(500);
 var accentColorParser = exports.accentColorParser = colorParserComposer('A400');
 
 var fadedColorParser = exports.fadedColorParser = colorParserComposer(100);
+
+var fadedAccentColorParser = exports.fadedAccentColorParser = colorParserComposer('A100');
 
 var white = exports.white = {
 	50: '#ffffff',

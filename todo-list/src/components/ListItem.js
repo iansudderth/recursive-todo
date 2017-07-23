@@ -33,7 +33,6 @@ const DragHandle = SortableHandle((props) =>{
 );
 
 
-
 class BaseListItem extends Component {
 	constructor(props){
 		super(props);
@@ -117,7 +116,7 @@ class BaseListItem extends Component {
 	render(){
 		var textColor = this.props.value.complete? this.completeGrey : this.props.textColor
 	return (
-		<ListItem divider={true} style={{backgroundColor: this.props.itemColor, padding:12}}>
+		<ListItem divider={true} style={{backgroundColor: this.props.itemColor, padding:12, transition:'all 0s, background-color .5s'}}>
 			<DragHandle
 				completeStyle={{color:textColor}}
 				complete={this.item.complete}

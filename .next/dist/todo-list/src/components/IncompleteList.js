@@ -39,6 +39,9 @@ var styleSheet = (0, _styles.createStyleSheet)("IncompleteList", function (theme
 		},
 		root: {
 			padding: 0
+		},
+		helper: {
+			transition: 0
 		}
 	};
 });
@@ -46,7 +49,7 @@ var styleSheet = (0, _styles.createStyleSheet)("IncompleteList", function (theme
 var SortableList = (0, _reactSortableHoc.SortableContainer)(function (props) {
 	return _react2.default.createElement(_List2.default, { className: props.classForList, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 29
+			lineNumber: 32
 		}
 	}, props.items.map(function (value, index) {
 		return _react2.default.createElement(SortableListItem, {
@@ -62,7 +65,7 @@ var SortableList = (0, _reactSortableHoc.SortableContainer)(function (props) {
 			updateItem: props.updateItem,
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 32
+				lineNumber: 35
 			}
 		});
 	}));
@@ -80,7 +83,7 @@ var SortableListItem = (0, _reactSortableHoc.SortableElement)(function (props) {
 		updateItem: props.updateItem,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 52
+			lineNumber: 55
 		}
 	});
 });
@@ -98,7 +101,7 @@ var IncompleteList = function IncompleteList(props) {
 	return _react2.default.createElement("div", {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 74
+			lineNumber: 77
 		}
 	}, _react2.default.createElement(SortableList, {
 		items: props.items,
@@ -112,9 +115,10 @@ var IncompleteList = function IncompleteList(props) {
 		bgColorComposer: _colorParser.primaryColorParser,
 		textColorComposer: _colorParser.textColorParser,
 		updateItem: props.updateItem,
+		helperClass: props.classes.helper,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 75
+			lineNumber: 78
 		}
 	}));
 };

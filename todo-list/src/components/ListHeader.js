@@ -7,9 +7,12 @@ import Typography from "material-ui/Typography";
 import Divider from "material-ui/Divider";
 import ChevronRight from "material-ui-icons/ChevronRight";
 import NewItemForm from "./NewItemForm.js";
-import {primaryColorParser, fadedColorParser, textColorParser, accentColorParser, accentTextColorParser} from '../helpers/colorParser.js'
+import {primaryColorParser, fadedColorParser, textColorParser, accentColorParser, accentTextColorParser, fadedAccentColorParser} from '../helpers/colorParser.js'
 import NetworkProgress from './Progress.js'
 import HeaderMenu from './HeaderMenu.js'
+import EditableTextArea from './EditableTextArea.js'
+import Checkbox from "material-ui/Checkbox";
+import IconButton from 'material-ui/IconButton'
 
 const styleSheet = createStyleSheet("Header", theme => ({
 	titleContainer: {
@@ -34,10 +37,21 @@ const styleSheet = createStyleSheet("Header", theme => ({
 
 const ListHeader = props => {
 	const classes = props.classes;
-	const bgColor = primaryColorParser(props.items[props.baseItem].color)
-	const textColor = textColorParser(props.items[props.baseItem].color)
-	const accentColor = accentColorParser(props.items[props.baseItem].color)
-	const accentTextColor = accentTextColorParser(props.items[props.baseItem].color)
+	const currentItemColor = props.items[props.baseItem].color
+	const incompleteColor = primaryColorParser(currentItemColor)
+	const incompleteTextColor = textColorParser(currentItemColor)
+	const incompleteAccentColor = accentColorParser(currentItemColor)
+	const completeAccentColor = fadedAccentColorParser(currentItemColor)
+	const incompleteAccentTextColor = accentTextColorParser(currentItemColor)
+	const complete = props.baseItem === 'root' ? false : props.items[props.baseItem].complete
+
+	const completeColor = fadedColorParser(currentItemColor)
+	const textColor = complete ? "#000000" : incompleteTextColor
+	const bgColor = complete ? completeColor : incompleteColor
+	const accentColor = complete ? completeAccentColor : incompleteAccentColor
+	const accentTextColor = complete ? "#000000" : incompleteAccentTextColor
+
+	const headerText = props.items[props.baseItem].content
 
 	const BreadCrumb = () => {
 		let trail = [];
@@ -89,25 +103,25 @@ const ListHeader = props => {
 		}}
 		>
 			<div className={classes.titleContainer}>
-				<NetworkProgress
-				textColor={textColor}
-				updateData={props.updateData}
-				/>
+			{props.baseItem === 'root' ?
+			<IconButton /> :(
+				<Checkbox
+				checked={complete}
+				onClick={props.completeItemComposer(props.baseItem)}
+				style={{color:textColor}}
+				/>)}
 				<div className={classes.titleText}>
-					<Typography
-					type={"headline"}
-					align={"center"}
-					style={{color:textColor}}
-					>
-						{props.baseItem === "root" ? "root" : props.baseItemText}
-					</Typography>
-					<Typography
-					type={"subheading"}
-					align={"center"}
-					style={{color:textColor}}
-					>
-						{props.counterText}
-					</Typography>
+					<EditableTextArea
+						primary={headerText}
+						secondary={props.counterText}
+						textColor={textColor}
+						rawText={headerText}
+						updateItem={props.updateItem}
+						id={props.baseItem}
+						complete={complete}
+						header={true}
+
+					/>
 				</div>
 				<HeaderMenu
 				textColor={textColor}
@@ -132,3 +146,8 @@ const ListHeader = props => {
 ListHeader.propTypes = {};
 
 export default withStyles(styleSheet)(ListHeader);
+
+// <NetworkProgress
+// textColor={textColor}
+// updateData={props.updateData}
+// />
