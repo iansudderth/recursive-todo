@@ -102,7 +102,7 @@ const initialState = {
 	    parent: 1003,
 	    completeChildren: [],
 	    incompleteChildren: []
-		}
+		},
 	  root: {
 	  	content:'Recursive Todo Lists!!!',
 	    color:'blue',
