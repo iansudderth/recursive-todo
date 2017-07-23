@@ -41,8 +41,8 @@ export function textColorParser(colorText, complete){
 }
 
 export function accentTextColorParser(colorText){
-	var whiteList = ['red','pink','purple','deepPurple', 'indigo','blue']
-	var blackList = ['lightBlue', 'cyan','teal','gren','lightGreen','lime','yellow','amber','orange','deepOrange']
+	var whiteList = ['red','pink','purple','deepPurple', 'indigo','blue','deepOrange']
+	var blackList = ['lightBlue', 'cyan','teal','gren','lightGreen','lime','yellow','amber','orange']
 
 	if(_.includes(whiteList, colorText)){
 		return '#ffffff'
@@ -65,6 +65,8 @@ export const primaryColorParser = colorParserComposer(500);
 export const accentColorParser = colorParserComposer('A400')
 
 export const fadedColorParser = colorParserComposer(100)
+
+export const fadedAccentColorParser = colorParserComposer('A100')
 
 
 export const white = {

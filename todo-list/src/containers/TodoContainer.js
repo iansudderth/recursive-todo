@@ -135,7 +135,9 @@ class TodoContainer extends Component {
 					counterText={this.generateComplete()}
 					items={this.props.items}
 					newItemAction={this.newItemAction}
+					updateItem={this.updateItemDispatch}
 					updateData={this.updateDataDispatch}
+					completeItemComposer={this.completeItemComposer}
 				/>
 				<List
 					list={this.props.items}

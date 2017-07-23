@@ -185,7 +185,9 @@ var TodoContainer = function (_Component) {
 				counterText: this.generateComplete(),
 				items: this.props.items,
 				newItemAction: this.newItemAction,
+				updateItem: this.updateItemDispatch,
 				updateData: this.updateDataDispatch,
+				completeItemComposer: this.completeItemComposer,
 				__source: {
 					fileName: _jsxFileName,
 					lineNumber: 129
@@ -201,7 +203,7 @@ var TodoContainer = function (_Component) {
 				updateItem: this.updateItemDispatch,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 140
+					lineNumber: 142
 				}
 			}));
 		}

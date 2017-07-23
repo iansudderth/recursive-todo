@@ -40,6 +40,18 @@ var _HeaderMenu = require("./HeaderMenu.js");
 
 var _HeaderMenu2 = _interopRequireDefault(_HeaderMenu);
 
+var _EditableTextArea = require("./EditableTextArea.js");
+
+var _EditableTextArea2 = _interopRequireDefault(_EditableTextArea);
+
+var _Checkbox = require("material-ui/Checkbox");
+
+var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+var _IconButton = require("material-ui/IconButton");
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListHeader.js";
@@ -73,10 +85,21 @@ var styleSheet = (0, _styles.createStyleSheet)("Header", function (theme) {
 
 var ListHeader = function ListHeader(props) {
 	var classes = props.classes;
-	var bgColor = (0, _colorParser.primaryColorParser)(props.items[props.baseItem].color);
-	var textColor = (0, _colorParser.textColorParser)(props.items[props.baseItem].color);
-	var accentColor = (0, _colorParser.accentColorParser)(props.items[props.baseItem].color);
-	var accentTextColor = (0, _colorParser.accentTextColorParser)(props.items[props.baseItem].color);
+	var currentItemColor = props.items[props.baseItem].color;
+	var incompleteColor = (0, _colorParser.primaryColorParser)(currentItemColor);
+	var incompleteTextColor = (0, _colorParser.textColorParser)(currentItemColor);
+	var incompleteAccentColor = (0, _colorParser.accentColorParser)(currentItemColor);
+	var completeAccentColor = (0, _colorParser.fadedAccentColorParser)(currentItemColor);
+	var incompleteAccentTextColor = (0, _colorParser.accentTextColorParser)(currentItemColor);
+	var complete = props.baseItem === 'root' ? false : props.items[props.baseItem].complete;
+
+	var completeColor = (0, _colorParser.fadedColorParser)(currentItemColor);
+	var textColor = complete ? "#000000" : incompleteTextColor;
+	var bgColor = complete ? completeColor : incompleteColor;
+	var accentColor = complete ? completeAccentColor : incompleteAccentColor;
+	var accentTextColor = complete ? "#000000" : incompleteAccentTextColor;
+
+	var headerText = props.items[props.baseItem].content;
 
 	var BreadCrumb = function BreadCrumb() {
 		var trail = [];
@@ -98,7 +121,7 @@ var ListHeader = function ListHeader(props) {
 			style: { color: textColor },
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 57
+				lineNumber: 71
 			}
 		}, trail.map(function (item, index) {
 			return _react2.default.createElement("span", {
@@ -107,12 +130,12 @@ var ListHeader = function ListHeader(props) {
 				onClick: props.changeBaseComposer(item),
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 64
+					lineNumber: 78
 				}
 			}, item === "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 73
+					lineNumber: 87
 				}
 			}) : "", " ");
 		}));
@@ -127,61 +150,65 @@ var ListHeader = function ListHeader(props) {
 		},
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 83
+			lineNumber: 97
 		}
 	}, _react2.default.createElement("div", { className: classes.titleContainer, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 91
+			lineNumber: 105
 		}
-	}, _react2.default.createElement(_Progress2.default, {
-		textColor: textColor,
-		updateData: props.updateData,
+	}, props.baseItem === 'root' ? _react2.default.createElement(_IconButton2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 92
+			lineNumber: 107
+		}
+	}) : _react2.default.createElement(_Checkbox2.default, {
+		checked: complete,
+		onClick: props.completeItemComposer(props.baseItem),
+		style: { color: textColor },
+		__source: {
+			fileName: _jsxFileName,
+			lineNumber: 108
 		}
 	}), _react2.default.createElement("div", { className: classes.titleText, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 96
+			lineNumber: 113
 		}
-	}, _react2.default.createElement(_Typography2.default, {
-		type: "headline",
-		align: "center",
-		style: { color: textColor },
+	}, _react2.default.createElement(_EditableTextArea2.default, {
+		primary: headerText,
+		secondary: props.counterText,
+		textColor: textColor,
+		rawText: headerText,
+		updateItem: props.updateItem,
+		id: props.baseItem,
+		complete: complete,
+		header: true,
+
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 97
+			lineNumber: 114
 		}
-	}, props.baseItem === "root" ? "root" : props.baseItemText), _react2.default.createElement(_Typography2.default, {
-		type: "subheading",
-		align: "center",
-		style: { color: textColor },
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 104
-		}
-	}, props.counterText)), _react2.default.createElement(_HeaderMenu2.default, {
+	})), _react2.default.createElement(_HeaderMenu2.default, {
 		textColor: textColor,
 		baseItem: props.baseItem,
 		changeColorComposer: props.changeColorComposer,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 112
+			lineNumber: 126
 		}
 	})), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 118
+			lineNumber: 132
 		}
 	}), _react2.default.createElement(BreadCrumb, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 119
+			lineNumber: 133
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 120
+			lineNumber: 134
 		}
 	}), _react2.default.createElement(_NewItemForm2.default, {
 		newItemAction: props.newItemAction,
@@ -190,12 +217,12 @@ var ListHeader = function ListHeader(props) {
 		accentTextColor: accentTextColor,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 121
+			lineNumber: 135
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 127
+			lineNumber: 141
 		}
 	}));
 };
@@ -203,3 +230,8 @@ var ListHeader = function ListHeader(props) {
 ListHeader.propTypes = {};
 
 exports.default = (0, _styles.withStyles)(styleSheet)(ListHeader);
+
+// <NetworkProgress
+// textColor={textColor}
+// updateData={props.updateData}
+// />

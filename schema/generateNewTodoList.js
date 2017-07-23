@@ -95,6 +95,7 @@ const initialState = {
 	    incompleteChildren: []
 		},
 	  root: {
+	  	content:'Recursive Todo Lists!!!',
 	    color:'blue',
 	    completeChildren: [1009,1010],
 	    incompleteChildren: [1001, 1002, 1003, 1004, 1005, 1006, 1007]

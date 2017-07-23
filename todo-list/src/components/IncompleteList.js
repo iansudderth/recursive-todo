@@ -20,6 +20,9 @@ const styleSheet = createStyleSheet("IncompleteList", theme => ({
 	},
 	root: {
 		padding: 0
+	},
+	helper:{
+		transition:0
 	}
 }));
 
@@ -84,6 +87,7 @@ const IncompleteList = props => {
 				bgColorComposer={primaryColorParser}
 				textColorComposer={textColorParser}
 				updateItem={props.updateItem}
+				helperClass={props.classes.helper}
 			/>
 		</div>
 	);
