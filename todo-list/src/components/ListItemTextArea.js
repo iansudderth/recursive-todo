@@ -70,6 +70,7 @@ class ListItemTextArea extends Component {
 	}
 
 	handleBlur(event){
+		event.preventDefault()
 		this.props.updateItem(this.props.id, this.state.editText)
 		this.setState({editMode:false})
 	}
