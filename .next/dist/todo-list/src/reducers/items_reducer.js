@@ -29,7 +29,7 @@ function items() {
 				id: newID,
 				content: action.payload.content,
 				complete: false,
-				color: 'lightBlue',
+				color: "lightBlue",
 				completeChildren: [],
 				incompleteChildren: [],
 				parent: parentID
@@ -131,7 +131,7 @@ var seedData = {
 		id: 1001,
 		content: "Random seed 1",
 		complete: false,
-		color: 'red',
+		color: "red",
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: [1004]
@@ -140,7 +140,7 @@ var seedData = {
 		id: 1002,
 		content: "Random seed 2",
 		complete: false,
-		color: 'red',
+		color: "red",
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: [1003]
@@ -149,7 +149,7 @@ var seedData = {
 		id: 1003,
 		content: "Random seed 3",
 		complete: false,
-		color: 'red',
+		color: "red",
 		parent: 1002,
 		completeChildren: [],
 		incompleteChildren: []
@@ -158,7 +158,7 @@ var seedData = {
 		id: 1004,
 		content: "Random seed 4",
 		complete: false,
-		color: 'red',
+		color: "red",
 		parent: 1001,
 		completeChildren: [],
 		incompleteChildren: []
@@ -167,13 +167,13 @@ var seedData = {
 		id: 1005,
 		content: "Random seed 5",
 		complete: true,
-		color: 'red',
+		color: "red",
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: []
 	},
 	root: {
-		color: 'red',
+		color: "red",
 		completeChildren: [1005],
 		incompleteChildren: [1001, 1002]
 	}

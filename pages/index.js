@@ -1,8 +1,13 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
-export default () => (
-  <ul>
-    <li><Link href='/todo/new' prefetch><a>Todo List App</a></Link></li>
-  </ul>
-)
+const index = () =>
+	<ul>
+		<li>
+			<Link href="/todo/new" prefetch>
+				<a>Todo List App</a>
+			</Link>
+		</li>
+	</ul>;
+
+export default index;

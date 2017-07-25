@@ -1,18 +1,13 @@
 import React from "react";
-// import style from "./style.css";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 // import _ from "lodash";
-import {
-	SortableContainer,
-	SortableElement
-} from "react-sortable-hoc";
+import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import ListItem from "./ListItem.js";
 import List from "material-ui/List";
 import { withStyles, createStyleSheet } from "material-ui/styles";
-import {primaryColorParser, fadedColorParser, textColorParser} from '../helpers/colorParser.js'
+import { primaryColorParser, textColorParser } from "../helpers/colorParser.js";
 
-
-const styleSheet = createStyleSheet("IncompleteList", theme => ({
+const styleSheet = createStyleSheet("IncompleteList", {
 	container: {
 		listStyle: "none",
 		padding: 0,
@@ -21,13 +16,12 @@ const styleSheet = createStyleSheet("IncompleteList", theme => ({
 	root: {
 		padding: 0
 	},
-	helper:{
-		transition:0
+	helper: {
+		transition: 0
 	}
-}));
+});
 
-
-const SortableList = SortableContainer((props) => {
+const SortableList = SortableContainer(props => {
 	return (
 		<List className={props.classForList}>
 			{props.items.map((value, index) => {
@@ -39,7 +33,7 @@ const SortableList = SortableContainer((props) => {
 						changeBaseComposer={props.changeBaseComposer}
 						deleteItemComposer={props.deleteItemComposer}
 						completeItemComposer={props.completeItemComposer}
-						changeColorComposer ={props.changeColorComposer}
+						changeColorComposer={props.changeColorComposer}
 						bgColorComposer={props.bgColorComposer}
 						textColorComposer={props.textColorComposer}
 						updateItem={props.updateItem}
@@ -50,16 +44,19 @@ const SortableList = SortableContainer((props) => {
 	);
 });
 
-const SortableListItem = SortableElement((props) => {
+const SortableListItem = SortableElement(props => {
 	return (
 		<ListItem
 			value={props.value}
 			changeBaseComposer={props.changeBaseComposer}
 			deleteItemComposer={props.deleteItemComposer}
 			completeItemComposer={props.completeItemComposer}
-			changeColorComposer ={props.changeColorComposer}
+			changeColorComposer={props.changeColorComposer}
 			itemColor={props.bgColorComposer(props.value.color)}
-			textColor={props.textColorComposer(props.value.color, props.value.complete)}
+			textColor={props.textColorComposer(
+				props.value.color,
+				props.value.complete
+			)}
 			updateItem={props.updateItem}
 		/>
 	);
@@ -68,8 +65,7 @@ const SortableListItem = SortableElement((props) => {
 const IncompleteList = props => {
 	const classes = props.classes;
 
-
-	function handleSort({ oldIndex, newIndex,}) {
+	function handleSort({ oldIndex, newIndex }) {
 		props.reorderItemComposer(props.parentID, oldIndex, newIndex)();
 	}
 
@@ -83,7 +79,7 @@ const IncompleteList = props => {
 				deleteItemComposer={props.deleteItemComposer}
 				completeItemComposer={props.completeItemComposer}
 				classForList={classes.root}
-				changeColorComposer ={props.changeColorComposer}
+				changeColorComposer={props.changeColorComposer}
 				bgColorComposer={primaryColorParser}
 				textColorComposer={textColorParser}
 				updateItem={props.updateItem}
@@ -93,6 +89,16 @@ const IncompleteList = props => {
 	);
 };
 
-IncompleteList.propTypes = {};
+IncompleteList.propTypes = {
+	classes: PropTypes.object,
+	updateItem: PropTypes.func,
+	changeColorComposer: PropTypes.func,
+	completeItemComposer: PropTypes.func,
+	deleteItemComposer: PropTypes.func,
+	changeBaseComposer: PropTypes.func,
+	items: PropTypes.array,
+	reorderItemComposer: PropTypes.func,
+	parentID: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
 
 export default withStyles(styleSheet)(IncompleteList);

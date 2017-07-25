@@ -8,6 +8,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactSortableHoc = require("react-sortable-hoc");
 
 var _ListItem = require("./ListItem.js");
@@ -25,31 +29,27 @@ var _colorParser = require("../helpers/colorParser.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/IncompleteList.js";
-// import style from "./style.css";
-// import PropTypes from "prop-types";
 // import _ from "lodash";
 
 
-var styleSheet = (0, _styles.createStyleSheet)("IncompleteList", function (theme) {
-	return {
-		container: {
-			listStyle: "none",
-			padding: 0,
-			margin: 0
-		},
-		root: {
-			padding: 0
-		},
-		helper: {
-			transition: 0
-		}
-	};
+var styleSheet = (0, _styles.createStyleSheet)("IncompleteList", {
+	container: {
+		listStyle: "none",
+		padding: 0,
+		margin: 0
+	},
+	root: {
+		padding: 0
+	},
+	helper: {
+		transition: 0
+	}
 });
 
 var SortableList = (0, _reactSortableHoc.SortableContainer)(function (props) {
 	return _react2.default.createElement(_List2.default, { className: props.classForList, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 32
+			lineNumber: 26
 		}
 	}, props.items.map(function (value, index) {
 		return _react2.default.createElement(SortableListItem, {
@@ -65,7 +65,7 @@ var SortableList = (0, _reactSortableHoc.SortableContainer)(function (props) {
 			updateItem: props.updateItem,
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 35
+				lineNumber: 29
 			}
 		});
 	}));
@@ -83,7 +83,7 @@ var SortableListItem = (0, _reactSortableHoc.SortableElement)(function (props) {
 		updateItem: props.updateItem,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 55
+			lineNumber: 49
 		}
 	});
 });
@@ -101,7 +101,7 @@ var IncompleteList = function IncompleteList(props) {
 	return _react2.default.createElement("div", {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 77
+			lineNumber: 73
 		}
 	}, _react2.default.createElement(SortableList, {
 		items: props.items,
@@ -118,11 +118,21 @@ var IncompleteList = function IncompleteList(props) {
 		helperClass: props.classes.helper,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 78
+			lineNumber: 74
 		}
 	}));
 };
 
-IncompleteList.propTypes = {};
+IncompleteList.propTypes = {
+	classes: _propTypes2.default.object,
+	updateItem: _propTypes2.default.func,
+	changeColorComposer: _propTypes2.default.func,
+	completeItemComposer: _propTypes2.default.func,
+	deleteItemComposer: _propTypes2.default.func,
+	changeBaseComposer: _propTypes2.default.func,
+	items: _propTypes2.default.array,
+	reorderItemComposer: _propTypes2.default.func,
+	parentID: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number])
+};
 
 exports.default = (0, _styles.withStyles)(styleSheet)(IncompleteList);

@@ -32,6 +32,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactSortableHoc = require("react-sortable-hoc");
 
 var _List = require("material-ui/List");
@@ -47,10 +51,6 @@ var _IconButton2 = _interopRequireDefault(_IconButton);
 var _Reorder = require("material-ui-icons/Reorder");
 
 var _Reorder2 = _interopRequireDefault(_Reorder);
-
-var _Brightness = require("material-ui-icons/Brightness1");
-
-var _Brightness2 = _interopRequireDefault(_Brightness);
 
 var _DeleteForever = require("material-ui-icons/DeleteForever");
 
@@ -95,24 +95,23 @@ var _ColorMenu2 = _interopRequireDefault(_ColorMenu);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListItem.js";
-// import style from "./style.css";
-// import PropTypes from 'prop-types'
 // import _ from 'lodash';
 
 
 var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (props) {
+	var activeStyle = props.complete ? {} : { cursor: "pointer" };
+	var centerStyle = { display: "flex", alignItems: "center", margin: 12 };
 
-	var activeStyle = props.complete ? {} : { cursor: 'pointer' };
-	var centerStyle = { display: 'flex', alignItems: 'center', margin: 12 };
-
-	return _react2.default.createElement("span", { style: (0, _extends3.default)({}, props.completeStyle, activeStyle, centerStyle), __source: {
+	return _react2.default.createElement("span", {
+		style: (0, _extends3.default)({}, props.completeStyle, activeStyle, centerStyle),
+		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 29
+			lineNumber: 32
 		}
 	}, _react2.default.createElement(_Reorder2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 30
+			lineNumber: 35
 		}
 	}));
 });
@@ -126,7 +125,9 @@ var BaseListItem = function (_Component) {
 		var _this = (0, _possibleConstructorReturn3.default)(this, (BaseListItem.__proto__ || (0, _getPrototypeOf2.default)(BaseListItem)).call(this, props));
 
 		_this.item = _this.props.value;
-		_this.incompleteListStyle = { backgroundColor: (0, _colorParser.primaryColorParser)(_this.item.color) };
+		_this.incompleteListStyle = {
+			backgroundColor: (0, _colorParser.primaryColorParser)(_this.item.color)
+		};
 		_this.completeListStyle = { backgroundColor: (0, _colorParser.fadedColorParser)(_this.item.color) };
 		_this.completeGrey = _colors.grey[500];
 		_this.completeLineStyle = _this.item.complete ? { color: _this.completeGrey, textDecoration: "line-through" } : {};
@@ -144,18 +145,12 @@ var BaseListItem = function (_Component) {
 		_this.colorItemClickHandler = _this.colorItemClickHandler.bind(_this);
 		return _this;
 	}
-	// listItemStyle = this.item.complete
-	// 	? this.completeListStyle
-	// 	: this.incompleteListStyle;
-	// listItemStyle = {backgroundColor:this.state.bgColor}
-
 
 	(0, _createClass3.default)(BaseListItem, [{
 		key: "completeDisplay",
 		value: function completeDisplay() {
 			var completed = this.item.completeChildren.length;
 			var total = completed + this.item.incompleteChildren.length;
-			var textColor = this.props.value.complete ? this.completeGrey : this.props.textColor;
 			var displayTextStyle = this.props.value.complete ? { color: this.completeGrey } : { color: this.props.textColor };
 			if (total === 0) {
 				return "";
@@ -172,11 +167,15 @@ var BaseListItem = function (_Component) {
 	}, {
 		key: "content",
 		value: function content() {
-			var textColor = this.props.value.complete ? this.completeGrey : this.props.textColor;
 			var contentTextStyle = this.props.value.complete ? { color: this.completeGrey, textDecoration: "line-through" } : { color: this.props.textColor };
-			return _react2.default.createElement("span", { style: (0, _extends3.default)({}, contentTextStyle, { wordWrap: 'break-word', wordBreak: 'break-all' }), __source: {
+			return _react2.default.createElement("span", {
+				style: (0, _extends3.default)({}, contentTextStyle, {
+					wordWrap: "break-word",
+					wordBreak: "break-all"
+				}),
+				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 92
+					lineNumber: 91
 				}
 			}, this.item.content);
 		}
@@ -195,7 +194,6 @@ var BaseListItem = function (_Component) {
 		value: function colorItemClickHandler(colorName) {
 			var close = this.closeMenu;
 			var changeColor = this.props.changeColorComposer(this.item.id, colorName);
-			var propsColor = this.props.bgColor;
 			return function () {
 				changeColor();
 				close();
@@ -205,16 +203,23 @@ var BaseListItem = function (_Component) {
 		key: "render",
 		value: function render() {
 			var textColor = this.props.value.complete ? this.completeGrey : this.props.textColor;
-			return _react2.default.createElement(_List.ListItem, { divider: true, style: { transition: 'all 0s, background-color .5s', backgroundColor: this.props.itemColor, padding: 12 }, __source: {
+			return _react2.default.createElement(_List.ListItem, {
+				divider: true,
+				style: {
+					transition: "all 0s, background-color .5s",
+					backgroundColor: this.props.itemColor,
+					padding: 12
+				},
+				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 119
+					lineNumber: 128
 				}
 			}, _react2.default.createElement(DragHandle, {
 				completeStyle: { color: textColor },
 				complete: this.item.complete,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 120
+					lineNumber: 136
 				}
 			}), _react2.default.createElement(_Checkbox2.default, {
 				checked: this.item.complete,
@@ -222,7 +227,7 @@ var BaseListItem = function (_Component) {
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 124
+					lineNumber: 140
 				}
 			}), _react2.default.createElement(_ListItemTextArea2.default, {
 				primary: this.content(),
@@ -234,31 +239,31 @@ var BaseListItem = function (_Component) {
 				complete: this.item.complete,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 130
+					lineNumber: 146
 				}
 			}), _react2.default.createElement(_IconButton2.default, {
 				onClick: this.props.changeBaseComposer(this.item.id),
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 140
+					lineNumber: 156
 				}
 			}, _react2.default.createElement(_FormatListBulleted2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 144
+					lineNumber: 160
 				}
 			})), _react2.default.createElement(_IconButton2.default, {
 				onClick: this.openMenu,
 				style: { color: textColor },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 146
+					lineNumber: 162
 				}
 			}, _react2.default.createElement(_Settings2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 150
+					lineNumber: 166
 				}
 			})), _react2.default.createElement(_Menu2.default, {
 				id: this.item.id + "-menu",
@@ -267,59 +272,67 @@ var BaseListItem = function (_Component) {
 				anchorEl: this.state.anchorEl,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 152
+					lineNumber: 168
 				}
 			}, _react2.default.createElement(_Typography2.default, {
 				type: "subheading",
-				align: 'center',
-				style: { outline: 'none', paddingLeft: 16 },
+				align: "center",
+				style: { outline: "none", paddingLeft: 16 },
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 158
+					lineNumber: 174
 				}
 			}, "Change Color"), _react2.default.createElement(_Divider2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 163
+					lineNumber: 181
 				}
-			}), _react2.default.createElement(_ColorMenu2.default, {
-				clickHandler: this.colorItemClickHandler,
-				__source: {
+			}), _react2.default.createElement(_ColorMenu2.default, { clickHandler: this.colorItemClickHandler, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 164
+					lineNumber: 182
 				}
 			}), _react2.default.createElement(_Divider2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 167
+					lineNumber: 183
 				}
-			}), _react2.default.createElement("div", {
-				style: { textAlign: 'center' },
-				__source: {
+			}), _react2.default.createElement("div", { style: { textAlign: "center" }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 168
+					lineNumber: 184
 				}
 			}, _react2.default.createElement(_Button2.default, {
-				style: { color: 'white', backgroundColor: _colors.red[500], marginTop: 8 },
+				style: {
+					color: "white",
+					backgroundColor: _colors.red[500],
+					marginTop: 8
+				},
 				onClick: this.props.deleteItemComposer(this.item.id),
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 171
+					lineNumber: 185
 				}
 			}, _react2.default.createElement(_DeleteForever2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 175
+					lineNumber: 195
 				}
-			}), " ", 'Delete Item'))));
+			}), " ", "Delete Item"))));
 		}
 	}]);
 
 	return BaseListItem;
 }(_react.Component);
 
-;
-
-BaseListItem.propTypes = {};
+BaseListItem.propTypes = {
+	deleteItemComposer: _propTypes2.default.func,
+	changeBaseComposer: _propTypes2.default.func,
+	completeItemComposer: _propTypes2.default.func,
+	itemColor: _propTypes2.default.string,
+	textColor: _propTypes2.default.string,
+	value: _propTypes2.default.object,
+	bgColor: _propTypes2.default.string,
+	updateItem: _propTypes2.default.func,
+	changeColorComposer: _propTypes2.default.func
+};
 
 exports.default = BaseListItem;

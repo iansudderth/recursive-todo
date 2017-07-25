@@ -32,6 +32,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _List = require("material-ui/List");
 
 var _TextField = require("material-ui/TextField");
@@ -70,41 +74,44 @@ var ListItemTextArea = function (_Component) {
 	(0, _createClass3.default)(ListItemTextArea, [{
 		key: "nonEditItem",
 		value: function nonEditItem(props) {
-			var lineStyle = this.props.complete ? { textDecoration: 'line-through' } : {};
+			var lineStyle = this.props.complete ? { textDecoration: "line-through" } : {};
 			var hold = (0, _reactTouch.defineHold)({ updateEvery: 50, holdFor: 500 });
-			return _react2.default.createElement(_reactTouch.Holdable, {
-				config: hold,
-				onHoldComplete: props.doubleClickHandler,
-				__source: {
+			return _react2.default.createElement(_reactTouch.Holdable, { config: hold, onHoldComplete: props.doubleClickHandler, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 28
+					lineNumber: 30
 				}
 			}, _react2.default.createElement(_List.ListItemText, {
 				primary: _react2.default.createElement("span", {
-					style: (0, _extends3.default)({ color: this.props.textColor }, lineStyle, { wordWrap: 'normal', wordBreak: 'normal' }),
+					style: (0, _extends3.default)({
+						color: this.props.textColor
+					}, lineStyle, {
+						wordWrap: "normal",
+						wordBreak: "normal"
+					}),
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 34
+						lineNumber: 33
 					}
 				}, props.primary),
 				secondary: props.secondary,
-				style: { color: props.textColor, padding: '0px', wordWrap: 'break-word' },
+				style: {
+					color: props.textColor,
+					padding: "0px",
+					wordWrap: "break-word"
+				},
 				onDoubleClick: props.doubleClickHandler,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 32
+					lineNumber: 31
 				}
 			}));
 		}
 	}, {
 		key: "EditItem",
-		value: function EditItem(props) {
-			return _react2.default.createElement("form", {
-				onSubmit: this.handleBlur,
-				style: { width: '100%' },
-				__source: {
+		value: function EditItem() {
+			return _react2.default.createElement("form", { onSubmit: this.handleBlur, style: { width: "100%" }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 48
+					lineNumber: 58
 				}
 			}, _react2.default.createElement(_TextField2.default, {
 				value: this.state.editText,
@@ -112,13 +119,14 @@ var ListItemTextArea = function (_Component) {
 				onBlur: this.handleBlur,
 				fullWidth: true,
 				autoFocus: true,
-				InputProps: { style: {
+				InputProps: {
+					style: {
 						color: this.props.textColor
 					}
 				},
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 52
+					lineNumber: 59
 				}
 			}));
 		}
@@ -143,7 +151,7 @@ var ListItemTextArea = function (_Component) {
 				return _react2.default.createElement(EditItem, {
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 83
+						lineNumber: 89
 					}
 				});
 			} else {
@@ -151,10 +159,14 @@ var ListItemTextArea = function (_Component) {
 					doubleClickHandler: props.doubleClickHandler,
 					primary: props.primary,
 					secondary: props.secondary,
-					style: { color: props.textColor, padding: '0px', wordWrap: 'break-word' },
+					style: {
+						color: props.textColor,
+						padding: "0px",
+						wordWrap: "break-word"
+					},
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 89
+						lineNumber: 92
 					}
 				});
 			}
@@ -176,7 +188,7 @@ var ListItemTextArea = function (_Component) {
 				textColor: this.props.textColor,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 106
+					lineNumber: 113
 				}
 			});
 		}
@@ -184,5 +196,15 @@ var ListItemTextArea = function (_Component) {
 
 	return ListItemTextArea;
 }(_react.Component);
+
+ListItemTextArea.propTypes = {
+	textColor: _propTypes2.default.string,
+	primary: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
+	secondary: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
+	updateItem: _propTypes2.default.func,
+	id: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+	complete: _propTypes2.default.bool,
+	rawText: _propTypes2.default.string
+};
 
 exports.default = ListItemTextArea;

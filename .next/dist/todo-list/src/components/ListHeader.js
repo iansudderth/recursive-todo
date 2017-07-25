@@ -12,6 +12,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _styles = require("material-ui/styles");
 
 var _Typography = require("material-ui/Typography");
@@ -32,10 +36,6 @@ var _NewItemForm2 = _interopRequireDefault(_NewItemForm);
 
 var _colorParser = require("../helpers/colorParser.js");
 
-var _Progress = require("./Progress.js");
-
-var _Progress2 = _interopRequireDefault(_Progress);
-
 var _HeaderMenu = require("./HeaderMenu.js");
 
 var _HeaderMenu2 = _interopRequireDefault(_HeaderMenu);
@@ -55,32 +55,28 @@ var _IconButton2 = _interopRequireDefault(_IconButton);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/ListHeader.js";
-// import style from "./style.css";
-// import PropTypes from "prop-types";
 // import _ from "lodash";
 
 
-var styleSheet = (0, _styles.createStyleSheet)("Header", function (theme) {
-	return {
-		titleContainer: {
-			padding: 16,
-			display: 'flex'
-		},
-		titleText: {
-			flexGrow: 1
-		},
-		crumb: {
-			alignItems: "center",
-			display: "inline-flex",
-			cursor: "pointer",
-			"&:hover": {
-				textDecoration: "underline"
-			}
-		},
-		crumbContainer: {
-			padding: 16
+var styleSheet = (0, _styles.createStyleSheet)("Header", {
+	titleContainer: {
+		padding: 16,
+		display: "flex"
+	},
+	titleText: {
+		flexGrow: 1
+	},
+	crumb: {
+		alignItems: "center",
+		display: "inline-flex",
+		cursor: "pointer",
+		"&:hover": {
+			textDecoration: "underline"
 		}
-	};
+	},
+	crumbContainer: {
+		padding: 16
+	}
 });
 
 var ListHeader = function ListHeader(props) {
@@ -91,7 +87,7 @@ var ListHeader = function ListHeader(props) {
 	var incompleteAccentColor = (0, _colorParser.accentColorParser)(currentItemColor);
 	var completeAccentColor = (0, _colorParser.fadedAccentColorParser)(currentItemColor);
 	var incompleteAccentTextColor = (0, _colorParser.accentTextColorParser)(currentItemColor);
-	var complete = props.baseItem === 'root' ? false : props.items[props.baseItem].complete;
+	var complete = props.baseItem === "root" ? false : props.items[props.baseItem].complete;
 
 	var completeColor = (0, _colorParser.fadedColorParser)(currentItemColor);
 	var textColor = complete ? "#000000" : incompleteTextColor;
@@ -121,7 +117,7 @@ var ListHeader = function ListHeader(props) {
 			style: { color: textColor },
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 71
+				lineNumber: 79
 			}
 		}, trail.map(function (item, index) {
 			return _react2.default.createElement("span", {
@@ -130,12 +126,12 @@ var ListHeader = function ListHeader(props) {
 				onClick: props.changeBaseComposer(item),
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 78
+					lineNumber: 86
 				}
 			}, item === "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 87
+					lineNumber: 95
 				}
 			}) : "", " ");
 		}));
@@ -145,21 +141,20 @@ var ListHeader = function ListHeader(props) {
 		style: {
 			backgroundColor: bgColor,
 			color: textColor,
-			transition: '.5s'
-
+			transition: ".5s"
 		},
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 97
+			lineNumber: 105
 		}
 	}, _react2.default.createElement("div", { className: classes.titleContainer, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 105
+			lineNumber: 112
 		}
-	}, props.baseItem === 'root' ? _react2.default.createElement(_IconButton2.default, {
+	}, props.baseItem === "root" ? _react2.default.createElement(_IconButton2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 107
+			lineNumber: 114
 		}
 	}) : _react2.default.createElement(_Checkbox2.default, {
 		checked: complete,
@@ -167,11 +162,11 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 108
+			lineNumber: 115
 		}
 	}), _react2.default.createElement("div", { className: classes.titleText, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 113
+			lineNumber: 120
 		}
 	}, _react2.default.createElement(_EditableTextArea2.default, {
 		primary: headerText,
@@ -182,10 +177,9 @@ var ListHeader = function ListHeader(props) {
 		id: props.baseItem,
 		complete: complete,
 		header: true,
-
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 114
+			lineNumber: 121
 		}
 	})), _react2.default.createElement(_HeaderMenu2.default, {
 		textColor: textColor,
@@ -193,22 +187,22 @@ var ListHeader = function ListHeader(props) {
 		changeColorComposer: props.changeColorComposer,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 126
+			lineNumber: 132
 		}
 	})), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 132
+			lineNumber: 138
 		}
 	}), _react2.default.createElement(BreadCrumb, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 133
+			lineNumber: 139
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 134
+			lineNumber: 140
 		}
 	}), _react2.default.createElement(_NewItemForm2.default, {
 		newItemAction: props.newItemAction,
@@ -217,21 +211,25 @@ var ListHeader = function ListHeader(props) {
 		accentTextColor: accentTextColor,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 135
+			lineNumber: 141
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 141
+			lineNumber: 147
 		}
 	}));
 };
 
-ListHeader.propTypes = {};
+ListHeader.propTypes = {
+	newItemAction: _propTypes2.default.func,
+	changeColorComposer: _propTypes2.default.func,
+	baseItem: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
+	updateItem: _propTypes2.default.func,
+	counterText: _propTypes2.default.string,
+	completeItemComposer: _propTypes2.default.func,
+	items: _propTypes2.default.object,
+	classes: _propTypes2.default.object
+};
 
 exports.default = (0, _styles.withStyles)(styleSheet)(ListHeader);
-
-// <NetworkProgress
-// textColor={textColor}
-// updateData={props.updateData}
-// />

@@ -38,13 +38,11 @@ var createStoreWithMiddleware = (0, _reduxDevtoolsExtension.composeWithDevTools)
 var Boiler = function Boiler(props) {
 	return _react2.default.createElement(_reactRedux.Provider, { store: createStoreWithMiddleware(_reducers2.default, props.seedState), __source: {
 			fileName: _jsxFileName,
-			lineNumber: 19
+			lineNumber: 16
 		}
-	}, _react2.default.createElement(_TodoContainer2.default, {
-		listID: props.listID,
-		__source: {
+	}, _react2.default.createElement(_TodoContainer2.default, { listID: props.listID, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 20
+			lineNumber: 17
 		}
 	}));
 };

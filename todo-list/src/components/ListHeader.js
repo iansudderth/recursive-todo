@@ -1,26 +1,31 @@
 import React from "react";
-// import style from "./style.css";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 // import _ from "lodash";
 import { withStyles, createStyleSheet } from "material-ui/styles";
 import Typography from "material-ui/Typography";
 import Divider from "material-ui/Divider";
 import ChevronRight from "material-ui-icons/ChevronRight";
 import NewItemForm from "./NewItemForm.js";
-import {primaryColorParser, fadedColorParser, textColorParser, accentColorParser, accentTextColorParser, fadedAccentColorParser} from '../helpers/colorParser.js'
-import NetworkProgress from './Progress.js'
-import HeaderMenu from './HeaderMenu.js'
-import EditableTextArea from './EditableTextArea.js'
+import {
+	primaryColorParser,
+	fadedColorParser,
+	textColorParser,
+	accentColorParser,
+	accentTextColorParser,
+	fadedAccentColorParser
+} from "../helpers/colorParser.js";
+import HeaderMenu from "./HeaderMenu.js";
+import EditableTextArea from "./EditableTextArea.js";
 import Checkbox from "material-ui/Checkbox";
-import IconButton from 'material-ui/IconButton'
+import IconButton from "material-ui/IconButton";
 
-const styleSheet = createStyleSheet("Header", theme => ({
+const styleSheet = createStyleSheet("Header", {
 	titleContainer: {
 		padding: 16,
-		display:'flex'
+		display: "flex"
 	},
-	titleText:{
-		flexGrow:1
+	titleText: {
+		flexGrow: 1
 	},
 	crumb: {
 		alignItems: "center",
@@ -33,25 +38,28 @@ const styleSheet = createStyleSheet("Header", theme => ({
 	crumbContainer: {
 		padding: 16
 	}
-}));
+});
 
 const ListHeader = props => {
 	const classes = props.classes;
-	const currentItemColor = props.items[props.baseItem].color
-	const incompleteColor = primaryColorParser(currentItemColor)
-	const incompleteTextColor = textColorParser(currentItemColor)
-	const incompleteAccentColor = accentColorParser(currentItemColor)
-	const completeAccentColor = fadedAccentColorParser(currentItemColor)
-	const incompleteAccentTextColor = accentTextColorParser(currentItemColor)
-	const complete = props.baseItem === 'root' ? false : props.items[props.baseItem].complete
+	const currentItemColor = props.items[props.baseItem].color;
+	const incompleteColor = primaryColorParser(currentItemColor);
+	const incompleteTextColor = textColorParser(currentItemColor);
+	const incompleteAccentColor = accentColorParser(currentItemColor);
+	const completeAccentColor = fadedAccentColorParser(currentItemColor);
+	const incompleteAccentTextColor = accentTextColorParser(currentItemColor);
+	const complete =
+		props.baseItem === "root"
+			? false
+			: props.items[props.baseItem].complete;
 
-	const completeColor = fadedColorParser(currentItemColor)
-	const textColor = complete ? "#000000" : incompleteTextColor
-	const bgColor = complete ? completeColor : incompleteColor
-	const accentColor = complete ? completeAccentColor : incompleteAccentColor
-	const accentTextColor = complete ? "#000000" : incompleteAccentTextColor
+	const completeColor = fadedColorParser(currentItemColor);
+	const textColor = complete ? "#000000" : incompleteTextColor;
+	const bgColor = complete ? completeColor : incompleteColor;
+	const accentColor = complete ? completeAccentColor : incompleteAccentColor;
+	const accentTextColor = complete ? "#000000" : incompleteAccentTextColor;
 
-	const headerText = props.items[props.baseItem].content
+	const headerText = props.items[props.baseItem].content;
 
 	const BreadCrumb = () => {
 		let trail = [];
@@ -69,9 +77,9 @@ const ListHeader = props => {
 		}
 		return (
 			<Typography
-			type={"body1"}
-			className={props.classes.crumbContainer}
-			style={{color:textColor}}
+				type={"body1"}
+				className={props.classes.crumbContainer}
+				style={{ color: textColor }}
 			>
 				{trail.map((item, index) => {
 					return (
@@ -95,21 +103,20 @@ const ListHeader = props => {
 
 	return (
 		<div
-		style={{
-			backgroundColor:bgColor,
-			color:textColor,
-			transition:'.5s'
-
-		}}
+			style={{
+				backgroundColor: bgColor,
+				color: textColor,
+				transition: ".5s"
+			}}
 		>
 			<div className={classes.titleContainer}>
-			{props.baseItem === 'root' ?
-			<IconButton /> :(
-				<Checkbox
-				checked={complete}
-				onClick={props.completeItemComposer(props.baseItem)}
-				style={{color:textColor}}
-				/>)}
+				{props.baseItem === "root"
+					? <IconButton />
+					: <Checkbox
+							checked={complete}
+							onClick={props.completeItemComposer(props.baseItem)}
+							style={{ color: textColor }}
+						/>}
 				<div className={classes.titleText}>
 					<EditableTextArea
 						primary={headerText}
@@ -120,34 +127,37 @@ const ListHeader = props => {
 						id={props.baseItem}
 						complete={complete}
 						header={true}
-
 					/>
 				</div>
 				<HeaderMenu
-				textColor={textColor}
-				baseItem={props.baseItem}
-				changeColorComposer={props.changeColorComposer}
+					textColor={textColor}
+					baseItem={props.baseItem}
+					changeColorComposer={props.changeColorComposer}
 				/>
 			</div>
 			<Divider />
 			<BreadCrumb />
 			<Divider />
 			<NewItemForm
-			newItemAction={props.newItemAction}
-			textColor={textColor}
-			accentColor={accentColor}
-			accentTextColor={accentTextColor}
+				newItemAction={props.newItemAction}
+				textColor={textColor}
+				accentColor={accentColor}
+				accentTextColor={accentTextColor}
 			/>
 			<Divider />
 		</div>
 	);
 };
 
-ListHeader.propTypes = {};
+ListHeader.propTypes = {
+	newItemAction: PropTypes.func,
+	changeColorComposer: PropTypes.func,
+	baseItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	updateItem: PropTypes.func,
+	counterText: PropTypes.string,
+	completeItemComposer: PropTypes.func,
+	items: PropTypes.object,
+	classes: PropTypes.object
+};
 
 export default withStyles(styleSheet)(ListHeader);
-
-// <NetworkProgress
-// textColor={textColor}
-// updateData={props.updateData}
-// />

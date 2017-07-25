@@ -1,5 +1,4 @@
 import axios from 'axios'
-import _ from 'lodash'
 import throttleAction from 'throttle-action';
 
 
@@ -76,14 +75,7 @@ export function updateItem(id,newText){
 	}
 }
 
-// export const UPDATE_DATA = "UPDATE_DATA";
-// export function updateData(id, newState){
-// 	var request = axios.put(`/todo/${id}`, newState)
-// 	return{
-// 		type:UPDATE_DATA,
-// 		payload:request
-// 	}
-// }
+
 
 export const UPDATE_DATA = "UPDATE_DATA"
 export function updateData(id, newState){

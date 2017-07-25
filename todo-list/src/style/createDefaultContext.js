@@ -1,7 +1,7 @@
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import createPalette from 'material-ui/styles/palette'
-import createMuiTheme from 'material-ui/styles/theme'
-import { purple, green, grey } from 'material-ui/colors'
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import createPalette from "material-ui/styles/palette";
+import createMuiTheme from "material-ui/styles/theme";
+import { grey } from "material-ui/colors";
 
 const createDefaultContext = () =>
   MuiThemeProvider.createDefaultContext({
@@ -10,28 +10,28 @@ const createDefaultContext = () =>
         primary: grey
       })
     })
-  })
+  });
 
 // Singleton hack as there is no way to pass variables from _document.js to pages yet.
-let context = null
+let context = null;
 
-export function setDefaultContext () {
-  context = createDefaultContext()
+export function setDefaultContext() {
+  context = createDefaultContext();
 }
 
-export function getDefaultContext () {
+export function getDefaultContext() {
   // Make sure to create a new store for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (!process.browser) {
-    return context
+    return context;
   }
 
   // Reuse store on the client-side
   if (!context) {
-    context = createDefaultContext()
+    context = createDefaultContext();
   }
 
-  return context
+  return context;
 }
 
-export default createDefaultContext
+export default createDefaultContext;

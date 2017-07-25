@@ -1,16 +1,12 @@
 import React, { Component } from "react";
-// import style from "./style.css";
-// import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 // import _ from 'lodash';
 import TextField from "material-ui/TextField";
 import Button from "material-ui/Button";
 import Grid from "material-ui/Grid";
 import { withStyles, createStyleSheet } from "material-ui/styles";
 
-
-
-
-const styleSheet = createStyleSheet("NewItemForm", theme => ({
+const styleSheet = createStyleSheet("NewItemForm", {
 	container: {
 		margin: "auto",
 		paddingBottom: "16px",
@@ -20,14 +16,8 @@ const styleSheet = createStyleSheet("NewItemForm", theme => ({
 	},
 	typeItem: {
 		flexGrow: 1
-	},
-	white:{
-		color:'#ffffff'
-	},
-	black:{
-		color:'#000000'
 	}
-}));
+});
 
 class NewItemForm extends Component {
 	constructor(props) {
@@ -52,11 +42,8 @@ class NewItemForm extends Component {
 
 	render() {
 		const classes = this.props.classes;
-		const textColorClass = this.props.textColor === '#ffffff' ? classes.white : classes.black
 		return (
-			<div
-			className={classes.container}
-			>
+			<div className={classes.container}>
 				<form onSubmit={this.submitHandler}>
 					<Grid container gutter={8} align={"center"}>
 						<Grid item className={classes.typeItem}>
@@ -68,22 +55,26 @@ class NewItemForm extends Component {
 								value={this.state.newItem}
 								onChange={this.inputUpdate}
 								InputProps={{
-									style:{
-										color:this.props.textColor
+									style: {
+										color: this.props.textColor
 									}
 								}}
 								InputLabelProps={{
-									style:{
-										color:this.props.textColor
+									style: {
+										color: this.props.textColor
 									}
 								}}
 							/>
 						</Grid>
 						<Grid item>
 							<Button
-							type="submit"
-							raised
-							style={{color:this.props.accentTextColor, backgroundColor:this.props.accentColor}}>
+								type="submit"
+								raised
+								style={{
+									color: this.props.accentTextColor,
+									backgroundColor: this.props.accentColor
+								}}
+							>
 								Make a New Item
 							</Button>
 						</Grid>
@@ -94,6 +85,12 @@ class NewItemForm extends Component {
 	}
 }
 
-NewItemForm.propTypes = {};
+NewItemForm.propTypes = {
+	newItemAction: PropTypes.func,
+	accentTextColor: PropTypes.string,
+	accentColor: PropTypes.string,
+	textColor: PropTypes.string,
+	classes: PropTypes.object
+};
 
 export default withStyles(styleSheet)(NewItemForm);

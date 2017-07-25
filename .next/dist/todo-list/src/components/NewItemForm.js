@@ -28,6 +28,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _TextField = require("material-ui/TextField");
 
 var _TextField2 = _interopRequireDefault(_TextField);
@@ -45,30 +49,20 @@ var _styles = require("material-ui/styles");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/components/NewItemForm.js";
-// import style from "./style.css";
-// import PropTypes from 'prop-types'
 // import _ from 'lodash';
 
 
-var styleSheet = (0, _styles.createStyleSheet)("NewItemForm", function (theme) {
-	return {
-		container: {
-			margin: "auto",
-			paddingBottom: "16px",
-			paddingTop: "16px",
-			padding: 24,
-			boxSizing: "border-box"
-		},
-		typeItem: {
-			flexGrow: 1
-		},
-		white: {
-			color: '#ffffff'
-		},
-		black: {
-			color: '#000000'
-		}
-	};
+var styleSheet = (0, _styles.createStyleSheet)("NewItemForm", {
+	container: {
+		margin: "auto",
+		paddingBottom: "16px",
+		paddingTop: "16px",
+		padding: 24,
+		boxSizing: "border-box"
+	},
+	typeItem: {
+		flexGrow: 1
+	}
 });
 
 var NewItemForm = function (_Component) {
@@ -103,24 +97,21 @@ var NewItemForm = function (_Component) {
 		key: "render",
 		value: function render() {
 			var classes = this.props.classes;
-			var textColorClass = this.props.textColor === '#ffffff' ? classes.white : classes.black;
-			return _react2.default.createElement("div", {
-				className: classes.container,
-				__source: {
+			return _react2.default.createElement("div", { className: classes.container, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 57
+					lineNumber: 46
 				}
 			}, _react2.default.createElement("form", { onSubmit: this.submitHandler, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 60
+					lineNumber: 47
 				}
 			}, _react2.default.createElement(_Grid2.default, { container: true, gutter: 8, align: "center", __source: {
 					fileName: _jsxFileName,
-					lineNumber: 61
+					lineNumber: 48
 				}
 			}, _react2.default.createElement(_Grid2.default, { item: true, className: classes.typeItem, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 62
+					lineNumber: 49
 				}
 			}, _react2.default.createElement(_TextField2.default, {
 				id: "newItem",
@@ -141,18 +132,22 @@ var NewItemForm = function (_Component) {
 				},
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 63
+					lineNumber: 50
 				}
 			})), _react2.default.createElement(_Grid2.default, { item: true, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 82
+					lineNumber: 69
 				}
 			}, _react2.default.createElement(_Button2.default, {
 				type: "submit",
 				raised: true,
-				style: { color: this.props.accentTextColor, backgroundColor: this.props.accentColor }, __source: {
+				style: {
+					color: this.props.accentTextColor,
+					backgroundColor: this.props.accentColor
+				},
+				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 83
+					lineNumber: 70
 				}
 			}, "Make a New Item")))));
 		}
@@ -161,6 +156,12 @@ var NewItemForm = function (_Component) {
 	return NewItemForm;
 }(_react.Component);
 
-NewItemForm.propTypes = {};
+NewItemForm.propTypes = {
+	newItemAction: _propTypes2.default.func,
+	accentTextColor: _propTypes2.default.string,
+	accentColor: _propTypes2.default.string,
+	textColor: _propTypes2.default.string,
+	classes: _propTypes2.default.object
+};
 
 exports.default = (0, _styles.withStyles)(styleSheet)(NewItemForm);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import List from "../components/List";
 import { connect } from "react-redux";
 import {
@@ -9,27 +10,25 @@ import {
 	reorderItem,
 	changeColor,
 	updateItem,
-	updateData,
 	updateDataThrottled
 } from "../actions";
 import { bindActionCreators } from "redux";
 // import style from "../components/ListItem/style.css";
 import ListHeader from "../components/ListHeader.js";
 import Card from "material-ui/Card";
-import _ from 'lodash'
+// import _ from 'lodash'
 import { withStyles, createStyleSheet } from "material-ui/styles";
 
-const styleSheet = createStyleSheet("CardContainer", theme => ({
-	card:{
-		margin:0
+const styleSheet = createStyleSheet("CardContainer", {
+	card: {
+		margin: 0
 	},
-	'@media (min-width:768px)':{
-		card:{
-			margin:16
+	"@media (min-width:768px)": {
+		card: {
+			margin: 16
 		}
 	}
-}));
-
+});
 
 class TodoContainer extends Component {
 	constructor(props) {
@@ -55,10 +54,7 @@ class TodoContainer extends Component {
 
 	newItemAction(content) {
 		this.props.newItem(content, this.props.baseItem);
-		var updateDataDispatch = this.updateDataDispatch
-		this.setState({ newItem: "" }, () => {
-
-		});
+		this.setState({ newItem: "" }, () => {});
 	}
 
 	changeBaseComposer(id) {
@@ -70,28 +66,22 @@ class TodoContainer extends Component {
 
 	deleteItemComposer(id) {
 		let deleteItemDispatch = this.props.deleteItem;
-		let updateDataDispatch = this.updateDataDispatch
 		return function() {
 			deleteItemDispatch(id);
-
 		};
 	}
 
 	completeItemComposer(id) {
 		let completeItemDispatch = this.props.completeItem;
-		let updateDataDispatch = this.updateDataDispatch
 		return function() {
 			completeItemDispatch(id);
-
 		};
 	}
 
 	reorderItemComposer(id, oldIndex, newIndex) {
 		let reorderItemDispatch = this.props.reorderItem;
-		let updateDataDispatch = this.updateDataDispatch;
 		return function() {
 			reorderItemDispatch(id, oldIndex, newIndex);
-
 		};
 	}
 
@@ -105,37 +95,31 @@ class TodoContainer extends Component {
 	}
 
 	changeColorComposer(id, color) {
-		let changeColorDispatch = this.props.changeColor
-		let updateDataDispatch = this.updateDataDispatch;
-		return function (){
-			changeColorDispatch(id, color)
-
-		}
+		let changeColorDispatch = this.props.changeColor;
+		return function() {
+			changeColorDispatch(id, color);
+		};
 	}
 
-	updateItemDispatch(id, newText){
-		this.props.updateItem(id, newText)
-
+	updateItemDispatch(id, newText) {
+		this.props.updateItem(id, newText);
 	}
 
-	updateDataDispatch(){
-		const id = this.props.listID
+	updateDataDispatch() {
+		const id = this.props.listID;
 		const newState = {
-			items:this.props.items,
-			baseItem:this.props.baseItem
-			}
-		this.props.updateData(id, {id, newState})
+			items: this.props.items,
+			baseItem: this.props.baseItem
+		};
+		this.props.updateData(id, { id, newState });
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-		this.updateDataDispatch()
+	componentDidUpdate() {
+		this.updateDataDispatch();
 	}
-
-
 
 	render() {
 		var currentItem = this.props.items[this.props.baseItem];
-		var parentItem = this.props.items[currentItem.parent];
 		return (
 			<Card className={this.props.classes.card}>
 				<ListHeader
@@ -143,7 +127,7 @@ class TodoContainer extends Component {
 					baseItemText={currentItem.content}
 					currentParent={currentItem.parent}
 					changeBaseComposer={this.changeBaseComposer}
-					changeColorComposer ={this.changeColorComposer}
+					changeColorComposer={this.changeColorComposer}
 					counterText={this.generateComplete()}
 					items={this.props.items}
 					newItemAction={this.newItemAction}
@@ -152,13 +136,13 @@ class TodoContainer extends Component {
 					completeItemComposer={this.completeItemComposer}
 				/>
 				<List
-					list={this.props.items}
+					items={this.props.items}
 					baseItem={this.props.baseItem}
 					changeBaseComposer={this.changeBaseComposer}
 					deleteItemComposer={this.deleteItemComposer}
 					completeItemComposer={this.completeItemComposer}
 					reorderItemComposer={this.reorderItemComposer}
-					changeColorComposer ={this.changeColorComposer}
+					changeColorComposer={this.changeColorComposer}
 					updateItem={this.updateItemDispatch}
 				/>
 			</Card>
@@ -166,15 +150,41 @@ class TodoContainer extends Component {
 	}
 }
 
+TodoContainer.propTypes = {
+	baseItem: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	items: PropTypes.object,
+	classes: PropTypes.object,
+	listID: PropTypes.string,
+	newItem: PropTypes.func,
+	changeBaseItem: PropTypes.func,
+	completeItem: PropTypes.func,
+	deleteItem: PropTypes.func,
+	reorderItem: PropTypes.func,
+	changeColor: PropTypes.func,
+	updateItem: PropTypes.func,
+	updateData: PropTypes.func
+};
+
 function mapStateToProps({ items, baseItem }) {
-	return { items, baseItem};
+	return { items, baseItem };
 }
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators(
-		{ newItem, changeBaseItem, completeItem, deleteItem, reorderItem, changeColor, updateItem, updateData:updateDataThrottled},
+		{
+			newItem,
+			changeBaseItem,
+			completeItem,
+			deleteItem,
+			reorderItem,
+			changeColor,
+			updateItem,
+			updateData: updateDataThrottled
+		},
 		dispatch
 	);
 }
 
-export default withStyles(styleSheet)(connect(mapStateToProps, mapDispatchToProps)(TodoContainer));
+export default withStyles(styleSheet)(
+	connect(mapStateToProps, mapDispatchToProps)(TodoContainer)
+);

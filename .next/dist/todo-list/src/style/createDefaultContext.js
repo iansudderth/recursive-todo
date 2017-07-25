@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,19 +6,19 @@ Object.defineProperty(exports, "__esModule", {
 exports.setDefaultContext = setDefaultContext;
 exports.getDefaultContext = getDefaultContext;
 
-var _MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
+var _MuiThemeProvider = require("material-ui/styles/MuiThemeProvider");
 
 var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
-var _palette = require('material-ui/styles/palette');
+var _palette = require("material-ui/styles/palette");
 
 var _palette2 = _interopRequireDefault(_palette);
 
-var _theme = require('material-ui/styles/theme');
+var _theme = require("material-ui/styles/theme");
 
 var _theme2 = _interopRequireDefault(_theme);
 
-var _colors = require('material-ui/colors');
+var _colors = require("material-ui/colors");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

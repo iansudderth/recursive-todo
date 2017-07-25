@@ -28,6 +28,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _List = require("../components/List");
 
 var _List2 = _interopRequireDefault(_List);
@@ -46,10 +50,6 @@ var _Card = require("material-ui/Card");
 
 var _Card2 = _interopRequireDefault(_Card);
 
-var _lodash = require("lodash");
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
 var _styles = require("material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -57,18 +57,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/containers/TodoContainer.js";
 // import style from "../components/ListItem/style.css";
 
+// import _ from 'lodash'
 
-var styleSheet = (0, _styles.createStyleSheet)("CardContainer", function (theme) {
-	return {
+
+var styleSheet = (0, _styles.createStyleSheet)("CardContainer", {
+	card: {
+		margin: 0
+	},
+	"@media (min-width:768px)": {
 		card: {
-			margin: 0
-		},
-		'@media (min-width:768px)': {
-			card: {
-				margin: 16
-			}
+			margin: 16
 		}
-	};
+	}
 });
 
 var TodoContainer = function (_Component) {
@@ -104,7 +104,6 @@ var TodoContainer = function (_Component) {
 		key: "newItemAction",
 		value: function newItemAction(content) {
 			this.props.newItem(content, this.props.baseItem);
-			var updateDataDispatch = this.updateDataDispatch;
 			this.setState({ newItem: "" }, function () {});
 		}
 	}, {
@@ -119,7 +118,6 @@ var TodoContainer = function (_Component) {
 		key: "deleteItemComposer",
 		value: function deleteItemComposer(id) {
 			var deleteItemDispatch = this.props.deleteItem;
-			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				deleteItemDispatch(id);
 			};
@@ -128,7 +126,6 @@ var TodoContainer = function (_Component) {
 		key: "completeItemComposer",
 		value: function completeItemComposer(id) {
 			var completeItemDispatch = this.props.completeItem;
-			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				completeItemDispatch(id);
 			};
@@ -137,7 +134,6 @@ var TodoContainer = function (_Component) {
 		key: "reorderItemComposer",
 		value: function reorderItemComposer(id, oldIndex, newIndex) {
 			var reorderItemDispatch = this.props.reorderItem;
-			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				reorderItemDispatch(id, oldIndex, newIndex);
 			};
@@ -153,7 +149,6 @@ var TodoContainer = function (_Component) {
 		key: "changeColorComposer",
 		value: function changeColorComposer(id, color) {
 			var changeColorDispatch = this.props.changeColor;
-			var updateDataDispatch = this.updateDataDispatch;
 			return function () {
 				changeColorDispatch(id, color);
 			};
@@ -175,17 +170,16 @@ var TodoContainer = function (_Component) {
 		}
 	}, {
 		key: "componentDidUpdate",
-		value: function componentDidUpdate(prevProps, prevState) {
+		value: function componentDidUpdate() {
 			this.updateDataDispatch();
 		}
 	}, {
 		key: "render",
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
-			var parentItem = this.props.items[currentItem.parent];
 			return _react2.default.createElement(_Card2.default, { className: this.props.classes.card, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 140
+					lineNumber: 124
 				}
 			}, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
@@ -201,10 +195,10 @@ var TodoContainer = function (_Component) {
 				completeItemComposer: this.completeItemComposer,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 141
+					lineNumber: 125
 				}
 			}), _react2.default.createElement(_List2.default, {
-				list: this.props.items,
+				items: this.props.items,
 				baseItem: this.props.baseItem,
 				changeBaseComposer: this.changeBaseComposer,
 				deleteItemComposer: this.deleteItemComposer,
@@ -214,7 +208,7 @@ var TodoContainer = function (_Component) {
 				updateItem: this.updateItemDispatch,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 154
+					lineNumber: 138
 				}
 			}));
 		}
@@ -222,6 +216,21 @@ var TodoContainer = function (_Component) {
 
 	return TodoContainer;
 }(_react.Component);
+
+TodoContainer.propTypes = {
+	baseItem: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string]),
+	items: _propTypes2.default.object,
+	classes: _propTypes2.default.object,
+	listID: _propTypes2.default.string,
+	newItem: _propTypes2.default.func,
+	changeBaseItem: _propTypes2.default.func,
+	completeItem: _propTypes2.default.func,
+	deleteItem: _propTypes2.default.func,
+	reorderItem: _propTypes2.default.func,
+	changeColor: _propTypes2.default.func,
+	updateItem: _propTypes2.default.func,
+	updateData: _propTypes2.default.func
+};
 
 function mapStateToProps(_ref) {
 	var items = _ref.items,
@@ -231,7 +240,16 @@ function mapStateToProps(_ref) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor, updateItem: _actions.updateItem, updateData: _actions.updateDataThrottled }, dispatch);
+	return (0, _redux.bindActionCreators)({
+		newItem: _actions.newItem,
+		changeBaseItem: _actions.changeBaseItem,
+		completeItem: _actions.completeItem,
+		deleteItem: _actions.deleteItem,
+		reorderItem: _actions.reorderItem,
+		changeColor: _actions.changeColor,
+		updateItem: _actions.updateItem,
+		updateData: _actions.updateDataThrottled
+	}, dispatch);
 }
 
 exports.default = (0, _styles.withStyles)(styleSheet)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TodoContainer));

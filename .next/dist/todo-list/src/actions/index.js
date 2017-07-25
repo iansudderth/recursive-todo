@@ -20,10 +20,6 @@ var _axios = require('axios');
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _lodash = require('lodash');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
 var _throttleAction = require('throttle-action');
 
 var _throttleAction2 = _interopRequireDefault(_throttleAction);
@@ -104,15 +100,6 @@ function updateItem(id, newText) {
 		}
 	};
 }
-
-// export const UPDATE_DATA = "UPDATE_DATA";
-// export function updateData(id, newState){
-// 	var request = axios.put(`/todo/${id}`, newState)
-// 	return{
-// 		type:UPDATE_DATA,
-// 		payload:request
-// 	}
-// }
 
 var UPDATE_DATA = exports.UPDATE_DATA = "UPDATE_DATA";
 function updateData(id, newState) {

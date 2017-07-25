@@ -32,8 +32,6 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _List = require("material-ui/List");
-
 var _TextField = require("material-ui/TextField");
 
 var _TextField2 = _interopRequireDefault(_TextField);
@@ -54,19 +52,16 @@ var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/to
 
 
 var NonEditItem = function NonEditItem(props) {
-	var lineStyle = props.complete ? { textDecoration: 'line-through' } : {};
+	var lineStyle = props.complete ? { textDecoration: "line-through" } : {};
 	var hold = (0, _reactTouch.defineHold)({ updateEvery: 50, holdFor: 500 });
-	return _react2.default.createElement(_reactTouch.Holdable, {
-		config: hold,
-		onHoldComplete: props.updateHandler,
-		__source: {
+	return _react2.default.createElement(_reactTouch.Holdable, { config: hold, onHoldComplete: props.updateHandler, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 13
+			lineNumber: 11
 		}
 	}, _react2.default.createElement("div", {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 17
+			lineNumber: 12
 		}
 	}, _react2.default.createElement(_Typography2.default, {
 		type: "headline",
@@ -75,7 +70,7 @@ var NonEditItem = function NonEditItem(props) {
 		onDoubleClick: props.updateHandler,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 18
+			lineNumber: 13
 		}
 	}, props.primary), _react2.default.createElement(_Typography2.default, {
 		type: "subheading",
@@ -84,9 +79,17 @@ var NonEditItem = function NonEditItem(props) {
 		onDoubleClick: props.updateHandler,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 26
+			lineNumber: 21
 		}
 	}, props.secondary)));
+};
+
+NonEditItem.propTypes = {
+	primary: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.string]),
+	secondary: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.string]),
+	textColor: _propTypes2.default.string,
+	complete: _propTypes2.default.bool,
+	updateHandler: _propTypes2.default.func
 };
 
 var EditableTextArea = function (_Component) {
@@ -112,13 +115,10 @@ var EditableTextArea = function (_Component) {
 
 	(0, _createClass3.default)(EditableTextArea, [{
 		key: "EditItem",
-		value: function EditItem(props) {
-			return _react2.default.createElement("form", {
-				onSubmit: this.handleBlur,
-				style: { width: '100%' },
-				__source: {
+		value: function EditItem() {
+			return _react2.default.createElement("form", { onSubmit: this.handleBlur, style: { width: "100%" }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 58
+					lineNumber: 59
 				}
 			}, _react2.default.createElement(_TextField2.default, {
 				value: this.state.editText,
@@ -126,13 +126,14 @@ var EditableTextArea = function (_Component) {
 				onBlur: this.handleBlur,
 				fullWidth: true,
 				autoFocus: true,
-				InputProps: { style: {
+				InputProps: {
+					style: {
 						color: this.props.textColor
 					}
 				},
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 62
+					lineNumber: 60
 				}
 			}));
 		}
@@ -156,12 +157,16 @@ var EditableTextArea = function (_Component) {
 				return _react2.default.createElement(EditItem, {
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 92
+						lineNumber: 89
 					}
 				});
 			} else {
 				return _react2.default.createElement(NonEditItem, {
-					style: { color: this.props.textColor, padding: '0px', wordWrap: 'break-word' },
+					style: {
+						color: this.props.textColor,
+						padding: "0px",
+						wordWrap: "break-word"
+					},
 					complete: this.props.complete,
 					updateHandler: this.doubleClickHandler,
 					textColor: this.props.textColor,
@@ -169,7 +174,7 @@ var EditableTextArea = function (_Component) {
 					secondary: this.props.secondary,
 					__source: {
 						fileName: _jsxFileName,
-						lineNumber: 98
+						lineNumber: 92
 					}
 				});
 			}
@@ -186,7 +191,7 @@ var EditableTextArea = function (_Component) {
 			return _react2.default.createElement(TextContainer, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 117
+					lineNumber: 114
 				}
 			});
 		}
@@ -194,5 +199,14 @@ var EditableTextArea = function (_Component) {
 
 	return EditableTextArea;
 }(_react.Component);
+
+EditableTextArea.propTypes = {
+	primary: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.string]),
+	secondary: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.string]),
+	textColor: _propTypes2.default.string,
+	complete: _propTypes2.default.bool,
+	updateItem: _propTypes2.default.func,
+	id: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string])
+};
 
 exports.default = EditableTextArea;

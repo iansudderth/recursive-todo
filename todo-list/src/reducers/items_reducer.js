@@ -1,8 +1,16 @@
 import _ from "lodash";
-import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM, REORDER_ITEM, CHANGE_COLOR, UPDATE_ITEM, UPDATE_DATA } from "../actions";
+import {
+	NEW_ITEM,
+	COMPLETE_ITEM,
+	DELETE_ITEM,
+	REORDER_ITEM,
+	CHANGE_COLOR,
+	UPDATE_ITEM,
+	UPDATE_DATA
+} from "../actions";
 
 function items(state = seedData, action) {
-	var id, newState, newID, newItem, parentID
+	var id, newState, newID, newItem, parentID;
 	switch (action.type) {
 		case NEW_ITEM:
 			newID = randomID();
@@ -12,7 +20,7 @@ function items(state = seedData, action) {
 					id: newID,
 					content: action.payload.content,
 					complete: false,
-					color:'lightBlue',
+					color: "lightBlue",
 					completeChildren: [],
 					incompleteChildren: [],
 					parent: parentID
@@ -63,18 +71,18 @@ function items(state = seedData, action) {
 			return newState;
 
 		case CHANGE_COLOR:
-			newState = _.merge({}, state)
-			newState[action.payload.id].color = action.payload.color
+			newState = _.merge({}, state);
+			newState[action.payload.id].color = action.payload.color;
 			return newState;
 
 		case UPDATE_ITEM:
-			newState = _.merge({}, state)
-			newState[action.payload.id].content = action.payload.newText
-			return newState
+			newState = _.merge({}, state);
+			newState[action.payload.id].content = action.payload.newText;
+			return newState;
 
 		case UPDATE_DATA:
-			console.log(action.payload)
-			return state
+			console.log(action.payload);
+			return state;
 
 		default:
 			return state;
@@ -114,10 +122,10 @@ function addChild(item, child) {
 }
 
 function reorder(arr, oldIndex, newIndex) {
-	var item = arr[oldIndex]
-	arr.splice(oldIndex, 1)
-	arr.splice(newIndex, 0, item)
-	return arr
+	var item = arr[oldIndex];
+	arr.splice(oldIndex, 1);
+	arr.splice(newIndex, 0, item);
+	return arr;
 }
 
 const seedData = {
@@ -125,7 +133,7 @@ const seedData = {
 		id: 1001,
 		content: "Random seed 1",
 		complete: false,
-		color:'red',
+		color: "red",
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: [1004]
@@ -134,7 +142,7 @@ const seedData = {
 		id: 1002,
 		content: "Random seed 2",
 		complete: false,
-		color:'red',
+		color: "red",
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: [1003]
@@ -143,7 +151,7 @@ const seedData = {
 		id: 1003,
 		content: "Random seed 3",
 		complete: false,
-		color:'red',
+		color: "red",
 		parent: 1002,
 		completeChildren: [],
 		incompleteChildren: []
@@ -152,7 +160,7 @@ const seedData = {
 		id: 1004,
 		content: "Random seed 4",
 		complete: false,
-		color:'red',
+		color: "red",
 		parent: 1001,
 		completeChildren: [],
 		incompleteChildren: []
@@ -161,13 +169,13 @@ const seedData = {
 		id: 1005,
 		content: "Random seed 5",
 		complete: true,
-		color:'red',
+		color: "red",
 		parent: "root",
 		completeChildren: [],
 		incompleteChildren: []
 	},
 	root: {
-		color:'red',
+		color: "red",
 		completeChildren: [1005],
 		incompleteChildren: [1001, 1002]
 	}

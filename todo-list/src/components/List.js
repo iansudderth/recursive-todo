@@ -1,19 +1,17 @@
 import React from "react";
 // import style from "./style.css";
-// import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 // import _ from 'lodash';
 import IncompleteList from "./IncompleteList.js";
 import CompleteList from "./CompleteList.js";
 import { withStyles, createStyleSheet } from "material-ui/styles";
 
-
-const styleSheet = createStyleSheet("List", theme => ({
-	container: {
-	}
-}));
+const styleSheet = createStyleSheet("List", {
+	container: {}
+});
 
 const List = props => {
-	const itemsList = props.list;
+	const itemsList = props.items;
 	const baseItem = props.baseItem;
 	let completeListItems = itemsList[baseItem].completeChildren;
 	let incompleteListItems = itemsList[baseItem].incompleteChildren;
@@ -37,7 +35,7 @@ const List = props => {
 				deleteItemComposer={props.deleteItemComposer}
 				completeItemComposer={props.completeItemComposer}
 				reorderItemComposer={props.reorderItemComposer}
-				changeColorComposer ={props.changeColorComposer}
+				changeColorComposer={props.changeColorComposer}
 				updateItem={props.updateItem}
 			/>
 			<CompleteList
@@ -48,13 +46,23 @@ const List = props => {
 				deleteItemComposer={props.deleteItemComposer}
 				completeItemComposer={props.completeItemComposer}
 				reorderItemComposer={props.reorderItemComposer}
-				changeColorComposer ={props.changeColorComposer}
+				changeColorComposer={props.changeColorComposer}
 				updateItem={props.updateItem}
 			/>
 		</div>
 	);
 };
 
-List.propTypes = {};
+List.propTypes = {
+	items: PropTypes.object,
+	baseItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	updateItem: PropTypes.func,
+	changeColorComposer: PropTypes.func,
+	reorderItemComposer: PropTypes.func,
+	completeItemComposer: PropTypes.func,
+	deleteItemComposer: PropTypes.func,
+	changeBaseComposer: PropTypes.func,
+	classes: PropTypes.object
+};
 
 export default withStyles(styleSheet)(List);

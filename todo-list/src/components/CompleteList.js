@@ -1,22 +1,20 @@
 import React from "react";
-// import style from "./style.css";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 // import _ from "lodash";
 import ListItem from "./ListItem.js";
 import List from "material-ui/List";
 import { withStyles, createStyleSheet } from "material-ui/styles";
 import {
-	// primaryColorParser,
 	fadedColorParser,
 	textColorParser
 } from "../helpers/colorParser.js";
 
-const styleSheet = createStyleSheet("CompleteList", theme => ({
+const styleSheet = createStyleSheet("CompleteList", {
 	container: {
 		margin: 0,
 		padding: 0
 	}
-}));
+});
 
 const CompleteList = props => {
 	const classes = props.classes;
@@ -42,6 +40,10 @@ const CompleteList = props => {
 	);
 };
 
-CompleteList.propTypes = {};
+CompleteList.propTypes = {
+	classes: PropTypes.object,
+	updateItem: PropTypes.func,
+	items: PropTypes.array
+};
 
 export default withStyles(styleSheet)(CompleteList);
