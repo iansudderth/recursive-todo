@@ -12,7 +12,7 @@ class HeaderMenu extends Component {
 
 		this.state={
 			open:false,
-			anchorEl:''
+			anchorEl:undefined
 		}
 
 		this.openMenu = this.openMenu.bind(this)

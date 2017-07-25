@@ -10,7 +10,10 @@ class Todo extends Component {
     return { query }
 }
 
-  seedState = this.props.query.initialState
+  seedState = {
+    items:this.props.query.initialState.items,
+    baseItem: this.props.query.initialState.baseItem
+  }
   listID = this.props.query.initialState._id
 
   render () {

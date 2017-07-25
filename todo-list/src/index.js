@@ -4,12 +4,9 @@ import React from "react";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
-import App from "./App";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { MuiThemeProvider } from 'material-ui/styles';
 import TodoContainer from './containers/TodoContainer.js'
 import thunk from 'redux-thunk'
-import Media from 'react-media'
 
 
 

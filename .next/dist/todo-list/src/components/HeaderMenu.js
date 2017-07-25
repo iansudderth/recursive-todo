@@ -67,7 +67,7 @@ var HeaderMenu = function (_Component) {
 
 		_this.state = {
 			open: false,
-			anchorEl: ''
+			anchorEl: undefined
 		};
 
 		_this.openMenu = _this.openMenu.bind(_this);
