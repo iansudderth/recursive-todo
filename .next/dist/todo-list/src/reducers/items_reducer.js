@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
 var _defineProperty2 = require("babel-runtime/helpers/defineProperty");
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
@@ -123,24 +119,10 @@ function addChild(item, child) {
 }
 
 function reorder(arr, oldIndex, newIndex) {
-	var removed = [];
-	if (oldIndex === 0) {
-		removed = arr.slice(1);
-	} else {
-		var before = arr.slice(0, oldIndex);
-		var after = arr.slice(oldIndex + 1, arr.length);
-		removed = [].concat((0, _toConsumableArray3.default)(before), (0, _toConsumableArray3.default)(after));
-	}
-
-	if (newIndex === 0) {
-		return [arr[oldIndex]].concat((0, _toConsumableArray3.default)(removed));
-	} else if (newIndex === arr.length - 1) {
-		return [].concat((0, _toConsumableArray3.default)(removed), [arr[oldIndex]]);
-	} else {
-		before = removed.slice(0, newIndex);
-		after = removed.slice(newIndex, removed.length);
-		return [].concat((0, _toConsumableArray3.default)(before), [arr[oldIndex]], (0, _toConsumableArray3.default)(after));
-	}
+	var item = arr[oldIndex];
+	arr.splice(oldIndex, 1);
+	arr.splice(newIndex, 0, item);
+	return arr;
 }
 
 var seedData = {

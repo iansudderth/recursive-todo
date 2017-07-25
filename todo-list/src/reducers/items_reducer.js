@@ -113,24 +113,10 @@ function addChild(item, child) {
 }
 
 function reorder(arr, oldIndex, newIndex) {
-	var removed = [];
-	if (oldIndex === 0) {
-		removed = arr.slice(1);
-	} else {
-		var before = arr.slice(0, oldIndex);
-		var after = arr.slice(oldIndex + 1, arr.length);
-		removed = [...before, ...after];
-	}
-
-	if (newIndex === 0) {
-		return [arr[oldIndex], ...removed];
-	} else if (newIndex === arr.length - 1) {
-		return [...removed, arr[oldIndex]];
-	} else {
-		before = removed.slice(0, newIndex);
-		after = removed.slice(newIndex, removed.length);
-		return [...before, arr[oldIndex], ...after];
-	}
+	var item = arr[oldIndex]
+	arr.splice(oldIndex, 1)
+	arr.splice(newIndex, 0, item)
+	return arr
 }
 
 const seedData = {
