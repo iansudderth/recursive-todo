@@ -17,6 +17,18 @@ import { bindActionCreators } from "redux";
 import ListHeader from "../components/ListHeader.js";
 import Card from "material-ui/Card";
 import _ from 'lodash'
+import { withStyles, createStyleSheet } from "material-ui/styles";
+
+const styleSheet = createStyleSheet("CardContainer", theme => ({
+	card:{
+		margin:0
+	},
+	'@media (min-width:768px)':{
+		card:{
+			margin:16
+		}
+	}
+}));
 
 
 class TodoContainer extends Component {
@@ -125,7 +137,7 @@ class TodoContainer extends Component {
 		var currentItem = this.props.items[this.props.baseItem];
 		var parentItem = this.props.items[currentItem.parent];
 		return (
-			<Card style={{ margin: "auto", margin: "16px" }}>
+			<Card className={this.props.classes.card}>
 				<ListHeader
 					baseItem={this.props.baseItem}
 					baseItemText={currentItem.content}
@@ -165,4 +177,4 @@ function mapDispatchToProps(dispatch) {
 	);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoContainer);
+export default withStyles(styleSheet)(connect(mapStateToProps, mapDispatchToProps)(TodoContainer));

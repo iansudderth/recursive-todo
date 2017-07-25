@@ -205,7 +205,7 @@ var BaseListItem = function (_Component) {
 		key: "render",
 		value: function render() {
 			var textColor = this.props.value.complete ? this.completeGrey : this.props.textColor;
-			return _react2.default.createElement(_List.ListItem, { divider: true, style: { backgroundColor: this.props.itemColor, padding: 12, transition: 'all 0s, background-color .5s' }, __source: {
+			return _react2.default.createElement(_List.ListItem, { divider: true, style: { transition: 'all 0s, background-color .5s', backgroundColor: this.props.itemColor, padding: 12 }, __source: {
 					fileName: _jsxFileName,
 					lineNumber: 119
 				}

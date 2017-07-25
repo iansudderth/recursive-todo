@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _defineProperty2 = require("babel-runtime/helpers/defineProperty");
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
 var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -54,11 +50,26 @@ var _lodash = require("lodash");
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
+var _styles = require("material-ui/styles");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = "/Users/iansudderth/Desktop/recursive-to-do/recursive-todo/todo-list/src/containers/TodoContainer.js";
 // import style from "../components/ListItem/style.css";
 
+
+var styleSheet = (0, _styles.createStyleSheet)("CardContainer", function (theme) {
+	return {
+		card: {
+			margin: 0
+		},
+		'@media (min-width:768px)': {
+			card: {
+				margin: 16
+			}
+		}
+	};
+});
 
 var TodoContainer = function (_Component) {
 	(0, _inherits3.default)(TodoContainer, _Component);
@@ -172,9 +183,9 @@ var TodoContainer = function (_Component) {
 		value: function render() {
 			var currentItem = this.props.items[this.props.baseItem];
 			var parentItem = this.props.items[currentItem.parent];
-			return _react2.default.createElement(_Card2.default, { style: (0, _defineProperty3.default)({ margin: "auto" }, "margin", "16px"), __source: {
+			return _react2.default.createElement(_Card2.default, { className: this.props.classes.card, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 128
+					lineNumber: 140
 				}
 			}, _react2.default.createElement(_ListHeader2.default, {
 				baseItem: this.props.baseItem,
@@ -190,7 +201,7 @@ var TodoContainer = function (_Component) {
 				completeItemComposer: this.completeItemComposer,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 129
+					lineNumber: 141
 				}
 			}), _react2.default.createElement(_List2.default, {
 				list: this.props.items,
@@ -203,7 +214,7 @@ var TodoContainer = function (_Component) {
 				updateItem: this.updateItemDispatch,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 142
+					lineNumber: 154
 				}
 			}));
 		}
@@ -212,9 +223,9 @@ var TodoContainer = function (_Component) {
 	return TodoContainer;
 }(_react.Component);
 
-function mapStateToProps(_ref2) {
-	var items = _ref2.items,
-	    baseItem = _ref2.baseItem;
+function mapStateToProps(_ref) {
+	var items = _ref.items,
+	    baseItem = _ref.baseItem;
 
 	return { items: items, baseItem: baseItem };
 }
@@ -223,4 +234,4 @@ function mapDispatchToProps(dispatch) {
 	return (0, _redux.bindActionCreators)({ newItem: _actions.newItem, changeBaseItem: _actions.changeBaseItem, completeItem: _actions.completeItem, deleteItem: _actions.deleteItem, reorderItem: _actions.reorderItem, changeColor: _actions.changeColor, updateItem: _actions.updateItem, updateData: _actions.updateDataThrottled }, dispatch);
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TodoContainer);
+exports.default = (0, _styles.withStyles)(styleSheet)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TodoContainer));

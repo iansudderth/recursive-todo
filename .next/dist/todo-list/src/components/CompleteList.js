@@ -42,7 +42,7 @@ var CompleteList = function CompleteList(props) {
 
 	return _react2.default.createElement(_List2.default, { className: classes.container, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 21
+			lineNumber: 25
 		}
 	}, props.items.map(function (value) {
 		return _react2.default.createElement(_ListItem2.default, {
@@ -57,7 +57,7 @@ var CompleteList = function CompleteList(props) {
 			updateItem: props.updateItem,
 			__source: {
 				fileName: _jsxFileName,
-				lineNumber: 24
+				lineNumber: 28
 			}
 		});
 	}));

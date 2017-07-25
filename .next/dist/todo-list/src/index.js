@@ -20,10 +20,6 @@ var _App = require("./App");
 
 var _App2 = _interopRequireDefault(_App);
 
-var _reduxPromise = require("redux-promise");
-
-var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
-
 var _reduxDevtoolsExtension = require("redux-devtools-extension");
 
 var _styles = require("material-ui/styles");
@@ -35,6 +31,10 @@ var _TodoContainer2 = _interopRequireDefault(_TodoContainer);
 var _reduxThunk = require("redux-thunk");
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _reactMedia = require("react-media");
+
+var _reactMedia2 = _interopRequireDefault(_reactMedia);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

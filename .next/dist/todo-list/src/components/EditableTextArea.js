@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _defineProperty2 = require("babel-runtime/helpers/defineProperty");
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
 var _getPrototypeOf = require("babel-runtime/core-js/object/get-prototype-of");
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -164,19 +160,18 @@ var EditableTextArea = function (_Component) {
 					}
 				});
 			} else {
-				var _React$createElement;
-
-				return _react2.default.createElement(NonEditItem, (_React$createElement = {
+				return _react2.default.createElement(NonEditItem, {
 					style: { color: this.props.textColor, padding: '0px', wordWrap: 'break-word' },
 					complete: this.props.complete,
 					updateHandler: this.doubleClickHandler,
 					textColor: this.props.textColor,
 					primary: this.props.primary,
-					secondary: this.props.secondary
-				}, (0, _defineProperty3.default)(_React$createElement, "complete", this.props.complete), (0, _defineProperty3.default)(_React$createElement, "__source", {
-					fileName: _jsxFileName,
-					lineNumber: 98
-				}), _React$createElement));
+					secondary: this.props.secondary,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 98
+					}
+				});
 			}
 		}
 	}, {
@@ -191,7 +186,7 @@ var EditableTextArea = function (_Component) {
 			return _react2.default.createElement(TextContainer, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 118
+					lineNumber: 117
 				}
 			});
 		}

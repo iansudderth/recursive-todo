@@ -9,6 +9,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { MuiThemeProvider } from 'material-ui/styles';
 import TodoContainer from './containers/TodoContainer.js'
 import thunk from 'redux-thunk'
+import Media from 'react-media'
 
 
 
@@ -19,9 +20,10 @@ const createStoreWithMiddleware = composeWithDevTools(
 
 const Boiler = (props) =>
 	<Provider store={createStoreWithMiddleware(reducers, props.seedState)}>
-		<TodoContainer
-		listID={props.listID}
-		/>
+			<TodoContainer
+			listID={props.listID}
+			/>
+
 	</Provider>;
 
 // ReactDOM.render(<Boiler />, document.getElementById("root"));
