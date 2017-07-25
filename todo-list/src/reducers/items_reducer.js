@@ -2,11 +2,12 @@ import _ from "lodash";
 import { NEW_ITEM, COMPLETE_ITEM, DELETE_ITEM, REORDER_ITEM, CHANGE_COLOR, UPDATE_ITEM, UPDATE_DATA } from "../actions";
 
 function items(state = seedData, action) {
+	var id, newState, newID, newItem, parentID
 	switch (action.type) {
 		case NEW_ITEM:
-			var newID = randomID();
-			var parentID = action.payload.parent;
-			var newItem = {
+			newID = randomID();
+			parentID = action.payload.parent;
+			newItem = {
 				[newID]: {
 					id: newID,
 					content: action.payload.content,
@@ -18,14 +19,14 @@ function items(state = seedData, action) {
 				}
 			};
 			var newParent = { [parentID]: addChild(state[parentID], newID) };
-			var newState = _.merge({}, state, newItem, newParent);
+			newState = _.merge({}, state, newItem, newParent);
 			return newState;
 
 		case COMPLETE_ITEM:
-			var id = action.payload;
-			var newState = _.merge({}, state);
-			var newItem = { [id]: newState[id] };
-			var parentID = newItem[id].parent;
+			id = action.payload;
+			newState = _.merge({}, state);
+			newItem = { [id]: newState[id] };
+			parentID = newItem[id].parent;
 			newItem[id].complete = !newItem[id].complete;
 			if (newItem[id].complete) {
 				_.pull(newState[parentID].incompleteChildren, id);
@@ -37,8 +38,8 @@ function items(state = seedData, action) {
 			return _.merge(newState, newItem);
 
 		case DELETE_ITEM:
-			var id = action.payload;
-			var newState = _.merge({}, state);
+			id = action.payload;
+			newState = _.merge({}, state);
 			var parent = state[id].parent;
 			newState = _.omit(newState, generateChildList(state, id));
 			newState[parent].completeChildren = _.filter(
@@ -52,8 +53,8 @@ function items(state = seedData, action) {
 			return newState;
 
 		case REORDER_ITEM:
-			var newState = _.merge({}, state);
-			var parentID = action.payload.parentID;
+			newState = _.merge({}, state);
+			parentID = action.payload.parentID;
 			newState[parentID].incompleteChildren = reorder(
 				newState[parentID].incompleteChildren,
 				action.payload.oldIndex,
@@ -62,12 +63,12 @@ function items(state = seedData, action) {
 			return newState;
 
 		case CHANGE_COLOR:
-			var newState = _.merge({}, state)
+			newState = _.merge({}, state)
 			newState[action.payload.id].color = action.payload.color
 			return newState;
 
 		case UPDATE_ITEM:
-			var newState = _.merge({}, state)
+			newState = _.merge({}, state)
 			newState[action.payload.id].content = action.payload.newText
 			return newState
 

@@ -20,11 +20,12 @@ function items() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : seedData;
 	var action = arguments[1];
 
+	var id, newState, newID, newItem, parentID;
 	switch (action.type) {
 		case _actions.NEW_ITEM:
-			var newID = randomID();
-			var parentID = action.payload.parent;
-			var newItem = (0, _defineProperty3.default)({}, newID, {
+			newID = randomID();
+			parentID = action.payload.parent;
+			newItem = (0, _defineProperty3.default)({}, newID, {
 				id: newID,
 				content: action.payload.content,
 				complete: false,
@@ -34,14 +35,14 @@ function items() {
 				parent: parentID
 			});
 			var newParent = (0, _defineProperty3.default)({}, parentID, addChild(state[parentID], newID));
-			var newState = _lodash2.default.merge({}, state, newItem, newParent);
+			newState = _lodash2.default.merge({}, state, newItem, newParent);
 			return newState;
 
 		case _actions.COMPLETE_ITEM:
-			var id = action.payload;
-			var newState = _lodash2.default.merge({}, state);
-			var newItem = (0, _defineProperty3.default)({}, id, newState[id]);
-			var parentID = newItem[id].parent;
+			id = action.payload;
+			newState = _lodash2.default.merge({}, state);
+			newItem = (0, _defineProperty3.default)({}, id, newState[id]);
+			parentID = newItem[id].parent;
 			newItem[id].complete = !newItem[id].complete;
 			if (newItem[id].complete) {
 				_lodash2.default.pull(newState[parentID].incompleteChildren, id);
@@ -53,8 +54,8 @@ function items() {
 			return _lodash2.default.merge(newState, newItem);
 
 		case _actions.DELETE_ITEM:
-			var id = action.payload;
-			var newState = _lodash2.default.merge({}, state);
+			id = action.payload;
+			newState = _lodash2.default.merge({}, state);
 			var parent = state[id].parent;
 			newState = _lodash2.default.omit(newState, generateChildList(state, id));
 			newState[parent].completeChildren = _lodash2.default.filter(newState[parent].completeChildren, function (n) {
@@ -66,18 +67,18 @@ function items() {
 			return newState;
 
 		case _actions.REORDER_ITEM:
-			var newState = _lodash2.default.merge({}, state);
-			var parentID = action.payload.parentID;
+			newState = _lodash2.default.merge({}, state);
+			parentID = action.payload.parentID;
 			newState[parentID].incompleteChildren = reorder(newState[parentID].incompleteChildren, action.payload.oldIndex, action.payload.newIndex);
 			return newState;
 
 		case _actions.CHANGE_COLOR:
-			var newState = _lodash2.default.merge({}, state);
+			newState = _lodash2.default.merge({}, state);
 			newState[action.payload.id].color = action.payload.color;
 			return newState;
 
 		case _actions.UPDATE_ITEM:
-			var newState = _lodash2.default.merge({}, state);
+			newState = _lodash2.default.merge({}, state);
 			newState[action.payload.id].content = action.payload.newText;
 			return newState;
 

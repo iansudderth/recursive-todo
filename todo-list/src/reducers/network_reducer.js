@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { UPDATE_PROGRESS, UPDATE_SUCCESS, UPDATE_ERROR } from "../actions";
 
 export default function network(state = "success", action){
