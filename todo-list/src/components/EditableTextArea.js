@@ -102,7 +102,6 @@ class EditableTextArea extends Component {
 				textColor={this.props.textColor}
 				primary={this.props.primary}
 				secondary={this.props.secondary}
-				complete={this.props.complete}
 				/>
 			)
 		}

@@ -5,7 +5,11 @@ import React from "react";
 import ListItem from "./ListItem.js";
 import List from "material-ui/List";
 import { withStyles, createStyleSheet } from "material-ui/styles";
-import {primaryColorParser, fadedColorParser, textColorParser} from '../helpers/colorParser.js'
+import {
+	// primaryColorParser,
+	fadedColorParser,
+	textColorParser
+} from "../helpers/colorParser.js";
 
 const styleSheet = createStyleSheet("CompleteList", theme => ({
 	container: {
@@ -27,7 +31,7 @@ const CompleteList = props => {
 						changeBaseComposer={props.changeBaseComposer}
 						deleteItemComposer={props.deleteItemComposer}
 						completeItemComposer={props.completeItemComposer}
-						changeColorComposer ={props.changeColorComposer}
+						changeColorComposer={props.changeColorComposer}
 						itemColor={fadedColorParser(value.color)}
 						textColor={textColorParser(value.color)}
 						updateItem={props.updateItem}
