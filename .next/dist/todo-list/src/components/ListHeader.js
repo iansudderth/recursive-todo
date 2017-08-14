@@ -128,10 +128,10 @@ var ListHeader = function ListHeader(props) {
 					fileName: _jsxFileName,
 					lineNumber: 86
 				}
-			}, item === "root" ? "root" : props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, {
+			}, props.items[item].content, index < trail.length - 1 ? _react2.default.createElement(_ChevronRight2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 95
+					lineNumber: 93
 				}
 			}) : "", " ");
 		}));
@@ -145,16 +145,16 @@ var ListHeader = function ListHeader(props) {
 		},
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 105
+			lineNumber: 103
 		}
 	}, _react2.default.createElement("div", { className: classes.titleContainer, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 112
+			lineNumber: 110
 		}
 	}, props.baseItem === "root" ? _react2.default.createElement(_IconButton2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 114
+			lineNumber: 112
 		}
 	}) : _react2.default.createElement(_Checkbox2.default, {
 		checked: complete,
@@ -162,11 +162,11 @@ var ListHeader = function ListHeader(props) {
 		style: { color: textColor },
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 115
+			lineNumber: 113
 		}
 	}), _react2.default.createElement("div", { className: classes.titleText, __source: {
 			fileName: _jsxFileName,
-			lineNumber: 120
+			lineNumber: 118
 		}
 	}, _react2.default.createElement(_EditableTextArea2.default, {
 		primary: headerText,
@@ -179,7 +179,7 @@ var ListHeader = function ListHeader(props) {
 		header: true,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 121
+			lineNumber: 119
 		}
 	})), _react2.default.createElement(_HeaderMenu2.default, {
 		textColor: textColor,
@@ -187,22 +187,22 @@ var ListHeader = function ListHeader(props) {
 		changeColorComposer: props.changeColorComposer,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 132
+			lineNumber: 130
 		}
 	})), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 138
+			lineNumber: 136
 		}
 	}), _react2.default.createElement(BreadCrumb, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 139
+			lineNumber: 137
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 140
+			lineNumber: 138
 		}
 	}), _react2.default.createElement(_NewItemForm2.default, {
 		newItemAction: props.newItemAction,
@@ -211,12 +211,12 @@ var ListHeader = function ListHeader(props) {
 		accentTextColor: accentTextColor,
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 141
+			lineNumber: 139
 		}
 	}), _react2.default.createElement(_Divider2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 147
+			lineNumber: 145
 		}
 	}));
 };

@@ -88,9 +88,7 @@ const ListHeader = props => {
 							className={props.classes.crumb}
 							onClick={props.changeBaseComposer(item)}
 						>
-							{item === "root"
-								? "root"
-								: props.items[item].content}
+							{props.items[item].content}
 							{index < trail.length - 1
 								? <ChevronRight />
 								: ""}{" "}
