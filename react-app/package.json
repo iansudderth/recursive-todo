@@ -1,0 +1,27 @@
+{
+  "name": "recursive-todo-frontend",
+  "author": "Ian Sudderth",
+  "version": "2.0.0",
+  "dependencies": {
+    "@material-ui/core": "^1.4.1",
+    "@material-ui/icons": "^2.0.0",
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "mdi-material-ui": "^5.2.0",
+    "next": "^6.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-sortable-hoc": "^0.8.3",
+    "redux": "^4.0.0",
+    "throttle-action": "^0.1.0",
+    "typeface-roboto": "^0.0.54"
+  },
+  "devDependencies": {
+    "react-dev-utils": "^5.0.1",
+    "redux-devtools-extension": "^2.13.5"
+  },
+  "engines": {
+    "node": "8.11.x"
+  }
+}
