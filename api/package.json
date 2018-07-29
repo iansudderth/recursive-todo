@@ -2,10 +2,18 @@
   "name": "recursive-todo-api",
   "author": "Ian Sudderth",
   "version": "2.0.0",
+  "scripts": {
+    "dev": "NODE_ENV=development node server.js",
+    "dev-seed": "NODE_ENV=development node server.js --seed",
+    "db-dev": "mongod --dbpath=./db/",
+    "start": "NODE_ENV=production node server.js"
+  },
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.1",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "mongo-sanitize": "^1.0.0",
     "mongoose": "^5.2.5",
     "sanitizer": "^0.1.3"

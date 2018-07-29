@@ -1,4 +1,4 @@
-const TodoState = require('../schema/todo-list/TodoState');
+const TodoState = require('../schema/TodoState')
 
 const seedData = {
   baseItem: 'root',
@@ -10,7 +10,7 @@ const seedData = {
       color: 'red',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [1004],
+      incompleteChildren: [1004]
     },
     1002: {
       id: 1002,
@@ -19,7 +19,7 @@ const seedData = {
       color: 'red',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [1003],
+      incompleteChildren: [1003]
     },
     1003: {
       id: 1003,
@@ -28,7 +28,7 @@ const seedData = {
       color: 'red',
       parent: 1002,
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1004: {
       id: 1004,
@@ -37,7 +37,7 @@ const seedData = {
       color: 'red',
       parent: 1001,
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1005: {
       id: 1005,
@@ -46,33 +46,33 @@ const seedData = {
       color: 'red',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     root: {
       content: 'Recursive Todo Lists!!',
       color: 'red',
       completeChildren: [1005],
-      incompleteChildren: [1001, 1002],
-    },
-  },
-};
+      incompleteChildren: [1001, 1002]
+    }
+  }
+}
 
-function seedDB() {
+function seedDB () {
   TodoState.remove({}, error => {
     if (error) {
-      console.log(error);
+      console.log(error)
     } else {
       TodoState.create(seedData, (err, state) => {
         if (err) {
-          console.log(err);
+          console.log(err)
         } else {
-          console.log('Seeded DB data');
-          console.log('Seed ID', state._id);
-          return state._id;
+          console.log('Seeded DB data')
+          console.log('Seed ID', state._id)
+          return state._id
         }
-      });
+      })
     }
-  });
+  })
 }
 
-module.exports = seedDB;
+module.exports = seedDB

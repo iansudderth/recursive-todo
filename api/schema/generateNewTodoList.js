@@ -8,7 +8,7 @@ const initialState = {
       color: 'red',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1002: {
       id: 1002,
@@ -17,7 +17,7 @@ const initialState = {
       color: 'lightBlue',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1003: {
       id: 1003,
@@ -27,7 +27,7 @@ const initialState = {
       color: 'green',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [1008, 1011],
+      incompleteChildren: [1008, 1011]
     },
     1004: {
       id: 1004,
@@ -37,7 +37,7 @@ const initialState = {
       color: 'pink',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1005: {
       id: 1005,
@@ -46,7 +46,7 @@ const initialState = {
       color: 'purple',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1006: {
       id: 1006,
@@ -56,7 +56,7 @@ const initialState = {
       color: 'blue',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1007: {
       id: 1007,
@@ -65,7 +65,7 @@ const initialState = {
       color: 'yellow',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1008: {
       id: 1008,
@@ -74,7 +74,7 @@ const initialState = {
       color: 'orange',
       parent: 1003,
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1009: {
       id: 1009,
@@ -83,7 +83,7 @@ const initialState = {
       color: 'blue',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1010: {
       id: 1010,
@@ -93,7 +93,7 @@ const initialState = {
       color: 'red',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1011: {
       id: 1011,
@@ -102,7 +102,7 @@ const initialState = {
       color: 'yellow',
       parent: 1003,
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     1012: {
       id: 1012,
@@ -111,31 +111,31 @@ const initialState = {
       color: 'red',
       parent: 'root',
       completeChildren: [],
-      incompleteChildren: [],
+      incompleteChildren: []
     },
     root: {
       content: 'Recursive Todo Lists!!!',
       color: 'blue',
       completeChildren: [1009, 1010],
-      incompleteChildren: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1012],
-    },
-  },
-};
-
-// function generateNewTodoList(){
-// 	TodoState.create(initialState, (error, state) =>{
-// 		if(error){
-// 			console.log(error)
-// 		} else {
-// 			console.log("initialState created")
-// 			return state._id
-// 		}
-// 	})
-
-// }
-
-function generateNewTodoList() {
-  return initialState;
+      incompleteChildren: [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1012]
+    }
+  }
 }
 
-module.exports = generateNewTodoList;
+// function generateNewTodoList () {
+//   TodoState.create(initialState, (error, state) => {
+//     if (error) {
+//       console.log(error)
+//     } else {
+//       console.log('initialState created')
+//       return state._id
+//     }
+//   })
+//
+// }
+
+function generateNewTodoList () {
+  return initialState
+}
+
+module.exports = generateNewTodoList
